@@ -21,3 +21,8 @@ void App::processInput()
                 break;
         }
 }
+
+void App::update(sf::Time dt)
+{
+    
+}

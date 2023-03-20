@@ -19,6 +19,6 @@ class App
 
     private:
         void                        processInput();
-        void                        update();
+        void                        update(sf::Time dt);
         void                        render();
 };
