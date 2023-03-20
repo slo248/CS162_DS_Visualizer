@@ -9,5 +9,9 @@ class App
         void    run();
 
     private:
+        const int   windowWidth=1000;
+        const int   windowHeight=1000;
+
+    private:
         sf::RenderWindow            mWindow;
 };
