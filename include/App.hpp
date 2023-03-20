@@ -15,6 +15,7 @@ class App
 
     private:
         sf::RenderWindow            mWindow;
+        sf::CircleShape             mCircle;
 
     private:
         void                        processInput();
