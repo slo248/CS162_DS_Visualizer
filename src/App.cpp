@@ -10,3 +10,14 @@ App::App():
     mCircle.setOutlineThickness(8.f);
     mCircle.setOutlineColor(sf::Color::Blue);
 }
+
+void App::processInput()
+{
+    sf::Event event;
+    while(mWindow.pollEvent(event))
+        switch(event.type){
+            case sf::Event::Closed:
+                mWindow.close();
+                break;
+        }
+}
