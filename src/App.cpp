@@ -11,6 +11,22 @@ App::App():
     mCircle.setOutlineColor(sf::Color::Blue);
 }
 
+void App::run()
+{
+    sf::Clock clock;
+    sf::Time timeSinceLastUpdate=sf::Time::Zero;
+    while(mWindow.isOpen()){
+        processInput();
+        timeSinceLastUpdate+=clock.restart();
+        while(timeSinceLastUpdate>TimePerFrame){
+            processInput();
+            update(TimePerFrame);
+            timeSinceLastUpdate-=TimePerFrame;
+        }
+        render();
+    }
+}
+
 void App::processInput()
 {
     sf::Event event;
