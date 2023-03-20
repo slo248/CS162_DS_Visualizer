@@ -26,3 +26,10 @@ void App::update(sf::Time dt)
 {
     
 }
+
+void App::render()
+{
+    mWindow.clear();
+    mWindow.draw(mCircle);
+    mWindow.display();
+}
