@@ -14,4 +14,9 @@ class App
 
     private:
         sf::RenderWindow            mWindow;
+
+    private:
+        void                        processInput();
+        void                        update();
+        void                        render();
 };
