@@ -1,7 +1,7 @@
 #include "SceneNode.hpp"
 #include <assert.h>
 
-void SceneNode::attachChild(Ptr &child)
+void SceneNode::attachChild(Ptr child)
 {
     child->mParent=this;
     mChildren.push_back(std::move(child));
