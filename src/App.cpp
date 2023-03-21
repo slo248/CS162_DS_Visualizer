@@ -2,6 +2,7 @@
 
 App::App():
     mWindow(sf::VideoMode(windowWidth,windowHeight,sf::Style::Titlebar|sf::Style::Close),"Data Structure Visualization"),
+    mIsPaused(false),
     mCircle(),
     mUpdateTime(),
     mNumFrame(0)
@@ -33,7 +34,7 @@ void App::run()
         timeSinceLastUpdate+=timeElapsed;
         while(timeSinceLastUpdate>TimePerFrame){
             processInput();
-            update(TimePerFrame);
+            if(!mIsPaused) update(TimePerFrame);
             timeSinceLastUpdate-=TimePerFrame;
         }
 
@@ -46,6 +47,12 @@ void App::processInput()
     sf::Event event;
     while(mWindow.pollEvent(event))
         switch(event.type){
+            case sf::Event::LostFocus:
+                mIsPaused=true;
+                break;
+            case sf::Event::GainedFocus:
+                mIsPaused=false;
+                break;
             case sf::Event::Closed:
                 mWindow.close();
                 break;

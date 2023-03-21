@@ -23,6 +23,7 @@ class App
         sf::Text                    mStatisticText;
         sf::Time                    mUpdateTime;
         int                         mNumFrame;
+        bool                        mIsPaused;
 
     private:
         void                        processInput();
