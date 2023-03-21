@@ -18,6 +18,11 @@ class SceneNode :
         sf::Vector2f    getWorldPosition() const;
 
     private:
+        virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void    drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+        void            drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    private:
         SceneNode*              mParent;
         std::vector<Ptr>        mChildren;
 };

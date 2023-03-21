@@ -32,3 +32,20 @@ sf::Vector2f SceneNode::getWorldPosition() const
 {
     return getWorldTransform()*sf::Vector2f();
 }
+
+void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    states.transform*=getWorldTransform();
+    drawCurrent(target,states);
+    drawChildren(target,states);
+}
+
+void SceneNode::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+}
+
+void SceneNode::drawChildren(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    for(const Ptr& child: mChildren)
+        child->draw(target,states);
+}
