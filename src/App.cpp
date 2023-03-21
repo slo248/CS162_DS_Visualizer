@@ -2,7 +2,9 @@
 
 App::App():
     mWindow(sf::VideoMode(windowWidth,windowHeight,sf::Style::Titlebar|sf::Style::Close),"Data Structure Visualization"),
-    mCircle()
+    mCircle(),
+    mUpdateTime(),
+    mNumFrame(0)
 {
     mCircle.setPosition(100.f,100.f);
     mCircle.setRadius(10.f);
@@ -10,21 +12,30 @@ App::App():
     mCircle.setOutlineThickness(8.f);
     mCircle.setOutlineColor(sf::Color::Blue);
 
-    fonts.load(Fonts::ID::Times,"media/font/times.ttf");    
+    fonts.load(Fonts::ID::Times,"media/font/times.ttf");   
+
+    mStatisticText.setFont(fonts.get(Fonts::ID::Times));
+    mStatisticText.setPosition(2.f,2.f);
 }
 
 void App::run()
 {
     sf::Clock clock;
+    sf::Time timeElapsed=sf::Time::Zero;
     sf::Time timeSinceLastUpdate=sf::Time::Zero;
     while(mWindow.isOpen()){
         processInput();
-        timeSinceLastUpdate+=clock.restart();
+
+        timeElapsed=clock.restart();
+        updateStatistic(timeElapsed);
+
+        timeSinceLastUpdate+=timeElapsed;
         while(timeSinceLastUpdate>TimePerFrame){
             processInput();
             update(TimePerFrame);
             timeSinceLastUpdate-=TimePerFrame;
         }
+
         render();
     }
 }
@@ -49,5 +60,20 @@ void App::render()
 {
     mWindow.clear();
     mWindow.draw(mCircle);
+    mWindow.draw(mStatisticText);
     mWindow.display();
+}
+
+void App::updateStatistic(sf::Time timeElapsed)
+{
+    mNumFrame++;
+    mUpdateTime+=timeElapsed;
+    if(mUpdateTime.asSeconds()>1.f){
+        mStatisticText.setString(
+            "FPS: "+std::to_string(mNumFrame)+'\n'+
+            "Time / Update: "+std::to_string(mUpdateTime.asMicroseconds()/mNumFrame)+" us"
+        );
+        mNumFrame=0;
+        mUpdateTime-=sf::seconds(1.f);
+    }
 }

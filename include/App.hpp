@@ -20,9 +20,13 @@ class App
     private:
         sf::RenderWindow            mWindow;
         sf::CircleShape             mCircle;
+        sf::Text                    mStatisticText;
+        sf::Time                    mUpdateTime;
+        int                         mNumFrame;
 
     private:
         void                        processInput();
         void                        update(sf::Time dt);
         void                        render();
+        void                        updateStatistic(sf::Time timeElapsed);
 };
