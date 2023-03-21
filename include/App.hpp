@@ -1,5 +1,6 @@
 #pragma once
 
+#include <SinglyLinkedList.hpp>
 #include <ResourceHolder.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -23,6 +24,7 @@ class App
         sf::Time                    mUpdateTime;
         int                         mNumFrame;
         bool                        mIsPaused;
+        SinglyLinkedList            mSLL;
 
     private:
         void                        processInput();

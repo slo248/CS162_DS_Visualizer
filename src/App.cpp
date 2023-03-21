@@ -4,7 +4,8 @@ App::App():
     mWindow(sf::VideoMode(windowWidth,windowHeight,sf::Style::Titlebar|sf::Style::Close),"Data Structure Visualization"),
     mIsPaused(false),
     mUpdateTime(),
-    mNumFrame(0)
+    mNumFrame(0),
+    mSLL(mWindow)
 {
     fonts.load(Fonts::ID::Times,"media/font/times.ttf");   
 
