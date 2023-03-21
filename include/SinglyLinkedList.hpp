@@ -5,10 +5,10 @@
 
 class SinglyLinkedList : private sf::NonCopyable
 {
+    public:
+        SinglyLinkedList(sf::RenderWindow& window);
+
     private:
         sf::RenderWindow&               mWindow;
         SceneNode                       mSceneGraph;
-    
-    public:
-        SinglyLinkedList();
 };
