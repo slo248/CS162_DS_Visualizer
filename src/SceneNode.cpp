@@ -1,6 +1,6 @@
 #include "SceneNode.hpp"
 
-void SceneNode::add(Ptr &child)
+void SceneNode::attachChild(Ptr &child)
 {
     child->mParent=this;
     mChildren.push_back(std::move(child));

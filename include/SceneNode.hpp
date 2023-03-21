@@ -12,7 +12,7 @@ class SceneNode :
         typedef std::unique_ptr<SceneNode> Ptr;
 
     public:
-        void    add(Ptr& child);
+        void    attachChild(Ptr& child);  
 
     private:
         SceneNode*              mParent;
