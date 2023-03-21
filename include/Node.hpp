@@ -2,7 +2,7 @@
 
 class Node{
     public:
-        Node();
+        Node(int _val, Node* _pNext, Node* _pPrev);
     private:
         int val;
         Node *pNext, *pPrev;
