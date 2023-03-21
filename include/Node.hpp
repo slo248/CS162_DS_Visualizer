@@ -8,6 +8,7 @@ class Node: public SceneNode{
         Node(int _val, Node *_pNext, Node *_pPrev);
         ~Node();
 
+
     private:
         const float         RADIUS=20.f;
         const float         OUTLINE_THICKNESS=5.f;
@@ -20,6 +21,7 @@ class Node: public SceneNode{
         Node *pNext, *pPrev;
 
         sf::CircleShape     mCircle;
+        sf::Text            mNum;
 
     private:
         virtual void    drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
