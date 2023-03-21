@@ -40,4 +40,5 @@ void Node::loadFont(const sf::Font &font)
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);
+    target.draw(mNum,states);
 }
