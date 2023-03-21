@@ -27,3 +27,8 @@ sf::Transform SceneNode::getWorldTransform() const
         transform=cur->getTransform()*transform;
     return transform;
 }
+
+sf::Vector2f SceneNode::getWorldPosition() const
+{
+    return getWorldTransform()*sf::Vector2f();
+}

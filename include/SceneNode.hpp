@@ -15,6 +15,7 @@ class SceneNode :
         void    attachChild(Ptr& child);  
         Ptr     detachChild(const SceneNode& child);
         sf::Transform   getWorldTransform() const;
+        sf::Vector2f    getWorldPosition() const;
 
     private:
         SceneNode*              mParent;
