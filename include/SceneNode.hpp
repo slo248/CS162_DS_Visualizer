@@ -13,6 +13,7 @@ class SceneNode :
 
     public:
         void    attachChild(Ptr& child);  
+        Ptr     detachChild(const SceneNode& child);
 
     private:
         SceneNode*              mParent;
