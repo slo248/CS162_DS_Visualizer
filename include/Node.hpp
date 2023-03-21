@@ -4,7 +4,7 @@
 
 class Node: public SceneNode{
     public:
-        Node(int _val, Node* _pNext, Node* _pPrev);
+        Node(int _val=0, Node *_pNext=nullptr, Node *_pPrev=nullptr);
         ~Node();
 
     private:
