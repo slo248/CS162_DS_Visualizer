@@ -6,6 +6,11 @@ SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window):
 {
 }
 
+void SinglyLinkedList::draw()
+{
+    mWindow.draw(mSceneGraph);
+}
+
 void SinglyLinkedList::buildScene()
 {
     for(int i=0; i<Layer::NumLayer; i++){

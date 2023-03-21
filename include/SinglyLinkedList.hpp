@@ -16,6 +16,7 @@ class SinglyLinkedList : private sf::NonCopyable
 {
     public:
         SinglyLinkedList(sf::RenderWindow& window);
+        void    draw();
 
     private:
         sf::RenderWindow&                           mWindow;
