@@ -16,5 +16,8 @@ template<class Resource, class Identifier>
 class ResourceHolder{
     private:
         std::map<Identifier,std::unique_ptr<Resource>> holder;
-    
+    public:
+        void            load(Identifier id, const std::string& dir);
 };
+
+#include<ResourceHolder.inl>
