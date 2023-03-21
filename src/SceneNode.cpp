@@ -19,3 +19,11 @@ SceneNode::Ptr SceneNode::detachChild(const SceneNode &child)
     mChildren.erase(found);
     return res;
 }
+
+sf::Transform SceneNode::getWorldTransform() const
+{
+    sf::Transform transform=sf::Transform::Identity;
+    for(const SceneNode* cur=this; cur; cur=cur->mParent)
+        transform=cur->getTransform()*transform;
+    return transform;
+}
