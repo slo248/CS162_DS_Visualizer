@@ -6,7 +6,8 @@
 namespace Layer{
     enum Type{
         Background,
-        Front
+        Front,
+        NumLayer
     };
 }
 
@@ -16,6 +17,7 @@ class SinglyLinkedList : private sf::NonCopyable
         SinglyLinkedList(sf::RenderWindow& window);
 
     private:
-        sf::RenderWindow&               mWindow;
-        SceneNode                       mSceneGraph;
+        sf::RenderWindow&                           mWindow;
+        SceneNode                                   mSceneGraph;
+        std::array<SceneNode*,Layer::NumLayer>      mSceneLayers;
 };
