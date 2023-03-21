@@ -35,7 +35,7 @@ sf::Vector2f SceneNode::getWorldPosition() const
 
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    states.transform*=getWorldTransform();
+    states.transform*=getTransform();
     drawCurrent(target,states);
     drawChildren(target,states);
 }
