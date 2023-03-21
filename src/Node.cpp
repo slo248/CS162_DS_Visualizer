@@ -1,7 +1,13 @@
 #include "Node.hpp"
 
-Node::Node(int _val=0, Node *_pNext=nullptr, Node *_pPrev=nullptr):
-    val(_val),pNext(_pNext),pPrev(_pPrev)
+Node::Node()
+{
+    val=0;
+    pNext=pPrev=nullptr;
+}
+
+Node::Node(int _val, Node *_pNext, Node *_pPrev) : 
+    val(_val), pNext(_pNext), pPrev(_pPrev)
 {
     mCircle.setPosition(100.f,100.f);
     mCircle.setRadius(10.f);
