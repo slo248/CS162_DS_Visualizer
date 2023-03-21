@@ -23,4 +23,5 @@ class Node: public SceneNode{
 
     private:
         virtual void    drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
+        void            defaultInit();
 };

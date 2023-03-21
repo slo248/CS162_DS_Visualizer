@@ -1,22 +1,27 @@
 #include "Node.hpp"
 
-Node::Node()
+void Node::defaultInit()
 {
-    val=0;
-    pNext=pPrev=nullptr;
+    mCircle.setPosition(DEFAULT_POSITION);
+    mCircle.setRadius(RADIUS);
+    mCircle.setFillColor(INSIDE_COLOR);
+    mCircle.setOutlineThickness(OUTLINE_THICKNESS);
+    mCircle.setOutlineColor(OUTLINE_COLOR);
+
+    sf::FloatRect bounds=mCircle.getLocalBounds();
+    mCircle.setOrigin(bounds.width/2,bounds.height/2);
+}
+
+Node::Node():
+    val(0),pNext(nullptr),pPrev(nullptr)
+{
+    defaultInit();
 }
 
 Node::Node(int _val, Node *_pNext, Node *_pPrev) : 
     val(_val), pNext(_pNext), pPrev(_pPrev)
 {
-    mCircle.setPosition(100.f,100.f);
-    mCircle.setRadius(10.f);
-    mCircle.setFillColor(sf::Color::White);
-    mCircle.setOutlineThickness(8.f);
-    mCircle.setOutlineColor(sf::Color::Blue);
-
-    sf::FloatRect bounds=mCircle.getLocalBounds();
-    mCircle.setOrigin(bounds.width/2,bounds.height/2);
+    defaultInit();
 }
 
 Node::~Node()
