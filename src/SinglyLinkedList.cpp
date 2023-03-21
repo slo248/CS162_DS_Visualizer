@@ -1,7 +1,8 @@
 #include "SinglyLinkedList.hpp"
 
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window):
-    mWindow(window)
+    mWindow(window),
+    pHead(nullptr)
 {
 }
 

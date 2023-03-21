@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Node.hpp>
 #include <SceneNode.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -20,6 +21,7 @@ class SinglyLinkedList : private sf::NonCopyable
         sf::RenderWindow&                           mWindow;
         SceneNode                                   mSceneGraph;
         std::array<SceneNode*,Layer::NumLayer>      mSceneLayers;
+        Node*                                       pHead;
 
     private:
         void            buildScene();
