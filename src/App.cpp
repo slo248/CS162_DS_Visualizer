@@ -16,6 +16,7 @@ App::App():
 
     mStatisticText.setFont(fonts.get(Fonts::ID::Times));
     mStatisticText.setPosition(2.f,2.f);
+    mStatisticText.setCharacterSize(25);
 }
 
 void App::run()
