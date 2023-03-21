@@ -2,5 +2,6 @@
 
 void SceneNode::add(Ptr &child)
 {
-    mChildren.push_back(child);
+    child->mParent=this;
+    mChildren.push_back(std::move(child));
 }
