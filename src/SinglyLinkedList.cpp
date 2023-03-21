@@ -4,6 +4,7 @@ SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window):
     mWindow(window),
     pHead(nullptr)
 {
+    buildScene();
 }
 
 void SinglyLinkedList::draw()
