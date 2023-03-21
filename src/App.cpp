@@ -61,6 +61,7 @@ void App::update(sf::Time dt)
 void App::render()
 {
     mWindow.clear();
+    mSLL.draw();
     mWindow.draw(mStatisticText);
     mWindow.display();
 }
