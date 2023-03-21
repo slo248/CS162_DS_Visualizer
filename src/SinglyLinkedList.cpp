@@ -4,3 +4,12 @@ SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window):
     mWindow(window)
 {
 }
+
+void SinglyLinkedList::buildScene()
+{
+    for(int i=0; i<Layer::NumLayer; i++){
+        SceneNode::Ptr layer(new SceneNode);
+        mSceneLayers[i]=layer.get();
+        mSceneGraph.attachChild(std::move(layer));
+    }
+}

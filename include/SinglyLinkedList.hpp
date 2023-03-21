@@ -20,4 +20,7 @@ class SinglyLinkedList : private sf::NonCopyable
         sf::RenderWindow&                           mWindow;
         SceneNode                                   mSceneGraph;
         std::array<SceneNode*,Layer::NumLayer>      mSceneLayers;
+
+    private:
+        void            buildScene();
 };
