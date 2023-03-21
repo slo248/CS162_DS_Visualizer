@@ -9,6 +9,8 @@ App::App():
     mCircle.setFillColor(sf::Color::White);
     mCircle.setOutlineThickness(8.f);
     mCircle.setOutlineColor(sf::Color::Blue);
+
+    fonts.load(Fonts::ID::Times,"media/font/times.ttf");    
 }
 
 void App::run()
