@@ -16,3 +16,8 @@ Node::Node(int _val=0, Node *_pNext=nullptr, Node *_pPrev=nullptr):
 Node::~Node()
 {
 }
+
+void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mCircle,states);
+}
