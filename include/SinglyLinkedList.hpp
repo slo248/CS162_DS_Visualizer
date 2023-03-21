@@ -3,6 +3,13 @@
 #include <SceneNode.hpp>
 #include <SFML/Graphics.hpp>
 
+namespace Layer{
+    enum Type{
+        Background,
+        Front
+    };
+}
+
 class SinglyLinkedList : private sf::NonCopyable
 {
     public:
