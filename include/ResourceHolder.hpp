@@ -17,7 +17,9 @@ class ResourceHolder{
     private:
         std::map<Identifier,std::unique_ptr<Resource>> holder;
     public:
-        void            load(Identifier id, const std::string& dir);
+        void                load(Identifier id, const std::string& dir);
+        Resource&           get(Identifier id);
+        const Resource&     get(Identifier id) const;
 };
 
 #include<ResourceHolder.inl>
