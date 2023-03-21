@@ -12,8 +12,10 @@ class SceneNode :
         typedef std::unique_ptr<SceneNode> Ptr;
 
     public:
-        void    attachChild(Ptr& child);  
-        Ptr     detachChild(const SceneNode& child);
+        explicit        SceneNode();
+                        ~SceneNode();
+        void            attachChild(Ptr& child);  
+        Ptr             detachChild(const SceneNode& child);
         sf::Transform   getWorldTransform() const;
         sf::Vector2f    getWorldPosition() const;
 
