@@ -11,6 +11,9 @@ class SceneNode :
     public:
         typedef std::unique_ptr<SceneNode> Ptr;
 
+    public:
+        void    add(Ptr& child);
+
     private:
         Ptr                     mParent;
         std::vector<Ptr>        mChildren;
