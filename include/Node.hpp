@@ -8,6 +8,13 @@ class Node: public SceneNode{
         ~Node();
 
     private:
+        const float         RADIUS=10.f;
+        const float         OUTLINE_THICKNESS=6.f;
+        const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(100.f,100.f);
+        const sf::Color     OUTLINE_COLOR=sf::Color::Blue;
+        const sf::Color     INSIDE_COLOR=sf::Color::White;
+
+    private:
         int val;
         Node *pNext, *pPrev;
 
