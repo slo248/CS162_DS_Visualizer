@@ -3,16 +3,9 @@
 App::App():
     mWindow(sf::VideoMode(windowWidth,windowHeight,sf::Style::Titlebar|sf::Style::Close),"Data Structure Visualization"),
     mIsPaused(false),
-    mCircle(),
     mUpdateTime(),
     mNumFrame(0)
 {
-    mCircle.setPosition(100.f,100.f);
-    mCircle.setRadius(10.f);
-    mCircle.setFillColor(sf::Color::White);
-    mCircle.setOutlineThickness(8.f);
-    mCircle.setOutlineColor(sf::Color::Blue);
-
     fonts.load(Fonts::ID::Times,"media/font/times.ttf");   
 
     mStatisticText.setFont(fonts.get(Fonts::ID::Times));
@@ -67,7 +60,6 @@ void App::update(sf::Time dt)
 void App::render()
 {
     mWindow.clear();
-    mWindow.draw(mCircle);
     mWindow.draw(mStatisticText);
     mWindow.display();
 }
