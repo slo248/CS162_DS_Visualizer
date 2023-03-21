@@ -1,4 +1,5 @@
 #include "Node.hpp"
+#include <string>
 
 void Node::defaultInit()
 {
@@ -26,6 +27,14 @@ Node::Node(int _val, Node *_pNext, Node *_pPrev) :
 
 Node::~Node()
 {
+}
+
+void Node::loadFont(const sf::Font &font)
+{
+    mNum.setFont(font);
+    mNum.setOrigin(mCircle.getOrigin());
+    mNum.setString(std::to_string(val));
+    mNum.setCharacterSize(FONTSIZE);
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
