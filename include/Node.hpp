@@ -1,7 +1,9 @@
 #pragma once
 
-struct Node{
-    int val;
-    Node *pNext, *pPrev;
-    Node();
+class Node{
+    public:
+        Node();
+    private:
+        int val;
+        Node *pNext, *pPrev;
 };
