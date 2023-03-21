@@ -2,6 +2,7 @@
 
 #include <map>
 #include <memory>
+#include <string>
 #include <SFML/Graphics.hpp>
 
 namespace Fonts{
