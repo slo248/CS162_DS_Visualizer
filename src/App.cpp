@@ -5,7 +5,7 @@ App::App(sf::Font& font):
     mIsPaused(false),
     mUpdateTime(),
     mNumFrame(0),
-    mSLL(mWindow),
+    mSLL(mWindow,font),
     mFont(font)
 {
     mStatisticText.setFont(mFont);

@@ -1,7 +1,8 @@
 #include "SinglyLinkedList.hpp"
 
-SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window):
+SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
     mWindow(window),
+    mFont(font),
     pHead(nullptr)
 {
     buildScene();
@@ -22,5 +23,6 @@ void SinglyLinkedList::buildScene()
 
     std::unique_ptr<Node> leader(new Node);
     pHead=leader.get();
+    leader->loadFont(mFont);
     mSceneLayers[Layer::Front]->attachChild(std::move(leader));
 }

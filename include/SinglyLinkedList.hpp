@@ -15,7 +15,7 @@ namespace Layer{
 class SinglyLinkedList : private sf::NonCopyable
 {
     public:
-        SinglyLinkedList(sf::RenderWindow& window);
+        SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
         void    draw();
 
     private:
@@ -23,6 +23,7 @@ class SinglyLinkedList : private sf::NonCopyable
         SceneNode                                   mSceneGraph;
         std::array<SceneNode*,Layer::NumLayer>      mSceneLayers;
         Node*                                       pHead;
+        sf::Font&                                   mFont;
 
     private:
         void            buildScene();
