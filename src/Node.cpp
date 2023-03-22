@@ -1,5 +1,6 @@
 #include "Node.hpp"
 #include <string>
+#include <iostream>
 
 void Node::defaultInit()
 {
@@ -32,9 +33,17 @@ Node::~Node()
 void Node::loadFont(const sf::Font &font)
 {
     mNum.setFont(font);
-    mNum.setOrigin(mCircle.getOrigin());
     mNum.setString(std::to_string(val));
     mNum.setCharacterSize(FONTSIZE);
+    mNum.setFillColor(CHAR_COLOR);
+
+    sf::FloatRect bounds=mNum.getLocalBounds();
+    mNum.setPosition(
+            mCircle.getPosition()
+            -mCircle.getOrigin()
+            +sf::Vector2f(mCircle.getRadius(),mCircle.getRadius())
+            -sf::Vector2f(bounds.width/2,bounds.width*3/2)
+    );
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
