@@ -1,13 +1,12 @@
 #pragma once
 
 #include <SinglyLinkedList.hpp>
-#include <ResourceHolder.hpp>
 #include <SFML/Graphics.hpp>
 
 class App
 {
     public:
-                                    App();
+                                    App(sf::Font& font);
         void                        run();
 
     private:
@@ -16,7 +15,7 @@ class App
         const sf::Time              TimePerFrame=sf::seconds(1.f/60.f);
 
     private:
-        ResourceHolder<sf::Font,Fonts::ID>      fonts;
+        sf::Font&                   mFont;
 
     private:
         sf::RenderWindow            mWindow;

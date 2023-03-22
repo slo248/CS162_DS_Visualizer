@@ -24,3 +24,5 @@ class ResourceHolder{
 };
 
 #include<ResourceHolder.inl>
+
+typedef class ResourceHolder<sf::Font,Fonts::ID> FontHolder;

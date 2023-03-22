@@ -1,11 +1,16 @@
 #include <App.hpp>
+#include <ResourceHolder.hpp>
 #include <iostream>
+
+FontHolder mFonts;
 
 int main()
 {
     try
     {
-        App app;
+        mFonts.load(Fonts::ID::Times,"media/font/times.ttf");
+
+        App app(mFonts.get(Fonts::ID::Times));
         app.run();
     }
     catch (std::exception& e)
