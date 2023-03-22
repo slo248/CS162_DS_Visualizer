@@ -12,12 +12,12 @@ class Node: public SceneNode{
 
     private:
         const float         RADIUS=20.f;
-        const float         OUTLINE_THICKNESS=5.f;
+        const float         OUTLINE_THICKNESS=6.f;
         const float         FONTSIZE=24.f;
         const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
         const sf::Color     OUTLINE_COLOR=sf::Color::Green;
         const sf::Color     INSIDE_COLOR=sf::Color::White;
-        const sf::Color     CHAR_COLOR=sf::Color::Red;
+        const sf::Color     CHAR_COLOR=sf::Color::Black;
 
     private:
         int val;
