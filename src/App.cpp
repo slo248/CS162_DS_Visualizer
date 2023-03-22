@@ -1,15 +1,14 @@
 #include "App.hpp"
 
-App::App():
+App::App(sf::Font& font):
     mWindow(sf::VideoMode(windowWidth,windowHeight,sf::Style::Titlebar|sf::Style::Close),"Data Structure Visualization"),
     mIsPaused(false),
     mUpdateTime(),
     mNumFrame(0),
-    mSLL(mWindow)
+    mSLL(mWindow),
+    mFont(font)
 {
-    fonts.load(Fonts::ID::Times,"media/font/times.ttf");   
-
-    mStatisticText.setFont(fonts.get(Fonts::ID::Times));
+    mStatisticText.setFont(mFont);
     mStatisticText.setPosition(2.f,2.f);
     mStatisticText.setCharacterSize(25);
 }

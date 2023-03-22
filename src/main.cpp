@@ -10,7 +10,7 @@ int main()
     {
         mFonts.load(Fonts::ID::Times,"media/font/times.ttf");
 
-        App app;
+        App app(mFonts.get(Fonts::ID::Times));
         app.run();
     }
     catch (std::exception& e)
