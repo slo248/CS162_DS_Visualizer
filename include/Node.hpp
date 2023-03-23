@@ -9,6 +9,8 @@ class Node: public SceneNode{
         ~Node();
 
         void loadFont(const sf::Font& font);
+        void setNext(Node* node);
+        void setPrev(Node* node);
 
     private:
         const float         RADIUS=20.f;
