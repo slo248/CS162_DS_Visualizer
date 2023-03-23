@@ -4,7 +4,6 @@
 
 void Node::defaultInit()
 {
-    mCircle.setPosition(DEFAULT_POSITION);
     mCircle.setRadius(RADIUS);
     mCircle.setFillColor(INSIDE_COLOR);
     mCircle.setOutlineThickness(OUTLINE_THICKNESS);
