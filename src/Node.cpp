@@ -1,6 +1,5 @@
 #include "Node.hpp"
 #include <string>
-#include <iostream>
 
 void Node::defaultInit()
 {
@@ -44,10 +43,9 @@ void Node::loadFont(const sf::Font &font)
 
     sf::FloatRect bounds=mNum.getLocalBounds();
     mNum.setPosition(
-            mCircle.getPosition()
-            -mCircle.getOrigin()
-            +sf::Vector2f(mCircle.getRadius(),mCircle.getRadius())
-            -sf::Vector2f(bounds.width/2,bounds.width*3/2)
+        sf::Vector2f(mCircle.getGlobalBounds().top,mCircle.getGlobalBounds().left)
+        +sf::Vector2f(2*mCircle.getRadius(),2*mCircle.getRadius()-5.f)
+        +mCircle.getPosition()
     );
 }
 
@@ -58,7 +56,7 @@ void Node::setNext(Node *node)
 
 void Node::setPrev(Node *node)
 {
-    pNext=node;
+    pPrev=node;
 }
 
 Node *Node::getNext()
