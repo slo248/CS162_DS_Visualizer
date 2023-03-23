@@ -5,6 +5,7 @@
 class Node: public SceneNode{
     public:
         Node();
+        Node(int _val);
         Node(int _val, Node *_pNext, Node *_pPrev);
         ~Node();
 

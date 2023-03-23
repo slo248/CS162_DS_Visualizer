@@ -19,6 +19,12 @@ Node::Node():
     defaultInit();
 }
 
+Node::Node(int _val):
+    val(_val),pNext(nullptr),pPrev(nullptr)
+{
+    defaultInit();
+}
+
 Node::Node(int _val, Node *_pNext, Node *_pPrev) : 
     val(_val), pNext(_pNext), pPrev(_pPrev)
 {
