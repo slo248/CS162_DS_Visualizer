@@ -55,6 +55,16 @@ void Node::setPrev(Node *node)
     pNext=node;
 }
 
+Node *Node::getNext()
+{
+    return pNext;
+}
+
+Node *Node::getPrev()
+{
+    return pPrev;
+}
+
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);
