@@ -4,9 +4,7 @@
 
 class Node: public SceneNode{
     public:
-        Node();
-        Node(int _val);
-        Node(int _val, Node *_pNext, Node *_pPrev);
+        Node(int _val=0, Node *_pNext=nullptr, Node *_pPrev=nullptr);
         ~Node();
 
         void        loadFont(const sf::Font& font);
@@ -22,7 +20,7 @@ class Node: public SceneNode{
         const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
         const sf::Color     OUTLINE_COLOR=sf::Color::Green;
         const sf::Color     INSIDE_COLOR=sf::Color::White;
-        const sf::Color     CHAR_COLOR=sf::Color::Black;
+        const sf::Color     CHAR_COLOR=sf::Color::Red;
 
     private:
         int val;
@@ -33,5 +31,4 @@ class Node: public SceneNode{
 
     private:
         virtual void    drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
-        void            defaultInit();
 };

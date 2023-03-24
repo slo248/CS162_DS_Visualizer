@@ -1,7 +1,8 @@
 #include "Node.hpp"
 #include <string>
 
-void Node::defaultInit()
+Node::Node(int _val, Node *_pNext, Node *_pPrev) : 
+    val(_val), pNext(_pNext), pPrev(_pPrev)
 {
     mCircle.setRadius(RADIUS);
     mCircle.setFillColor(INSIDE_COLOR);
@@ -10,24 +11,6 @@ void Node::defaultInit()
 
     sf::FloatRect bounds=mCircle.getLocalBounds();
     mCircle.setOrigin(bounds.width/2,bounds.height/2);
-}
-
-Node::Node():
-    val(0),pNext(nullptr),pPrev(nullptr)
-{
-    defaultInit();
-}
-
-Node::Node(int _val):
-    val(_val),pNext(nullptr),pPrev(nullptr)
-{
-    defaultInit();
-}
-
-Node::Node(int _val, Node *_pNext, Node *_pPrev) : 
-    val(_val), pNext(_pNext), pPrev(_pPrev)
-{
-    defaultInit();
 }
 
 Node::~Node()
@@ -41,12 +24,12 @@ void Node::loadFont(const sf::Font &font)
     mNum.setCharacterSize(FONTSIZE);
     mNum.setFillColor(CHAR_COLOR);
 
-    sf::FloatRect bounds=mNum.getLocalBounds();
-    mNum.setPosition(
-        sf::Vector2f(mCircle.getGlobalBounds().top,mCircle.getGlobalBounds().left)
-        +sf::Vector2f(2*mCircle.getRadius(),2*mCircle.getRadius()-5.f)
-        +mCircle.getPosition()
-    );
+    auto textRect = mNum.getLocalBounds();
+    mNum.setOrigin(textRect.left + textRect.width/2.f,
+                    textRect.top  + textRect.height/2.f);
+
+    const float r=mCircle.getRadius();
+    mNum.setPosition(r,r);
 }
 
 void Node::setNext(Node *node)
@@ -72,5 +55,6 @@ Node *Node::getPrev()
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);
+    states.transform*=mCircle.getTransform();
     target.draw(mNum,states);
 }
