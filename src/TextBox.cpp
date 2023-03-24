@@ -1,10 +1,11 @@
 #include <TextBox.hpp>
 
-TextBox::TextBox(sf::Font &font, const std::string &text, const sf::Color& color)
+TextBox::TextBox(sf::Font &font, const std::string &text, const sf::Color& color, float size)
 {
     mText.setFont(font);
     mText.setString(text);
     mText.setFillColor(color);
+    mText.setCharacterSize(size);
 
     sf::FloatRect bounds=mText.getLocalBounds();
     mText.setOrigin(bounds.width/2,bounds.height/2);

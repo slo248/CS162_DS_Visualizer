@@ -5,6 +5,7 @@
 
 const sf::Color         CHAR_COLOR=sf::Color::Red;
 const std::string       DEFAULT_TEXT="hello";
+const float             DEFAULT_SIZE=23;
 
 class TextBox: public SceneNode
 {
@@ -12,7 +13,8 @@ class TextBox: public SceneNode
         TextBox(
             sf::Font& font,
             const std::string& text=DEFAULT_TEXT,
-            const sf::Color& color=CHAR_COLOR
+            const sf::Color& color=CHAR_COLOR,
+            float size=DEFAULT_SIZE
         );
 
         void drawCurrent(sf::RenderTarget& target,
