@@ -13,6 +13,7 @@ Node::Node(sf::Font& font, int _val, Node *_pNext, Node *_pPrev) :
     mCircle.setOrigin(bounds.width/2,bounds.height/2);
 
     std::unique_ptr<TextBox> mNum(new TextBox(font,std::to_string(val)));
+    mNum->move(-OUTLINE_THICKNESS,-2*OUTLINE_THICKNESS);
     this->attachChild(std::move(mNum));
 }
 
