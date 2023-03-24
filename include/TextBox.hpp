@@ -12,7 +12,7 @@ class TextBox: public SceneNode
         TextBox(
             sf::Font& font,
             const std::string& text=DEFAULT_TEXT,
-            sf::Color color=CHAR_COLOR
+            const sf::Color& color=CHAR_COLOR
         );
 
         void drawCurrent(sf::RenderTarget& target,
