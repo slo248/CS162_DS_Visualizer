@@ -21,9 +21,8 @@ void SinglyLinkedList::buildScene()
         mSceneGraph.attachChild(std::move(layer));
     }
 
-    std::unique_ptr<Node> leader(new Node(1));
+    std::unique_ptr<Node> leader(new Node(mFont,1));
     pHead=leader.get();
-    leader->loadFont(mFont);
     leader->setPosition(200.f,300.f);
     mSceneLayers[Layer::Front]->attachChild(std::move(leader));
 }
