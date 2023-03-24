@@ -14,6 +14,9 @@ class TextBox: public SceneNode
             const std::string& text=DEFAULT_TEXT,
             sf::Color color=CHAR_COLOR
         );
+
+        void drawCurrent(sf::RenderTarget& target,
+                        sf::RenderStates& states) const;
     private:
         sf::Text            mText;
 };
