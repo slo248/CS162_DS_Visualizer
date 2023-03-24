@@ -16,7 +16,7 @@ class TextBox: public SceneNode
         );
 
         void drawCurrent(sf::RenderTarget& target,
-                        sf::RenderStates& states) const;
+                        sf::RenderStates states) const;
     private:
         sf::Text            mText;
 };

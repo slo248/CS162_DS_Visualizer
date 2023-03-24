@@ -10,7 +10,7 @@ TextBox::TextBox(sf::Font &font, const std::string &text, const sf::Color& color
     mText.setOrigin(bounds.width/2,bounds.height/2);
 }
 
-void TextBox::drawCurrent(sf::RenderTarget &target, sf::RenderStates &states) const
+void TextBox::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mText,states);
 }
