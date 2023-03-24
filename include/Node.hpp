@@ -1,13 +1,18 @@
 #pragma once
 
+#include <TextBox.hpp>
 #include <SceneNode.hpp>
 
 class Node: public SceneNode{
     public:
-        Node(int _val=0, Node *_pNext=nullptr, Node *_pPrev=nullptr);
+        Node(
+            sf::Font& font,
+            int _val=0, 
+            Node *_pNext=nullptr, 
+            Node *_pPrev=nullptr
+        );
         ~Node();
 
-        void        loadFont(const sf::Font& font);
         void        setNext(Node* node);
         void        setPrev(Node* node);
         Node*       getNext();
@@ -27,7 +32,6 @@ class Node: public SceneNode{
         Node *pNext, *pPrev;
 
         sf::CircleShape     mCircle;
-        sf::Text            mNum;
 
     private:
         virtual void    drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

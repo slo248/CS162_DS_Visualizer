@@ -1,7 +1,7 @@
 #include "Node.hpp"
 #include <string>
 
-Node::Node(int _val, Node *_pNext, Node *_pPrev) : 
+Node::Node(sf::Font& font, int _val, Node *_pNext, Node *_pPrev) : 
     val(_val), pNext(_pNext), pPrev(_pPrev)
 {
     mCircle.setRadius(RADIUS);
@@ -11,25 +11,13 @@ Node::Node(int _val, Node *_pNext, Node *_pPrev) :
 
     sf::FloatRect bounds=mCircle.getLocalBounds();
     mCircle.setOrigin(bounds.width/2,bounds.height/2);
+
+    std::unique_ptr<TextBox> mNum(new TextBox(font,std::to_string(val)));
+    this->attachChild(std::move(mNum));
 }
 
 Node::~Node()
 {
-}
-
-void Node::loadFont(const sf::Font &font)
-{
-    mNum.setFont(font);
-    mNum.setString(std::to_string(val));
-    mNum.setCharacterSize(FONTSIZE);
-    mNum.setFillColor(CHAR_COLOR);
-
-    auto textRect = mNum.getLocalBounds();
-    mNum.setOrigin(textRect.left + textRect.width/2.f,
-                    textRect.top  + textRect.height/2.f);
-
-    const float r=mCircle.getRadius();
-    mNum.setPosition(r,r);
 }
 
 void Node::setNext(Node *node)
@@ -55,6 +43,4 @@ Node *Node::getPrev()
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);
-    states.transform*=mCircle.getTransform();
-    target.draw(mNum,states);
 }
