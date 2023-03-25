@@ -4,16 +4,16 @@
 
 class Arrow: public SceneNode
 {
-    private:
-        const float             HEIGHT_EACH=10;
-        const float             FIRST_WIDTH=35;
-        const float             SECOND_WIDTH=20;
+    public:
+        const float             HEIGHT_EACH=10.f;
+        const float             RATIO_FIRST=3.f/4.f;
+        const float             RATIO_SECOND=1-RATIO_FIRST;
         const sf::Color         DEFAULT_COLOR=sf::Color::Black;
 
     private:
         sf::ConvexShape mConvex;
 
     public:
-        Arrow();
+        Arrow(sf::Vector2f dist);
         void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 };

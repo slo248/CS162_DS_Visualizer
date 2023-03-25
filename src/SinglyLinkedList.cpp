@@ -33,8 +33,10 @@ void SinglyLinkedList::setRandom()
     Node *pre=pHead;
 
     for(int i=0; i<mNumNode-1; i++){
-        std::unique_ptr<Arrow> arrow(new Arrow);
-        arrow->setPosition(46.f,-5.f);
+        sf::Vector2f vec(2*pHead->RADIUS+pHead->OUTLINE_THICKNESS,0);
+
+        std::unique_ptr<Arrow> arrow(new Arrow(DEFAULT_DIST-vec-sf::Vector2f(pHead->OUTLINE_THICKNESS/2,0)));
+        arrow->setPosition(vec-sf::Vector2f(0,arrow->HEIGHT_EACH/2));
         pre->attachChild(std::move(arrow));
 
         std::unique_ptr<Node> node(new Node(mFont,getRand(1,MAX_NUM)));
