@@ -15,5 +15,5 @@ class Arrow: public SceneNode
 
     public:
         Arrow();
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 };

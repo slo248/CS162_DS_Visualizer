@@ -13,3 +13,8 @@ Arrow::Arrow()
     mConvex.setPoint(5,sf::Vector2f(FIRST_WIDTH,HEIGHT_EACH/2.f));
     mConvex.setPoint(6,sf::Vector2f(0,HEIGHT_EACH/2.f)); 
 }
+
+void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mConvex,states);
+}
