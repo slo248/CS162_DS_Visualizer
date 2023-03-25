@@ -22,6 +22,7 @@ class SinglyLinkedList : private sf::NonCopyable
     public:
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
         void    draw();
+        void    setRandom();
 
     private:
         sf::RenderWindow&                           mWindow;
