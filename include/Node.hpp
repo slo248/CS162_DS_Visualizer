@@ -19,7 +19,7 @@ class Node: public SceneNode{
         Node*       getNext();
         Node*       getPrev();
 
-    private:
+    public:
         const float         RADIUS=20.f;
         const float         OUTLINE_THICKNESS=6.f;
         const float         FONTSIZE=24.f;
