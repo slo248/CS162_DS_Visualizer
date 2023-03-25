@@ -1,3 +1,4 @@
+#include <Arrow.hpp>
 #include <cstdlib>
 #include "SinglyLinkedList.hpp"
 
@@ -32,6 +33,10 @@ void SinglyLinkedList::setRandom()
     Node *pre=pHead;
 
     for(int i=0; i<mNumNode-1; i++){
+        std::unique_ptr<Arrow> arrow(new Arrow);
+        arrow->setPosition(46.f,-5.f);
+        pre->attachChild(std::move(arrow));
+
         std::unique_ptr<Node> node(new Node(mFont,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
         node->setPosition(DEFAULT_DIST,0);

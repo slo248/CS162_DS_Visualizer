@@ -6,7 +6,7 @@ class Arrow: public SceneNode
 {
     private:
         const float             HEIGHT_EACH=10;
-        const float             FIRST_WIDTH=50;
+        const float             FIRST_WIDTH=35;
         const float             SECOND_WIDTH=20;
         const sf::Color         DEFAULT_COLOR=sf::Color::Black;
 
