@@ -11,6 +11,7 @@ App::App(sf::Font& font):
     mStatisticText.setFont(mFont);
     mStatisticText.setPosition(2.f,2.f);
     mStatisticText.setCharacterSize(25);
+    mStatisticText.setFillColor(sf::Color::Black);
 }
 
 void App::run()
@@ -59,7 +60,7 @@ void App::update(sf::Time dt)
 
 void App::render()
 {
-    mWindow.clear();
+    mWindow.clear(sf::Color::White);
     mSLL.draw();
     mWindow.draw(mStatisticText);
     mWindow.display();
