@@ -6,6 +6,7 @@ FontHolder mFonts;
 
 int main()
 {
+    system("cls");
     try
     {
         mFonts.load(Fonts::ID::Times,"media/font/times.ttf");
