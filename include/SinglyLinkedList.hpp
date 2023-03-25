@@ -15,6 +15,11 @@ namespace Layer{
 class SinglyLinkedList : private sf::NonCopyable
 {
     public:
+        const float         DEFAULT_DIST=100.f;
+        const int           MAX_NUM=99;
+        const int           MAX_NUM_NODE=10;
+
+    public:
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
         void    draw();
 

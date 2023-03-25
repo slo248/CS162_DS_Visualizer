@@ -4,6 +4,7 @@
 #include <SceneNode.hpp>
 
 class Node: public SceneNode{
+
     public:
         Node(
             sf::Font& font,
