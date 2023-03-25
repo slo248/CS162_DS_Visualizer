@@ -36,6 +36,7 @@ void SinglyLinkedList::setRandom()
         Node *tmp=node.get();
         node->setPosition(DEFAULT_DIST,0);
         pre->attachChild(std::move(node));
+        pre->setNext(tmp);
         pre=tmp;
     }
 }
