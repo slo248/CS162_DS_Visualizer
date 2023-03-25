@@ -3,7 +3,8 @@
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
     mWindow(window),
     mFont(font),
-    pHead(nullptr)
+    pHead(nullptr),
+    mNumNode(0)
 {
     buildScene();
 }

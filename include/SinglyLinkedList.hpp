@@ -29,6 +29,7 @@ class SinglyLinkedList : private sf::NonCopyable
         std::array<SceneNode*,Layer::NumLayer>      mSceneLayers;
         Node*                                       pHead;
         sf::Font&                                   mFont;
+        int                                         mNumNode;
 
     private:
         void            buildScene();
