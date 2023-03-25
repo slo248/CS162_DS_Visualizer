@@ -39,7 +39,7 @@ void SinglyLinkedList::setRandom()
 
         std::unique_ptr<Node> node(new Node(mFont,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
-        node->setPosition(DEFAULT_DIST,0);
+        node->setPosition(DEFAULT_DIST);
         pre->attachChild(std::move(node));
         pre->setNext(tmp);
         pre=tmp;

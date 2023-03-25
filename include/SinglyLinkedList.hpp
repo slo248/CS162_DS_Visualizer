@@ -15,7 +15,7 @@ namespace Layer{
 class SinglyLinkedList : private sf::NonCopyable
 {
     public:
-        const float         DEFAULT_DIST=100.f;
+        const sf::Vector2f  DEFAULT_DIST=sf::Vector2f(100.f,0);
         const int           MAX_NUM=99;
         const int           MAX_NUM_NODE=10;
 
