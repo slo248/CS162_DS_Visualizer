@@ -3,7 +3,7 @@
 #include <string>
 #include <SceneNode.hpp>
 
-const sf::Color         CHAR_COLOR=sf::Color::Red;
+const sf::Color         CHAR_COLOR=sf::Color::Black;
 const std::string       DEFAULT_TEXT="hello";
 const float             DEFAULT_SIZE=23;
 

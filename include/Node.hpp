@@ -26,7 +26,6 @@ class Node: public SceneNode{
         const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
         const sf::Color     OUTLINE_COLOR=sf::Color::Green;
         const sf::Color     INSIDE_COLOR=sf::Color::White;
-        const sf::Color     CHAR_COLOR=sf::Color::Red;
 
     private:
         int val;
