@@ -10,8 +10,8 @@ class App
         void                        run();
 
     private:
-        const int                   windowWidth=1000;
-        const int                   windowHeight=600;
+        const int                   windowWidth=1500;
+        const int                   windowHeight=800;
         const sf::Time              TimePerFrame=sf::seconds(1.f/60.f);
 
     private:
