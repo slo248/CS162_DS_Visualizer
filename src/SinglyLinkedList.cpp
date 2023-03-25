@@ -22,19 +22,21 @@ int getRand(int l, int r){
 void SinglyLinkedList::setRandom()
 {
     srand(time(NULL));
-    mNumNode=getRand(4,MAX_NUM_NODE);
+    mNumNode=getRand(2,MAX_NUM_NODE);
 
-    std::unique_ptr<Node> leader(new Node(mFont,10));
+    std::unique_ptr<Node> leader(new Node(mFont,getRand(1,MAX_NUM)));
     pHead=leader.get();
-    leader->setPosition(200.f,200.f);
+    leader->setPosition(100.f,200.f);
     mSceneLayers[Layer::Front]->attachChild(std::move(leader));
 
     Node *pre=pHead;
 
     for(int i=0; i<mNumNode-1; i++){
         std::unique_ptr<Node> node(new Node(mFont,getRand(1,MAX_NUM)));
+        Node *tmp=node.get();
         node->setPosition(DEFAULT_DIST,0);
         pre->attachChild(std::move(node));
+        pre=tmp;
     }
 }
 
