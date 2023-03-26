@@ -1,5 +1,4 @@
 #include <Arrow.hpp>
-#include <iostream>
 
 Arrow::Arrow(sf::Vector2f dist)
 {
@@ -7,7 +6,6 @@ Arrow::Arrow(sf::Vector2f dist)
     mConvex.setFillColor(DEFAULT_COLOR);
     
     const float length=sqrt(dist.x*dist.x+dist.y*dist.y);
-    const float angle=atan(dist.y/dist.x)*180/acos(-1);
     // std::cout<<length<<' '<<angle<<'\n';
 
     const float FIRST_WIDTH=length*RATIO_FIRST;
@@ -23,8 +21,6 @@ Arrow::Arrow(sf::Vector2f dist)
     mConvex.setPoint(6,sf::Vector2f(0,HEIGHT_EACH/2.f)); 
 
     mConvex.setOrigin(0,mConvex.getLocalBounds().height/2);
-    
-    mConvex.rotate(angle);
 }
 
 void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
