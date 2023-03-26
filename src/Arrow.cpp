@@ -22,8 +22,7 @@ Arrow::Arrow(sf::Vector2f dist)
     mConvex.setPoint(5,sf::Vector2f(FIRST_WIDTH,HEIGHT_EACH/2.f));
     mConvex.setPoint(6,sf::Vector2f(0,HEIGHT_EACH/2.f)); 
 
-    mConvex.setOrigin(mConvex.getLocalBounds().width/2,
-                        mConvex.getLocalBounds().height/2);
+    mConvex.setOrigin(0,mConvex.getLocalBounds().height/2);
     
     mConvex.rotate(angle);
 }
