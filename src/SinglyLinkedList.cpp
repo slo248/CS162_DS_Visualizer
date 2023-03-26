@@ -55,11 +55,16 @@ void SinglyLinkedList::buildScene()
     setRandom();
 }
 
+float getLength(sf::Vector2f vec){
+    return sqrt(vec.x*vec.x+vec.y*vec.y);
+}
+
 void SinglyLinkedList::addArrow(Node *node, sf::Vector2f dist)
 {
-    sf::Vector2f vec(2*node->RADIUS+node->OUTLINE_THICKNESS,0);
+    float ratio=(2*(node->RADIUS+node->OUTLINE_THICKNESS))/getLength(dist);
+    dist.x*=ratio; dist.y*=ratio;
 
-    std::unique_ptr<Arrow> arrow(new Arrow(DEFAULT_DIST-vec-sf::Vector2f(node->OUTLINE_THICKNESS/2,0)));
-    arrow->setPosition(vec-sf::Vector2f(0,arrow->HEIGHT_EACH/2));
-    node->attachChild(std::move(arrow));
+    std::unique_ptr<Arrow> arr(new Arrow(dist));
+    arr->move(node->RADIUS,-arr->HEIGHT_EACH/2);
+    node->attachChild(std::move(arr));
 }
