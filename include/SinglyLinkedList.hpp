@@ -34,4 +34,5 @@ class SinglyLinkedList : private sf::NonCopyable
 
     private:
         void            buildScene();
+        void            addArrow(Node* node, sf::Vector2f dist);
 };

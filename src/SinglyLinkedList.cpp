@@ -33,11 +33,7 @@ void SinglyLinkedList::setRandom()
     Node *pre=pHead;
 
     for(int i=0; i<mNumNode-1; i++){
-        sf::Vector2f vec(2*pHead->RADIUS+pHead->OUTLINE_THICKNESS,0);
-
-        std::unique_ptr<Arrow> arrow(new Arrow(DEFAULT_DIST-vec-sf::Vector2f(pHead->OUTLINE_THICKNESS/2,0)));
-        arrow->setPosition(vec-sf::Vector2f(0,arrow->HEIGHT_EACH/2));
-        pre->attachChild(std::move(arrow));
+        addArrow(pre,DEFAULT_DIST);
 
         std::unique_ptr<Node> node(new Node(mFont,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
@@ -57,4 +53,13 @@ void SinglyLinkedList::buildScene()
     }
     
     setRandom();
+}
+
+void SinglyLinkedList::addArrow(Node *node, sf::Vector2f dist)
+{
+    sf::Vector2f vec(2*node->RADIUS+node->OUTLINE_THICKNESS,0);
+
+    std::unique_ptr<Arrow> arrow(new Arrow(DEFAULT_DIST-vec-sf::Vector2f(node->OUTLINE_THICKNESS/2,0)));
+    arrow->setPosition(vec-sf::Vector2f(0,arrow->HEIGHT_EACH/2));
+    node->attachChild(std::move(arrow));
 }
