@@ -2,24 +2,6 @@
 #include <cstdlib>
 #include "SinglyLinkedList.hpp"
 
-void SinglyLinkedList::handleKeyPressed(sf::Keyboard::Key key, sf::Time dt)
-{
-    switch (key){
-        case sf::Keyboard::W:
-            pHead->moveUp(dt);
-            break;
-        case sf::Keyboard::A:
-            pHead->moveLeft(dt);
-            break;
-        case sf::Keyboard::S:
-            pHead->moveDown(dt);
-            break;
-        case sf::Keyboard::D:
-            pHead->moveRight(dt);
-            break;
-    }
-}
-
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
     mWindow(window),
     mFont(font),
