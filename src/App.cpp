@@ -54,6 +54,8 @@ void App::processInput()
                 mWindow.close();
                 break;
         }
+
+    mSLL.handleRealTimeInput(TimePerFrame);    
 }
 
 void App::update(sf::Time dt)
