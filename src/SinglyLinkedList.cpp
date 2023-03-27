@@ -45,7 +45,7 @@ void SinglyLinkedList::setRandom()
 
     std::unique_ptr<Node> leader(new Node(mFont,true,getRand(1,MAX_NUM)));
     pHead=leader.get();
-    leader->setPosition(100.f,200.f);
+    leader->setPosition(200.f,200.f);
     mSceneLayers[Layer::Front]->attachChild(std::move(leader));
 
     Node *pre=pHead;
