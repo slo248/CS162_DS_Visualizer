@@ -1,7 +1,7 @@
 #include "Node.hpp"
 #include <string>
 
-Node::Node(sf::Font& font, int _val, Node *_pNext, Node *_pPrev) : 
+Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
     val(_val), pNext(_pNext), pPrev(_pPrev)
 {
     mCircle.setRadius(RADIUS);
@@ -15,6 +15,12 @@ Node::Node(sf::Font& font, int _val, Node *_pNext, Node *_pPrev) :
     std::unique_ptr<TextBox> mNum(new TextBox(font,std::to_string(val)));
     mNum->move(-OUTLINE_THICKNESS,-2*OUTLINE_THICKNESS);
     this->attachChild(std::move(mNum));
+
+    if(isHead){
+        std::unique_ptr<TextBox> text(new TextBox(font,"pHead"));
+        text->move(-OUTLINE_THICKNESS,RADIUS+OUTLINE_THICKNESS);
+        this->attachChild(std::move(text));
+    }
 }
 
 Node::~Node()
