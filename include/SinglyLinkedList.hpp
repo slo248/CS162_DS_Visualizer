@@ -26,6 +26,7 @@ class SinglyLinkedList : private sf::NonCopyable
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
         void    draw();
         void    setRandom();
+        void    handleRealTimeInput(sf::Time dt);
 
     private:
         sf::RenderWindow&                           mWindow;

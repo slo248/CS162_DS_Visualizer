@@ -62,6 +62,18 @@ void SinglyLinkedList::setRandom()
     }
 }
 
+void SinglyLinkedList::handleRealTimeInput(sf::Time dt)
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        pHead->moveUp(dt);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        pHead->moveLeft(dt);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        pHead->moveDown(dt);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        pHead->moveRight(dt);
+}
+
 void SinglyLinkedList::buildScene()
 {
     for(int i=0; i<Layer::NumLayer; i++){
