@@ -20,6 +20,9 @@ class SinglyLinkedList : private sf::NonCopyable
         const int           MAX_NUM_NODE=10;
 
     public:
+        void    handleKeyPressed(sf::Keyboard::Key key, sf::Time dt);
+
+    public:
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
         void    draw();
         void    setRandom();
