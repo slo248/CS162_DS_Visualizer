@@ -47,6 +47,9 @@ void App::processInput()
             case sf::Event::GainedFocus:
                 mIsPaused=false;
                 break;
+            case sf::Event::KeyPressed:
+                mSLL.handleKeyPressed(event.key.code,TimePerFrame);
+                break;
             case sf::Event::Closed:
                 mWindow.close();
                 break;
