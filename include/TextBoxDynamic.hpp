@@ -17,4 +17,7 @@ class TextBoxDynamic: public SceneNode
         bool                    mIsSelected;
         bool                    mHasLimit;
         int                     mLimit;
+    
+    private:
+        void deleteLastChar();
 };
