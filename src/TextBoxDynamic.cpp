@@ -64,3 +64,15 @@ void TextBoxDynamic::drawCurrent(sf::RenderTarget &target, sf::RenderStates stat
 {
     target.draw(mTextBox,states);
 }
+
+void TextBoxDynamic::handleEvent(sf::Event event)
+{
+    if(!mIsSelected) return;
+    int charTyped=event.text.unicode;
+    if(charTyped>=128) return;
+    if(mHasLimit && mText.str().size()>=mLimit){
+        if(charTyped==DELETE_KEY)
+            deleteLastChar();
+    }
+    else inputLogic(charTyped);
+}

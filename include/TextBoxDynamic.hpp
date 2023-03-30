@@ -17,6 +17,7 @@ class TextBoxDynamic: public SceneNode
         void                    setSelected(bool sel);
         virtual void            drawCurrent(sf::RenderTarget& target,
                                     sf::RenderStates states) const;
+        void                    handleEvent(sf::Event event);
 
     private:
         sf::Text                mTextBox;
