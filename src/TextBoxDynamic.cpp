@@ -38,3 +38,8 @@ void TextBoxDynamic::setFont(sf::Font &font)
 {
     mTextBox.setFont(font);
 }
+
+void TextBoxDynamic::setPosition(sf::Vector2f pos)
+{
+    mTextBox.setPosition(pos);
+}
