@@ -33,3 +33,8 @@ void TextBoxDynamic::inputLogic(int charTyped)
 
     mTextBox.setString(mText.str()+'|');
 }
+
+void TextBoxDynamic::setFont(sf::Font &font)
+{
+    mTextBox.setFont(font);
+}

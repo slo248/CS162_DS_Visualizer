@@ -11,6 +11,8 @@ class TextBoxDynamic: public SceneNode
 {
     public:
         TextBoxDynamic(int size, sf::Color color, bool sel);
+        void                    setFont(sf::Font& font);
+
     private:
         sf::Text                mTextBox;
         std::ostringstream      mText;
