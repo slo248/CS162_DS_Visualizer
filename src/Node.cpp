@@ -1,4 +1,5 @@
 #include "Node.hpp"
+#include <TextBoxFixed.hpp>
 #include <string>
 
 Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
@@ -12,12 +13,12 @@ Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) :
     sf::FloatRect bounds=mCircle.getLocalBounds();
     mCircle.setOrigin(bounds.width/2,bounds.height/2);
 
-    std::unique_ptr<TextBox> mNum(new TextBox(font,std::to_string(val)));
+    std::unique_ptr<TextBoxFixed> mNum(new TextBoxFixed(font,std::to_string(val)));
     mNum->move(-OUTLINE_THICKNESS,-2*OUTLINE_THICKNESS);
     this->attachChild(std::move(mNum));
 
     if(isHead){
-        std::unique_ptr<TextBox> text(new TextBox(font,"pHead"));
+        std::unique_ptr<TextBoxFixed> text(new TextBoxFixed(font,"pHead"));
         text->move(-OUTLINE_THICKNESS,RADIUS+OUTLINE_THICKNESS);
         this->attachChild(std::move(text));
     }

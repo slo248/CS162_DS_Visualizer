@@ -1,6 +1,5 @@
 #pragma once
 
-#include <TextBox.hpp>
 #include <SceneNode.hpp>
 
 class Node: public SceneNode{

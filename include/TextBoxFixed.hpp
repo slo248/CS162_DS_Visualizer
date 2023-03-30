@@ -7,10 +7,10 @@ const sf::Color         CHAR_COLOR=sf::Color::Black;
 const std::string       DEFAULT_TEXT="hello";
 const float             DEFAULT_SIZE=23;
 
-class TextBox: public SceneNode
+class TextBoxFixed: public SceneNode
 {
     public:
-        TextBox(
+        TextBoxFixed(
             sf::Font& font,
             const std::string& text=DEFAULT_TEXT,
             const sf::Color& color=CHAR_COLOR,
