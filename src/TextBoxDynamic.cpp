@@ -15,6 +15,21 @@ void TextBoxDynamic::deleteLastChar()
         mText.str("");
         mText<<a;
     }
+}
+
+void TextBoxDynamic::inputLogic(int charTyped)
+{
+    switch (charTyped){
+        case DELETE_KEY:
+            deleteLastChar();
+            break;
+        case ENTER_KEY:
+            break;
+        case ESCAPE_KEY:
+            break;
+        default:
+            mText<<static_cast<char>(charTyped);
+    }
 
     mTextBox.setString(mText.str()+'|');
 }

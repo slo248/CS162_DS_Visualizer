@@ -19,5 +19,6 @@ class TextBoxDynamic: public SceneNode
         int                     mLimit;
     
     private:
-        void deleteLastChar();
+        void                    deleteLastChar();
+        void                    inputLogic(int charTyped);
 };
