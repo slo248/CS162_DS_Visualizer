@@ -1,7 +1,7 @@
 #include <Arrow.hpp>
 #include <cstdlib>
 #include <fstream>
-#include <cassert>
+// #include <cassert>
 #include "SinglyLinkedList.hpp"
 
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
@@ -50,11 +50,11 @@ void SinglyLinkedList::loadFromFile(std::string dir)
 {
     std::ifstream fi(dir);
     fi>>mNumNode;
-    assert(0<=mNumNode && mNumNode<=MAX_NUM_NODE);
+    // assert(0<=mNumNode && mNumNode<=MAX_NUM_NODE);
     Node* cur=nullptr;
     for(int i=0; i<mNumNode; i++){
         int val; fi>>val;
-        assert(0<=val && val<=MAX_NUM);
+        // assert(0<=val && val<=MAX_NUM);
         std::unique_ptr<Node> newNode(new Node(mFont,i==0,val));
         if(cur==nullptr){ 
             pHead=cur=newNode.get();
