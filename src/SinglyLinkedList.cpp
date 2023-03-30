@@ -1,5 +1,7 @@
 #include <Arrow.hpp>
 #include <cstdlib>
+#include <fstream>
+#include <cassert>
 #include "SinglyLinkedList.hpp"
 
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
@@ -44,6 +46,33 @@ void SinglyLinkedList::setRandom()
     }
 }
 
+void SinglyLinkedList::loadFromFile(std::string dir)
+{
+    std::ifstream fi(dir);
+    fi>>mNumNode;
+    assert(0<=mNumNode && mNumNode<=MAX_NUM_NODE);
+    Node* cur=nullptr;
+    for(int i=0; i<mNumNode; i++){
+        int val; fi>>val;
+        assert(0<=val && val<=MAX_NUM);
+        std::unique_ptr<Node> newNode(new Node(mFont,i==0,val));
+        if(cur==nullptr){ 
+            pHead=cur=newNode.get();
+            pHead->setPosition(200.f,200.f);
+            mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+        }
+        else{
+            addArrow(cur,DEFAULT_DIST);
+            newNode->setPosition(DEFAULT_DIST);
+            cur->setNext(newNode.get());
+            cur->attachChild(std::move(newNode));
+            cur=cur->getNext();
+        }
+        
+    }
+    fi.close();
+}
+
 void SinglyLinkedList::handleRealTimeInput(sf::Time dt)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -64,7 +93,8 @@ void SinglyLinkedList::buildScene()
         mSceneGraph.attachChild(std::move(layer));
     }
     
-    setRandom();
+    // setRandom();
+    loadFromFile("inp.txt");
 }
 
 float getLength(sf::Vector2f vec){

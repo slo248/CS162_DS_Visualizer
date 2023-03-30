@@ -23,6 +23,10 @@ class SinglyLinkedList : private sf::NonCopyable
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
         void    draw();
         void    setRandom();
+        // Read data from a file
+        // First line has a number N - number of nodes
+        // N lines next contains the elements has the same order in the list
+        void    loadFromFile(std::string dir);
         void    handleRealTimeInput(sf::Time dt);
 
     private:
