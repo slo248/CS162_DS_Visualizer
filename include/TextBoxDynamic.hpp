@@ -15,6 +15,8 @@ class TextBoxDynamic: public SceneNode
         void                    setPosition(sf::Vector2f pos);
         void                    setLimit(bool flag, int lim=0);
         void                    setSelected(bool sel);
+        virtual void            drawCurrent(sf::RenderTarget& target,
+                                    sf::RenderStates states) const;
 
     private:
         sf::Text                mTextBox;

@@ -59,3 +59,8 @@ void TextBoxDynamic::setSelected(bool sel)
     mIsSelected=sel;
     if(!sel) mTextBox.setString(mText.str());
 }
+
+void TextBoxDynamic::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mTextBox,states);
+}
