@@ -13,6 +13,7 @@ class TextBoxDynamic: public SceneNode
         TextBoxDynamic(int size, sf::Color color, bool sel);
         void                    setFont(sf::Font& font);
         void                    setPosition(sf::Vector2f pos);
+        void                    setLimit(bool flag, int lim=0);
 
     private:
         sf::Text                mTextBox;

@@ -43,3 +43,9 @@ void TextBoxDynamic::setPosition(sf::Vector2f pos)
 {
     mTextBox.setPosition(pos);
 }
+
+void TextBoxDynamic::setLimit(bool flag, int lim)
+{
+    mHasLimit=flag;
+    mLimit=lim;
+}
