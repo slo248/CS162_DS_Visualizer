@@ -49,3 +49,9 @@ void TextBoxDynamic::setLimit(bool flag, int lim)
     mHasLimit=flag;
     mLimit=lim;
 }
+
+void TextBoxDynamic::setSelected(bool sel)
+{
+    mIsSelected=sel;
+    if(!sel) mTextBox.setString(mText.str());
+}
