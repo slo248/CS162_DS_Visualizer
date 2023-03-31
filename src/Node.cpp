@@ -10,7 +10,9 @@ Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) :
     mCircle.setOutlineThickness(OUTLINE_THICKNESS);
     mCircle.setOutlineColor(OUTLINE_COLOR);
 
-    mCircle.setOrigin(RADIUS,RADIUS);
+    sf::FloatRect bounds=mCircle.getLocalBounds();
+    mCircle.setOrigin(bounds.left+bounds.width/2.f,
+                        bounds.top+bounds.height/2.f);
 
     std::unique_ptr<TextBoxFixed> mNum(new TextBoxFixed(font,std::to_string(val)));
     this->attachChild(std::move(mNum));
