@@ -3,7 +3,7 @@
 TextBoxDynamic::TextBoxDynamic(int size, sf::Color color, bool sel)
 {
     mTextBox.setCharacterSize(size);
-    mTextBox.setColor(color);
+    mTextBox.setFillColor(color);
     mIsSelected=sel;
     if(sel)
         mTextBox.setString("|");
