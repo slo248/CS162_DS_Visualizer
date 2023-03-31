@@ -11,7 +11,10 @@ int main()
     {
         mFonts.load(Fonts::ID::Times,"media/font/times.ttf");
 
-        App app(mFonts.get(Fonts::ID::Times));
+        sf::ContextSettings settings;
+        settings.antialiasingLevel = 8;
+
+        App app(mFonts.get(Fonts::ID::Times),settings);
         app.run();
     }
     catch (std::exception& e)

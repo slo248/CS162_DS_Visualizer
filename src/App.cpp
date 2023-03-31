@@ -1,7 +1,7 @@
 #include "App.hpp"
 
-App::App(sf::Font& font):
-    mWindow(sf::VideoMode(windowWidth,windowHeight,sf::Style::Titlebar|sf::Style::Close),"Data Structure Visualization"),
+App::App(sf::Font& font, const sf::ContextSettings &settings):
+    mWindow(sf::VideoMode(windowWidth,windowHeight),"Data Structure Visualization",sf::Style::Titlebar|sf::Style::Close,settings),
     mIsPaused(false),
     mUpdateTime(),
     mNumFrame(0),

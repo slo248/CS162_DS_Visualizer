@@ -6,7 +6,7 @@
 class App
 {
     public:
-                                    App(sf::Font& font);
+                                    App(sf::Font& font, const sf::ContextSettings &settings);
         void                        run();
 
     private:
