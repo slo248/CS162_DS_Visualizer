@@ -20,7 +20,9 @@ Arrow::Arrow(sf::Vector2f dist)
     mConvex.setPoint(5,sf::Vector2f(FIRST_WIDTH,HEIGHT_EACH/2.f));
     mConvex.setPoint(6,sf::Vector2f(0,HEIGHT_EACH/2.f)); 
 
-    mConvex.setOrigin(0,mConvex.getLocalBounds().height/2);
+    sf::FloatRect bounds=mConvex.getLocalBounds();
+
+    mConvex.setOrigin(bounds.left,bounds.top+bounds.height/2);
 }
 
 void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
