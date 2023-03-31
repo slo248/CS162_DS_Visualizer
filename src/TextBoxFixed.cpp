@@ -8,7 +8,8 @@ TextBoxFixed::TextBoxFixed(sf::Font &font, const std::string &text, const sf::Co
     mText.setCharacterSize(size);
 
     sf::FloatRect bounds=mText.getLocalBounds();
-    mText.setOrigin(bounds.width/2,bounds.height/2);
+    mText.setOrigin(bounds.left+bounds.width/2,
+                    bounds.top+bounds.height/2);
 }
 
 void TextBoxFixed::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
