@@ -93,8 +93,8 @@ void SinglyLinkedList::buildScene()
         mSceneGraph.attachChild(std::move(layer));
     }
     
-    // setRandom();
-    loadFromFile("inp.txt");
+    setRandom();
+    // loadFromFile("inp.txt");
 }
 
 float getLength(sf::Vector2f vec){
