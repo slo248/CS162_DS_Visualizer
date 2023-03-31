@@ -104,13 +104,12 @@ float getLength(sf::Vector2f vec){
 void SinglyLinkedList::addArrow(Node *node, sf::Vector2f dist)
 {
     float angle=atan(dist.y/dist.x);
-    float ratio=1-2*node->RADIUS/getLength(dist);
+    float ratio=1-2*(node->RADIUS+node->OUTLINE_THICKNESS)/getLength(dist);
     dist.x*=ratio; dist.y*=ratio;
 
     std::unique_ptr<Arrow> arr(new Arrow(dist));
-    arr->move(node->RADIUS-node->OUTLINE_THICKNESS,-node->OUTLINE_THICKNESS);
+    arr->setPosition(node->RADIUS+node->OUTLINE_THICKNESS,0);
     sf::Vector2f cur=arr->getPosition();
-    angle+=atan(abs(-1.f*cur.y/cur.x));
     arr->setPosition(
         cos(angle)*cur.x-sin(angle)*cur.y,
         sin(angle)*cur.x+cos(angle)*cur.y
