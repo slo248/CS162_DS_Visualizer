@@ -4,8 +4,7 @@ Arrow::Arrow(sf::Vector2f dist)
 {
     const float length=sqrt(dist.x*dist.x+dist.y*dist.y);
 
-    const float FIRST_WIDTH=length*RATIO_FIRST;
-    const float SECOND_WIDTH=length*RATIO_SECOND;
+    const float FIRST_WIDTH=length-SECOND_WIDTH;
 
     mLine.setSize(sf::Vector2f(FIRST_WIDTH,HEIGHT_EACH));
     mLine.setFillColor(DEFAULT_COLOR);
