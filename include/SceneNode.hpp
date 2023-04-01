@@ -4,6 +4,18 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+namespace Category{
+    enum Type{
+        None = 0,
+        Node = 1 << 0,
+        Arrow = 1 << 1,
+        TextBoxFixed = 1 << 3,
+        TextBoxDynamic = 1 << 4,
+        Button = 1 << 5,
+        All = Node | Arrow | TextBoxFixed | TextBoxDynamic | Button
+    };
+}
+
 class SceneNode : 
     public  sf::Drawable,
     public  sf::Transformable,
@@ -18,6 +30,7 @@ class SceneNode :
         sf::Transform   getWorldTransform() const;
         sf::Vector2f    getWorldPosition() const;
         void            clearChildren();
+        virtual int     getCategory() const;
 
     private:
         virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;
