@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Command.hpp>
 #include <cmath>
 #include <vector>
 #include <SFML/Graphics.hpp>
@@ -31,6 +32,7 @@ class SceneNode :
         sf::Vector2f    getWorldPosition() const;
         void            clearChildren();
         virtual int     getCategory() const;
+        void            onCommand(const Command& command, sf::Time dt);
 
     private:
         virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;
