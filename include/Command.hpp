@@ -1,7 +1,8 @@
 #pragma once
 
-#include <SceneNode.hpp>
 #include <functional>
+
+class SceneNode;
 
 struct Command
 {
