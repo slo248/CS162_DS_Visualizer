@@ -6,6 +6,11 @@ class Entity: public SceneNode
 {
     public:
         virtual int     getCategory() const;
+        sf::Vector2f    getVelocity() const;
+        void            setVelocity(sf::Vector2f velocity);
+        void            setVelocity(float vx, float vy);
+        void            accelerate(sf::Vector2f velocity);
+        void            accelerate(float vx, float vy);
 
     private:
         sf::Vector2f    mVelocity;
