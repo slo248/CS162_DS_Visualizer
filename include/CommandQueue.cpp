@@ -11,3 +11,8 @@ Command CommandQueue::pop()
     mQueue.pop();
     return res;
 }
+
+bool CommandQueue::isEmpty() const
+{
+    return mQueue.empty();
+}
