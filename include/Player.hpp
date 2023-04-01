@@ -4,7 +4,7 @@
 #include <Arrow.hpp>
 #include <CommandQueue.hpp>
 
-class User
+class Player
 {
     public:
         void   handleEvent(const sf::Event& event, CommandQueue& commands);
