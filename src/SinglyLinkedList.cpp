@@ -73,6 +73,26 @@ void SinglyLinkedList::loadFromFile(std::string dir)
     fi.close();
 }
 
+void SinglyLinkedList::handleEvent(const sf::Event &event, sf::Time dt)
+{
+    switch (event.type){
+        case sf::Event::KeyPressed:
+            switch (event.key.code){
+                case sf::Keyboard::R:
+                    setRandom();
+                    break;
+                case sf::Keyboard::L:
+                    loadFromFile("inp.txt");
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 void SinglyLinkedList::handleRealTimeInput(sf::Time dt)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
