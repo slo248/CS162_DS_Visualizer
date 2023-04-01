@@ -60,7 +60,7 @@ void App::processInput()
 
 void App::update(sf::Time dt)
 {
-    
+    mSLL.update(dt);
 }
 
 void App::render()

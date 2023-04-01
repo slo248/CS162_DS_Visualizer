@@ -51,6 +51,8 @@ void SinglyLinkedList::setRandom()
         pre->setNext(tmp);
         pre=tmp;
     }
+
+    pHead->scale(0,0);
 }
 
 void SinglyLinkedList::loadFromFile(std::string dir)
@@ -84,6 +86,8 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         
     }
     fi.close();
+    
+    if(pHead) pHead->scale(0,0);
 }
 
 void SinglyLinkedList::handleEvent(const sf::Event &event, sf::Time dt)
@@ -118,8 +122,8 @@ void SinglyLinkedList::handleRealTimeInput(sf::Time dt)
         pHead->moveRight(dt);
 }
 
-float f(sf::Time dt){
-    return dt.asSeconds()*dt.asSeconds();
+float f(float dt){
+    return dt*dt;
 }
 
 void SinglyLinkedList::update(sf::Time dt)
@@ -132,7 +136,7 @@ void SinglyLinkedList::update(sf::Time dt)
             pHead->scale(1,1);
         }
         else{
-            float scale=f(mScaleTime)/SCALE_TIME;
+            float scale=f(mScaleTime.asSeconds())/f(SCALE_TIME);
             pHead->setScale(scale,scale);
         }
     }
