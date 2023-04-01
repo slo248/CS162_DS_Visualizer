@@ -38,4 +38,5 @@ void Entity::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) cons
 
 void Entity::updateCurrent(sf::Time dt)
 {
+    move(mVelocity*dt.asSeconds());
 }
