@@ -77,3 +77,7 @@ void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);
 }
+
+void Node::updateCurrent(sf::Time dt)
+{
+}

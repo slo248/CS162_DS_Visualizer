@@ -9,12 +9,15 @@ class Arrow: public SceneNode
         const float             SECOND_WIDTH=10.f;
         const sf::Color         DEFAULT_COLOR=sf::Color::Blue;
 
+    public:
+        Arrow(sf::Vector2f dist);
+        int             getCategory() const;
+
     private:
         sf::RectangleShape      mLine;
         sf::ConvexShape         mTriangle;
-
-    public:
-        Arrow(sf::Vector2f dist);
+    
+    private:
         void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-        int             getCategory() const;
+        void            updateCurrent(sf::Time dt);
 };

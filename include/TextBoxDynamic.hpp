@@ -15,8 +15,6 @@ class TextBoxDynamic: public SceneNode
         void                    setPosition(sf::Vector2f pos);
         void                    setLimit(bool flag, int lim=0);
         void                    setSelected(bool sel);
-        virtual void            drawCurrent(sf::RenderTarget& target,
-                                    sf::RenderStates states) const;
         void                    handleEvent(sf::Event event);
         int                     getCategory() const;
 
@@ -28,6 +26,9 @@ class TextBoxDynamic: public SceneNode
         int                     mLimit;
     
     private:
-        void                    deleteLastChar();
-        void                    inputLogic(int charTyped);
+        void            deleteLastChar();
+        void            inputLogic(int charTyped);
+        void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+        void            updateCurrent(sf::Time dt);
+
 };

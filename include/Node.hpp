@@ -42,5 +42,6 @@ class Node: public SceneNode{
         sf::CircleShape     mCircle;
 
     private:
-        virtual void    drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
+        void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
+        void            updateCurrent(sf::Time dt);
 };

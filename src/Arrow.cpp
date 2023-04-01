@@ -31,6 +31,10 @@ void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(mTriangle,states);
 }
 
+void Arrow::updateCurrent(sf::Time dt)
+{
+}
+
 int Arrow::getCategory() const
 {
     return Category::Arrow;

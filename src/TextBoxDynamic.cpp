@@ -65,6 +65,10 @@ void TextBoxDynamic::drawCurrent(sf::RenderTarget &target, sf::RenderStates stat
     target.draw(mTextBox,states);
 }
 
+void TextBoxDynamic::updateCurrent(sf::Time dt)
+{
+}
+
 void TextBoxDynamic::handleEvent(sf::Event event)
 {
     if(!mIsSelected) return;
