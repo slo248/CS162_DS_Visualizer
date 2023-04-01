@@ -40,6 +40,7 @@ void SceneNode::clearChildren()
 
 int SceneNode::getCategory() const
 {
+    return -1;
 }
 
 void SceneNode::onCommand(const Command &command, sf::Time dt)
