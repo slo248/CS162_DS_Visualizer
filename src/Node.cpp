@@ -68,6 +68,11 @@ void Node::moveDown(sf::Time dt)
     this->move(sf::Vector2f(0,DELTA_LEN_REAL_TIME)*dt.asSeconds());    
 }
 
+int Node::getCategory() const
+{
+    return Category::Node;
+}
+
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);

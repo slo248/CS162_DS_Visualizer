@@ -16,3 +16,8 @@ void TextBoxFixed::drawCurrent(sf::RenderTarget &target, sf::RenderStates states
 {
     target.draw(mText,states);
 }
+
+int TextBoxFixed::getCategory() const
+{
+    return Category::TextBoxFixed;
+}

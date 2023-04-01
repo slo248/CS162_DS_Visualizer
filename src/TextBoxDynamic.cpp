@@ -76,3 +76,8 @@ void TextBoxDynamic::handleEvent(sf::Event event)
     }
     else inputLogic(charTyped);
 }
+
+int TextBoxDynamic::getCategory() const
+{
+    return Category::TextBoxDynamic;
+}

@@ -24,6 +24,8 @@ class Node: public SceneNode{
         void        moveUp(sf::Time dt);
         void        moveDown(sf::Time dt);
 
+        int         getCategory() const;
+
     public:
         const float         RADIUS=20.f;
         const float         OUTLINE_THICKNESS=6.f;

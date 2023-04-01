@@ -15,5 +15,6 @@ class Arrow: public SceneNode
 
     public:
         Arrow(sf::Vector2f dist);
-        void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+        void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+        int             getCategory() const;
 };

@@ -30,3 +30,8 @@ void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(mLine,states);
     target.draw(mTriangle,states);
 }
+
+int Arrow::getCategory() const
+{
+    return Category::Arrow;
+}

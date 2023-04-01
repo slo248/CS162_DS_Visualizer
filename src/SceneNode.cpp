@@ -38,6 +38,10 @@ void SceneNode::clearChildren()
     mChildren.clear();
 }
 
+int SceneNode::getCategory() const
+{
+}
+
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform*=getTransform();

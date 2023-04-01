@@ -17,8 +17,9 @@ class TextBoxFixed: public SceneNode
             float size=DEFAULT_SIZE
         );
 
-        void drawCurrent(sf::RenderTarget& target,
-                        sf::RenderStates states) const;
+        void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+        int             getCategory() const;
+
     private:
         sf::Text            mText;
 };
