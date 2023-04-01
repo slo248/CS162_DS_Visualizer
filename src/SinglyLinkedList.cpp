@@ -130,6 +130,7 @@ void SinglyLinkedList::update(sf::Time dt)
 {
     while(!mCommandQueue.isEmpty())
         mSceneGraph.onCommand(mCommandQueue.pop(), dt);
+    mSceneGraph.update(dt);
 
     if(pHead && mIsScaling){
         mScaleTime+=dt;
