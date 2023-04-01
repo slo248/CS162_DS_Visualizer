@@ -2,6 +2,7 @@
 
 #include <Node.hpp>
 #include <SceneNode.hpp>
+#include <CommandQueue.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
@@ -43,6 +44,7 @@ class SinglyLinkedList : private sf::NonCopyable
 
         sf::Time                                    mScaleTime; 
         bool                                        mIsScaling;
+        CommandQueue                                mCommandQueue;
 
     private:
         void            buildScene();

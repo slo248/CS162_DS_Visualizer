@@ -128,6 +128,9 @@ float f(float dt){
 
 void SinglyLinkedList::update(sf::Time dt)
 {
+    while(!mCommandQueue.isEmpty())
+        mSceneGraph.onCommand(mCommandQueue.pop(), dt);
+
     if(pHead && mIsScaling){
         mScaleTime+=dt;
         if(mScaleTime.asSeconds()>SCALE_TIME){
