@@ -51,6 +51,12 @@ void SceneNode::onCommand(const Command &command, sf::Time dt)
         child->onCommand(command,dt);
 }
 
+void SceneNode::update(sf::Time dt)
+{
+    updateCurrent(dt);
+    updateChildren(dt);
+}
+
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform*=getTransform();
@@ -66,4 +72,14 @@ void SceneNode::drawChildren(sf::RenderTarget &target, sf::RenderStates states) 
 {
     for(const Ptr& child: mChildren)
         child->draw(target,states);
+}
+
+void SceneNode::updateCurrent(sf::Time dt)
+{
+}
+
+void SceneNode::updateChildren(sf::Time dt)
+{
+    for(Ptr& child: mChildren)
+        child->update(dt);
 }

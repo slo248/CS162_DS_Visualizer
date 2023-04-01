@@ -33,11 +33,14 @@ class SceneNode :
         void            clearChildren();
         virtual int     getCategory() const;
         void            onCommand(const Command& command, sf::Time dt);
+        void            update(sf::Time dt);
 
     private:
         virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;
         virtual void    drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
         void            drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void    updateCurrent(sf::Time dt);
+        void            updateChildren(sf::Time dt);
 
     private:
         SceneNode*              mParent;
