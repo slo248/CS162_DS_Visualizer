@@ -8,7 +8,8 @@ SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
     mWindow(window),
     mFont(font),
     pHead(nullptr),
-    mNumNode(0)
+    mNumNode(0),
+    mIsScaling(false)
 {
     buildScene();
 }
@@ -24,6 +25,8 @@ int getRand(int l, int r){
 
 void SinglyLinkedList::setRandom()
 {
+    mIsScaling=true;
+
     for(int i=0; i<Layer::NumLayer; i++)
         mSceneLayers[i]->clearChildren();
 
@@ -51,6 +54,8 @@ void SinglyLinkedList::setRandom()
 
 void SinglyLinkedList::loadFromFile(std::string dir)
 {
+    mIsScaling=true;
+
     for(int i=0; i<Layer::NumLayer; i++)
         mSceneLayers[i]->clearChildren();
 

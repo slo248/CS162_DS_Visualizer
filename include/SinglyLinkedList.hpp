@@ -19,6 +19,7 @@ class SinglyLinkedList : private sf::NonCopyable
         const sf::Vector2f  DEFAULT_DIST=sf::Vector2f(DEFAULT_LEN,0.f);
         const int           MAX_NUM=99;
         const int           MAX_NUM_NODE=10;
+        const float         SCALE_TIME=1;
 
     public:
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
@@ -38,6 +39,8 @@ class SinglyLinkedList : private sf::NonCopyable
         Node*                                       pHead;
         sf::Font&                                   mFont;
         int                                         mNumNode;
+
+        bool                                        mIsScaling;
 
     private:
         void            buildScene();
