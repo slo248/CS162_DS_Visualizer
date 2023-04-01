@@ -24,6 +24,9 @@ int getRand(int l, int r){
 
 void SinglyLinkedList::setRandom()
 {
+    for(int i=0; i<Layer::NumLayer; i++)
+        mSceneLayers[i]->clearChildren();
+
     srand(time(NULL));
     mNumNode=getRand(2,MAX_NUM_NODE);
 
@@ -48,6 +51,9 @@ void SinglyLinkedList::setRandom()
 
 void SinglyLinkedList::loadFromFile(std::string dir)
 {
+    for(int i=0; i<Layer::NumLayer; i++)
+        mSceneLayers[i]->clearChildren();
+
     std::ifstream fi(dir);
     fi>>mNumNode;
     // assert(0<=mNumNode && mNumNode<=MAX_NUM_NODE);
