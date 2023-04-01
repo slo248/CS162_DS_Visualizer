@@ -33,6 +33,11 @@ sf::Vector2f SceneNode::getWorldPosition() const
     return getWorldTransform()*sf::Vector2f();
 }
 
+void SceneNode::clearChildren()
+{
+    mChildren.clear();
+}
+
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform*=getTransform();

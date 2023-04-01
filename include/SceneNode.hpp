@@ -17,6 +17,7 @@ class SceneNode :
         Ptr             detachChild(const SceneNode& child);
         sf::Transform   getWorldTransform() const;
         sf::Vector2f    getWorldPosition() const;
+        void            clearChildren();
 
     private:
         virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;
