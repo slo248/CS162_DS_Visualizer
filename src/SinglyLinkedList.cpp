@@ -145,6 +145,11 @@ void SinglyLinkedList::update(sf::Time dt)
     }
 }
 
+CommandQueue &SinglyLinkedList::getCommandQueue()
+{
+    return mCommandQueue;
+}
+
 void SinglyLinkedList::buildScene()
 {
     for(int i=0; i<Layer::NumLayer; i++){
