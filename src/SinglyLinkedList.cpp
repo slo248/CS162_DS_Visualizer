@@ -25,6 +25,7 @@ int getRand(int l, int r){
 
 void SinglyLinkedList::setRandom()
 {
+    mScaleTime=sf::Time::Zero;
     mIsScaling=true;
 
     for(int i=0; i<Layer::NumLayer; i++)
@@ -54,6 +55,7 @@ void SinglyLinkedList::setRandom()
 
 void SinglyLinkedList::loadFromFile(std::string dir)
 {
+    mScaleTime=sf::Time::Zero;
     mIsScaling=true;
 
     for(int i=0; i<Layer::NumLayer; i++)
@@ -114,6 +116,26 @@ void SinglyLinkedList::handleRealTimeInput(sf::Time dt)
         pHead->moveDown(dt);
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         pHead->moveRight(dt);
+}
+
+float f(sf::Time dt){
+    return dt.asSeconds()*dt.asSeconds();
+}
+
+void SinglyLinkedList::update(sf::Time dt)
+{
+    if(pHead && mIsScaling){
+        mScaleTime+=dt;
+        if(mScaleTime.asSeconds()>SCALE_TIME){
+            mIsScaling=false;
+            mScaleTime=sf::Time::Zero;
+            pHead->scale(1,1);
+        }
+        else{
+            float scale=f(mScaleTime)/SCALE_TIME;
+            pHead->setScale(scale,scale);
+        }
+    }
 }
 
 void SinglyLinkedList::buildScene()

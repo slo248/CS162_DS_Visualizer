@@ -31,6 +31,7 @@ class SinglyLinkedList : private sf::NonCopyable
         void    loadFromFile(std::string dir);
         void    handleEvent(const sf::Event& event, sf::Time dt);
         void    handleRealTimeInput(sf::Time dt);
+        void    update(sf::Time dt);
 
     private:
         sf::RenderWindow&                           mWindow;
@@ -40,6 +41,7 @@ class SinglyLinkedList : private sf::NonCopyable
         sf::Font&                                   mFont;
         int                                         mNumNode;
 
+        sf::Time                                    mScaleTime; 
         bool                                        mIsScaling;
 
     private:
