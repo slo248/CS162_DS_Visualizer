@@ -120,7 +120,6 @@ void SinglyLinkedList::buildScene()
     }
     
     setRandom();
-    // loadFromFile("inp.txt");
 }
 
 float getLength(sf::Vector2f vec){

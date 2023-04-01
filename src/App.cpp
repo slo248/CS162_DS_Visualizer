@@ -41,14 +41,17 @@ void App::processInput()
     sf::Event event;
     while(mWindow.pollEvent(event))
         switch(event.type){
+            case sf::Event::Closed:
+                mWindow.close();
+                break;
             case sf::Event::LostFocus:
                 mIsPaused=true;
                 break;
             case sf::Event::GainedFocus:
                 mIsPaused=false;
                 break;
-            case sf::Event::Closed:
-                mWindow.close();
+            default:
+                mSLL.handleEvent(event,TimePerFrame);
                 break;
         }
 
