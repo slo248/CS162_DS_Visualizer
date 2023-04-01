@@ -1,8 +1,8 @@
 #pragma once
 
-#include <SceneNode.hpp>
+#include <Entity.hpp>
 
-class Arrow: public SceneNode
+class Arrow: public Entity
 {
     public:
         const float             HEIGHT_EACH=5.f;

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <SceneNode.hpp>
+#include <Entity.hpp>
 
-class Node: public SceneNode{
-
+class Node: public Entity
+{
     public:
         Node(
             sf::Font& font,
