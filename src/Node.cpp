@@ -80,5 +80,6 @@ void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 void Node::updateCurrent(sf::Time dt)
 {
+    if(mVelocity.x*mVelocity.y) mVelocity/=std::sqrt(2.f);
     move(mVelocity*dt.asSeconds());
 }
