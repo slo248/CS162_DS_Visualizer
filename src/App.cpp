@@ -38,8 +38,12 @@ void App::run()
 
 void App::processInput()
 {
+    CommandQueue& commands=mSLL.getCommandQueue();
+
     sf::Event event;
-    while(mWindow.pollEvent(event))
+    while(mWindow.pollEvent(event)){
+        mPlayer.handleEvent(event,commands);
+
         switch(event.type){
             case sf::Event::Closed:
                 mWindow.close();
@@ -51,11 +55,13 @@ void App::processInput()
                 mIsPaused=false;
                 break;
             default:
-                mSLL.handleEvent(event,TimePerFrame);
+                // mSLL.handleEvent(event,TimePerFrame);
                 break;
         }
+    }
 
-    mSLL.handleRealTimeInput(TimePerFrame);    
+    mPlayer.handleRealtimeInput(commands);
+    // mSLL.handleRealTimeInput(TimePerFrame);    
 }
 
 void App::update(sf::Time dt)

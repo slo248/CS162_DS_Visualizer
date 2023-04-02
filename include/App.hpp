@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Player.hpp>
 #include <SinglyLinkedList.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -24,6 +25,7 @@ class App
         int                         mNumFrame;
         bool                        mIsPaused;
         SinglyLinkedList            mSLL;
+        Player                      mPlayer;
 
     private:
         void                        processInput();
