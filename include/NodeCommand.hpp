@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Node.hpp>
+#include <iostream>
 
 struct NodeMover
 {
@@ -30,4 +31,11 @@ struct NodeScaleFlag
     }
 
     bool mFlag;
+};
+
+struct NodePrintPos{
+    NodePrintPos(){}
+    void operator() (Node& node, sf::Time dt) const{
+        std::cout << node.getPosition().x << " " << node.getPosition().y << std::endl;
+    }
 };
