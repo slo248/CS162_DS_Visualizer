@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <cassert>
 #include <SFML/Graphics.hpp>
 
 class SceneNode;
