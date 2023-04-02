@@ -83,6 +83,11 @@ void Node::setScaleTime(float time)
     mScaleTime+=time;
 }
 
+void Node::setIsScaling(bool flag)
+{
+    mIsScaling=flag;
+}
+
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);

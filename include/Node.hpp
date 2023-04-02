@@ -27,6 +27,7 @@ class Node: public Entity
         int         getCategory() const;
         int         getScaleTime() const;
         void        setScaleTime(float time);
+        void        setIsScaling(bool flag);
 
     public:
         const float         RADIUS=20.f;
@@ -45,6 +46,7 @@ class Node: public Entity
         sf::CircleShape     mCircle;
 
         float               mScaleTime;
+        bool                mIsScaling;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
