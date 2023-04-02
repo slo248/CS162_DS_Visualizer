@@ -2,6 +2,7 @@
 #include <NodeCommand.hpp>
 #include <ArrowCommand.hpp>
 #include <iostream>
+#include <utility>
 
 Player::Player()
 {
@@ -30,7 +31,7 @@ Player::Player()
 
 void Player::assignKey(Action action, sf::Keyboard::Key key)
 {
-    mKeyBinding[key] = action;
+    assert(mKeyBinding.insert(std::make_pair(key,action)).second);
 }
 
 sf::Keyboard::Key Player::getAssignedKey(Action action) const
