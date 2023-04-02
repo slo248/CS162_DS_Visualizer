@@ -13,6 +13,8 @@ public:
         MoveRight,
         MoveUp,
         MoveDown,
+        PrintPos,
+        ScaleOn,
         ActionCount
     };
 
