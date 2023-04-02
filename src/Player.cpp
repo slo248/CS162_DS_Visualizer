@@ -25,7 +25,7 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
                 {
                     Command flag;
                     flag.category = Category::Node;
-                    flag.action=derivedAction<Node>(NodeScaleOn());
+                    flag.action=derivedAction<Node>(NodeScaleFlag(true));
                     commands.push(flag);
                     break;
                 }

@@ -22,10 +22,12 @@ struct NodeStopper
     }
 };
 
-struct NodeScaleOn
+struct NodeScaleFlag
 {
-    NodeScaleOn(){}
+    NodeScaleFlag(bool flag):mFlag(flag){}
     void operator() (Node& node, sf::Time dt) const{
-        node.setIsScaling(true);
+        node.setIsScaling(mFlag);
     }
+
+    bool mFlag;
 };
