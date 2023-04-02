@@ -26,6 +26,6 @@ struct NodeScaleOn
 {
     NodeScaleOn(){}
     void operator() (Node& node, sf::Time dt) const{
-        node.setIsScale(true);
+        node.setIsScaling(true);
     }
 };

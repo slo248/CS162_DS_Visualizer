@@ -20,6 +20,15 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
                     commands.push(output);
                     break;
                 }
+                case sf::Keyboard::R:
+                case sf::Keyboard::F:
+                {
+                    Command flag;
+                    flag.category = Category::Node;
+                    flag.action=derivedAction<Node>(NodeScaleOn());
+                    commands.push(flag);
+                    break;
+                }
                 default:
                     break;
             }
