@@ -91,38 +91,6 @@ void SinglyLinkedList::loadFromFile(std::string dir)
     if(pHead) pHead->scale(0,0);
 }
 
-void SinglyLinkedList::handleEvent(const sf::Event &event, sf::Time dt)
-{
-    switch (event.type){
-        case sf::Event::KeyPressed:
-            switch (event.key.code){
-                case sf::Keyboard::R:
-                    setRandom();
-                    break;
-                case sf::Keyboard::L:
-                    loadFromFile("inp.txt");
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
-}
-
-void SinglyLinkedList::handleRealTimeInput(sf::Time dt)
-{
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        pHead->moveUp(dt);
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        pHead->moveLeft(dt);
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        pHead->moveDown(dt);
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        pHead->moveRight(dt);
-}
-
 float f(float dt){
     return dt*dt;
 }

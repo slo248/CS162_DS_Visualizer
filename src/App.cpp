@@ -55,13 +55,11 @@ void App::processInput()
                 mIsPaused=false;
                 break;
             default:
-                // mSLL.handleEvent(event,TimePerFrame);
                 break;
         }
     }
 
     mPlayer.handleRealtimeInput(commands);
-    // mSLL.handleRealTimeInput(TimePerFrame);    
 }
 
 void App::update(sf::Time dt)

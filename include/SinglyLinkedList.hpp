@@ -30,8 +30,6 @@ class SinglyLinkedList : private sf::NonCopyable
         // First line has a number N - number of nodes
         // N lines next contains the elements has the same order in the list
         void            loadFromFile(std::string dir);
-        void            handleEvent(const sf::Event& event, sf::Time dt);
-        void            handleRealTimeInput(sf::Time dt);
         void            update(sf::Time dt);
         CommandQueue&   getCommandQueue();
 
