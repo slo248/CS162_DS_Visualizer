@@ -1,4 +1,21 @@
 #include "Player.hpp"
+#include <iostream>
+
+void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
+{
+    if(event.type==sf::Event::KeyPressed &&
+        event.key.code==sf::Keyboard::P)
+    {
+        Command output;
+        output.category=Category::Node;
+        output.action=[](SceneNode& s, sf::Time)
+        {
+            std::cout << "Player position: " << s.getPosition().x 
+                    << ", " << s.getPosition().y << std::endl;
+        };
+        commands.push(output);
+    }
+}
 
 void Player::handleRealtimeInput(CommandQueue &commands)
 {
