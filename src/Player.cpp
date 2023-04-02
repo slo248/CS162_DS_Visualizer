@@ -1,4 +1,6 @@
-#include "Player.hpp"
+#include <Player.hpp>
+#include <NodeCommand.hpp>
+#include <ArrowCommand.hpp>
 #include <iostream>
 
 void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
