@@ -41,13 +41,14 @@ void SinglyLinkedList::setRandom()
 
     Node *pre=pHead;
 
-    for(int i=0; i<mNumNode-1; i++){
+    for(int i=1; i<mNumNode; i++){
         addArrow(pre,DEFAULT_DIST);
 
         std::unique_ptr<Node> node(new Node(mFont,false,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
-        node->setPosition(DEFAULT_DIST);
-        pre->attachChild(std::move(node));
+        node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
+        mSceneLayers[Layer::Front]->attachChild(std::move(std::move(node)));
+        // pre->attachChild(std::move(node));
         pre->setNext(tmp);
         pre=tmp;
     }
@@ -67,23 +68,23 @@ void SinglyLinkedList::loadFromFile(std::string dir)
     fi>>mNumNode;
     assert(0<=mNumNode && mNumNode<=MAX_NUM_NODE);
     Node* cur=nullptr;
-    for(int i=0; i<mNumNode; i++){
+    for(int i=1; i<=mNumNode; i++){
         int val; fi>>val;
         assert(0<=val && val<=MAX_NUM);
         std::unique_ptr<Node> newNode(new Node(mFont,i==0,val));
         if(cur==nullptr){ 
             pHead=cur=newNode.get();
             pHead->setPosition(200.f,200.f);
-            mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+            // mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
         }
         else{
             addArrow(cur,DEFAULT_DIST);
-            newNode->setPosition(DEFAULT_DIST);
+            newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
             cur->setNext(newNode.get());
-            cur->attachChild(std::move(newNode));
+            // cur->attachChild(std::move(newNode));
             cur=cur->getNext();
         }
-        
+        mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     }
     fi.close();
     
