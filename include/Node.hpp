@@ -25,6 +25,8 @@ class Node: public Entity
         void        moveDown(sf::Time dt);
 
         int         getCategory() const;
+        int         getScaleTime() const;
+        void        setScaleTime(float time);
 
     public:
         const float         RADIUS=20.f;
@@ -34,12 +36,15 @@ class Node: public Entity
         const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
         const sf::Color     OUTLINE_COLOR=sf::Color::Black;
         const sf::Color     INSIDE_COLOR=sf::Color::White;
+        const float         SCALE_TIME=0.7f;
 
     private:
         int val;
         Node *pNext, *pPrev;
 
         sf::CircleShape     mCircle;
+
+        float               mScaleTime;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

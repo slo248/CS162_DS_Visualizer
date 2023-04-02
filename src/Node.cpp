@@ -3,7 +3,7 @@
 #include <string>
 
 Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
-    val(_val), pNext(_pNext), pPrev(_pPrev)
+    val(_val), pNext(_pNext), pPrev(_pPrev), mScaleTime(0)
 {
     mCircle.setRadius(RADIUS);
     mCircle.setFillColor(INSIDE_COLOR);
@@ -71,6 +71,16 @@ void Node::moveDown(sf::Time dt)
 int Node::getCategory() const
 {
     return Category::Node;
+}
+
+int Node::getScaleTime() const
+{
+    return mScaleTime;
+}
+
+void Node::setScaleTime(float time)
+{
+    mScaleTime+=time;
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
