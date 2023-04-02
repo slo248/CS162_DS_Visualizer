@@ -21,16 +21,3 @@ class Arrow: public Entity
         void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
         void            updateCurrent(sf::Time dt);
 };
-
-struct ArrowMover
-{
-    ArrowMover(float vx, float vy): 
-        mVelocityX(vx), mVelocityY(vy){};
-    void operator() (Arrow& arrow, sf::Time dt) const{
-        arrow.accelerate(mVelocityX, mVelocityY);
-    }
-
-    private:
-        float mVelocityX;
-        float mVelocityY;
-};

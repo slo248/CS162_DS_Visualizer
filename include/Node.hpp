@@ -45,16 +45,3 @@ class Node: public Entity
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
         void            updateCurrent(sf::Time dt);
 };
-
-struct NodeMover
-{
-    NodeMover(float vx, float vy): 
-        mVelocityX(vx), mVelocityY(vy){};
-    void operator() (Node& node, sf::Time dt) const{
-        node.accelerate(mVelocityX, mVelocityY);
-    }
-
-    private:
-        float mVelocityX;
-        float mVelocityY;
-};
