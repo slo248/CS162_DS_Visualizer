@@ -12,7 +12,7 @@ class Entity: public SceneNode
         void            accelerate(sf::Vector2f velocity);
         void            accelerate(float vx, float vy);
 
-    private:
+    protected:
         sf::Vector2f    mVelocity;
 
     private:

@@ -33,6 +33,7 @@ void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 void Arrow::updateCurrent(sf::Time dt)
 {
+    move(mVelocity*dt.asSeconds());
 }
 
 int Arrow::getCategory() const
