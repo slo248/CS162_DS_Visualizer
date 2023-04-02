@@ -48,26 +48,6 @@ Node *Node::getPrev()
     return pPrev;
 }
 
-void Node::moveLeft(sf::Time dt)
-{
-    this->move(sf::Vector2f(-DELTA_LEN_REAL_TIME,0)*dt.asSeconds());
-}
-
-void Node::moveRight(sf::Time dt)
-{
-    this->move(sf::Vector2f(DELTA_LEN_REAL_TIME,0)*dt.asSeconds());    
-}
-
-void Node::moveUp(sf::Time dt)
-{
-    this->move(sf::Vector2f(0,-DELTA_LEN_REAL_TIME)*dt.asSeconds());    
-}
-
-void Node::moveDown(sf::Time dt)
-{
-    this->move(sf::Vector2f(0,DELTA_LEN_REAL_TIME)*dt.asSeconds());    
-}
-
 int Node::getCategory() const
 {
     return Category::Node;

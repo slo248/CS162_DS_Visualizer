@@ -16,18 +16,13 @@ class Node: public Entity
 
         void        setNext(Node* node);
         void        setPrev(Node* node);
-        Node*       getNext();
-        Node*       getPrev();
-
-        void        moveLeft(sf::Time dt);
-        void        moveRight(sf::Time dt);
-        void        moveUp(sf::Time dt);
-        void        moveDown(sf::Time dt);
-
-        int         getCategory() const;
-        int         getScaleTime() const;
         void        setScaleTime(float time);
         void        setIsScaling(bool flag);
+
+        Node*       getNext();
+        Node*       getPrev();
+        int         getCategory() const;
+        int         getScaleTime() const;
 
     public:
         const float         RADIUS=20.f;
