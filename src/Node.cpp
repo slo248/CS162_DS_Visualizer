@@ -86,7 +86,7 @@ void Node::updateCurrent(sf::Time dt)
         }
         else{
             float factor=f(mScaleTime)/f(SCALE_TIME);
-            mCircle.setScale(factor,factor);
+            this->setScale(factor,factor);
             mScaleTime+=dt.asSeconds();
         }
     }
