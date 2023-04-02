@@ -1,7 +1,9 @@
 #include "TextBoxDynamic.hpp"
 
-TextBoxDynamic::TextBoxDynamic(int size, sf::Color color, bool sel)
+TextBoxDynamic::TextBoxDynamic(sf::Font &font, sf::Vector2f pos, sf::Color color, float size, bool sel)
 {
+    mTextBox.setFont(font);
+    mTextBox.setPosition(pos);
     mTextBox.setCharacterSize(size);
     mTextBox.setFillColor(color);
     mIsSelected=sel;
@@ -36,16 +38,6 @@ void TextBoxDynamic::inputLogic(int charTyped)
     }
 
     mTextBox.setString(mText.str()+'|');
-}
-
-void TextBoxDynamic::setFont(sf::Font &font)
-{
-    mTextBox.setFont(font);
-}
-
-void TextBoxDynamic::setPosition(sf::Vector2f pos)
-{
-    mTextBox.setPosition(pos);
 }
 
 void TextBoxDynamic::setLimit(bool flag, int lim)

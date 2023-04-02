@@ -10,9 +10,13 @@ const int ESCAPE_KEY   =27;
 class TextBoxDynamic: public SceneNode
 {
     public:
-        TextBoxDynamic(int size, sf::Color color, bool sel);
-        void                    setFont(sf::Font& font);
-        void                    setPosition(sf::Vector2f pos);
+        TextBoxDynamic(
+            sf::Font &font,
+            sf::Vector2f pos,
+            sf::Color color=sf::Color::Black,
+            float size=23.f,
+            bool sel=true
+        );
         void                    setLimit(bool flag, int lim=0);
         void                    setSelected(bool sel);
         void                    handleEvent(sf::Event event);
