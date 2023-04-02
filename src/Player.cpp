@@ -49,8 +49,7 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
         case sf::Event::KeyPressed:
         {
             auto found = mKeyBinding.find(event.key.code);
-            assert(found!=mKeyBinding.end());
-            if(!isRealtimeAction(found->second))
+            if(found!=mKeyBinding.end() && !isRealtimeAction(found->second))
                 commands.push(mActionBinding[found->second]);
             break;
         }
