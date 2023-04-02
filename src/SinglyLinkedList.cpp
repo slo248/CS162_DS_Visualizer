@@ -8,8 +8,7 @@ SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
     mWindow(window),
     mFont(font),
     pHead(nullptr),
-    mNumNode(0),
-    mIsScaling(false)
+    mNumNode(0)
 {
     buildScene();
 }
@@ -25,9 +24,6 @@ int getRand(int l, int r){
 
 void SinglyLinkedList::setRandom()
 {
-    mScaleTime=sf::Time::Zero;
-    mIsScaling=true;
-
     for(int i=0; i<Layer::NumLayer; i++)
         mSceneLayers[i]->clearChildren();
 
@@ -52,15 +48,10 @@ void SinglyLinkedList::setRandom()
         pre->setNext(tmp);
         pre=tmp;
     }
-
-    pHead->scale(0,0);
 }
 
 void SinglyLinkedList::loadFromFile(std::string dir)
 {
-    mScaleTime=sf::Time::Zero;
-    mIsScaling=true;
-
     for(int i=0; i<Layer::NumLayer; i++)
         mSceneLayers[i]->clearChildren();
 
@@ -87,12 +78,6 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     }
     fi.close();
-    
-    if(pHead) pHead->scale(0,0);
-}
-
-float f(float dt){
-    return dt*dt;
 }
 
 void SinglyLinkedList::update(sf::Time dt)
@@ -100,19 +85,6 @@ void SinglyLinkedList::update(sf::Time dt)
     while(!mCommandQueue.isEmpty())
         mSceneGraph.onCommand(mCommandQueue.pop(), dt);
     mSceneGraph.update(dt);
-
-    if(pHead && mIsScaling){
-        mScaleTime+=dt;
-        if(mScaleTime.asSeconds()>SCALE_TIME){
-            mIsScaling=false;
-            mScaleTime=sf::Time::Zero;
-            pHead->scale(1,1);
-        }
-        else{
-            float scale=f(mScaleTime.asSeconds())/f(SCALE_TIME);
-            pHead->setScale(scale,scale);
-        }
-    }
 }
 
 CommandQueue &SinglyLinkedList::getCommandQueue()
