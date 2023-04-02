@@ -23,6 +23,14 @@ struct NodeMover
     float mVelocityY;
 };
 
+struct NodeStopper
+{
+    NodeStopper(){};
+    void operator() (Node& node, sf::Time dt) const{
+        node.setVelocity(0.f, 0.f);
+    }
+};
+
 struct ArrowMover
 {
     ArrowMover(float vx, float vy): 

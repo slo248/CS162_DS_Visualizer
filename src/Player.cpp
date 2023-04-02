@@ -19,7 +19,13 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
 
 void Player::handleRealtimeInput(CommandQueue &commands)
 {
-    const float playerSpeed = 15.f;
+    const float playerSpeed = 300.f;
+
+    Command stop;
+    stop.category = Category::Node;
+    stop.action = derivedAction<Node>(NodeStopper());
+    commands.push(stop);
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
         Command moveUp;
         moveUp.category = Category::Node;
