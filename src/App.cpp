@@ -38,12 +38,8 @@ void App::run()
 
 void App::processInput()
 {
-    CommandQueue& commands=mSLL.getCommandQueue();
-
     sf::Event event;
-    while(mWindow.pollEvent(event)){
-        mPlayer.handleEvent(event,commands);
-
+    while(mWindow.pollEvent(event))
         switch(event.type){
             case sf::Event::Closed:
                 mWindow.close();
@@ -54,21 +50,10 @@ void App::processInput()
             case sf::Event::GainedFocus:
                 mIsPaused=false;
                 break;
-            case sf::Event::KeyPressed:
-                switch (event.key.code){
-                    case sf::Keyboard::R:
-                        mSLL.setRandom();
-                        break;
-                    case sf::Keyboard::F:
-                        mSLL.loadFromFile("inp.txt");
-                        break;
-                }
             default:
+                mSLL.processInput(event);
                 break;
         }
-    }
-
-    mPlayer.handleRealtimeInput(commands);
 }
 
 void App::update(sf::Time dt)

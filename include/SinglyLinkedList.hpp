@@ -3,6 +3,7 @@
 #include <Node.hpp>
 #include <SceneNode.hpp>
 #include <CommandQueue.hpp>
+#include <Player.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
@@ -30,6 +31,7 @@ class SinglyLinkedList : private sf::NonCopyable
         // N lines next contains the elements has the same order in the list
         void            loadFromFile(std::string dir);
         void            update(sf::Time dt);
+        void            processInput(sf::Event event);
         CommandQueue&   getCommandQueue();
 
     private:
@@ -41,6 +43,7 @@ class SinglyLinkedList : private sf::NonCopyable
         int                                         mNumNode;
 
         CommandQueue                                mCommandQueue;
+        Player                                      mPlayer;
 
     private:
         void            buildScene();

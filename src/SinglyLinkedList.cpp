@@ -87,6 +87,28 @@ void SinglyLinkedList::update(sf::Time dt)
     mSceneGraph.update(dt);
 }
 
+void SinglyLinkedList::processInput(sf::Event event)
+{
+    mPlayer.handleEvent(event, mCommandQueue);
+    switch (event.type){
+        case sf::Event::KeyPressed:
+        {
+            switch (event.key.code){
+                case sf::Keyboard::R:
+                    setRandom();
+                    break;
+                case sf::Keyboard::F:
+                    loadFromFile("inp.txt");
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    mPlayer.handleRealtimeInput(mCommandQueue);
+}
+
 CommandQueue &SinglyLinkedList::getCommandQueue()
 {
     return mCommandQueue;
