@@ -2,7 +2,7 @@
 
 int Entity::getCategory() const
 {
-    return -1;
+    return 0;
 }
 
 sf::Vector2f Entity::getVelocity() const
