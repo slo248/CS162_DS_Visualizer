@@ -62,7 +62,7 @@ void SinglyLinkedList::loadFromFile(std::string dir)
     for(int i=1; i<=mNumNode; i++){
         int val; fi>>val;
         assert(0<=val && val<=MAX_NUM);
-        std::unique_ptr<Node> newNode(new Node(mFont,i==0,val));
+        std::unique_ptr<Node> newNode(new Node(mFont,i==1,val));
         if(cur==nullptr){ 
             pHead=cur=newNode.get();
             pHead->setPosition(200.f,200.f);
@@ -99,8 +99,6 @@ void SinglyLinkedList::buildScene()
         mSceneLayers[i]=layer.get();
         mSceneGraph.attachChild(std::move(layer));
     }
-    
-    setRandom();
 }
 
 float getLength(sf::Vector2f vec){

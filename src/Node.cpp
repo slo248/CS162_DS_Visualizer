@@ -22,6 +22,8 @@ Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) :
         text->setPosition(0.f,2*RADIUS);
         this->attachChild(std::move(text));
     }
+
+    this->setScale(0,0);
 }
 
 Node::~Node()

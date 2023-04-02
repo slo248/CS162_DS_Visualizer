@@ -54,6 +54,15 @@ void App::processInput()
             case sf::Event::GainedFocus:
                 mIsPaused=false;
                 break;
+            case sf::Event::KeyPressed:
+                switch (event.key.code){
+                    case sf::Keyboard::R:
+                        mSLL.setRandom();
+                        break;
+                    case sf::Keyboard::F:
+                        mSLL.loadFromFile("inp.txt");
+                        break;
+                }
             default:
                 break;
         }
