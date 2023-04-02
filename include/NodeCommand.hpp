@@ -22,15 +22,10 @@ struct NodeStopper
     }
 };
 
-struct NodeScaler
+struct NodeScaleOn
 {
-    NodeScaler(){};
-    float f(float dt) const{
-        return dt*dt;
-    }
+    NodeScaleOn(){}
     void operator() (Node& node, sf::Time dt) const{
-        float factor=f(node.getScaleTime())/f(node.SCALE_TIME);
-        node.scale(factor,factor);
-        node.setScaleTime(node.getScaleTime()+dt.asSeconds());
+        node.setIsScale(true);
     }
 };
