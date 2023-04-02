@@ -3,6 +3,41 @@
 #include <ArrowCommand.hpp>
 #include <iostream>
 
+Player::Player()
+{
+    mKeyBinding.clear();
+    mActionBinding.clear();
+
+    mKeyBinding[sf::Keyboard::W] = MoveUp;
+    mKeyBinding[sf::Keyboard::S] = MoveDown;
+    mKeyBinding[sf::Keyboard::A] = MoveLeft;
+    mKeyBinding[sf::Keyboard::D] = MoveRight;
+
+    const float playerSpeed = 300.f;
+    mActionBinding[MoveUp].action = derivedAction<Node>(NodeMover(0.f, -playerSpeed));
+    mActionBinding[MoveDown].action = derivedAction<Node>(NodeMover(0.f, playerSpeed));
+    mActionBinding[MoveLeft].action = derivedAction<Node>(NodeMover(-playerSpeed, 0.f));
+    mActionBinding[MoveRight].action = derivedAction<Node>(NodeMover(playerSpeed, 0.f));
+
+    for(auto& pair:mActionBinding)
+        pair.second.category = Category::Node;
+}
+
+void Player::assignKey(Action action, sf::Keyboard::Key key)
+{
+    mKeyBinding[key] = action;
+}
+
+sf::Keyboard::Key Player::getAssignedKey(Action action) const
+{
+    auto found=std::find_if(mKeyBinding.begin(), mKeyBinding.end(), [action](std::pair<sf::Keyboard::Key, Action> pair){
+        return pair.second == action;
+    });
+    if(found!=mKeyBinding.end())
+        return found->first;
+    return sf::Keyboard::Unknown;
+}
+
 void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
 {
     switch (event.type){
@@ -39,35 +74,18 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands)
 
 void Player::handleRealtimeInput(CommandQueue &commands)
 {
-    const float playerSpeed = 300.f;
-
     Command stop;
     stop.category = Category::Node;
     stop.action = derivedAction<Node>(NodeStopper());
     commands.push(stop);
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-        Command moveUp;
-        moveUp.category = Category::Node;
-        moveUp.action = derivedAction<Node>(NodeMover(0.f, -playerSpeed));
-        commands.push(moveUp);
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-        Command moveDown;
-        moveDown.category = Category::Node;
-        moveDown.action = derivedAction<Node>(NodeMover(0.f, playerSpeed));
-        commands.push(moveDown);
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-        Command moveLeft;
-        moveLeft.category = Category::Node;
-        moveLeft.action = derivedAction<Node>(NodeMover(-playerSpeed, 0.f));
-        commands.push(moveLeft);
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-        Command moveRight;
-        moveRight.category = Category::Node;
-        moveRight.action = derivedAction<Node>(NodeMover(playerSpeed, 0.f));
-        commands.push(moveRight);
-    }
+    for(auto pair:mKeyBinding)
+        if(sf::Keyboard::isKeyPressed(pair.first) && isRealtimeAction(pair.second)){
+            commands.push(mActionBinding[pair.second]);
+        }
+}
+
+bool Player::isRealtimeAction(Action action)
+{
+    return action == MoveUp || action == MoveDown || action == MoveLeft || action == MoveRight;
 }
