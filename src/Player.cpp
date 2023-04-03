@@ -1,6 +1,4 @@
 #include <Player.hpp>
-#include <NodeCommand.hpp>
-#include <ArrowCommand.hpp>
 #include <iostream>
 #include <utility>
 

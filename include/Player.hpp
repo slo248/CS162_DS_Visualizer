@@ -1,6 +1,8 @@
 #pragma once
 
 #include <CommandQueue.hpp>
+#include <NodeCommand.hpp>
+#include <ArrowCommand.hpp>
 #include <map>
 
 class Player
