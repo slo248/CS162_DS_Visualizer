@@ -10,6 +10,7 @@ namespace ButtonConfig{
     const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(100.f,300.f);
     const sf::Vector2f  DEFAULT_SIZE=sf::Vector2f(70.f,50.f);
     const float         CHARACTER_SIZE=23.f;
+    const float         THICK=3.f;
 }
 
 class Button: public SceneNode

@@ -6,6 +6,11 @@ Button::Button(sf::Font &font, const std::string &text, sf::Vector2f position, s
     mBackground.setSize(size);
     mBackground.setFillColor(background_color);
     mBackground.setPosition(position);
+    mBackground.setOutlineThickness(ButtonConfig::THICK);
+    mBackground.setOutlineColor(ButtonConfig::TEXT_COLOR);
+    
+    sf::FloatRect bounds = mBackground.getLocalBounds();
+    mBackground.setOrigin(bounds.left, bounds.top);
 
     mText.setFont(font);
     mText.setString(text);
