@@ -8,7 +8,7 @@ namespace ButtonConfig{
     const sf::Color     BG_COLOR_HOVER=sf::Color(sf::Uint8(128),sf::Uint8(128),sf::Uint8(128),sf::Uint8(255));
     const sf::Color     TEXT_COLOR=sf::Color::Black;
     const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(100.f,300.f);
-    const sf::Vector2f  DEFAULT_SIZE=sf::Vector2f(250.f,70.f);
+    const sf::Vector2f  DEFAULT_SIZE=sf::Vector2f(250.f,60.f);
     const float         CHARACTER_SIZE=23.f;
     const float         THICK=3.f;
 }

@@ -16,7 +16,8 @@ namespace Category{
         ButtonInsert = 1 << 6,
         ButtonUpdate = 1 << 7,
         ButtonRemove = 1 << 8,
-        AllButton = ButtonCreate | ButtonInsert | ButtonUpdate | ButtonRemove,
+        ButtonSearch = 1 << 9,
+        AllButton = ButtonCreate | ButtonInsert | ButtonUpdate | ButtonRemove | ButtonSearch,
         All = Node | Arrow | TextBoxFixed | TextBoxDynamic | AllButton
     };
 }

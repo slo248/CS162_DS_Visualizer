@@ -146,22 +146,27 @@ void SinglyLinkedList::buildScene()
 
     sf::Vector2f size=mWindow.getView().getSize();
     {
-        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonCreate,sf::Vector2f(0.f,size.y-4*ButtonConfig::DEFAULT_SIZE.y)));
+        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonCreate,sf::Vector2f(0.f,size.y-5*ButtonConfig::DEFAULT_SIZE.y)));
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
     {
-        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonInsert,sf::Vector2f(0.f,size.y-3*ButtonConfig::DEFAULT_SIZE.y)));
+        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonInsert,sf::Vector2f(0.f,size.y-4*ButtonConfig::DEFAULT_SIZE.y)));
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
     {
-        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonUpdate,sf::Vector2f(0.f,size.y-2*ButtonConfig::DEFAULT_SIZE.y)));
+        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonUpdate,sf::Vector2f(0.f,size.y-3*ButtonConfig::DEFAULT_SIZE.y)));
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
     {
-        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonRemove,sf::Vector2f(0.f,size.y-ButtonConfig::DEFAULT_SIZE.y)));
+        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonRemove,sf::Vector2f(0.f,size.y-2*ButtonConfig::DEFAULT_SIZE.y)));
+        mButtons.push_back(btn.get());
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonSearch,sf::Vector2f(0.f,size.y-ButtonConfig::DEFAULT_SIZE.y)));
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }

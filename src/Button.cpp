@@ -28,6 +28,9 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
         case Category::Type::ButtonRemove:
             mText.setString("Remove");
             break;
+        case Category::Type::ButtonSearch:
+            mText.setString("Search");
+            break;
     }
 
     mText.setCharacterSize(ButtonConfig::CHARACTER_SIZE);
