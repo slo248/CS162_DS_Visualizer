@@ -106,8 +106,21 @@ void SinglyLinkedList::processInput(sf::Event event)
         {
             sf::Vector2f mousePos(mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow)));
             for(Button* btn: mButtons)
-                if(btn->isMouseOver(mousePos))
+                if(btn->isMousePressed(mousePos)){
                     btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
+                    int type=btn->getCategory();
+                    switch (type){
+                        case Category::Type::ButtonCreate:
+                            setRandom();
+                            break;
+                        case Category::Type::ButtonInsert:
+                            break;
+                        case Category::Type::ButtonUpdate:
+                            break;
+                        case Category::Type::ButtonRemove:
+                            break;
+                    }
+                }
                 else
                     btn->setBackGroundColor(ButtonConfig::BG_COLOR);
             break;

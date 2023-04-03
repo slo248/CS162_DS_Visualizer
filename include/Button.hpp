@@ -26,6 +26,7 @@ public:
 
     virtual int         getCategory() const;
     bool                isMouseOver(sf::Vector2f mouse_pos);
+    bool                isMousePressed(sf::Vector2f mouse_pos);
     void                setBackGroundColor(sf::Color color);
 
 private:

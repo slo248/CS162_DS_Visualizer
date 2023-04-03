@@ -43,6 +43,11 @@ int Button::getCategory() const
     return mType;
 }
 
+bool Button::isMousePressed(sf::Vector2f mouse_pos)
+{
+    return isMouseOver(mouse_pos) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+}
+
 bool Button::isMouseOver(sf::Vector2f mouse_pos)
 {
     sf::FloatRect bounds = mBackground.getGlobalBounds();
