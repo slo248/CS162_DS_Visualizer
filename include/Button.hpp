@@ -23,7 +23,9 @@ public:
         sf::Color background_color=ButtonConfig::BG_COLOR
     );
 
-    virtual int     getCategory() const;
+    virtual int         getCategory() const;
+    bool                isMouseOver(sf::Vector2f mouse_pos);
+    void                setBackGroundColor(sf::Color color);
 
 private:
     sf::RectangleShape  mBackground;

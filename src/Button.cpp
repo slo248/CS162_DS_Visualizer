@@ -14,7 +14,7 @@ Button::Button(sf::Font &font, const std::string &text, sf::Vector2f position, s
 
     sf::FloatRect textRect = mText.getLocalBounds();
     mText.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height / 2.f);
-    mText.setPosition(position + size / 2.f);
+    mText.setPosition(size / 2.f);
 }
 
 int Button::getCategory() const
@@ -22,10 +22,22 @@ int Button::getCategory() const
     return Category::Button;
 }
 
+bool Button::isMouseOver(sf::Vector2f mouse_pos)
+{
+    sf::FloatRect bounds = mBackground.getGlobalBounds();
+    return bounds.left<=mouse_pos.x && mouse_pos.x<=bounds.left+bounds.width
+     && bounds.top<=mouse_pos.y && mouse_pos.y<=bounds.top+bounds.height;
+}
+
+void Button::setBackGroundColor(sf::Color color)
+{
+    mBackground.setFillColor(color);
+}
+
 void Button::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mBackground, states);
-    states.transform *= getTransform();
+    states.transform *= mBackground.getTransform();
     target.draw(mText, states);
 }
 

@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <cassert>
+#include <iostream>
 #include "SinglyLinkedList.hpp"
 
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
@@ -103,6 +104,16 @@ void SinglyLinkedList::processInput(sf::Event event)
             }
             break;
         }
+        case sf::Event::MouseMoved:
+        {
+            sf::Vector2f mousePos(mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow)));
+            for(Button* btn: mButtons)
+                if(btn->isMouseOver(mousePos))
+                    btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
+                else
+                    btn->setBackGroundColor(ButtonConfig::BG_COLOR);
+            break;
+        }
         default:
             break;
     }
@@ -125,20 +136,24 @@ void SinglyLinkedList::buildScene()
     sf::Vector2f size=mWindow.getView().getSize();
     {
         std::unique_ptr<Button> btn(new Button(mFont,"Create",sf::Vector2f(0.f,size.y-200),sf::Vector2f(100.f,50.f)));
+        mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
-    {
-        std::unique_ptr<Button> btn(new Button(mFont,"Insert",sf::Vector2f(0.f,size.y-150),sf::Vector2f(100.f,50.f)));
-        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    }
-    {
-        std::unique_ptr<Button> btn(new Button(mFont,"Update",sf::Vector2f(0.f,size.y-100),sf::Vector2f(100.f,50.f)));
-        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    }
-    {
-        std::unique_ptr<Button> btn(new Button(mFont,"Remove",sf::Vector2f(0.f,size.y-50),sf::Vector2f(100.f,50.f)));
-        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    }
+    // {
+    //     std::unique_ptr<Button> btn(new Button(mFont,"Insert",sf::Vector2f(0.f,size.y-150),sf::Vector2f(100.f,50.f)));
+    //     mButtons.push_back(btn.get());
+    //     mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    // }
+    // {
+    //     std::unique_ptr<Button> btn(new Button(mFont,"Update",sf::Vector2f(0.f,size.y-100),sf::Vector2f(100.f,50.f)));
+    //     mButtons.push_back(btn.get());
+    //     mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    // }
+    // {
+    //     std::unique_ptr<Button> btn(new Button(mFont,"Remove",sf::Vector2f(0.f,size.y-50),sf::Vector2f(100.f,50.f)));
+    //     mButtons.push_back(btn.get());
+    //     mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    // }
 }
 
 float getLength(sf::Vector2f vec){
