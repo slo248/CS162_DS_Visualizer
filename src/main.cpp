@@ -9,12 +9,12 @@ int main()
     system("cls");
     try
     {
-        mFonts.load(Fonts::ID::Times,"media/font/times.ttf");
+        mFonts.load(Fonts::ID::SanFrancisco,"media/font/SFProDisplay.ttf");
 
         sf::ContextSettings settings;
         settings.antialiasingLevel = 8;
 
-        App app(mFonts.get(Fonts::ID::Times),settings);
+        App app(mFonts.get(Fonts::ID::SanFrancisco),settings);
         app.run();
     }
     catch (std::exception& e)

@@ -9,7 +9,8 @@ namespace Fonts{
     enum ID{
         Arial,
         Consolas,
-        Times
+        Times,
+        SanFrancisco
     };
 }
 
