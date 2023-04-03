@@ -1,10 +1,10 @@
 #pragma once
 
-#include <Node.hpp>
 #include <SceneNode.hpp>
 #include <CommandQueue.hpp>
-#include <Player.hpp>
 #include <Button.hpp>
+#include <NodeCommand.hpp>
+#include <ArrowCommand.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
@@ -44,7 +44,6 @@ class SinglyLinkedList : private sf::NonCopyable
         int                                         mNumNode;
 
         CommandQueue                                mCommandQueue;
-        Player                                      mPlayer;
         std::vector<Button*>                        mButtons;
 
     private:

@@ -44,7 +44,6 @@ void SinglyLinkedList::setRandom()
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
         mSceneLayers[Layer::Front]->attachChild(std::move(std::move(node)));
-        // pre->attachChild(std::move(node));
         pre->setNext(tmp);
         pre=tmp;
     }
@@ -65,13 +64,11 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         if(cur==nullptr){ 
             pHead=cur=newNode.get();
             pHead->setPosition(200.f,200.f);
-            // mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
         }
         else{
             addArrow(cur,DEFAULT_DIST);
             newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
             cur->setNext(newNode.get());
-            // cur->attachChild(std::move(newNode));
             cur=cur->getNext();
         }
         mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
@@ -88,7 +85,6 @@ void SinglyLinkedList::update(sf::Time dt)
 
 void SinglyLinkedList::processInput(sf::Event event)
 {
-    mPlayer.handleEvent(event, mCommandQueue);
     switch (event.type){
         case sf::Event::KeyPressed:
         {
@@ -109,8 +105,6 @@ void SinglyLinkedList::processInput(sf::Event event)
     sf::Vector2f mousePos(mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow)));
     for(Button* btn: mButtons)
         if(btn->isMouseOver(mousePos)){
-            // std::cout<<"Mouse over button: "<<btn->getCategory()<<"\n";
-            // std::cout<<"Mouse pressed: "<<sf::Mouse::isButtonPressed(sf::Mouse::Left)<<"\n\n";
             btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
             int type=btn->getCategory();
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
@@ -135,8 +129,6 @@ void SinglyLinkedList::processInput(sf::Event event)
         }
         else
             btn->setBackGroundColor(ButtonConfig::BG_COLOR);
-
-    mPlayer.handleRealtimeInput(mCommandQueue);
 }
 
 CommandQueue &SinglyLinkedList::getCommandQueue()
