@@ -121,6 +121,24 @@ void SinglyLinkedList::buildScene()
         mSceneLayers[i]=layer.get();
         mSceneGraph.attachChild(std::move(layer));
     }
+
+    sf::Vector2f size=mWindow.getView().getSize();
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Create",sf::Vector2f(0.f,size.y-200),sf::Vector2f(100.f,50.f)));
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Insert",sf::Vector2f(0.f,size.y-150),sf::Vector2f(100.f,50.f)));
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Update",sf::Vector2f(0.f,size.y-100),sf::Vector2f(100.f,50.f)));
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Remove",sf::Vector2f(0.f,size.y-50),sf::Vector2f(100.f,50.f)));
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
 }
 
 float getLength(sf::Vector2f vec){

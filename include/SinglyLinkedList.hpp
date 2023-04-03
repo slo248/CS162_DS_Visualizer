@@ -4,6 +4,7 @@
 #include <SceneNode.hpp>
 #include <CommandQueue.hpp>
 #include <Player.hpp>
+#include <Button.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
@@ -44,6 +45,7 @@ class SinglyLinkedList : private sf::NonCopyable
 
         CommandQueue                                mCommandQueue;
         Player                                      mPlayer;
+        std::vector<Button*>                        mButtons;
 
     private:
         void            buildScene();

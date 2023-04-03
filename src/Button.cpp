@@ -1,4 +1,5 @@
 #include <Button.hpp>
+#include <iostream>
 
 Button::Button(sf::Font &font, const std::string &text, sf::Vector2f position, sf::Vector2f size, sf::Color background_color)
 {
