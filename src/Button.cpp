@@ -31,6 +31,12 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
         case Category::Type::ButtonSearch:
             mText.setString("Search");
             break;
+        case Category::Type::ButtonSetRandom:
+            mText.setString("Set Random");
+            break;
+        case Category::Type::ButtonLoadFromFile:
+            mText.setString("Load From File");
+            break;
     }
 
     mText.setCharacterSize(ButtonConfig::CHARACTER_SIZE);

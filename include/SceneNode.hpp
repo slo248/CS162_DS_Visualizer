@@ -7,18 +7,19 @@
 
 namespace Category{
     enum Type{
-        None = 0,
-        Node = 1 << 0,
-        Arrow = 1 << 1,
-        TextBoxFixed = 1 << 3,
-        TextBoxDynamic = 1 << 4,
-        ButtonCreate = 1 << 5,
-        ButtonInsert = 1 << 6,
-        ButtonUpdate = 1 << 7,
-        ButtonRemove = 1 << 8,
-        ButtonSearch = 1 << 9,
-        AllButton = ButtonCreate | ButtonInsert | ButtonUpdate | ButtonRemove | ButtonSearch,
-        All = Node | Arrow | TextBoxFixed | TextBoxDynamic | AllButton
+        None                = 0,
+        Node                = 1 << 0,
+        Arrow               = 1 << 1,
+        TextBoxFixed        = 1 << 2,
+        TextBoxDynamic      = 1 << 3,
+        ButtonCreate        = 1 << 4,
+        ButtonInsert        = 1 << 5,
+        ButtonUpdate        = 1 << 6,
+        ButtonRemove        = 1 << 7,
+        ButtonSearch        = 1 << 8,
+        ButtonSetRandom     = 1 << 9,
+        ButtonLoadFromFile  = 1 << 10,
+        All                 = 0xFFFF
     };
 }
 
