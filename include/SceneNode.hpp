@@ -12,8 +12,12 @@ namespace Category{
         Arrow = 1 << 1,
         TextBoxFixed = 1 << 3,
         TextBoxDynamic = 1 << 4,
-        Button = 1 << 5,
-        All = Node | Arrow | TextBoxFixed | TextBoxDynamic | Button
+        ButtonCreate = 1 << 5,
+        ButtonInsert = 1 << 6,
+        ButtonUpdate = 1 << 7,
+        ButtonRemove = 1 << 8,
+        AllButton = ButtonCreate | ButtonInsert | ButtonUpdate | ButtonRemove,
+        All = Node | Arrow | TextBoxFixed | TextBoxDynamic | AllButton
     };
 }
 

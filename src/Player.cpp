@@ -27,6 +27,7 @@ Player::Player()
 
     for(auto& pair:mActionBinding)
         pair.second.category = Category::Node;
+
 }
 
 void Player::assignKey(Action action, sf::Keyboard::Key key)

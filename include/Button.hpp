@@ -13,19 +13,12 @@ namespace ButtonConfig{
     const float         THICK=3.f;
 }
 
-enum ButtonType{
-    Create,
-    Insert,
-    Update,
-    Remove
-};
-
 class Button: public SceneNode
 {
 public:
     Button(
         sf::Font& font, 
-        ButtonType type,
+        Category::Type type,
         sf::Vector2f position=ButtonConfig::DEFAULT_POSITION, 
         sf::Vector2f size=ButtonConfig::DEFAULT_SIZE, 
         sf::Color background_color=ButtonConfig::BG_COLOR
@@ -38,6 +31,7 @@ public:
 private:
     sf::RectangleShape  mBackground;
     sf::Text            mText;
+    Category::Type      mType;
 
     void        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
     void        updateCurrent(sf::Time dt);

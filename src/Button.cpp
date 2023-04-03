@@ -1,7 +1,8 @@
 #include <Button.hpp>
 #include <iostream>
 
-Button::Button(sf::Font &font, ButtonType type, sf::Vector2f position, sf::Vector2f size, sf::Color background_color)
+Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::Vector2f size, sf::Color background_color):
+    mType(type)
 {
     mBackground.setSize(size);
     mBackground.setFillColor(background_color);
@@ -15,16 +16,16 @@ Button::Button(sf::Font &font, ButtonType type, sf::Vector2f position, sf::Vecto
     mText.setFont(font);
 
     switch (type){
-        case ButtonType::Create:
+        case Category::Type::ButtonCreate:
             mText.setString("Create");
             break;
-        case ButtonType::Insert:
+        case Category::Type::ButtonInsert:
             mText.setString("Insert");
             break;
-        case ButtonType::Update:
+        case Category::Type::ButtonUpdate:
             mText.setString("Update");
             break;
-        case ButtonType::Remove:
+        case Category::Type::ButtonRemove:
             mText.setString("Remove");
             break;
     }
@@ -39,7 +40,7 @@ Button::Button(sf::Font &font, ButtonType type, sf::Vector2f position, sf::Vecto
 
 int Button::getCategory() const
 {
-    return Category::Button;
+    return mType;
 }
 
 bool Button::isMouseOver(sf::Vector2f mouse_pos)
