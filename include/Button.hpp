@@ -13,12 +13,19 @@ namespace ButtonConfig{
     const float         THICK=3.f;
 }
 
+enum ButtonType{
+    Create,
+    Insert,
+    Update,
+    Remove
+};
+
 class Button: public SceneNode
 {
 public:
     Button(
         sf::Font& font, 
-        const std::string& text, 
+        ButtonType type,
         sf::Vector2f position=ButtonConfig::DEFAULT_POSITION, 
         sf::Vector2f size=ButtonConfig::DEFAULT_SIZE, 
         sf::Color background_color=ButtonConfig::BG_COLOR

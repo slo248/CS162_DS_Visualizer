@@ -1,7 +1,7 @@
 #include <Button.hpp>
 #include <iostream>
 
-Button::Button(sf::Font &font, const std::string &text, sf::Vector2f position, sf::Vector2f size, sf::Color background_color)
+Button::Button(sf::Font &font, ButtonType type, sf::Vector2f position, sf::Vector2f size, sf::Color background_color)
 {
     mBackground.setSize(size);
     mBackground.setFillColor(background_color);
@@ -13,7 +13,22 @@ Button::Button(sf::Font &font, const std::string &text, sf::Vector2f position, s
     mBackground.setOrigin(bounds.left, bounds.top);
 
     mText.setFont(font);
-    mText.setString(text);
+
+    switch (type){
+        case ButtonType::Create:
+            mText.setString("Create");
+            break;
+        case ButtonType::Insert:
+            mText.setString("Insert");
+            break;
+        case ButtonType::Update:
+            mText.setString("Update");
+            break;
+        case ButtonType::Remove:
+            mText.setString("Remove");
+            break;
+    }
+
     mText.setCharacterSize(ButtonConfig::CHARACTER_SIZE);
     mText.setFillColor(ButtonConfig::TEXT_COLOR);
 
