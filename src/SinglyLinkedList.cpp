@@ -137,21 +137,21 @@ void SinglyLinkedList::buildScene()
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
-    // {
-    //     std::unique_ptr<Button> btn(new Button(mFont,"Insert",sf::Vector2f(0.f,size.y-150),sf::Vector2f(100.f,50.f)));
-    //     mButtons.push_back(btn.get());
-    //     mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    // }
-    // {
-    //     std::unique_ptr<Button> btn(new Button(mFont,"Update",sf::Vector2f(0.f,size.y-100),sf::Vector2f(100.f,50.f)));
-    //     mButtons.push_back(btn.get());
-    //     mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    // }
-    // {
-    //     std::unique_ptr<Button> btn(new Button(mFont,"Remove",sf::Vector2f(0.f,size.y-50),sf::Vector2f(100.f,50.f)));
-    //     mButtons.push_back(btn.get());
-    //     mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    // }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Insert",sf::Vector2f(0.f,size.y-150),sf::Vector2f(100.f,50.f)));
+        mButtons.push_back(btn.get());
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Update",sf::Vector2f(0.f,size.y-100),sf::Vector2f(100.f,50.f)));
+        mButtons.push_back(btn.get());
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
+    {
+        std::unique_ptr<Button> btn(new Button(mFont,"Remove",sf::Vector2f(0.f,size.y-50),sf::Vector2f(100.f,50.f)));
+        mButtons.push_back(btn.get());
+        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+    }
 }
 
 float getLength(sf::Vector2f vec){
