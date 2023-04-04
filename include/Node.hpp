@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Entity.hpp>
+#include <Arrow.hpp>
 
 class Node: public Entity
 {
@@ -18,6 +19,8 @@ class Node: public Entity
         void        setPrev(Node* node);
         void        setScaleTime(float time);
         void        setIsScaling(int type);
+        void        setArrowNext(Arrow* arrow);
+        void        setArrowPrev(Arrow* arrow);
 
         Node*       getNext();
         Node*       getPrev();
@@ -50,6 +53,8 @@ class Node: public Entity
         // 1: scaling up
         // 2: scaling down
         int                 mIsScaling;
+        Arrow*              mArrowNext;
+        Arrow*              mArrowPrev;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

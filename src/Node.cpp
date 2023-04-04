@@ -34,6 +34,8 @@ Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) :
     }
     mSubscript->setPosition(RADIUS,2*RADIUS);    
 
+    mArrowNext=mArrowPrev=nullptr;
+
     this->setScale(0,0);
 }
 
@@ -79,6 +81,16 @@ void Node::setScaleTime(float time)
 void Node::setIsScaling(int type)
 {
     mIsScaling=type;
+}
+
+void Node::setArrowNext(Arrow *arrow)
+{
+    mArrowNext=arrow;
+}
+
+void Node::setArrowPrev(Arrow *arrow)
+{
+    mArrowPrev=arrow;
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const

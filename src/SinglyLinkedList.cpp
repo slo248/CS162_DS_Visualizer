@@ -242,6 +242,7 @@ void SinglyLinkedList::addArrow(Node *a, Node *b)
     );
 
     arr->rotate(angle*180.0/3.14);
+    a->setArrowNext(arr.get());
     a->attachChild(std::move(arr));
 }
 
