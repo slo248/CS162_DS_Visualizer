@@ -19,6 +19,15 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
         case Category::Type::ButtonCreate:
             mText.setString("Create");
             break;
+            case Category::Type::ButtonEmpty:
+                mText.setString("Empty");
+                break;
+            case Category::Type::ButtonSetRandom:
+                mText.setString("Set Random");
+                break;
+            case Category::Type::ButtonLoadFromFile:
+                mText.setString("Load From File");
+                break;
         case Category::Type::ButtonInsert:
             mText.setString("Insert");
             break;
@@ -30,12 +39,6 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
             break;
         case Category::Type::ButtonSearch:
             mText.setString("Search");
-            break;
-        case Category::Type::ButtonSetRandom:
-            mText.setString("Set Random");
-            break;
-        case Category::Type::ButtonLoadFromFile:
-            mText.setString("Load From File");
             break;
     }
 
