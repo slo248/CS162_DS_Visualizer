@@ -23,10 +23,10 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
                 mText.setString("Empty");
                 break;
             case Category::Type::ButtonSetRandom:
-                mText.setString("Set Random");
+                mText.setString("Random");
                 break;
             case Category::Type::ButtonLoadFromFile:
-                mText.setString("Load From File");
+                mText.setString("File");
                 break;
         case Category::Type::ButtonInsert:
             mText.setString("Insert");
