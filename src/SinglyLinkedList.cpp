@@ -208,3 +208,13 @@ void SinglyLinkedList::addArrow(Node *node, sf::Vector2f dist)
     arr->rotate(angle*180.0/3.14);
     node->attachChild(std::move(arr));
 }
+
+void SinglyLinkedList::removeSubButton()
+{
+    while(!mButtons.empty()){
+        int type=mButtons.back()->getCategory();
+        if(type&Category::Type::AllFixedButtons) break;
+        mSceneLayers[Layer::Background]->detachChild(*mButtons.back());
+        mButtons.pop_back();
+    }
+}

@@ -17,6 +17,7 @@ namespace Category{
         ButtonUpdate        = 1 << 6,
         ButtonRemove        = 1 << 7,
         ButtonSearch        = 1 << 8,
+        AllFixedButtons     = ButtonCreate | ButtonInsert | ButtonUpdate | ButtonRemove | ButtonSearch,
         ButtonSetRandom     = 1 << 9,
         ButtonLoadFromFile  = 1 << 10,
         All                 = 0xFFFF
