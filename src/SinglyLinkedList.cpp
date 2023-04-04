@@ -121,15 +121,24 @@ void SinglyLinkedList::processInput(sf::Event event)
                         mCommandQueue.push(appear);
                         break;
                     }
-                    case Category::Type::ButtonSetRandom:
-                    {
-                        setRandom();
-                        Command command;
-                        command.category=Category::Type::Node;
-                        command.action=derivedAction<Node>(NodeScaleFlag(true));
-                        mCommandQueue.push(command);
-                        break;
-                    }
+                        case Category::Type::ButtonSetRandom:
+                        {
+                            setRandom();
+                            Command command;
+                            command.category=Category::Type::Node;
+                            command.action=derivedAction<Node>(NodeScaleFlag(true));
+                            mCommandQueue.push(command);
+                            break;
+                        }
+                        case Category::Type::ButtonLoadFromFile:
+                        {
+                            loadFromFile("inp.txt");
+                            Command command;
+                            command.category=Category::Type::Node;
+                            command.action=derivedAction<Node>(NodeScaleFlag(true));
+                            mCommandQueue.push(command);
+                            break;
+                        }
                     case Category::Type::ButtonInsert:
                         mCommandQueue.push(command);
                         break;
@@ -165,18 +174,18 @@ void SinglyLinkedList::buildScene()
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
-
-    {
-        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonSetRandom,sf::Vector2f(ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-5*ButtonConfig::DEFAULT_SIZE.y-ButtonConfig::THICK)));
-        mButtons.push_back(btn.get());
-        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    }
-    {
-        std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonLoadFromFile,sf::Vector2f(2*ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-5*ButtonConfig::DEFAULT_SIZE.y-ButtonConfig::THICK)));
-        mButtons.push_back(btn.get());
-        mSceneLayers[Layer::Background]->attachChild(std::move(btn));
-    }
-
+        {
+            std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonSetRandom,sf::Vector2f(ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-5*ButtonConfig::DEFAULT_SIZE.y-ButtonConfig::THICK)));
+            btn->setScale(0,0);
+            mButtons.push_back(btn.get());
+            mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+        }
+        {
+            std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonLoadFromFile,sf::Vector2f(2*ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-5*ButtonConfig::DEFAULT_SIZE.y-ButtonConfig::THICK)));
+            btn->setScale(0,0);
+            mButtons.push_back(btn.get());
+            mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+        }
     {
         std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonInsert,sf::Vector2f(0.f,size.y-4*ButtonConfig::DEFAULT_SIZE.y-ButtonConfig::THICK)));
         mButtons.push_back(btn.get());
