@@ -5,6 +5,7 @@
 #include <Button.hpp>
 #include <NodeCommand.hpp>
 #include <ArrowCommand.hpp>
+#include <ButtonCommand.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{

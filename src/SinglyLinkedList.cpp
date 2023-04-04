@@ -108,9 +108,19 @@ void SinglyLinkedList::processInput(sf::Event event)
             btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
             int type=btn->getCategory();
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                Command command;
+                command.category=Category::Type::AllSubButton;
+                command.action=derivedAction<Button>(ButtonDisappear());
                 switch (type){
                     case Category::Type::ButtonCreate:
+                    {
+                        mCommandQueue.push(command);
+                        Command appear;
+                        appear.category=Category::Type::ButtonSetRandom|Category::Type::ButtonLoadFromFile;
+                        appear.action=derivedAction<Button>(ButtonAppear());
+                        mCommandQueue.push(appear);
                         break;
+                    }
                     case Category::Type::ButtonSetRandom:
                     {
                         setRandom();
@@ -121,10 +131,13 @@ void SinglyLinkedList::processInput(sf::Event event)
                         break;
                     }
                     case Category::Type::ButtonInsert:
+                        mCommandQueue.push(command);
                         break;
                     case Category::Type::ButtonUpdate:
+                        mCommandQueue.push(command);
                         break;
                     case Category::Type::ButtonRemove:
+                        mCommandQueue.push(command);
                         break;
                 }
             }
