@@ -20,6 +20,7 @@ namespace Category{
         AllFixedButtons     = ButtonCreate | ButtonInsert | ButtonUpdate | ButtonRemove | ButtonSearch,
         ButtonSetRandom     = 1 << 9,
         ButtonLoadFromFile  = 1 << 10,
+        AllSubButton        = ButtonSetRandom | ButtonLoadFromFile,
         All                 = 0xFFFF
     };
 }
