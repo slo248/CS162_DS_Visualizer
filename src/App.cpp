@@ -5,7 +5,7 @@ App::App(sf::Font& font, const sf::ContextSettings &settings):
     mIsPaused(false),
     mUpdateTime(),
     mNumFrame(0),
-    mSLL(mWindow,font),
+    mSLL(std::make_unique<SinglyLinkedList>(mWindow,font)),
     mFont(font)
 {
     mStatisticText.setFont(mFont);
@@ -51,20 +51,20 @@ void App::processInput()
                 mIsPaused=false;
                 break;
             default:
-                mSLL.processInput(event);
+                mSLL->processInput(event);
                 break;
         }
 }
 
 void App::update(sf::Time dt)
 {
-    mSLL.update(dt);
+    mSLL->update(dt);
 }
 
 void App::render()
 {
     mWindow.clear(sf::Color::White);
-    mSLL.draw();
+    mSLL->draw();
     mWindow.draw(mStatisticText);
     mWindow.display();
 }

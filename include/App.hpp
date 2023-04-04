@@ -18,12 +18,12 @@ class App
         sf::Font&                   mFont;
 
     private:
-        sf::RenderWindow            mWindow;
-        sf::Text                    mStatisticText;
-        sf::Time                    mUpdateTime;
-        int                         mNumFrame;
-        bool                        mIsPaused;
-        SinglyLinkedList            mSLL;
+        sf::RenderWindow                    mWindow;
+        sf::Text                            mStatisticText;
+        sf::Time                            mUpdateTime;
+        int                                 mNumFrame;
+        bool                                mIsPaused;
+        std::unique_ptr<SinglyLinkedList>   mSLL;
 
     private:
         void                        processInput();
