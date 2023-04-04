@@ -21,6 +21,7 @@ class Node: public Entity
         void        setIsScaling(int type);
         void        setArrowNext(Arrow* arrow);
         void        setArrowPrev(Arrow* arrow);
+        void        setHead(bool isHead);
 
         Node*       getNext();
         Node*       getPrev();
@@ -57,6 +58,7 @@ class Node: public Entity
         int                 mIsScaling;
         Arrow*              mArrowNext;
         Arrow*              mArrowPrev;
+        bool                mIsHead;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

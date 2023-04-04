@@ -3,7 +3,7 @@
 #include <string>
 
 Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
-    val(_val), pNext(_pNext), pPrev(_pPrev), mScaleTime(0), mIsScaling(false)
+    val(_val), pNext(_pNext), pPrev(_pPrev), mScaleTime(0), mIsScaling(false), mIsHead(isHead)
 {
     mCircle.setRadius(RADIUS);
     mCircle.setFillColor(INSIDE_COLOR);
@@ -101,6 +101,13 @@ void Node::setArrowNext(Arrow *arrow)
 void Node::setArrowPrev(Arrow *arrow)
 {
     mArrowPrev=arrow;
+}
+
+void Node::setHead(bool isHead)
+{
+    mIsHead=isHead;
+    if(!isHead) mSubscript->setString("");
+    else mSubscript->setString("pHead");
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
