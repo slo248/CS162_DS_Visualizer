@@ -1,5 +1,6 @@
 #include "Node.hpp"
 #include <TextBoxFixed.hpp>
+#include "Motion.hpp"
 #include <string>
 
 Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
@@ -75,10 +76,6 @@ void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(mCircle,states);
 }
 
-float f(float dt){
-    return dt*dt;
-}
-
 void Node::updateCurrent(sf::Time dt)
 {
     if(mIsScaling){
@@ -87,7 +84,7 @@ void Node::updateCurrent(sf::Time dt)
             mScaleTime=0;
         }
         else{
-            float factor=f(mScaleTime)/f(SCALE_TIME);
+            float factor=Motion::Bezier(mScaleTime/SCALE_TIME);
             this->setScale(factor,factor);
             mScaleTime+=dt.asSeconds();
         }
