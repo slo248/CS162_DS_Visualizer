@@ -66,9 +66,9 @@ void Node::setScaleTime(float time)
     mScaleTime+=time;
 }
 
-void Node::setIsScaling(bool flag)
+void Node::setIsScaling(int type)
 {
-    mIsScaling=flag;
+    mIsScaling=type;
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const

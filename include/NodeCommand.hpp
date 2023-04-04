@@ -25,12 +25,12 @@ struct NodeStopper
 
 struct NodeScaleFlag
 {
-    NodeScaleFlag(bool flag):mFlag(flag){}
+    NodeScaleFlag(int flag):mFlag(flag){}
     void operator() (Node& node, sf::Time dt) const{
         node.setIsScaling(mFlag);
     }
 
-    bool mFlag;
+    int mFlag;
 };
 
 struct NodePrintPos{

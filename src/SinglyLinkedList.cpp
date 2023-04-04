@@ -132,7 +132,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             setRandom();
                             Command command;
                             command.category=Category::Type::Node;
-                            command.action=derivedAction<Node>(NodeScaleFlag(true));
+                            command.action=derivedAction<Node>(NodeScaleFlag(1));
                             mCommandQueue.push(command);
                             break;
                         }
@@ -141,7 +141,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             loadFromFile("inp.txt");
                             Command command;
                             command.category=Category::Type::Node;
-                            command.action=derivedAction<Node>(NodeScaleFlag(true));
+                            command.action=derivedAction<Node>(NodeScaleFlag(1));
                             mCommandQueue.push(command);
                             break;
                         }

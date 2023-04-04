@@ -17,7 +17,7 @@ class Node: public Entity
         void        setNext(Node* node);
         void        setPrev(Node* node);
         void        setScaleTime(float time);
-        void        setIsScaling(bool flag);
+        void        setIsScaling(int type);
 
         Node*       getNext();
         Node*       getPrev();
@@ -41,7 +41,10 @@ class Node: public Entity
         sf::CircleShape     mCircle;
 
         float               mScaleTime;
-        bool                mIsScaling;
+        // 0: not scaling
+        // 1: scaling up
+        // 2: scaling down
+        int                 mIsScaling;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
