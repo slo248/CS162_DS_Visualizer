@@ -1,6 +1,6 @@
-#include "TextBoxDynamic.hpp"
+#include "TextBox.hpp"
 
-TextBoxDynamic::TextBoxDynamic(sf::Font &font, sf::Vector2f pos, sf::Color color, float size, bool sel)
+TextBox::TextBox(sf::Font &font, sf::Vector2f pos, sf::Color color, float size, bool sel)
 {
     mTextBox.setFont(font);
     mTextBox.setPosition(pos);
@@ -13,7 +13,7 @@ TextBoxDynamic::TextBoxDynamic(sf::Font &font, sf::Vector2f pos, sf::Color color
         mTextBox.setString("");
 }
 
-void TextBoxDynamic::deleteLastChar()
+void TextBox::deleteLastChar()
 {
     std::string a=mText.str();
     if(!a.empty()){
@@ -23,7 +23,7 @@ void TextBoxDynamic::deleteLastChar()
     }
 }
 
-void TextBoxDynamic::inputLogic(int charTyped)
+void TextBox::inputLogic(int charTyped)
 {
     switch (charTyped){
         case DELETE_KEY:
@@ -40,28 +40,28 @@ void TextBoxDynamic::inputLogic(int charTyped)
     mTextBox.setString(mText.str()+'|');
 }
 
-void TextBoxDynamic::setLimit(bool flag, int lim)
+void TextBox::setLimit(bool flag, int lim)
 {
     mHasLimit=flag;
     mLimit=lim;
 }
 
-void TextBoxDynamic::setSelected(bool sel)
+void TextBox::setSelected(bool sel)
 {
     mIsSelected=sel;
     if(!sel) mTextBox.setString(mText.str());
 }
 
-void TextBoxDynamic::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+void TextBox::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mTextBox,states);
 }
 
-void TextBoxDynamic::updateCurrent(sf::Time dt)
+void TextBox::updateCurrent(sf::Time dt)
 {
 }
 
-void TextBoxDynamic::handleEvent(sf::Event event)
+void TextBox::handleEvent(sf::Event event)
 {
     if(!mIsSelected) return;
     int charTyped=event.text.unicode;
@@ -73,7 +73,7 @@ void TextBoxDynamic::handleEvent(sf::Event event)
     else inputLogic(charTyped);
 }
 
-int TextBoxDynamic::getCategory() const
+int TextBox::getCategory() const
 {
-    return Category::TextBoxDynamic;
+    return Category::TextBox;
 }

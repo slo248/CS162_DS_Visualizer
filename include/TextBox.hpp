@@ -7,10 +7,10 @@ const int DELETE_KEY   =8;
 const int ENTER_KEY    =13;
 const int ESCAPE_KEY   =27;
 
-class TextBoxDynamic: public SceneNode
+class TextBox: public SceneNode
 {
     public:
-        TextBoxDynamic(
+        TextBox(
             sf::Font &font,
             sf::Vector2f pos,
             sf::Color color=sf::Color::Black,
