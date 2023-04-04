@@ -3,6 +3,7 @@
 #include <Command.hpp>
 #include <cmath>
 #include <vector>
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 namespace Category{

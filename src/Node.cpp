@@ -1,5 +1,4 @@
 #include "Node.hpp"
-#include <TextBoxFixed.hpp>
 #include "Motion.hpp"
 #include <string>
 
@@ -11,18 +10,29 @@ Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) :
     mCircle.setOutlineThickness(OUTLINE_THICKNESS);
     mCircle.setOutlineColor(OUTLINE_COLOR);
 
-    sf::FloatRect bounds=mCircle.getLocalBounds();
-    mCircle.setOrigin(bounds.left+bounds.width/2.f,
-                        bounds.top+bounds.height/2.f);
-
-    std::unique_ptr<TextBoxFixed> mNum(new TextBoxFixed(font,std::to_string(val)));
-    this->attachChild(std::move(mNum));
-
-    if(isHead){
-        std::unique_ptr<TextBoxFixed> text(new TextBoxFixed(font,"pHead"));
-        text->setPosition(0.f,2*RADIUS);
-        this->attachChild(std::move(text));
+    {
+        sf::FloatRect bounds=mCircle.getLocalBounds();
+        mCircle.setOrigin(bounds.left+bounds.width/2.f,
+                            bounds.top+bounds.height/2.f);
     }
+
+    mNum=std::make_unique<sf::Text>(std::to_string(val),font,DEFAULT_SIZE);
+    mNum->setFillColor(CHAR_COLOR);
+    {
+        sf::FloatRect bounds=mNum->getLocalBounds();
+        mNum->setOrigin(bounds.left+bounds.width/2.f,
+                        bounds.top+bounds.height/2.f);
+    }
+    mNum->setPosition(RADIUS,RADIUS);
+
+    mSubscript=std::make_unique<sf::Text>("",font,DEFAULT_SIZE);
+    if(isHead) mSubscript->setString("pHead");
+    mSubscript->setFillColor(SUBSCRIPT_COLOR);
+    {
+        sf::FloatRect bounds=mSubscript->getLocalBounds();
+        mSubscript->setOrigin(bounds.left+bounds.width/2.f,0);
+    }
+    mSubscript->setPosition(RADIUS,2*RADIUS);    
 
     this->setScale(0,0);
 }
@@ -74,6 +84,9 @@ void Node::setIsScaling(int type)
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);
+    states.transform*=mCircle.getTransform();
+    target.draw(*mNum.get(),states);
+    target.draw(*mSubscript.get(),states);
 }
 
 void Node::updateCurrent(sf::Time dt)

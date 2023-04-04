@@ -33,12 +33,17 @@ class Node: public Entity
         const sf::Color     OUTLINE_COLOR=sf::Color::Black;
         const sf::Color     INSIDE_COLOR=sf::Color::White;
         const float         SCALE_TIME=0.7f;
+        const sf::Color     CHAR_COLOR=sf::Color::Black;
+        const sf::Color     SUBSCRIPT_COLOR=sf::Color::Red;
+        const float         DEFAULT_SIZE=23;
 
     private:
         int val;
         Node *pNext, *pPrev;
 
-        sf::CircleShape     mCircle;
+        sf::CircleShape             mCircle;
+        std::unique_ptr<sf::Text>   mNum;
+        std::unique_ptr<sf::Text>   mSubscript;
 
         float               mScaleTime;
         // 0: not scaling
