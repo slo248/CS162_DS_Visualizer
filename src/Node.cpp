@@ -73,6 +73,16 @@ int Node::getScaleTime() const
     return mScaleTime;
 }
 
+Arrow *Node::getArrowNext()
+{
+    return mArrowNext;
+}
+
+Arrow *Node::getArrowPrev()
+{
+    return mArrowPrev;
+}
+
 void Node::setScaleTime(float time)
 {
     mScaleTime+=time;

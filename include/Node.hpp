@@ -26,6 +26,8 @@ class Node: public Entity
         Node*       getPrev();
         int         getCategory() const;
         int         getScaleTime() const;
+        Arrow*      getArrowNext();
+        Arrow*      getArrowPrev();
 
     public:
         const float         RADIUS=20.f;

@@ -1,4 +1,3 @@
-#include <Arrow.hpp>
 #include <cstdlib>
 #include <fstream>
 #include <cassert>
