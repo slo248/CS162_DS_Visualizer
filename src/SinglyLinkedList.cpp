@@ -38,11 +38,12 @@ void SinglyLinkedList::setRandom()
     Node *pre=pHead;
 
     for(int i=1; i<mNumNode; i++){
-        addArrow(pre,DEFAULT_DIST);
+        
 
         std::unique_ptr<Node> node(new Node(mFont,false,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
+        addArrow(pre,tmp);
         mSceneLayers[Layer::Front]->attachChild(std::move(std::move(node)));
         pre->setNext(tmp);
         pre=tmp;
@@ -66,8 +67,8 @@ void SinglyLinkedList::loadFromFile(std::string dir)
             pHead->setPosition(200.f,200.f);
         }
         else{
-            addArrow(cur,DEFAULT_DIST);
             newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
+            addArrow(cur,newNode.get());
             cur->setNext(newNode.get());
             cur=cur->getNext();
         }
@@ -224,14 +225,16 @@ float getLength(sf::Vector2f vec){
     return sqrt(vec.x*vec.x+vec.y*vec.y);
 }
 
-void SinglyLinkedList::addArrow(Node *node, sf::Vector2f dist)
+void SinglyLinkedList::addArrow(Node *a, Node *b)
 {
+    sf::Vector2f dist=b->getPosition()-a->getPosition();
+
     float angle=atan(dist.y/dist.x);
-    float ratio=1-2*(node->RADIUS+node->OUTLINE_THICKNESS)/getLength(dist);
+    float ratio=1-2*(a->RADIUS+a->OUTLINE_THICKNESS)/getLength(dist);
     dist.x*=ratio; dist.y*=ratio;
 
     std::unique_ptr<Arrow> arr(new Arrow(dist));
-    arr->setPosition(node->RADIUS+node->OUTLINE_THICKNESS,0);
+    arr->setPosition(a->RADIUS+a->OUTLINE_THICKNESS,0);
     sf::Vector2f cur=arr->getPosition();
     arr->setPosition(
         cos(angle)*cur.x-sin(angle)*cur.y,
@@ -239,7 +242,7 @@ void SinglyLinkedList::addArrow(Node *node, sf::Vector2f dist)
     );
 
     arr->rotate(angle*180.0/3.14);
-    node->attachChild(std::move(arr));
+    a->attachChild(std::move(arr));
 }
 
 void SinglyLinkedList::removeSubButton()
