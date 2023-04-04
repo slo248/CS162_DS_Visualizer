@@ -19,6 +19,7 @@ namespace Category{
         ButtonSearch        = 1 << 8,
         ButtonSetRandom     = 1 << 9,
         ButtonLoadFromFile  = 1 << 10,
+        AllSubButton        = ButtonSetRandom | ButtonLoadFromFile,
         All                 = 0xFFFF
     };
 }
