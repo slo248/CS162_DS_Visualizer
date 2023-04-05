@@ -15,4 +15,14 @@ namespace NodeAnimation
             node.setScale(factor,factor);
         }
     };
+
+    struct Shrink
+    {
+        Shrink(){}
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            float factor=1.f-Motion::Bezier(elapsedTime/duration);
+            node.setScale(factor,factor);
+        }
+    };
 }
