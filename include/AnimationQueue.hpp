@@ -6,7 +6,7 @@
 class AnimationQueue
 {
     public:
-        void                update();
+        void                update(sf::Time dt);
         void                push(Animation::Ptr animation);
         Animation::Ptr      pop();
         void                clear();
