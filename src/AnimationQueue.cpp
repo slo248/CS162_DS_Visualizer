@@ -1,5 +1,12 @@
 #include "AnimationQueue.hpp"
 
+void AnimationQueue::update()
+{
+    if(mQueue.empty()) return;
+    Animation* animation=mQueue.front().get();
+    if(animation->elapsedTime>=animation->duration) mQueue.pop();
+}
+
 void AnimationQueue::push(Animation::Ptr animation)
 {
     mQueue.push(std::move(animation));
