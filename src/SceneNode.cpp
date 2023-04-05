@@ -54,12 +54,8 @@ void SceneNode::onCommand(const Command &command, sf::Time dt)
 
 void SceneNode::onAnimation(Animation *animation, sf::Time dt)
 {
-    if(animation->category&getCategory()){
-        sf::Time elapsedTime=animation->elapsedTime+=dt;
-        if(elapsedTime>=animation->duration)
-            elapsedTime=animation->duration;
-        animation->animator(*this,elapsedTime,animation->duration);
-    }
+    if(animation->category&getCategory())
+        animation->animator(*this,animation->elapsedTime,animation->duration);
     for(Ptr& child: mChildren)
         child->onAnimation(animation,dt);
 }

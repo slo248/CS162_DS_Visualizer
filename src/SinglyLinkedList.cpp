@@ -83,9 +83,13 @@ void SinglyLinkedList::update(sf::Time dt)
     mSceneGraph.update(dt);
 
     Animation* animation=mAnimationQueue.front();
-    if(animation!=nullptr)
+    if(animation!=nullptr){
+        animation->elapsedTime+=dt;
+        if(animation->elapsedTime>=animation->duration)
+            animation->elapsedTime=animation->duration;
         mSceneGraph.onAnimation(animation, dt);
-    mAnimationQueue.update(dt);
+        mAnimationQueue.update();
+    }
 }
 
 void SinglyLinkedList::processInput(sf::Event event)

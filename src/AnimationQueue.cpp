@@ -1,10 +1,9 @@
 #include "AnimationQueue.hpp"
 
-void AnimationQueue::update(sf::Time dt)
+void AnimationQueue::update()
 {
     if(mQueue.empty()) return;
     Animation* animation=mQueue.front().get();
-    animation->elapsedTime+=dt;
     if(animation->elapsedTime>=animation->duration) mQueue.pop();
 }
 
