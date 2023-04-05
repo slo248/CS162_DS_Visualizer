@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 #include <memory>
+#include <Animation.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Category{
@@ -45,6 +46,7 @@ class SceneNode :
         void            clearChildren();
         virtual int     getCategory() const;
         void            onCommand(const Command& command, sf::Time dt);
+        void            onAnimation(Animation* animation, sf::Time dt);
         void            update(sf::Time dt);
 
     private:
