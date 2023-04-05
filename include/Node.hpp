@@ -65,5 +65,4 @@ class Node: public Entity
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;
         void            updateCurrent(sf::Time dt);
-        void            applyScaling(sf::Time dt);
 };

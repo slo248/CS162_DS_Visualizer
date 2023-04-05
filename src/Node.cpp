@@ -122,26 +122,6 @@ void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 void Node::updateCurrent(sf::Time dt)
 {
-    applyScaling(dt);
     if(mVelocity.x*mVelocity.y) mVelocity/=std::sqrt(2.f);
     move(mVelocity*dt.asSeconds());
-}
-
-void Node::applyScaling(sf::Time dt)
-{
-    if(mIsScaling){
-        if(mScaleTime>=SCALE_TIME){
-            mIsScaling=0;
-            mScaleTime=0;
-        }
-        else{
-            float factor;
-            if(mIsScaling==1) // scaling up
-                factor=Motion::Bezier(mScaleTime/SCALE_TIME);
-            else // scaling down
-                factor=Motion::Bezier(1-mScaleTime/SCALE_TIME);
-            this->setScale(factor,factor);
-            mScaleTime+=dt.asSeconds();
-        }
-    }
 }
