@@ -1,5 +1,10 @@
 #include "AnimationQueue.hpp"
 
+void AnimationQueue::clear()
+{
+    while(!mQueue.empty()) mQueue.pop();
+}
+
 bool AnimationQueue::empty()
 {
     return mQueue.empty();
