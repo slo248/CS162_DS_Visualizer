@@ -81,6 +81,11 @@ void SinglyLinkedList::update(sf::Time dt)
     while(!mCommandQueue.isEmpty())
         mSceneGraph.onCommand(mCommandQueue.pop(), dt);
     mSceneGraph.update(dt);
+
+    Animation* animation=mAnimationQueue.front();
+    if(animation!=nullptr) 
+        mSceneGraph.onAnimation(animation, dt);
+    mAnimationQueue.update();
 }
 
 void SinglyLinkedList::processInput(sf::Event event)
