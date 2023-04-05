@@ -21,7 +21,10 @@ namespace Category{
         ButtonEmpty         = 1 << 8,
         ButtonSetRandom     = 1 << 9,
         ButtonLoadFromFile  = 1 << 10,
-        AllSubButton        = ButtonEmpty | ButtonSetRandom | ButtonLoadFromFile,
+        ButtonInsertFront   = 1 << 11,
+        ButtonInsertBack    = 1 << 12,
+        ButtonInsertMiddle  = 1 << 13,
+        AllSubButton        = ButtonEmpty | ButtonSetRandom | ButtonLoadFromFile | ButtonInsertFront | ButtonInsertBack | ButtonInsertMiddle,
         All                 = 0xFFFF
     };
 }
