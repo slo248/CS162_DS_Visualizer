@@ -1,6 +1,10 @@
 #pragma once
 
-#include <SceneNode.hpp>
+#include <functional>
+#include <cassert>
+#include <SFML/Graphics.hpp>
+
+class SceneNode;
 
 struct Animation
 {

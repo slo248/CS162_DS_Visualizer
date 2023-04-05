@@ -6,6 +6,8 @@
 #include <NodeCommand.hpp>
 #include <ArrowCommand.hpp>
 #include <ButtonCommand.hpp>
+#include <AnimationQueue.hpp>
+#include <NodeAnimation.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
@@ -45,6 +47,7 @@ class SinglyLinkedList : private sf::NonCopyable
         int                                         mNumNode;
 
         CommandQueue                                mCommandQueue;
+        AnimationQueue                              mAnimationQueue;
         std::vector<Button*>                        mButtons;
 
     private:
