@@ -104,7 +104,7 @@ void SinglyLinkedList::processInput(sf::Event event)
 
     sf::Vector2f mousePos(mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow)));
     for(Button* btn: mButtons)
-        if(btn->isMouseOver(mousePos)){
+        if(btn->getScale().x>0 && btn->isMouseOver(mousePos)){
             btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
             int type=btn->getCategory();
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
