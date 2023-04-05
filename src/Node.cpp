@@ -2,6 +2,8 @@
 #include "Motion.hpp"
 #include <string>
 
+using namespace NodeConfig;
+
 Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
     val(_val), pNext(_pNext), pPrev(_pPrev), mScaleTime(0), mIsScaling(false), mIsHead(isHead)
 {

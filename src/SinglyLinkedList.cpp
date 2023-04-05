@@ -141,7 +141,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             std::unique_ptr<Animation> animation(new Animation);
                             animation->category=Category::Type::Node;
                             animation->elapsedTime=sf::Time::Zero;
-                            animation->duration=sf::seconds(0.7);
+                            animation->duration=NodeConfig::SCALE_TIME;
                             animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
                             break;
@@ -152,7 +152,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             std::unique_ptr<Animation> animation(new Animation);
                             animation->category=Category::Type::Node;
                             animation->elapsedTime=sf::Time::Zero;
-                            animation->duration=sf::seconds(0.7);
+                            animation->duration=NodeConfig::SCALE_TIME;
                             animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
 
@@ -264,11 +264,11 @@ Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
     sf::Vector2f dist=b->getPosition()-a->getPosition();
 
     float angle=atan(dist.y/dist.x);
-    float ratio=1-2*(a->RADIUS+a->OUTLINE_THICKNESS)/getLength(dist);
+    float ratio=1-2*(NodeConfig::RADIUS+NodeConfig::OUTLINE_THICKNESS)/getLength(dist);
     dist.x*=ratio; dist.y*=ratio;
 
     std::unique_ptr<Arrow> arr(new Arrow(dist));
-    arr->setPosition(a->RADIUS+a->OUTLINE_THICKNESS,0);
+    arr->setPosition(NodeConfig::RADIUS+NodeConfig::OUTLINE_THICKNESS,0);
     sf::Vector2f cur=arr->getPosition();
     arr->setPosition(
         cos(angle)*cur.x-sin(angle)*cur.y,

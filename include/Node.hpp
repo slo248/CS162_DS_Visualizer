@@ -3,6 +3,21 @@
 #include <Entity.hpp>
 #include <Arrow.hpp>
 
+namespace NodeConfig
+{
+    const float         RADIUS=20.f;
+    const float         OUTLINE_THICKNESS=6.f;
+    const float         FONTSIZE=24.f;
+    const float         DELTA_LEN_REAL_TIME=10.f;
+    const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
+    const sf::Color     OUTLINE_COLOR=sf::Color::Black;
+    const sf::Color     INSIDE_COLOR=sf::Color::White;
+    const sf::Time      SCALE_TIME=sf::seconds(0.7f);
+    const sf::Color     CHAR_COLOR=sf::Color::Black;
+    const sf::Color     SUBSCRIPT_COLOR=sf::Color::Red;
+    const float         DEFAULT_SIZE=23;
+}
+
 class Node: public Entity
 {
     public:
@@ -29,19 +44,6 @@ class Node: public Entity
         int         getScaleTime() const;
         Arrow*      getArrowNext();
         Arrow*      getArrowPrev();
-
-    public:
-        const float         RADIUS=20.f;
-        const float         OUTLINE_THICKNESS=6.f;
-        const float         FONTSIZE=24.f;
-        const float         DELTA_LEN_REAL_TIME=10.f;
-        const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
-        const sf::Color     OUTLINE_COLOR=sf::Color::Black;
-        const sf::Color     INSIDE_COLOR=sf::Color::White;
-        const float         SCALE_TIME=0.7f;
-        const sf::Color     CHAR_COLOR=sf::Color::Black;
-        const sf::Color     SUBSCRIPT_COLOR=sf::Color::Red;
-        const float         DEFAULT_SIZE=23;
 
     private:
         int val;
