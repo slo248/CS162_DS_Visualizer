@@ -1,5 +1,10 @@
 #include "AnimationQueue.hpp"
 
+void AnimationQueue::push(Animation::Ptr animation)
+{
+    mQueue.push(std::move(animation));
+}
+
 Animation::Ptr AnimationQueue::pop()
 {
     if(mQueue.empty()) return nullptr;
