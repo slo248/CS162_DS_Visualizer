@@ -78,10 +78,6 @@ void SinglyLinkedList::loadFromFile(std::string dir)
 
 void SinglyLinkedList::update(sf::Time dt)
 {
-    while(!mCommandQueue.isEmpty())
-        mSceneGraph.onCommand(mCommandQueue.pop(), dt);
-    mSceneGraph.update(dt);
-
     Animation* animation=mAnimationQueue.front();
     if(animation!=nullptr){
         animation->elapsedTime+=dt;
@@ -117,18 +113,25 @@ void SinglyLinkedList::processInput(sf::Event event)
             btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
             int type=btn->getCategory();
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-                Animation animation;
+                std::unique_ptr<Animation> disappear(new Animation);
+                disappear->category=Category::Type::AllSubButton;
+                disappear->elapsedTime=sf::seconds(1);
+                disappear->duration=sf::seconds(1);
+                disappear->animator=derivedAnimator<Button>(ButtonAnimation::Shrink());
                 // Command command;
                 // command.category=Category::Type::AllSubButton;
                 // command.action=derivedAction<Button>(ButtonDisappear());
                 switch (type){
                     case Category::Type::ButtonCreate:
                     {
-                        mCommandQueue.push(command);
-                        Command appear;
-                        appear.category=Category::Type::ButtonEmpty|Category::Type::ButtonSetRandom|Category::Type::ButtonLoadFromFile;
-                        appear.action=derivedAction<Button>(ButtonAppear());
-                        mCommandQueue.push(appear);
+                        mAnimationQueue.push(std::move(disappear));
+
+                        std::unique_ptr<Animation> appear(new Animation);
+                        appear->category=Category::Type::ButtonEmpty|Category::Type::ButtonSetRandom|Category::Type::ButtonLoadFromFile;
+                        appear->elapsedTime=sf::seconds(1);
+                        appear->duration=sf::seconds(1);
+                        appear->animator=derivedAnimator<Button>(ButtonAnimation::Grow());
+                        mAnimationQueue.push(std::move(appear));
                         break;
                     }
                         case Category::Type::ButtonEmpty:
@@ -162,29 +165,27 @@ void SinglyLinkedList::processInput(sf::Event event)
                         }
                     case Category::Type::ButtonInsert:
                     {
-                        mCommandQueue.push(command);
-                        Command appear;
-                        appear.category=Category::Type::ButtonInsertFront|Category::Type::ButtonInsertBack|Category::Type::ButtonInsertMiddle;
-                        appear.action=derivedAction<Button>(ButtonAppear());
-                        mCommandQueue.push(appear);
+                        mAnimationQueue.push(std::move(disappear));
+
+                        std::unique_ptr<Animation> appear(new Animation);
+                        appear->category=Category::Type::ButtonInsertFront|Category::Type::ButtonInsertMiddle|Category::Type::ButtonInsertBack;
+                        appear->elapsedTime=sf::seconds(1);
+                        appear->duration=sf::seconds(1);
+                        appear->animator=derivedAnimator<Button>(ButtonAnimation::Grow());
+                        mAnimationQueue.push(std::move(appear));
                         break;
                     }
                     case Category::Type::ButtonUpdate:
-                        mCommandQueue.push(command);
+                        mAnimationQueue.push(std::move(disappear));
                         break;
                     case Category::Type::ButtonRemove:
-                        mCommandQueue.push(command);
+                        mAnimationQueue.push(std::move(disappear));
                         break;
                 }
             }
         }
         else
             btn->setBackGroundColor(ButtonConfig::BG_COLOR);
-}
-
-CommandQueue &SinglyLinkedList::getCommandQueue()
-{
-    return mCommandQueue;
 }
 
 void SinglyLinkedList::buildScene()

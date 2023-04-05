@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Command.hpp>
 #include <cmath>
 #include <vector>
 #include <memory>
@@ -45,7 +44,6 @@ class SceneNode :
         sf::Vector2f    getWorldPosition() const;
         void            clearChildren();
         virtual int     getCategory() const;
-        void            onCommand(const Command& command, sf::Time dt);
         void            onAnimation(Animation* animation, sf::Time dt);
         void            update(sf::Time dt);
 

@@ -1,13 +1,10 @@
 #pragma once
 
 #include <SceneNode.hpp>
-#include <CommandQueue.hpp>
 #include <Button.hpp>
-#include <NodeCommand.hpp>
-#include <ArrowCommand.hpp>
-#include <ButtonCommand.hpp>
 #include <AnimationQueue.hpp>
 #include <NodeAnimation.hpp>
+#include <ButtonAnimation.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
@@ -36,7 +33,6 @@ class SinglyLinkedList : private sf::NonCopyable
         void            loadFromFile(std::string dir);
         void            update(sf::Time dt);
         void            processInput(sf::Event event);
-        CommandQueue&   getCommandQueue();
 
     private:
         sf::RenderWindow&                           mWindow;
@@ -46,7 +42,6 @@ class SinglyLinkedList : private sf::NonCopyable
         sf::Font&                                   mFont;
         int                                         mNumNode;
 
-        CommandQueue                                mCommandQueue;
         AnimationQueue                              mAnimationQueue;
         std::vector<Button*>                        mButtons;
 

@@ -43,15 +43,6 @@ int SceneNode::getCategory() const
     return 0;
 }
 
-void SceneNode::onCommand(const Command &command, sf::Time dt)
-{
-    if(command.category&getCategory())
-        command.action(*this,dt);
-    
-    for(Ptr& child: mChildren)
-        child->onCommand(command,dt);
-}
-
 void SceneNode::onAnimation(Animation *animation, sf::Time dt)
 {
     if(animation->category&getCategory())
