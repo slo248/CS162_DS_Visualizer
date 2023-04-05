@@ -31,6 +31,15 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
         case Category::Type::ButtonInsert:
             mText.setString("Insert");
             break;
+            case Category::Type::ButtonInsertFront:
+                mText.setString("Front");
+                break;
+            case Category::Type::ButtonInsertBack:
+                mText.setString("Back");
+                break;
+            case Category::Type::ButtonInsertMiddle:
+                mText.setString("Middle");
+                break;
         case Category::Type::ButtonUpdate:
             mText.setString("Update");
             break;

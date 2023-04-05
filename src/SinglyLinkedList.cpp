@@ -146,8 +146,14 @@ void SinglyLinkedList::processInput(sf::Event event)
                             break;
                         }
                     case Category::Type::ButtonInsert:
+                    {
                         mCommandQueue.push(command);
+                        Command appear;
+                        appear.category=Category::Type::ButtonInsertFront|Category::Type::ButtonInsertBack|Category::Type::ButtonInsertMiddle;
+                        appear.action=derivedAction<Button>(ButtonAppear());
+                        mCommandQueue.push(appear);
                         break;
+                    }
                     case Category::Type::ButtonUpdate:
                         mCommandQueue.push(command);
                         break;
@@ -203,6 +209,24 @@ void SinglyLinkedList::buildScene()
         mButtons.push_back(btn.get());
         mSceneLayers[Layer::Background]->attachChild(std::move(btn));
     }
+        {
+            std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonInsertFront,sf::Vector2f(ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-4*ButtonConfig::DEFAULT_SIZE.y-3*ButtonConfig::THICK)));
+            btn->setScale(0,0);
+            mButtons.push_back(btn.get());
+            mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+        }
+        {
+            std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonInsertMiddle,sf::Vector2f(2*ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-4*ButtonConfig::DEFAULT_SIZE.y-3*ButtonConfig::THICK)));
+            btn->setScale(0,0);
+            mButtons.push_back(btn.get());
+            mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+        }
+        {
+            std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonInsertBack,sf::Vector2f(3*ButtonConfig::DEFAULT_SIZE.x+10.f,size.y-4*ButtonConfig::DEFAULT_SIZE.y-3*ButtonConfig::THICK)));
+            btn->setScale(0,0);
+            mButtons.push_back(btn.get());
+            mSceneLayers[Layer::Background]->attachChild(std::move(btn));
+        }
     {
         std::unique_ptr<Button> btn(new Button(mFont,Category::Type::ButtonUpdate,sf::Vector2f(0.f,size.y-3*ButtonConfig::DEFAULT_SIZE.y-3*ButtonConfig::THICK)));
         mButtons.push_back(btn.get());
