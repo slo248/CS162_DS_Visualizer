@@ -47,6 +47,6 @@ class SinglyLinkedList : private sf::NonCopyable
 
     private:
         void            buildScene();
-        void            addArrow(Node* a, Node* b);
+        Arrow*          makeArrow(Node* a, Node* b);
         void            removeSubButton();
 };

@@ -37,12 +37,10 @@ void SinglyLinkedList::setRandom()
     Node *pre=pHead;
 
     for(int i=1; i<mNumNode; i++){
-        
-
         std::unique_ptr<Node> node(new Node(mFont,false,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
-        addArrow(pre,tmp);
+        pre->setArrowNext(makeArrow(pre,tmp));
         mSceneLayers[Layer::Front]->attachChild(std::move(std::move(node)));
         pre->setNext(tmp);
         pre=tmp;
@@ -67,7 +65,7 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         }
         else{
             newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
-            addArrow(cur,newNode.get());
+            cur->setArrowNext(makeArrow(cur,newNode.get()));
             cur->setNext(newNode.get());
             cur=cur->getNext();
         }
@@ -118,9 +116,6 @@ void SinglyLinkedList::processInput(sf::Event event)
                 disappear->elapsedTime=sf::seconds(1);
                 disappear->duration=sf::seconds(1);
                 disappear->animator=derivedAnimator<Button>(ButtonAnimation::Shrink());
-                // Command command;
-                // command.category=Category::Type::AllSubButton;
-                // command.action=derivedAction<Button>(ButtonDisappear());
                 switch (type){
                     case Category::Type::ButtonCreate:
                     {
@@ -264,7 +259,7 @@ float getLength(sf::Vector2f vec){
     return sqrt(vec.x*vec.x+vec.y*vec.y);
 }
 
-void SinglyLinkedList::addArrow(Node *a, Node *b)
+Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
 {
     sf::Vector2f dist=b->getPosition()-a->getPosition();
 
@@ -281,8 +276,9 @@ void SinglyLinkedList::addArrow(Node *a, Node *b)
     );
 
     arr->rotate(angle*180.0/3.14);
-    a->setArrowNext(arr.get());
+    Arrow* res=arr.get();
     a->attachChild(std::move(arr));
+    return res;
 }
 
 void SinglyLinkedList::removeSubButton()
