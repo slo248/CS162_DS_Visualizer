@@ -83,7 +83,7 @@ void SinglyLinkedList::update(sf::Time dt)
     mSceneGraph.update(dt);
 
     Animation* animation=mAnimationQueue.front();
-    if(animation!=nullptr) 
+    if(animation!=nullptr)
         mSceneGraph.onAnimation(animation, dt);
     mAnimationQueue.update();
 }
@@ -135,19 +135,31 @@ void SinglyLinkedList::processInput(sf::Event event)
                         case Category::Type::ButtonSetRandom:
                         {
                             setRandom();
-                            Command command;
-                            command.category=Category::Type::Node;
-                            command.action=derivedAction<Node>(NodeScaleFlag(1));
-                            mCommandQueue.push(command);
+                            std::unique_ptr<Animation> animation(new Animation);
+                            animation->category=Category::Type::Node;
+                            animation->elapsedTime=sf::Time::Zero;
+                            animation->duration=sf::seconds(2);
+                            animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
+                            mAnimationQueue.push(std::move(animation));
+                            // Command command;
+                            // command.category=Category::Type::Node;
+                            // command.action=derivedAction<Node>(NodeScaleFlag(1));
+                            // mCommandQueue.push(command);
                             break;
                         }
                         case Category::Type::ButtonLoadFromFile:
                         {
                             loadFromFile("inp.txt");
-                            Command command;
-                            command.category=Category::Type::Node;
-                            command.action=derivedAction<Node>(NodeScaleFlag(1));
-                            mCommandQueue.push(command);
+                            std::unique_ptr<Animation> animation(new Animation);
+                            animation->category=Category::Type::Node;
+                            animation->elapsedTime=sf::Time::Zero;
+                            animation->duration=sf::seconds(2);
+                            animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
+                            mAnimationQueue.push(std::move(animation));
+                            // Command command;
+                            // command.category=Category::Type::Node;
+                            // command.action=derivedAction<Node>(NodeScaleFlag(1));
+                            // mCommandQueue.push(command);
                             break;
                         }
                     case Category::Type::ButtonInsert:
