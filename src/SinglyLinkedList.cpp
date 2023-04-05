@@ -117,9 +117,10 @@ void SinglyLinkedList::processInput(sf::Event event)
             btn->setBackGroundColor(ButtonConfig::BG_COLOR_HOVER);
             int type=btn->getCategory();
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-                Command command;
-                command.category=Category::Type::AllSubButton;
-                command.action=derivedAction<Button>(ButtonDisappear());
+                Animation animation;
+                // Command command;
+                // command.category=Category::Type::AllSubButton;
+                // command.action=derivedAction<Button>(ButtonDisappear());
                 switch (type){
                     case Category::Type::ButtonCreate:
                     {
@@ -142,13 +143,9 @@ void SinglyLinkedList::processInput(sf::Event event)
                             std::unique_ptr<Animation> animation(new Animation);
                             animation->category=Category::Type::Node;
                             animation->elapsedTime=sf::Time::Zero;
-                            animation->duration=sf::seconds(2);
+                            animation->duration=sf::seconds(0.7);
                             animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
-                            // Command command;
-                            // command.category=Category::Type::Node;
-                            // command.action=derivedAction<Node>(NodeScaleFlag(1));
-                            // mCommandQueue.push(command);
                             break;
                         }
                         case Category::Type::ButtonLoadFromFile:
@@ -157,13 +154,10 @@ void SinglyLinkedList::processInput(sf::Event event)
                             std::unique_ptr<Animation> animation(new Animation);
                             animation->category=Category::Type::Node;
                             animation->elapsedTime=sf::Time::Zero;
-                            animation->duration=sf::seconds(2);
+                            animation->duration=sf::seconds(0.7);
                             animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
-                            // Command command;
-                            // command.category=Category::Type::Node;
-                            // command.action=derivedAction<Node>(NodeScaleFlag(1));
-                            // mCommandQueue.push(command);
+
                             break;
                         }
                     case Category::Type::ButtonInsert:
