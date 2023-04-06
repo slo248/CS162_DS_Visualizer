@@ -44,6 +44,7 @@ class Node: public Entity
         void            setArrowPrev(Arrow* arrow);
         void            setHead(bool isHead);
         void            setChosen(bool isChosen);
+        void            setSubscript(const std::string& str);
 
         Node*           getNext();
         Node*           getPrev();

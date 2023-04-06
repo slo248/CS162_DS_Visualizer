@@ -298,17 +298,21 @@ void SinglyLinkedList::removeSubButton()
 
 void SinglyLinkedList::insertFront()
 {
-    std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
-    newNode->setChosen(true);
-    newNode->setPosition(DEFAULT_POS);
-    newNode->move(0,DEFAULT_LEN);
+    // Add new node
+    {
+        std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
+        newNode->setChosen(true);
+        newNode->setPosition(DEFAULT_POS);
+        newNode->move(0,DEFAULT_LEN);
 
-    std::unique_ptr<Animation> appear(new Animation);
-    appear->category=Category::Chosen;
-    appear->elapsedTime=sf::Time::Zero;
-    appear->duration=NodeConfig::SCALE_TIME;
-    appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
-    mAnimationQueue.push(std::move(appear));
+        std::unique_ptr<Animation> appear(new Animation);
+        appear->category=Category::Chosen;
+        appear->elapsedTime=sf::Time::Zero;
+        appear->duration=NodeConfig::SCALE_TIME;
+        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
+        mAnimationQueue.push(std::move(appear));
 
-    mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+        newNode->setChosen(false);
+        mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+    }
 }
