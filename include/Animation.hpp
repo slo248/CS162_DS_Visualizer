@@ -9,6 +9,7 @@ class SceneNode;
 struct Animation
 {
     typedef std::unique_ptr<Animation> Ptr;
+    bool            exactly=false;
     unsigned int    category;
     sf::Time        duration;
     sf::Time        elapsedTime;

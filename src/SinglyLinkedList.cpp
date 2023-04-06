@@ -309,7 +309,8 @@ void SinglyLinkedList::insertFront()
         newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
 
         std::unique_ptr<Animation> appear(new Animation);
-        appear->category=Category::Chosen;
+        appear->exactly=true;
+        appear->category=Category::Node|Category::Chosen;
         appear->elapsedTime=sf::Time::Zero;
         appear->duration=NodeConfig::SCALE_TIME;
         appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
