@@ -115,7 +115,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                 disappear->category=Category::Type::AllSubButton;
                 disappear->elapsedTime=sf::seconds(1);
                 disappear->duration=sf::seconds(1);
-                disappear->animator=derivedAnimator<Button>(ButtonAnimation::Shrink());
+                disappear->animator=derivedAnimator<Button>(SNAnimation::Shrink());
                 switch (type){
                     case Category::Type::ButtonCreate:
                     {
@@ -125,7 +125,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         appear->category=Category::Type::ButtonEmpty|Category::Type::ButtonSetRandom|Category::Type::ButtonLoadFromFile;
                         appear->elapsedTime=sf::seconds(1);
                         appear->duration=sf::seconds(1);
-                        appear->animator=derivedAnimator<Button>(ButtonAnimation::Grow());
+                        appear->animator=derivedAnimator<Button>(SNAnimation::Grow());
                         mAnimationQueue.push(std::move(appear));
                         break;
                     }
@@ -142,7 +142,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             animation->category=Category::Type::Node;
                             animation->elapsedTime=sf::Time::Zero;
                             animation->duration=NodeConfig::SCALE_TIME;
-                            animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
+                            animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
                             break;
                         }
@@ -153,7 +153,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             animation->category=Category::Type::Node;
                             animation->elapsedTime=sf::Time::Zero;
                             animation->duration=NodeConfig::SCALE_TIME;
-                            animation->animator=derivedAnimator<Node>(NodeAnimation::Grow());
+                            animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
 
                             break;
@@ -166,7 +166,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         appear->category=Category::Type::ButtonInsertFront|Category::Type::ButtonInsertMiddle|Category::Type::ButtonInsertBack;
                         appear->elapsedTime=sf::seconds(1);
                         appear->duration=sf::seconds(1);
-                        appear->animator=derivedAnimator<Button>(ButtonAnimation::Grow());
+                        appear->animator=derivedAnimator<Button>(SNAnimation::Grow());
                         mAnimationQueue.push(std::move(appear));
                         break;
                     }

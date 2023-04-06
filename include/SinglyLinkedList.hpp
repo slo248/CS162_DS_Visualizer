@@ -3,8 +3,8 @@
 #include <SceneNode.hpp>
 #include <Button.hpp>
 #include <AnimationQueue.hpp>
-#include <NodeAnimation.hpp>
-#include <ButtonAnimation.hpp>
+#include <Node.hpp>
+#include <SNAnimation.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{
