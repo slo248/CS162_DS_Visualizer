@@ -117,6 +117,10 @@ void Node::setHead(bool isHead)
 void Node::setSubscript(const std::string &str)
 {
     mSubscript->setString(str);
+    {
+        sf::FloatRect bounds=mSubscript->getLocalBounds();
+        mSubscript->setOrigin(bounds.left+bounds.width/2.f,0);
+    }
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
