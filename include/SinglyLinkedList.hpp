@@ -22,6 +22,7 @@ class SinglyLinkedList : private sf::NonCopyable
         const sf::Vector2f  DEFAULT_DIST=sf::Vector2f(DEFAULT_LEN,0);
         const int           MAX_NUM=99;
         const int           MAX_NUM_NODE=10;
+        const sf::Vector2f  DEFAULT_POS=sf::Vector2f(200,200);
 
     public:
         SinglyLinkedList(sf::RenderWindow& window,sf::Font& font);
@@ -49,4 +50,5 @@ class SinglyLinkedList : private sf::NonCopyable
         void            buildScene();
         Arrow*          makeArrow(Node* a, Node* b);
         void            removeSubButton();
+        void            insertFront();
 };

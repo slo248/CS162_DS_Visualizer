@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <fstream>
 #include <cassert>
-#include <iostream>
 #include "SinglyLinkedList.hpp"
 
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
@@ -31,7 +30,7 @@ void SinglyLinkedList::setRandom()
 
     std::unique_ptr<Node> leader(new Node(mFont,true,getRand(1,MAX_NUM)));
     pHead=leader.get();
-    leader->setPosition(200.f,200.f);
+    leader->setPosition(DEFAULT_POS);
     mSceneLayers[Layer::Front]->attachChild(std::move(leader));
 
     Node *pre=pHead;
@@ -61,7 +60,7 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         std::unique_ptr<Node> newNode(new Node(mFont,i==1,val));
         if(cur==nullptr){ 
             pHead=cur=newNode.get();
-            pHead->setPosition(200.f,200.f);
+            pHead->setPosition(DEFAULT_POS);
         }
         else{
             newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
@@ -155,7 +154,6 @@ void SinglyLinkedList::processInput(sf::Event event)
                             animation->duration=NodeConfig::SCALE_TIME;
                             animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
-
                             break;
                         }
                     case Category::Type::ButtonInsert:
@@ -170,6 +168,11 @@ void SinglyLinkedList::processInput(sf::Event event)
                         mAnimationQueue.push(std::move(appear));
                         break;
                     }
+                        case Category::Type::ButtonInsertFront:
+                        {
+                            insertFront();
+                            break;
+                        }
                     case Category::Type::ButtonUpdate:
                         mAnimationQueue.push(std::move(disappear));
                         break;
@@ -291,4 +294,8 @@ void SinglyLinkedList::removeSubButton()
         mSceneLayers[Layer::Background]->detachChild(*mButtons.back());
         mButtons.pop_back();
     }
+}
+
+void SinglyLinkedList::insertFront()
+{
 }
