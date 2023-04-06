@@ -51,5 +51,4 @@ unsigned int Arrow::getCategory() const
 void Arrow::setColor(const sf::Color &color)
 {
     mLine.setFillColor(color);
-    mTriangle.setFillColor(color);
 }
