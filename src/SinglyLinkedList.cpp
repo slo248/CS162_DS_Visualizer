@@ -320,16 +320,30 @@ void SinglyLinkedList::insertFront()
     {
         Arrow* arr=makeArrow(newNode.get(),pHead);
         newNode->setArrowNext(arr);
-        arr->setColor(ArrowConfig::ORANGE);
+        
+        // apply color orange
+        {
+            arr->setChosen(true);
+            std::unique_ptr<Animation> applyColor(new Animation);
+            applyColor->exactly=true;
+            applyColor->category=Category::Arrow|Category::Chosen;
+            applyColor->elapsedTime=Motion::INSERT_TIME;
+            applyColor->duration=Motion::INSERT_TIME;
+            applyColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::ORANGE));
+            mAnimationQueue.push(std::move(applyColor));
+        }
 
-        arr->setChosen(true);
-        std::unique_ptr<Animation> appear(new Animation);
-        appear->exactly=true;
-        appear->category=Category::Arrow|Category::Chosen;
-        appear->elapsedTime=sf::Time::Zero;
-        appear->duration=Motion::INSERT_TIME;
-        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
-        mAnimationQueue.push(std::move(appear));
+        // appear
+        {
+            arr->setChosen(true);
+            std::unique_ptr<Animation> appear(new Animation);
+            appear->exactly=true;
+            appear->category=Category::Arrow|Category::Chosen;
+            appear->elapsedTime=sf::Time::Zero;
+            appear->duration=Motion::INSERT_TIME;
+            appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
+            mAnimationQueue.push(std::move(appear));
+        }
     }
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));

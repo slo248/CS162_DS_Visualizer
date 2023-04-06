@@ -5,6 +5,8 @@
 #include <AnimationQueue.hpp>
 #include <Node.hpp>
 #include <SNAnimation.hpp>
+#include <NodeAnimation.hpp>
+#include <ArrowAnimation.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{

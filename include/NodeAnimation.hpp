@@ -8,9 +8,9 @@ namespace NodeAnimation
     {
         sf::Color mColor;
         ChangeColor(sf::Color color):mColor(color){}
-        void operator() (Node* node, sf::Time elapsedTime, sf::Time duration) const
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
-            node->setBGColor(mColor);
+            node.setBGColor(mColor);
         }
     };
 }

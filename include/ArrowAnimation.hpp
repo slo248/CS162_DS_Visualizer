@@ -8,9 +8,9 @@ namespace ArrowAnimation
     {
         sf::Color mColor;
         ChangeColor(sf::Color color):mColor(color){}
-        void operator() (Arrow* arrow, sf::Time elapsedTime, sf::Time duration) const
+        void operator() (Arrow& arrow, sf::Time elapsedTime, sf::Time duration) const
         {
-            arrow->setColor(mColor);
+            arrow.setColor(mColor);
         }
     };
 }
