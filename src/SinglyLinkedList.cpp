@@ -312,7 +312,6 @@ void SinglyLinkedList::insertFront()
         appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
         mAnimationQueue.push(std::move(appear));
 
-        newNode->setChosen(false);
         mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     }
 }

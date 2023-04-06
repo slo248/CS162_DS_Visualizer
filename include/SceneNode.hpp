@@ -47,6 +47,8 @@ class SceneNode :
         virtual unsigned int    getCategory() const;
         void                    onAnimation(Animation* animation, sf::Time dt);
         void                    update(sf::Time dt);
+        void                    setChosen(bool isChosen);
+
 
     private:
         virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -58,4 +60,7 @@ class SceneNode :
     private:
         SceneNode*              mParent;
         std::vector<Ptr>        mChildren;
+
+    protected:
+        bool                    mIsChosen=false;
 };

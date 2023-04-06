@@ -43,7 +43,6 @@ class Node: public Entity
         void            setArrowNext(Arrow* arrow);
         void            setArrowPrev(Arrow* arrow);
         void            setHead(bool isHead);
-        void            setChosen(bool isChosen);
         void            setSubscript(const std::string& str);
 
         Node*           getNext();
@@ -68,7 +67,6 @@ class Node: public Entity
         int                 mIsScaling;
         Arrow*              mArrowNext;
         Arrow*              mArrowPrev;
-        bool                mIsChosen;
         bool                mIsHead;
 
     private:

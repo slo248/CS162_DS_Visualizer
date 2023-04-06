@@ -57,6 +57,11 @@ void SceneNode::update(sf::Time dt)
     updateChildren(dt);
 }
 
+void SceneNode::setChosen(bool isChosen)
+{
+    mIsChosen=isChosen;
+}
+
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform*=getTransform();

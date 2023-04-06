@@ -5,7 +5,7 @@
 using namespace NodeConfig;
 
 Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) : 
-    val(_val), pNext(_pNext), pPrev(_pPrev), mScaleTime(0), mIsScaling(false), mIsHead(isHead), mIsChosen(false)
+    val(_val), pNext(_pNext), pPrev(_pPrev), mScaleTime(0), mIsScaling(false), mIsHead(isHead)
 {
     mCircle.setRadius(RADIUS);
     mCircle.setFillColor(INSIDE_COLOR);
@@ -112,11 +112,6 @@ void Node::setHead(bool isHead)
     mIsHead=isHead;
     if(!isHead) mSubscript->setString("");
     else mSubscript->setString("pHead");
-}
-
-void Node::setChosen(bool isChosen)
-{
-    mIsChosen=isChosen;
 }
 
 void Node::setSubscript(const std::string &str)
