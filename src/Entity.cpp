@@ -1,6 +1,6 @@
 #include "Entity.hpp"
 
-int Entity::getCategory() const
+unsigned int Entity::getCategory() const
 {
     return 0;
 }

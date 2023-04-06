@@ -59,7 +59,7 @@ Button::Button(sf::Font &font, Category::Type type, sf::Vector2f position, sf::V
     mText.setPosition(size / 2.f);
 }
 
-int Button::getCategory() const
+unsigned int Button::getCategory() const
 {
     return mType;
 }

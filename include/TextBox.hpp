@@ -20,7 +20,7 @@ class TextBox: public SceneNode
         void                    setLimit(bool flag, int lim=0);
         void                    setSelected(bool sel);
         void                    handleEvent(sf::Event event);
-        int                     getCategory() const;
+        unsigned int            getCategory() const;
 
     private:
         sf::Text                mTextBox;

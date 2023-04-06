@@ -73,7 +73,7 @@ void TextBox::handleEvent(sf::Event event)
     else inputLogic(charTyped);
 }
 
-int TextBox::getCategory() const
+unsigned int TextBox::getCategory() const
 {
     return Category::TextBox;
 }

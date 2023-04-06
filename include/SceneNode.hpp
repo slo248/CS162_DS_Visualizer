@@ -39,14 +39,14 @@ class SceneNode :
         typedef std::unique_ptr<SceneNode> Ptr;
 
     public:
-        void            attachChild(Ptr child);  
-        Ptr             detachChild(const SceneNode& child);
-        sf::Transform   getWorldTransform() const;
-        sf::Vector2f    getWorldPosition() const;
-        void            clearChildren();
-        virtual int     getCategory() const;
-        void            onAnimation(Animation* animation, sf::Time dt);
-        void            update(sf::Time dt);
+        void                    attachChild(Ptr child);  
+        Ptr                     detachChild(const SceneNode& child);
+        sf::Transform           getWorldTransform() const;
+        sf::Vector2f            getWorldPosition() const;
+        void                    clearChildren();
+        virtual unsigned int    getCategory() const;
+        void                    onAnimation(Animation* animation, sf::Time dt);
+        void                    update(sf::Time dt);
 
     private:
         virtual void    draw(sf::RenderTarget& target, sf::RenderStates states) const;

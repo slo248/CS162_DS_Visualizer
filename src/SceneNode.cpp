@@ -38,7 +38,7 @@ void SceneNode::clearChildren()
     mChildren.clear();
 }
 
-int SceneNode::getCategory() const
+unsigned int SceneNode::getCategory() const
 {
     return 0;
 }

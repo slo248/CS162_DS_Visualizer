@@ -37,7 +37,7 @@ void Arrow::updateCurrent(sf::Time dt)
     move(mVelocity*dt.asSeconds());
 }
 
-int Arrow::getCategory() const
+unsigned int Arrow::getCategory() const
 {
     return Category::Arrow;
 }

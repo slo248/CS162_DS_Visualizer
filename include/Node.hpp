@@ -36,20 +36,21 @@ class Node: public Entity
         );
         ~Node();
 
-        void        setNext(Node* node);
-        void        setPrev(Node* node);
-        void        setScaleTime(float time);
-        void        setIsScaling(int type);
-        void        setArrowNext(Arrow* arrow);
-        void        setArrowPrev(Arrow* arrow);
-        void        setHead(bool isHead);
+        void            setNext(Node* node);
+        void            setPrev(Node* node);
+        void            setScaleTime(float time);
+        void            setIsScaling(int type);
+        void            setArrowNext(Arrow* arrow);
+        void            setArrowPrev(Arrow* arrow);
+        void            setHead(bool isHead);
+        void            setChosen(bool isChosen);
 
-        Node*       getNext();
-        Node*       getPrev();
-        int         getCategory() const;
-        int         getScaleTime() const;
-        Arrow*      getArrowNext();
-        Arrow*      getArrowPrev();
+        Node*           getNext();
+        Node*           getPrev();
+        unsigned int    getCategory() const;
+        int             getScaleTime() const;
+        Arrow*          getArrowNext();
+        Arrow*          getArrowPrev();
 
     private:
         int val;
@@ -66,6 +67,7 @@ class Node: public Entity
         int                 mIsScaling;
         Arrow*              mArrowNext;
         Arrow*              mArrowPrev;
+        bool                mIsChosen;
         bool                mIsHead;
 
     private:

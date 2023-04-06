@@ -65,9 +65,11 @@ Node *Node::getPrev()
     return pPrev;
 }
 
-int Node::getCategory() const
+unsigned int Node::getCategory() const
 {
-    return Category::Node;
+    unsigned int category=Category::Node;
+    if(mIsChosen) category |= Category::Chosen;
+    return category;
 }
 
 int Node::getScaleTime() const
@@ -110,6 +112,11 @@ void Node::setHead(bool isHead)
     mIsHead=isHead;
     if(!isHead) mSubscript->setString("");
     else mSubscript->setString("pHead");
+}
+
+void Node::setChosen(bool isChosen)
+{
+    mIsChosen=isChosen;
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
