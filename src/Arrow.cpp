@@ -1,5 +1,7 @@
 #include <Arrow.hpp>
 
+using namespace ArrowConfig;
+
 Arrow::Arrow(sf::Vector2f dist)
 {
     const float length=sqrt(dist.x*dist.x+dist.y*dist.y);
