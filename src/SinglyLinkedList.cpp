@@ -140,7 +140,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             std::unique_ptr<Animation> animation(new Animation);
                             animation->category=Category::Node|Category::Arrow;
                             animation->elapsedTime=sf::Time::Zero;
-                            animation->duration=NodeConfig::SCALE_TIME;
+                            animation->duration=Motion::CREATE_TIME;
                             animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
                             break;
@@ -151,7 +151,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             std::unique_ptr<Animation> animation(new Animation);
                             animation->category=Category::Node|Category::Arrow;
                             animation->elapsedTime=sf::Time::Zero;
-                            animation->duration=NodeConfig::SCALE_TIME;
+                            animation->duration=Motion::CREATE_TIME;
                             animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
                             mAnimationQueue.push(std::move(animation));
                             break;
@@ -312,7 +312,7 @@ void SinglyLinkedList::insertFront()
         appear->exactly=true;
         appear->category=Category::Node|Category::Chosen;
         appear->elapsedTime=sf::Time::Zero;
-        appear->duration=NodeConfig::SCALE_TIME;
+        appear->duration=Motion::INSERT_TIME;
         appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
         mAnimationQueue.push(std::move(appear));
     }
@@ -326,7 +326,7 @@ void SinglyLinkedList::insertFront()
         appear->exactly=true;
         appear->category=Category::Arrow|Category::Chosen;
         appear->elapsedTime=sf::Time::Zero;
-        appear->duration=NodeConfig::SCALE_TIME;
+        appear->duration=Motion::INSERT_TIME;
         appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
         mAnimationQueue.push(std::move(appear));
     }

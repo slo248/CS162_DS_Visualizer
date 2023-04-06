@@ -12,7 +12,6 @@ namespace NodeConfig
     const sf::Vector2f  DEFAULT_POSITION=sf::Vector2f(500.f,300.f);
     const sf::Color     OUTLINE_COLOR=sf::Color::Black;
     const sf::Color     INSIDE_COLOR=sf::Color::White;
-    const sf::Time      SCALE_TIME=sf::seconds(0.36f);
     const sf::Color     CHAR_COLOR=sf::Color::Black;
     const sf::Color     SUBSCRIPT_COLOR=sf::Color::Red;
     const float         DEFAULT_SIZE=23;
