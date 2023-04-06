@@ -16,6 +16,12 @@ namespace NodeConfig
     const sf::Color     CHAR_COLOR=sf::Color::Black;
     const sf::Color     SUBSCRIPT_COLOR=sf::Color::Red;
     const float         DEFAULT_SIZE=23;
+
+    const sf::Color     VTX_BG_COLOR=sf::Color(255, 138, 39, 255);
+    const sf::Color     VTX_CHAR_COLOR=sf::Color::White;
+
+    const sf::Color     HEAD_BG_COLOR=sf::Color::Green;
+    const sf::Color     HEAD_CHAR_COLOR=sf::Color::White;
 }
 
 class Node: public Entity
