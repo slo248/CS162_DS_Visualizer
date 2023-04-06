@@ -23,6 +23,8 @@ Arrow::Arrow(sf::Vector2f dist)
         mTriangle.setOrigin(0,bounds.top+bounds.height/2);
     }
     mTriangle.move(FIRST_WIDTH,0);
+
+    this->setScale(0,0);
 }
 
 void Arrow::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
@@ -39,5 +41,7 @@ void Arrow::updateCurrent(sf::Time dt)
 
 unsigned int Arrow::getCategory() const
 {
-    return Category::Arrow;
+    unsigned int res=Category::Arrow;
+    if(mIsChosen) res|=Category::Chosen;
+    return res;
 }

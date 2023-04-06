@@ -45,8 +45,9 @@ unsigned int SceneNode::getCategory() const
 
 void SceneNode::onAnimation(Animation *animation, sf::Time dt)
 {
-    if((animation->exactly && animation->category==getCategory()) 
-        || (!animation->exactly && animation->category&getCategory()))
+    const unsigned int type=getCategory();
+    if((animation->exactly && animation->category==type) 
+        || (!animation->exactly && animation->category&type))
     {
         animation->animator(*this,animation->elapsedTime,animation->duration);
         if(animation->elapsedTime>=animation->duration)
