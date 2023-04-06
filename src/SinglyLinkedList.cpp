@@ -304,6 +304,7 @@ void SinglyLinkedList::insertFront()
         newNode->setChosen(true);
         newNode->setPosition(DEFAULT_POS);
         newNode->move(0,DEFAULT_LEN);
+        newNode->setSubscript("vtx");
 
         std::unique_ptr<Animation> appear(new Animation);
         appear->category=Category::Chosen;
