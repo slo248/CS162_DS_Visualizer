@@ -269,12 +269,13 @@ Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
 
     std::unique_ptr<Arrow> arr(new Arrow(dist));
     arr->setPosition(NodeConfig::RADIUS+NodeConfig::OUTLINE_THICKNESS,0);
-    arr->move(a->getPosition());
     sf::Vector2f cur=arr->getPosition();
     arr->setPosition(
         cos(angle)*cur.x-sin(angle)*cur.y,
         sin(angle)*cur.x+cos(angle)*cur.y
     );
+    arr->move(a->getPosition());
+
 
     arr->rotate(angle*180.0/3.14);
     Arrow* res=arr.get();
