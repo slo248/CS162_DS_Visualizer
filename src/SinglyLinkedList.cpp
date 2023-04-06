@@ -139,7 +139,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         {
                             setRandom();
                             std::unique_ptr<Animation> animation(new Animation);
-                            animation->category=Category::Type::Node;
+                            animation->category=Category::Type::Node|Category::Type::Arrow;
                             animation->elapsedTime=sf::Time::Zero;
                             animation->duration=NodeConfig::SCALE_TIME;
                             animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
@@ -150,7 +150,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         {
                             loadFromFile("inp.txt");
                             std::unique_ptr<Animation> animation(new Animation);
-                            animation->category=Category::Type::Node;
+                            animation->category=Category::Type::Node|Category::Type::Arrow;
                             animation->elapsedTime=sf::Time::Zero;
                             animation->duration=NodeConfig::SCALE_TIME;
                             animation->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
