@@ -320,6 +320,7 @@ void SinglyLinkedList::insertFront()
     {
         Arrow* arr=makeArrow(newNode.get(),pHead);
         newNode->setArrowNext(arr);
+        arr->setColor(ArrowConfig::ORANGE);
 
         arr->setChosen(true);
         std::unique_ptr<Animation> appear(new Animation);

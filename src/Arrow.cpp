@@ -47,3 +47,9 @@ unsigned int Arrow::getCategory() const
     if(mIsChosen) res|=Category::Chosen;
     return res;
 }
+
+void Arrow::setColor(const sf::Color &color)
+{
+    mLine.setFillColor(color);
+    mTriangle.setFillColor(color);
+}

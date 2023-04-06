@@ -16,6 +16,7 @@ class Arrow: public Entity
     public:
         Arrow(sf::Vector2f dist);
         unsigned int            getCategory() const;
+        void                    setColor(const sf::Color& color);
 
     private:
         sf::RectangleShape      mLine;
