@@ -123,6 +123,16 @@ void Node::setSubscript(const std::string &str)
     }
 }
 
+void Node::setBGColor(const sf::Color &color)
+{
+    mCircle.setFillColor(color);
+}
+
+void Node::setNumColor(const sf::Color &color)
+{
+    mNum->setFillColor(color);
+}
+
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);

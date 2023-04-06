@@ -18,10 +18,10 @@ namespace NodeConfig
     const float         DEFAULT_SIZE=23;
 
     const sf::Color     VTX_BG_COLOR=sf::Color(255, 138, 39, 255);
-    const sf::Color     VTX_CHAR_COLOR=sf::Color::White;
+    const sf::Color     VTX_NUM_COLOR=sf::Color::White;
 
     const sf::Color     HEAD_BG_COLOR=sf::Color::Green;
-    const sf::Color     HEAD_CHAR_COLOR=sf::Color::White;
+    const sf::Color     HEAD_NUM_COLOR=sf::Color::White;
 }
 
 class Node: public Entity
@@ -44,6 +44,8 @@ class Node: public Entity
         void            setArrowPrev(Arrow* arrow);
         void            setHead(bool isHead);
         void            setSubscript(const std::string& str);
+        void            setBGColor(const sf::Color& color);
+        void            setNumColor(const sf::Color& color);
 
         Node*           getNext();
         Node*           getPrev();
