@@ -269,6 +269,7 @@ Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
 
     std::unique_ptr<Arrow> arr(new Arrow(dist));
     arr->setPosition(NodeConfig::RADIUS+NodeConfig::OUTLINE_THICKNESS,0);
+    arr->move(a->getPosition());
     sf::Vector2f cur=arr->getPosition();
     arr->setPosition(
         cos(angle)*cur.x-sin(angle)*cur.y,
@@ -277,7 +278,7 @@ Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
 
     arr->rotate(angle*180.0/3.14);
     Arrow* res=arr.get();
-    a->attachChild(std::move(arr));
+    mSceneLayers[Layer::Front]->attachChild(std::move(arr));
     return res;
 }
 
