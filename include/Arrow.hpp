@@ -6,7 +6,7 @@ namespace ArrowConfig
 {
     const float             HEIGHT_EACH=5.f;
     const float             SECOND_WIDTH=10.f;
-    const sf::Color         DEFAULT_COLOR=sf::Color::Blue;
+    const sf::Color         DEFAULT_COLOR=sf::Color::Black;
 
     const sf::Color         ORANGE=sf::Color(255, 138, 39, 255);
 }
