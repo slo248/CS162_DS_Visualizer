@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Node.hpp>
+#include <iostream>
 
 namespace NodeAnimation
 {
@@ -50,6 +51,7 @@ namespace NodeAnimation
                 Arrow* curArrow=node.getArrowNext();
                 if(curArrow){
                     std::unique_ptr<Arrow> newArr=node.makeArrow(node.getNext());
+                    curArrow->copy(newArr.get());
                     curArrow->setOrigin(newArr->getOrigin());
                     curArrow->setPosition(newArr->getPosition());
                     curArrow->rotate(newArr->getRotation());
@@ -60,6 +62,7 @@ namespace NodeAnimation
                 Arrow* curArrow=node.getArrowPrev();
                 if(curArrow){
                     std::unique_ptr<Arrow> newArr=node.makeArrow(node.getPrev());
+                    curArrow->copy(newArr.get());
                     curArrow->setOrigin(newArr->getOrigin());
                     curArrow->setPosition(newArr->getPosition());
                     curArrow->rotate(newArr->getRotation());
