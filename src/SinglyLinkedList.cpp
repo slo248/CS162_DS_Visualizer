@@ -310,7 +310,6 @@ void SinglyLinkedList::insertFront()
 
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
-        appear->isLast=true;
         appear->category=Category::Node|Category::Chosen;
         appear->elapsedTime=sf::Time::Zero;
         appear->duration=Motion::INSERT_TIME;
@@ -338,13 +337,23 @@ void SinglyLinkedList::insertFront()
         {
             std::unique_ptr<Animation> appear(new Animation);
             appear->exactly=true;
-            appear->isLast=true;
             appear->category=Category::Arrow|Category::Chosen;
             appear->elapsedTime=sf::Time::Zero;
             appear->duration=Motion::INSERT_TIME;
             appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
             mAnimationQueue.push(std::move(appear));
         }
+    }
+
+    // change vtx color to green
+    {
+        std::unique_ptr<Animation> changeColor(new Animation);
+        changeColor->exactly=true;
+        changeColor->category=Category::Node|Category::Chosen;
+        changeColor->elapsedTime=Motion::INSERT_TIME;
+        changeColor->duration=Motion::INSERT_TIME;
+        changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(NodeConfig::HEAD_BG_COLOR));
+        mAnimationQueue.push(std::move(changeColor));
     }
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));

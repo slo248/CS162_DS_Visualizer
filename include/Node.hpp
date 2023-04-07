@@ -19,7 +19,7 @@ namespace NodeConfig
     const sf::Color     VTX_BG_COLOR=sf::Color(255, 138, 39, 255);
     const sf::Color     VTX_NUM_COLOR=sf::Color::White;
 
-    const sf::Color     HEAD_BG_COLOR=sf::Color::Green;
+    const sf::Color     HEAD_BG_COLOR=sf::Color(82, 188, 105, 255);
     const sf::Color     HEAD_NUM_COLOR=sf::Color::White;
 }
 
