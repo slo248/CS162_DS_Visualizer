@@ -50,7 +50,6 @@ class SinglyLinkedList : private sf::NonCopyable
 
     private:
         void                    buildScene();
-        std::unique_ptr<Arrow>  makeArrow(Node* a, Node* b);
         void                    removeSubButton();
         void                    insertFront();
 };

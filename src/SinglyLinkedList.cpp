@@ -39,7 +39,7 @@ void SinglyLinkedList::setRandom()
         std::unique_ptr<Node> node(new Node(mFont,false,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
-        std::unique_ptr<Arrow> arr=makeArrow(pre,tmp);
+        std::unique_ptr<Arrow> arr=pre->makeArrow(tmp);
         pre->setArrowNext(arr.get());
         mSceneLayers[Layer::Front]->attachChild(std::move(node));
         mSceneLayers[Layer::Front]->attachChild(std::move(arr));
@@ -66,7 +66,7 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         }
         else{
             newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
-            std::unique_ptr<Arrow> arr=makeArrow(cur,newNode.get());
+            std::unique_ptr<Arrow> arr=cur->makeArrow(newNode.get());
             cur->setArrowNext(arr.get());
             cur->setNext(newNode.get());
             cur=cur->getNext();
@@ -262,32 +262,6 @@ void SinglyLinkedList::buildScene()
     }
 }
 
-float getLength(sf::Vector2f vec){
-    return sqrt(vec.x*vec.x+vec.y*vec.y);
-}
-
-std::unique_ptr<Arrow> SinglyLinkedList::makeArrow(Node *a, Node *b)
-{
-    sf::Vector2f dist=b->getPosition()-a->getPosition();
-
-    float angle=atan(dist.y/dist.x);
-    float ratio=1-2*(NodeConfig::RADIUS+NodeConfig::OUTLINE_THICKNESS)/getLength(dist);
-    dist.x*=ratio; dist.y*=ratio;
-
-    std::unique_ptr<Arrow> arr(new Arrow(dist));
-    arr->setPosition(NodeConfig::RADIUS+NodeConfig::OUTLINE_THICKNESS,0);
-    sf::Vector2f cur=arr->getPosition();
-    arr->setPosition(
-        cos(angle)*cur.x-sin(angle)*cur.y,
-        sin(angle)*cur.x+cos(angle)*cur.y
-    );
-    arr->move(a->getPosition());
-
-
-    arr->rotate(angle*180.0/3.14);
-    return arr;
-}
-
 void SinglyLinkedList::removeSubButton()
 {
     while(!mButtons.empty()){
@@ -320,7 +294,7 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(appear));
     }
     // Add new arrow
-    std::unique_ptr<Arrow> arr=makeArrow(newNode.get(),pHead);
+    std::unique_ptr<Arrow> arr=newNode->makeArrow(pHead);
     {
         newNode->setArrowNext(arr.get());
         arr->setChosen(true);
