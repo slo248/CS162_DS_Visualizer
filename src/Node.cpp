@@ -87,6 +87,28 @@ Arrow *Node::getArrowPrev()
     return mArrowPrev;
 }
 
+std::unique_ptr<Arrow> Node::makeArrow(Node *dest)
+{
+    sf::Vector2f dist=dest->getPosition()-this->getPosition();
+
+    float angle=atan(dist.y/dist.x);
+    float ratio=1-2*(RADIUS+OUTLINE_THICKNESS)/sqrt(dist.x*dist.x+dist.y*dist.y);
+    dist.x*=ratio; dist.y*=ratio;
+
+    std::unique_ptr<Arrow> arr(new Arrow(dist));
+    arr->setPosition(RADIUS+OUTLINE_THICKNESS,0);
+    sf::Vector2f cur=arr->getPosition();
+    arr->setPosition(
+        cos(angle)*cur.x-sin(angle)*cur.y,
+        sin(angle)*cur.x+cos(angle)*cur.y
+    );
+    arr->move(this->getPosition());
+
+
+    arr->rotate(angle*180.0/3.14);
+    return arr;
+}
+
 void Node::setScaleTime(float time)
 {
     mScaleTime+=time;

@@ -53,6 +53,8 @@ class Node: public Entity
         Arrow*          getArrowNext();
         Arrow*          getArrowPrev();
 
+        std::unique_ptr<Arrow> makeArrow(Node* dest);
+
     private:
         int val;
         Node *pNext, *pPrev;
