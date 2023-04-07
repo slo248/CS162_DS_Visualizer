@@ -38,26 +38,21 @@ namespace NodeAnimation
 
     struct Move
     {
-        sf::Vector2f src;
         sf::Vector2f dest;
         SceneNode* layer;
-        Move(sf::Vector2f src,sf::Vector2f dest, SceneNode* layer):
-            src(src),dest(dest),layer(layer){}
+        Move(sf::Vector2f dest, SceneNode* layer):
+            dest(dest),layer(layer){}
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
             float factor=Motion::Bezier(elapsedTime/duration);
-            node.setPosition(src+(dest-src)*factor);
+            node.setPosition(node.getPosition()+(dest-node.getPosition())*factor);
             sf::Vector2f delta=dest-node.getPosition();
-            float dist=sqrt(delta.x*delta.x+delta.y*delta.y);
             // change next arrow
             {
                 Arrow* curArrow=node.getArrowNext();
                 if(curArrow){
                     std::unique_ptr<Arrow> newArr=node.makeArrow(node.getNext());
-                    if(dist<=2*NodeConfig::RADIUS)
-                        newArr->setScale(0,0);
-                    else
-                        newArr->setScale(1,1);
+                    newArr->setScale(1,1);
                     layer->detachChild(*curArrow);
                     node.setArrowNext(newArr.get());
                     layer->attachChild(std::move(newArr));
@@ -68,10 +63,7 @@ namespace NodeAnimation
                 Arrow* curArrow=node.getArrowPrev();
                 if(curArrow){
                     std::unique_ptr<Arrow> newArr=node.makeArrow(node.getPrev());
-                    if(dist<=2*NodeConfig::RADIUS)
-                        newArr->setScale(0,0);
-                    else
-                        newArr->setScale(1,1);
+                    newArr->setScale(1,1);
                     layer->detachChild(*curArrow);
                     node.setArrowNext(newArr.get());
                     layer->attachChild(std::move(newArr));
