@@ -356,5 +356,16 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(changeColor));
     }
 
+    // change arrow color to black
+    {
+        std::unique_ptr<Animation> changeColor(new Animation);
+        changeColor->exactly=true;
+        changeColor->category=Category::Arrow|Category::Chosen;
+        changeColor->elapsedTime=Motion::INSERT_TIME;
+        changeColor->duration=Motion::INSERT_TIME;
+        changeColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::DEFAULT_COLOR));
+        mAnimationQueue.push(std::move(changeColor));
+    }
+
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
 }
