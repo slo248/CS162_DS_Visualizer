@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Node.hpp>
-#include <iostream>
 
 namespace NodeAnimation
 {

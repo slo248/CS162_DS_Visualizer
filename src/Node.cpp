@@ -98,6 +98,9 @@ std::unique_ptr<Arrow> Node::makeArrow(Node *dest)
 
     float len=sqrt(dist.x*dist.x+dist.y*dist.y);
     float angle=atan(dist.y/dist.x);
+    if(dist.x<0 && dist.y<0) angle+=3.14;
+    else if(dist.x<0) angle+=3.14;
+    else if(dist.y<0) angle+=2*3.14;
     float ratio=1-2*(RADIUS+OUTLINE_THICKNESS)/len;
     dist.x*=ratio; dist.y*=ratio;
 
