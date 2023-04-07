@@ -52,3 +52,9 @@ void Arrow::setColor(const sf::Color &color)
 {
     mLine.setFillColor(color);
 }
+
+void Arrow::copy(Arrow *src)
+{
+    mLine=src->mLine;
+    mTriangle=src->mTriangle;
+}
