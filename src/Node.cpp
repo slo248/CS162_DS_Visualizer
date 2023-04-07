@@ -91,8 +91,9 @@ std::unique_ptr<Arrow> Node::makeArrow(Node *dest)
 {
     sf::Vector2f dist=dest->getPosition()-this->getPosition();
 
+    float len=sqrt(dist.x*dist.x+dist.y*dist.y);
     float angle=atan(dist.y/dist.x);
-    float ratio=1-2*(RADIUS+OUTLINE_THICKNESS)/sqrt(dist.x*dist.x+dist.y*dist.y);
+    float ratio=1-2*(RADIUS+OUTLINE_THICKNESS)/len;
     dist.x*=ratio; dist.y*=ratio;
 
     std::unique_ptr<Arrow> arr(new Arrow(dist));

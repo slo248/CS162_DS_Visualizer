@@ -362,7 +362,7 @@ void SinglyLinkedList::insertFront()
         move->category=Category::Node|Category::Chosen;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(newNode->getPosition(),pHead->getPosition()));
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(newNode->getPosition(),pHead->getPosition(),mSceneLayers[Layer::Front]));
         mAnimationQueue.push(std::move(move));
     }
 
