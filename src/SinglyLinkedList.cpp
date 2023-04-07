@@ -31,6 +31,7 @@ void SinglyLinkedList::setRandom()
     std::unique_ptr<Node> leader(new Node(mFont,true,getRand(1,MAX_NUM)));
     pHead=leader.get();
     leader->setPosition(DEFAULT_POS);
+    leader->setPrePos(leader->getPosition());
     mSceneLayers[Layer::Front]->attachChild(std::move(leader));
 
     Node *pre=pHead;
@@ -72,6 +73,7 @@ void SinglyLinkedList::loadFromFile(std::string dir)
             cur=cur->getNext();
             mSceneLayers[Layer::Front]->attachChild(std::move(arr));
         }
+        newNode->setPrePos(newNode->getPosition());
         mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     }
     fi.close();
@@ -279,7 +281,8 @@ void SinglyLinkedList::insertFront()
     {
         newNode->setChosen(true);
         newNode->setPos(DEFAULT_POS);
-        newNode->move(-DEFAULT_LEN,DEFAULT_LEN);
+        newNode->move(0,DEFAULT_LEN);
+        newNode->setPrePos(newNode->getPosition());
         newNode->setSubscript("vtx");
         newNode->setNumColor(NodeConfig::VTX_NUM_COLOR);
         newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
@@ -357,13 +360,12 @@ void SinglyLinkedList::insertFront()
 
     // move newNode to same row
     {
-        newNode->setPrePos(newNode->getPosition());
         std::unique_ptr<Animation> move(new Animation);
         move->exactly=true;
         move->category=Category::Node|Category::Chosen;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(0,-DEFAULT_LEN),mSceneLayers[Layer::Front]));
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(DEFAULT_LEN,0),mSceneLayers[Layer::Front]));
         mAnimationQueue.push(std::move(move));
     }
 
