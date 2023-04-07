@@ -38,15 +38,16 @@ namespace NodeAnimation
 
     struct Move
     {
-        sf::Vector2f dest;
+        sf::Vector2f delta;
         SceneNode* layer;
-        Move(sf::Vector2f dest, SceneNode* layer):
-            dest(dest),layer(layer){}
+        Move(sf::Vector2f delta, SceneNode* layer):
+            delta(delta),layer(layer){}
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
             float factor=Motion::Bezier(elapsedTime/duration);
-            node.setPosition(node.getPosition()+(dest-node.getPosition())*factor);
-            sf::Vector2f delta=dest-node.getPosition();
+            node.setPosition(node.getPrePos()+delta*factor);
+            if(elapsedTime>=duration)
+                node.setPrePos(node.getPosition());
             // change next arrow
             {
                 Arrow* curArrow=node.getArrowNext();

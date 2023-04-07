@@ -45,6 +45,8 @@ class Node: public Entity
         void            setSubscript(const std::string& str);
         void            setBGColor(const sf::Color& color);
         void            setNumColor(const sf::Color& color);
+        void            setPos(sf::Vector2f pos);
+        void            setPrePos(sf::Vector2f pos);
 
         Node*           getNext();
         Node*           getPrev();
@@ -52,6 +54,7 @@ class Node: public Entity
         int             getScaleTime() const;
         Arrow*          getArrowNext();
         Arrow*          getArrowPrev();
+        sf::Vector2f    getPrePos();
 
         std::unique_ptr<Arrow> makeArrow(Node* dest);
 
@@ -71,6 +74,7 @@ class Node: public Entity
         Arrow*              mArrowNext;
         Arrow*              mArrowPrev;
         bool                mIsHead;
+        sf::Vector2f        prePos;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

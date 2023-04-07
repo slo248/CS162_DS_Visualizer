@@ -87,6 +87,11 @@ Arrow *Node::getArrowPrev()
     return mArrowPrev;
 }
 
+sf::Vector2f Node::getPrePos()
+{
+    return prePos;
+}
+
 std::unique_ptr<Arrow> Node::makeArrow(Node *dest)
 {
     sf::Vector2f dist=dest->getPosition()-this->getPosition();
@@ -152,6 +157,17 @@ void Node::setBGColor(const sf::Color &color)
 void Node::setNumColor(const sf::Color &color)
 {
     mNum->setFillColor(color);
+}
+
+void Node::setPos(sf::Vector2f pos)
+{
+    setPrePos(this->getPosition());
+    this->setPosition(pos);
+}
+
+void Node::setPrePos(sf::Vector2f pos)
+{
+    prePos=pos;
 }
 
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const

@@ -278,7 +278,7 @@ void SinglyLinkedList::insertFront()
     std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
     {
         newNode->setChosen(true);
-        newNode->setPosition(DEFAULT_POS);
+        newNode->setPos(DEFAULT_POS);
         newNode->move(-DEFAULT_LEN,DEFAULT_LEN);
         newNode->setSubscript("vtx");
         newNode->setNumColor(NodeConfig::VTX_NUM_COLOR);
@@ -357,12 +357,13 @@ void SinglyLinkedList::insertFront()
 
     // move newNode to same row
     {
+        newNode->setPrePos(newNode->getPosition());
         std::unique_ptr<Animation> move(new Animation);
         move->exactly=true;
         move->category=Category::Node|Category::Chosen;
         move->elapsedTime=sf::Time::Zero;
-        move->duration=Motion::INSERT_TIME*3.f/2.f;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(pHead->getPosition()-sf::Vector2f(DEFAULT_LEN,0),mSceneLayers[Layer::Front]));
+        move->duration=Motion::INSERT_TIME;
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(0,-DEFAULT_LEN),mSceneLayers[Layer::Front]));
         mAnimationQueue.push(std::move(move));
     }
 
