@@ -13,4 +13,14 @@ namespace NodeAnimation
             node.setBGColor(mColor);
         }
     };
+ 
+    struct changeSubscript
+    {
+        std::string str;
+        changeSubscript(std::string str):str(str){}
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            node.setSubscript(str);
+        }
+    };
 }
