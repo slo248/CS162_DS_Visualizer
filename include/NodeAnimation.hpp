@@ -21,7 +21,17 @@ namespace NodeAnimation
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
             node.setSubscript(mStr);
-            if(mStr=="pHead/vtx") node.getNext()->setSubscript("");
+        }
+    };
+
+    struct BecomeHead
+    {
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            node.setHead(true);
+            node.getNext()->setHead(false);
+            ChangeSubscript("pHead/vtx")(node,elapsedTime,duration);
+            ChangeSubscript("")(*node.getNext(),elapsedTime,duration);
         }
     };
 }

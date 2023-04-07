@@ -370,13 +370,13 @@ void SinglyLinkedList::insertFront()
 
     // change subscript of newNode
     {
-        std::unique_ptr<Animation> changeSubscript(new Animation);
-        changeSubscript->exactly=true;
-        changeSubscript->category=Category::Node|Category::Chosen;
-        changeSubscript->elapsedTime=Motion::INSERT_TIME;
-        changeSubscript->duration=Motion::INSERT_TIME;
-        changeSubscript->animator=derivedAnimator<Node>(NodeAnimation::ChangeSubscript("pHead/vtx"));
-        mAnimationQueue.push(std::move(changeSubscript));
+        std::unique_ptr<Animation> becomeHead(new Animation);
+        becomeHead->exactly=true;
+        becomeHead->category=Category::Node|Category::Chosen;
+        becomeHead->elapsedTime=Motion::INSERT_TIME;
+        becomeHead->duration=Motion::INSERT_TIME;
+        becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
+        mAnimationQueue.push(std::move(becomeHead));
     }
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));

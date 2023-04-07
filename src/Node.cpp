@@ -110,8 +110,6 @@ void Node::setArrowPrev(Arrow *arrow)
 void Node::setHead(bool isHead)
 {
     mIsHead=isHead;
-    if(!isHead) mSubscript->setString("");
-    else mSubscript->setString("pHead");
 }
 
 void Node::setSubscript(const std::string &str)
