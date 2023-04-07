@@ -34,4 +34,37 @@ namespace NodeAnimation
             ChangeSubscript("")(*node.getNext(),elapsedTime,duration);
         }
     };
+
+    struct Move
+    {
+        sf::Vector2f src;
+        sf::Vector2f dest;
+        Move(sf::Vector2f src,sf::Vector2f dest):
+            src(src),dest(dest){}
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            float factor=Motion::Bezier(elapsedTime/duration);
+            node.setPosition(src+(dest-src)*factor);
+            // change next arrow
+            {
+                Arrow* curArrow=node.getArrowNext();
+                if(curArrow){
+                    std::unique_ptr<Arrow> newArr=node.makeArrow(node.getNext());
+                    curArrow->setOrigin(newArr->getOrigin());
+                    curArrow->setPosition(newArr->getPosition());
+                    curArrow->rotate(newArr->getRotation());
+                }
+            }
+            // change previous arrow
+            {
+                Arrow* curArrow=node.getArrowPrev();
+                if(curArrow){
+                    std::unique_ptr<Arrow> newArr=node.makeArrow(node.getPrev());
+                    curArrow->setOrigin(newArr->getOrigin());
+                    curArrow->setPosition(newArr->getPosition());
+                    curArrow->rotate(newArr->getRotation());
+                }
+            }
+        }
+    };
 }
