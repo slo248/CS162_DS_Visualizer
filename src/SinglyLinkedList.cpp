@@ -307,6 +307,7 @@ void SinglyLinkedList::insertFront()
         newNode->setSubscript("vtx");
         newNode->setNumColor(NodeConfig::VTX_NUM_COLOR);
         newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
+        newNode->setNext(pHead);
 
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
@@ -317,8 +318,8 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(appear));
     }
     // Add new arrow
+    Arrow* arr=makeArrow(newNode.get(),pHead);
     {
-        Arrow* arr=makeArrow(newNode.get(),pHead);
         newNode->setArrowNext(arr);
         arr->setChosen(true);
         
@@ -365,6 +366,17 @@ void SinglyLinkedList::insertFront()
         changeColor->duration=Motion::INSERT_TIME;
         changeColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::DEFAULT_COLOR));
         mAnimationQueue.push(std::move(changeColor));
+    }
+
+    // change subscript of newNode
+    {
+        std::unique_ptr<Animation> changeSubscript(new Animation);
+        changeSubscript->exactly=true;
+        changeSubscript->category=Category::Node|Category::Chosen;
+        changeSubscript->elapsedTime=Motion::INSERT_TIME;
+        changeSubscript->duration=Motion::INSERT_TIME;
+        changeSubscript->animator=derivedAnimator<Node>(NodeAnimation::ChangeSubscript("pHead/vtx"));
+        mAnimationQueue.push(std::move(changeSubscript));
     }
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));

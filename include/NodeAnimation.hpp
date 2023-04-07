@@ -14,13 +14,14 @@ namespace NodeAnimation
         }
     };
  
-    struct changeSubscript
+    struct ChangeSubscript
     {
-        std::string str;
-        changeSubscript(std::string str):str(str){}
+        std::string mStr;
+        ChangeSubscript(std::string str):mStr(str){}
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
-            node.setSubscript(str);
+            node.setSubscript(mStr);
+            if(mStr=="pHead/vtx") node.getNext()->setSubscript("");
         }
     };
 }
