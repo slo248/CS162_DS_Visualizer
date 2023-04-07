@@ -27,12 +27,14 @@ namespace SNAnimation
 
     struct Move
     {
-        sf::Vector2f mOffset;
-        Move(sf::Vector2f offset):mOffset(offset){}
+        sf::Vector2f src;
+        sf::Vector2f dest;
+        Move(sf::Vector2f src,sf::Vector2f dest):
+            src(src),dest(dest){}
         void operator() (SceneNode& node, sf::Time elapsedTime, sf::Time duration) const
         {
             float factor=Motion::Bezier(elapsedTime/duration);
-            node.setPosition(node.getPosition()+mOffset*factor);
+            node.setPosition(src+(dest-src)*factor);
         }
     };
 }

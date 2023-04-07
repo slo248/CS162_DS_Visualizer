@@ -379,5 +379,16 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(becomeHead));
     }
 
+    // move newNode to same row
+    {
+        std::unique_ptr<Animation> move(new Animation);
+        move->exactly=true;
+        move->category=Category::Node|Category::Chosen;
+        move->elapsedTime=sf::Time::Zero;
+        move->duration=Motion::INSERT_TIME;
+        move->animator=derivedAnimator<SceneNode>(SNAnimation::Move(newNode->getPosition(),pHead->getPosition()));
+        mAnimationQueue.push(std::move(move));
+    }
+
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
 }
