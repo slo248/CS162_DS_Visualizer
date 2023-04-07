@@ -50,7 +50,7 @@ void SceneNode::onAnimation(Animation *animation, sf::Time dt)
         || (!animation->exactly && animation->category&type))
     {
         animation->animator(*this,animation->elapsedTime,animation->duration);
-        if(animation->elapsedTime>=animation->duration)
+        if(animation->isLast && animation->elapsedTime>=animation->duration)
             mIsChosen=false;
     }
     for(Ptr& child: mChildren)

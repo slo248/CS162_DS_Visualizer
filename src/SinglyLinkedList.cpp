@@ -310,6 +310,7 @@ void SinglyLinkedList::insertFront()
 
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
+        appear->isLast=true;
         appear->category=Category::Node|Category::Chosen;
         appear->elapsedTime=sf::Time::Zero;
         appear->duration=Motion::INSERT_TIME;
@@ -320,10 +321,10 @@ void SinglyLinkedList::insertFront()
     {
         Arrow* arr=makeArrow(newNode.get(),pHead);
         newNode->setArrowNext(arr);
+        arr->setChosen(true);
         
         // apply color orange
         {
-            arr->setChosen(true);
             std::unique_ptr<Animation> applyColor(new Animation);
             applyColor->exactly=true;
             applyColor->category=Category::Arrow|Category::Chosen;
@@ -335,9 +336,9 @@ void SinglyLinkedList::insertFront()
 
         // appear
         {
-            arr->setChosen(true);
             std::unique_ptr<Animation> appear(new Animation);
             appear->exactly=true;
+            appear->isLast=true;
             appear->category=Category::Arrow|Category::Chosen;
             appear->elapsedTime=sf::Time::Zero;
             appear->duration=Motion::INSERT_TIME;
