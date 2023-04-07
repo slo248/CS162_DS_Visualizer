@@ -39,8 +39,10 @@ void SinglyLinkedList::setRandom()
         std::unique_ptr<Node> node(new Node(mFont,false,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
-        pre->setArrowNext(makeArrow(pre,tmp));
-        mSceneLayers[Layer::Front]->attachChild(std::move(std::move(node)));
+        std::unique_ptr<Arrow> arr=makeArrow(pre,tmp);
+        pre->setArrowNext(arr.get());
+        mSceneLayers[Layer::Front]->attachChild(std::move(node));
+        mSceneLayers[Layer::Front]->attachChild(std::move(arr));
         pre->setNext(tmp);
         pre=tmp;
     }
@@ -64,9 +66,11 @@ void SinglyLinkedList::loadFromFile(std::string dir)
         }
         else{
             newNode->setPosition(pHead->getPosition()+float(i-1)*DEFAULT_DIST);
-            cur->setArrowNext(makeArrow(cur,newNode.get()));
+            std::unique_ptr<Arrow> arr=makeArrow(cur,newNode.get());
+            cur->setArrowNext(arr.get());
             cur->setNext(newNode.get());
             cur=cur->getNext();
+            mSceneLayers[Layer::Front]->attachChild(std::move(arr));
         }
         mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     }
@@ -262,7 +266,7 @@ float getLength(sf::Vector2f vec){
     return sqrt(vec.x*vec.x+vec.y*vec.y);
 }
 
-Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
+std::unique_ptr<Arrow> SinglyLinkedList::makeArrow(Node *a, Node *b)
 {
     sf::Vector2f dist=b->getPosition()-a->getPosition();
 
@@ -281,9 +285,7 @@ Arrow* SinglyLinkedList::makeArrow(Node *a, Node *b)
 
 
     arr->rotate(angle*180.0/3.14);
-    Arrow* res=arr.get();
-    mSceneLayers[Layer::Front]->attachChild(std::move(arr));
-    return res;
+    return arr;
 }
 
 void SinglyLinkedList::removeSubButton()
@@ -318,9 +320,9 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(appear));
     }
     // Add new arrow
-    Arrow* arr=makeArrow(newNode.get(),pHead);
+    std::unique_ptr<Arrow> arr=makeArrow(newNode.get(),pHead);
     {
-        newNode->setArrowNext(arr);
+        newNode->setArrowNext(arr.get());
         arr->setChosen(true);
         
         // apply color orange
@@ -391,4 +393,5 @@ void SinglyLinkedList::insertFront()
     }
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+    mSceneLayers[Layer::Front]->attachChild(std::move(arr));
 }

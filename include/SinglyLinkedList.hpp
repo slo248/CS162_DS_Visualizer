@@ -49,8 +49,8 @@ class SinglyLinkedList : private sf::NonCopyable
         std::vector<Button*>                        mButtons;
 
     private:
-        void            buildScene();
-        Arrow*          makeArrow(Node* a, Node* b);
-        void            removeSubButton();
-        void            insertFront();
+        void                    buildScene();
+        std::unique_ptr<Arrow>  makeArrow(Node* a, Node* b);
+        void                    removeSubButton();
+        void                    insertFront();
 };
