@@ -308,24 +308,12 @@ void SinglyLinkedList::appearNewNode()
     }
 }
 
-void SinglyLinkedList::insertFront()
+std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
-    std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
+    std::unique_ptr<Node> newNode(new Node(mFont,false,value));
     newNode->setChosen(true);
-    newNode->setPosition(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN));
+    newNode->setPosition(pos);
     newNode->setPrePos(newNode->getPosition());
-    newNode->setNext(pHead);
-    pHead->setPrev(newNode.get());
-
-    // set pHead to normal
-    {
-        std::unique_ptr<Animation> normal(new Animation);
-        normal->category=Category::Node;
-        normal->elapsedTime=Motion::INSERT_TIME;
-        normal->duration=Motion::INSERT_TIME;
-        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
-        mAnimationQueue.push(std::move(normal));
-    }
 
     // make new node
     {
@@ -337,6 +325,25 @@ void SinglyLinkedList::insertFront()
         makeNew->animator=derivedAnimator<Node>(NodeAnimation::MakeNew());
         mAnimationQueue.push(std::move(makeNew));
     }
+
+    return std::move(newNode);
+}
+
+void SinglyLinkedList::insertFront()
+{
+    // set pHead to normal
+    {
+        std::unique_ptr<Animation> normal(new Animation);
+        normal->category=Category::Node;
+        normal->elapsedTime=Motion::INSERT_TIME;
+        normal->duration=Motion::INSERT_TIME;
+        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
+        mAnimationQueue.push(std::move(normal));
+    }
+
+    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
+    newNode->setNext(pHead);
+    pHead->setPrev(newNode.get());
 
     appearNewNode();
 
@@ -434,11 +441,6 @@ void SinglyLinkedList::insertFront()
 
 void SinglyLinkedList::insertWhenEmpty()
 {
-    std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
-    newNode->setChosen(true);
-    newNode->setPosition(DEFAULT_POS);
-    newNode->setPrePos(newNode->getPosition());
-
     // set pHead to normal
     {
         std::unique_ptr<Animation> normal(new Animation);
@@ -449,16 +451,7 @@ void SinglyLinkedList::insertWhenEmpty()
         mAnimationQueue.push(std::move(normal));
     }
 
-    // make new node
-    {
-        std::unique_ptr<Animation> makeNew(new Animation);
-        makeNew->exactly=true;
-        makeNew->category=Category::Node|Category::Chosen;
-        makeNew->elapsedTime=Motion::INSERT_TIME;
-        makeNew->duration=Motion::INSERT_TIME;
-        makeNew->animator=derivedAnimator<Node>(NodeAnimation::MakeNew());
-        mAnimationQueue.push(std::move(makeNew));
-    }
+    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS,getRand(1,MAX_NUM));
 
     appearNewNode();
 
