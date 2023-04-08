@@ -24,4 +24,13 @@ namespace SNAnimation
             node.setScale(factor,factor);
         }
     };
+
+    struct RemoveChosen
+    {
+        RemoveChosen(){}
+        void operator() (SceneNode& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            node.setChosen(false);
+        }
+    };
 }

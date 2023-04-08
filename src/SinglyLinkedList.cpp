@@ -384,6 +384,16 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(move));
     }
 
+    // remove all chosen
+    {
+        std::unique_ptr<Animation> remove(new Animation);
+        remove->category=Category::Chosen;
+        remove->elapsedTime=Motion::INSERT_TIME;
+        remove->duration=Motion::INSERT_TIME;
+        remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
+        mAnimationQueue.push(std::move(remove));
+    }
+
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     mSceneLayers[Layer::Front]->attachChild(std::move(arr));
 }
