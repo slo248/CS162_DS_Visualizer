@@ -281,6 +281,19 @@ void SinglyLinkedList::removeSubButton()
     }
 }
 
+void SinglyLinkedList::removeAllChosen()
+{
+    // remove all chosen
+    {
+        std::unique_ptr<Animation> remove(new Animation);
+        remove->category=Category::Chosen;
+        remove->elapsedTime=Motion::INSERT_TIME;
+        remove->duration=Motion::INSERT_TIME;
+        remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
+        mAnimationQueue.push(std::move(remove));
+    }
+}
+
 void SinglyLinkedList::insertFront()
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
@@ -407,15 +420,7 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(move));
     }
 
-    // remove all chosen
-    {
-        std::unique_ptr<Animation> remove(new Animation);
-        remove->category=Category::Chosen;
-        remove->elapsedTime=Motion::INSERT_TIME;
-        remove->duration=Motion::INSERT_TIME;
-        remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
-        mAnimationQueue.push(std::move(remove));
-    }
+    removeAllChosen();
 
     pHead=newNode.get();
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
@@ -483,15 +488,7 @@ void SinglyLinkedList::insertWhenEmpty()
         mAnimationQueue.push(std::move(becomeHead));
     }
 
-    // remove all chosen
-    {
-        std::unique_ptr<Animation> remove(new Animation);
-        remove->category=Category::Chosen;
-        remove->elapsedTime=Motion::INSERT_TIME;
-        remove->duration=Motion::INSERT_TIME;
-        remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
-        mAnimationQueue.push(std::move(remove));
-    }
+    removeAllChosen();
 
     pHead=newNode.get();
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
