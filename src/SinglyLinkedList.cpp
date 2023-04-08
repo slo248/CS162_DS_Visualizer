@@ -290,6 +290,14 @@ void SinglyLinkedList::insertFront()
     newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
     newNode->setNext(pHead);
     pHead->setPrev(newNode.get());
+
+    // set pHead to normal
+    {
+        pHead->setBGColor(NodeConfig::INSIDE_COLOR);
+        pHead->setNumColor(NodeConfig::CHAR_COLOR);
+        pHead->setSubscript("pHead");
+    }
+
     {
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
@@ -394,6 +402,7 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(remove));
     }
 
+    pHead=newNode.get();
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     mSceneLayers[Layer::Front]->attachChild(std::move(arr));
 }
