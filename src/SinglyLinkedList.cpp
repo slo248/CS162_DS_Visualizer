@@ -321,6 +321,20 @@ void SinglyLinkedList::normalPHead()
     }
 }
 
+void SinglyLinkedList::moveList(sf::Vector2f delta)
+{
+    // move original list to the right
+    {
+        std::unique_ptr<Animation> move(new Animation);
+        move->exactly=true;
+        move->category=Category::Node;
+        move->elapsedTime=sf::Time::Zero;
+        move->duration=Motion::INSERT_TIME;
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front]));
+        mAnimationQueue.push(std::move(move));
+    }
+}
+
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
@@ -421,17 +435,7 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(becomeHead));
     }
 
-    // move original list to the right
-    {
-        // the graph crashed 
-        std::unique_ptr<Animation> move(new Animation);
-        move->exactly=true;
-        move->category=Category::Node;
-        move->elapsedTime=sf::Time::Zero;
-        move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(DEFAULT_LEN,0),mSceneLayers[Layer::Front]));
-        mAnimationQueue.push(std::move(move));
-    }
+    moveList(sf::Vector2f(DEFAULT_LEN,0));
 
     // move newNode to same row
     {
