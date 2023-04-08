@@ -184,6 +184,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                                 insertFront();
                             else
                                 insertWhenEmpty();
+                            mNumNode++;
                             break;
                         }
                         case Category::ButtonInsertBack:
@@ -192,6 +193,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                                 insertBack();
                             else
                                 insertWhenEmpty();
+                            mNumNode++;
                             break;
                         }
                     case Category::ButtonUpdate:
@@ -503,5 +505,14 @@ void SinglyLinkedList::insertFront()
 
 void SinglyLinkedList::insertBack()
 {
+    // normal head config
+    normalPHead();
 
+    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+1.f*mNumNode*sf::Vector2f(DEFAULT_LEN,0),getRand(1,MAX_NUM));
+
+    appearNewNode();
+
+    removeAllChosen();
+
+    mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
 }
