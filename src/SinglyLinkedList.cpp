@@ -410,7 +410,7 @@ std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
     return std::move(newNode);
 }
 
-std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
+std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b, sf::Color color)
 {
     // Add new arrow
     std::unique_ptr<Arrow> arr=a->makeArrow(b);
@@ -418,14 +418,13 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
         a->setArrowNext(arr.get());
         arr->setChosen(Category::Chosen1);
         
-        // apply color orange
         {
             std::unique_ptr<Animation> applyColor(new Animation);
             applyColor->exactly=true;
             applyColor->category=Category::Arrow|Category::Chosen1;
             applyColor->elapsedTime=Motion::INSERT_TIME;
             applyColor->duration=Motion::INSERT_TIME;
-            applyColor->animators.push_back(derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::ORANGE)));
+            applyColor->animators.push_back(derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(color)));
             mAnimationQueue.push(std::move(applyColor));
         }
 
@@ -474,7 +473,7 @@ void SinglyLinkedList::insertFront()
 
     appearNewNode();
 
-    std::unique_ptr<Arrow> arr=createArrow(newNode.get(),pHead);
+    std::unique_ptr<Arrow> arr=createArrow(newNode.get(),pHead,Colors::ORANGE);
 
     // change vtx color to green
     changeVtxColor(Colors::GREEN);
