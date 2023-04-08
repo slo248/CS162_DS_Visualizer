@@ -51,7 +51,7 @@ void SceneNode::onAnimation(Animation *animation, sf::Time dt)
     {
         animation->animator(*this,animation->elapsedTime,animation->duration);
         if(animation->isLast && animation->elapsedTime>=animation->duration)
-            mIsChosen=false;
+            mChosen=Category::None;
     }
     for(Ptr& child: mChildren)
         child->onAnimation(animation,dt);
@@ -63,9 +63,9 @@ void SceneNode::update(sf::Time dt)
     updateChildren(dt);
 }
 
-void SceneNode::setChosen(bool isChosen)
+void SceneNode::setChosen(unsigned int chosen)
 {
-    mIsChosen=isChosen;
+    mChosen=chosen;
 }
 
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const

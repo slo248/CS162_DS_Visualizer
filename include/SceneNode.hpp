@@ -25,8 +25,9 @@ namespace Category{
         ButtonInsertBack    = 1 << 12,
         ButtonInsertMiddle  = 1 << 13,
         AllSubButton        = ButtonEmpty | ButtonSetRandom | ButtonLoadFromFile | ButtonInsertFront | ButtonInsertBack | ButtonInsertMiddle,
-        Chosen              = 1 << 30,
-        All                 = 0xFFFF
+        Chosen1             = 1 << 29,
+        Chosen2             = 1 << 30,
+        All                 = 0xFFFF,
     };
 }
 
@@ -47,7 +48,7 @@ class SceneNode :
         virtual unsigned int    getCategory() const;
         void                    onAnimation(Animation* animation, sf::Time dt);
         void                    update(sf::Time dt);
-        void                    setChosen(bool isChosen);
+        void                    setChosen(unsigned int chosen);
 
 
     private:
@@ -62,5 +63,5 @@ class SceneNode :
         std::vector<Ptr>        mChildren;
 
     protected:
-        bool                    mIsChosen=false;
+        unsigned int            mChosen=Category::None;
 };

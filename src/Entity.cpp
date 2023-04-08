@@ -2,7 +2,7 @@
 
 unsigned int Entity::getCategory() const
 {
-    return 0;
+    return Category::None;
 }
 
 sf::Vector2f Entity::getVelocity() const

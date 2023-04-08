@@ -22,7 +22,7 @@ namespace SNAnimation
         RemoveChosen(){}
         void operator() (SceneNode& node, sf::Time elapsedTime, sf::Time duration) const
         {
-            node.setChosen(false);
+            node.setChosen(Category::None);
         }
     };
 }

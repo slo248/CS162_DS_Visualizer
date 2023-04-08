@@ -43,9 +43,7 @@ void Arrow::updateCurrent(sf::Time dt)
 
 unsigned int Arrow::getCategory() const
 {
-    unsigned int res=Category::Arrow;
-    if(mIsChosen) res|=Category::Chosen;
-    return res;
+    return Category::Arrow|mChosen;
 }
 
 void Arrow::setColor(const sf::Color &color)

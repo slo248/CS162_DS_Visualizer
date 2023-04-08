@@ -296,7 +296,7 @@ void SinglyLinkedList::removeAllChosen()
     // remove all chosen
     {
         std::unique_ptr<Animation> remove(new Animation);
-        remove->category=Category::Chosen;
+        remove->category=Category::Chosen1;
         remove->elapsedTime=Motion::INSERT_TIME;
         remove->duration=Motion::INSERT_TIME;
         remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
@@ -309,7 +309,7 @@ void SinglyLinkedList::appearNewNode()
     {
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
-        appear->category=Category::Node|Category::Chosen;
+        appear->category=Category::Node|Category::Chosen1;
         appear->elapsedTime=sf::Time::Zero;
         appear->duration=Motion::INSERT_TIME;
         appear->animator=derivedAnimator<SceneNode>(SNAnimation::Scale(0));
@@ -347,7 +347,7 @@ void SinglyLinkedList::becomeHead()
     {
         std::unique_ptr<Animation> becomeHead(new Animation);
         becomeHead->exactly=true;
-        becomeHead->category=Category::Node|Category::Chosen;
+        becomeHead->category=Category::Node|Category::Chosen1;
         becomeHead->elapsedTime=Motion::INSERT_TIME;
         becomeHead->duration=Motion::INSERT_TIME;
         becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
@@ -360,7 +360,7 @@ void SinglyLinkedList::changeVtxColor(sf::Color color)
     {
         std::unique_ptr<Animation> changeColor(new Animation);
         changeColor->exactly=true;
-        changeColor->category=Category::Node|Category::Chosen;
+        changeColor->category=Category::Node|Category::Chosen1;
         changeColor->elapsedTime=Motion::INSERT_TIME;
         changeColor->duration=Motion::INSERT_TIME;
         changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(color));
@@ -373,7 +373,7 @@ void SinglyLinkedList::moveVtx(sf::Vector2f delta)
     {
         std::unique_ptr<Animation> move(new Animation);
         move->exactly=true;
-        move->category=Category::Node|Category::Chosen;
+        move->category=Category::Node|Category::Chosen1;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
         move->animator=derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front]));
@@ -386,7 +386,7 @@ void SinglyLinkedList::changeArrowColor(sf::Color color)
     {
         std::unique_ptr<Animation> changeColor(new Animation);
         changeColor->exactly=true;
-        changeColor->category=Category::Arrow|Category::Chosen;
+        changeColor->category=Category::Arrow|Category::Chosen1;
         changeColor->elapsedTime=Motion::INSERT_TIME;
         changeColor->duration=Motion::INSERT_TIME;
         changeColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(color));
@@ -397,7 +397,7 @@ void SinglyLinkedList::changeArrowColor(sf::Color color)
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
-    newNode->setChosen(true);
+    newNode->setChosen(Category::Chosen1);
     newNode->setPosition(pos);
     newNode->setPrePos(newNode->getPosition());
 
@@ -405,7 +405,7 @@ std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
     {
         std::unique_ptr<Animation> makeNew(new Animation);
         makeNew->exactly=true;
-        makeNew->category=Category::Node|Category::Chosen;
+        makeNew->category=Category::Node|Category::Chosen1;
         makeNew->elapsedTime=Motion::INSERT_TIME;
         makeNew->duration=Motion::INSERT_TIME;
         makeNew->animator=derivedAnimator<Node>(NodeAnimation::MakeNew());
@@ -421,13 +421,13 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
     std::unique_ptr<Arrow> arr=a->makeArrow(b);
     {
         a->setArrowNext(arr.get());
-        arr->setChosen(true);
+        arr->setChosen(Category::Chosen1);
         
         // apply color orange
         {
             std::unique_ptr<Animation> applyColor(new Animation);
             applyColor->exactly=true;
-            applyColor->category=Category::Arrow|Category::Chosen;
+            applyColor->category=Category::Arrow|Category::Chosen1;
             applyColor->elapsedTime=Motion::INSERT_TIME;
             applyColor->duration=Motion::INSERT_TIME;
             applyColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::ORANGE));
@@ -438,7 +438,7 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
         {
             std::unique_ptr<Animation> appear(new Animation);
             appear->exactly=true;
-            appear->category=Category::Arrow|Category::Chosen;
+            appear->category=Category::Arrow|Category::Chosen1;
             appear->elapsedTime=sf::Time::Zero;
             appear->duration=Motion::INSERT_TIME;
             appear->animator=derivedAnimator<SceneNode>(SNAnimation::Scale(0));

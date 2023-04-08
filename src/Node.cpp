@@ -67,9 +67,7 @@ Node *Node::getPrev()
 
 unsigned int Node::getCategory() const
 {
-    unsigned int category=Category::Node;
-    if(mIsChosen) category |= Category::Chosen;
-    return category;
+    return Category::Node|mChosen;
 }
 
 int Node::getScaleTime() const
