@@ -2,6 +2,7 @@
 
 #include <Entity.hpp>
 #include <Arrow.hpp>
+#include <Colors.hpp>
 
 namespace NodeConfig
 {
@@ -77,6 +78,7 @@ class Node: public Entity
         bool                mIsHead;
         sf::Vector2f        prePos;
         std::string         preSubscript;
+        sf::Color           preBGColor=Colors::BLANK;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

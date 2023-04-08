@@ -161,6 +161,10 @@ void Node::setSubscript(const std::string &str)
 
 void Node::setBGColor(const sf::Color &color)
 {
+    if(preBGColor==Colors::BLANK)
+        preBGColor=color;
+    else
+        preBGColor=mCircle.getFillColor();
     mCircle.setFillColor(color);
 }
 
