@@ -69,6 +69,34 @@ namespace NodeAnimation
                     layer->attachChild(std::move(newArr));
                 }
             }
+            // change arrow point to it from the left
+            {
+                Node* prev=node.getPrev();
+                if(prev){
+                    Arrow* curArrow=prev->getArrowNext();
+                    if(curArrow){
+                        std::unique_ptr<Arrow> newArr=prev->makeArrow(&node);
+                        newArr->setScale(1,1);
+                        layer->detachChild(*curArrow);
+                        prev->setArrowNext(newArr.get());
+                        layer->attachChild(std::move(newArr));
+                    }
+                }
+            }
+            // change arrow point to it from the right
+            {
+                Node* next=node.getNext();
+                if(next){
+                    Arrow* curArrow=next->getArrowPrev();
+                    if(curArrow){
+                        std::unique_ptr<Arrow> newArr=next->makeArrow(&node);
+                        newArr->setScale(1,1);
+                        layer->detachChild(*curArrow);
+                        next->setArrowPrev(newArr.get());
+                        layer->attachChild(std::move(newArr));
+                    }
+                }
+            }
         }
     };
 }
