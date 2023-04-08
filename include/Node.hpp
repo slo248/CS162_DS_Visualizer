@@ -76,6 +76,7 @@ class Node: public Entity
         Arrow*              mArrowPrev;
         bool                mIsHead;
         sf::Vector2f        prePos;
+        std::string         preSubscript;
 
     private:
         void            drawCurrent(sf::RenderTarget& target,sf::RenderStates states) const;

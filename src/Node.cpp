@@ -148,6 +148,10 @@ void Node::setHead(bool isHead)
 
 void Node::setSubscript(const std::string &str)
 {
+    if(preSubscript.empty()) 
+        preSubscript=str;
+    else
+        preSubscript=mSubscript->getString();
     mSubscript->setString(str);
     {
         sf::FloatRect bounds=mSubscript->getLocalBounds();
