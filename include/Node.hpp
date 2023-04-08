@@ -53,6 +53,7 @@ class Node: public Entity
         Node*           getNext();
         Node*           getPrev();
         unsigned int    getCategory() const;
+        unsigned int    getChosen() const;
         int             getScaleTime() const;
         Arrow*          getArrowNext();
         Arrow*          getArrowPrev();

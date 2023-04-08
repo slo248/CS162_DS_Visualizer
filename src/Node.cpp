@@ -70,6 +70,11 @@ unsigned int Node::getCategory() const
     return Category::Node|mChosen;
 }
 
+unsigned int Node::getChosen() const
+{
+    return mChosen;
+}
+
 int Node::getScaleTime() const
 {
     return mScaleTime;

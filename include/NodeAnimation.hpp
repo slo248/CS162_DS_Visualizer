@@ -60,6 +60,18 @@ namespace NodeAnimation
         }
     };
 
+    struct MoveChosenToNext
+    {
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            Node* next=node.getNext();
+            if(next){
+                next->setChosen(node.getChosen());
+                node.setChosen(Category::None);
+            }
+        }
+    };
+
     struct Move
     {
         sf::Vector2f delta;
