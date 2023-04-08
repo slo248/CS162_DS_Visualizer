@@ -308,6 +308,19 @@ void SinglyLinkedList::appearNewNode()
     }
 }
 
+void SinglyLinkedList::normalPHead()
+{
+    // set pHead to normal
+    {
+        std::unique_ptr<Animation> normal(new Animation);
+        normal->category=Category::Node;
+        normal->elapsedTime=Motion::INSERT_TIME;
+        normal->duration=Motion::INSERT_TIME;
+        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
+        mAnimationQueue.push(std::move(normal));
+    }
+}
+
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
@@ -365,15 +378,7 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
 
 void SinglyLinkedList::insertFront()
 {
-    // set pHead to normal
-    {
-        std::unique_ptr<Animation> normal(new Animation);
-        normal->category=Category::Node;
-        normal->elapsedTime=Motion::INSERT_TIME;
-        normal->duration=Motion::INSERT_TIME;
-        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
-        mAnimationQueue.push(std::move(normal));
-    }
+    normalPHead();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
     newNode->setNext(pHead);

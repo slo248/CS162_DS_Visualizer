@@ -53,6 +53,7 @@ class SinglyLinkedList : private sf::NonCopyable
         void        removeSubButton();
         void        removeAllChosen();
         void        appearNewNode();
+        void        normalPHead();
         std::unique_ptr<Node>  createNode(sf::Vector2f pos, int value);
         std::unique_ptr<Arrow> createArrow(Node* a, Node* b);
         void        insertFront();
