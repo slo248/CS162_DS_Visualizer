@@ -296,7 +296,7 @@ void SinglyLinkedList::removeAllChosen()
     // remove all chosen
     {
         std::unique_ptr<Animation> remove(new Animation);
-        remove->category=Category::Chosen1;
+        remove->category=Category::AllChosen;
         remove->elapsedTime=Motion::INSERT_TIME;
         remove->duration=Motion::INSERT_TIME;
         remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());

@@ -27,6 +27,7 @@ namespace Category{
         AllSubButton        = ButtonEmpty | ButtonSetRandom | ButtonLoadFromFile | ButtonInsertFront | ButtonInsertBack | ButtonInsertMiddle,
         Chosen1             = 1 << 29,
         Chosen2             = 1 << 30,
+        AllChosen           = Chosen1 | Chosen2,
         All                 = 0xFFFF,
     };
 }
