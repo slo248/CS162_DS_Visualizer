@@ -334,7 +334,7 @@ void SinglyLinkedList::moveList(sf::Vector2f delta)
     {
         std::unique_ptr<Animation> move(new Animation);
         move->exactly=true;
-        move->category=Category::Node;
+        move->category=Category::Node|Category::Chosen2;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
         move->animator=derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front]));
@@ -489,6 +489,9 @@ void SinglyLinkedList::insertFront()
     changeArrowColor(ArrowConfig::DEFAULT_COLOR);
 
     becomeHead();
+
+    for(Node* cur=pHead; cur; cur=cur->getNext())
+        cur->setChosen(Category::Chosen2);
 
     // move original list to the right
     moveList(sf::Vector2f(DEFAULT_LEN,0));
