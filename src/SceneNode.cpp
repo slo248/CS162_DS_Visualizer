@@ -45,6 +45,8 @@ unsigned int SceneNode::getCategory() const
 
 void SceneNode::onAnimation(Animation *animation, sf::Time dt)
 {
+    if(animation->once && animation->isDone) return;
+
     const unsigned int type=getCategory();
     if((animation->exactly && animation->category==type) 
         || (!animation->exactly && animation->category&type))
@@ -53,6 +55,10 @@ void SceneNode::onAnimation(Animation *animation, sf::Time dt)
             animator(*this,animation->elapsedTime,animation->duration);
         if(animation->isLast && animation->elapsedTime>=animation->duration)
             mChosen=Category::None;
+        if(animation->once){
+            animation->isDone=true;
+            return;
+        }
     }
     for(Ptr& child: mChildren)
         child->onAnimation(animation,dt);

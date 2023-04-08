@@ -507,6 +507,31 @@ void SinglyLinkedList::insertBack()
 
     appearNewNode();
 
+    pHead->setChosen(Category::Chosen2);
+    for(int i=0; i<mNumNode; ++i){
+        // color to blue
+        {
+            std::unique_ptr<Animation> changeColor(new Animation);
+            changeColor->exactly=true;
+            changeColor->category=Category::Node|Category::Chosen2;
+            changeColor->elapsedTime=Motion::INSERT_TIME;
+            changeColor->duration=Motion::INSERT_TIME;
+            changeColor->animators.push_back(derivedAnimator<Node>(NodeAnimation::ChangeColor(Colors::BLUE)));
+            mAnimationQueue.push(std::move(changeColor));
+        }
+        // move chosen
+        {
+            std::unique_ptr<Animation> moveChosen(new Animation);
+            moveChosen->exactly=true;
+            moveChosen->once=true;
+            moveChosen->category=Category::Node|Category::Chosen2;
+            moveChosen->elapsedTime=sf::Time::Zero;
+            moveChosen->duration=Motion::INSERT_TIME;
+            moveChosen->animators.push_back(derivedAnimator<Node>(NodeAnimation::MoveChosenToNext()));
+            mAnimationQueue.push(std::move(moveChosen));
+        }
+    }
+
     removeAllChosen();
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
