@@ -124,7 +124,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                 disappear->category=Category::AllSubButton;
                 disappear->elapsedTime=sf::seconds(1);
                 disappear->duration=sf::seconds(1);
-                disappear->animator=derivedAnimator<Button>(SNAnimation::Scale(1));
+                disappear->animators.push_back(derivedAnimator<Button>(SNAnimation::Scale(1)));
                 switch (type){
                     case Category::ButtonCreate:
                     {
@@ -134,7 +134,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         appear->category=Category::ButtonEmpty|Category::ButtonSetRandom|Category::ButtonLoadFromFile;
                         appear->elapsedTime=sf::seconds(1);
                         appear->duration=sf::seconds(1);
-                        appear->animator=derivedAnimator<Button>(SNAnimation::Scale(0));
+                        appear->animators.push_back(derivedAnimator<Button>(SNAnimation::Scale(0)));
                         mAnimationQueue.push(std::move(appear));
                         break;
                     }
@@ -151,7 +151,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             animation->category=Category::Node|Category::Arrow;
                             animation->elapsedTime=sf::Time::Zero;
                             animation->duration=Motion::CREATE_TIME;
-                            animation->animator=derivedAnimator<SceneNode>(SNAnimation::Scale(0));
+                            animation->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(0)));
                             mAnimationQueue.push(std::move(animation));
                             break;
                         }
@@ -162,7 +162,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                             animation->category=Category::Node|Category::Arrow;
                             animation->elapsedTime=sf::Time::Zero;
                             animation->duration=Motion::CREATE_TIME;
-                            animation->animator=derivedAnimator<SceneNode>(SNAnimation::Scale(0));
+                            animation->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(0)));
                             mAnimationQueue.push(std::move(animation));
                             break;
                         }
@@ -174,7 +174,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         appear->category=Category::ButtonInsertFront|Category::ButtonInsertMiddle|Category::ButtonInsertBack;
                         appear->elapsedTime=sf::seconds(1);
                         appear->duration=sf::seconds(1);
-                        appear->animator=derivedAnimator<Button>(SNAnimation::Scale(0));
+                        appear->animators.push_back(derivedAnimator<Button>(SNAnimation::Scale(0)));
                         mAnimationQueue.push(std::move(appear));
                         break;
                     }
@@ -299,7 +299,7 @@ void SinglyLinkedList::removeAllChosen()
         remove->category=Category::AllChosen;
         remove->elapsedTime=Motion::INSERT_TIME;
         remove->duration=Motion::INSERT_TIME;
-        remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
+        remove->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::RemoveChosen()));
         mAnimationQueue.push(std::move(remove));
     }
 }
@@ -312,7 +312,7 @@ void SinglyLinkedList::appearNewNode()
         appear->category=Category::Node|Category::Chosen1;
         appear->elapsedTime=sf::Time::Zero;
         appear->duration=Motion::INSERT_TIME;
-        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Scale(0));
+        appear->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(0)));
         mAnimationQueue.push(std::move(appear));
     }
 }
@@ -324,7 +324,7 @@ void SinglyLinkedList::normalPHead()
         normal->category=Category::Node;
         normal->elapsedTime=Motion::INSERT_TIME;
         normal->duration=Motion::INSERT_TIME;
-        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
+        normal->animators.push_back(derivedAnimator<Node>(NodeAnimation::NormalHead()));
         mAnimationQueue.push(std::move(normal));
     }
 }
@@ -337,7 +337,7 @@ void SinglyLinkedList::moveList(sf::Vector2f delta)
         move->category=Category::Node|Category::Chosen2;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front]));
+        move->animators.push_back(derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front])));
         mAnimationQueue.push(std::move(move));
     }
 }
@@ -350,7 +350,7 @@ void SinglyLinkedList::becomeHead()
         becomeHead->category=Category::Node|Category::Chosen1;
         becomeHead->elapsedTime=Motion::INSERT_TIME;
         becomeHead->duration=Motion::INSERT_TIME;
-        becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
+        becomeHead->animators.push_back(derivedAnimator<Node>(NodeAnimation::BecomeHead()));
         mAnimationQueue.push(std::move(becomeHead));
     }
 }
@@ -363,7 +363,7 @@ void SinglyLinkedList::changeVtxColor(sf::Color color)
         changeColor->category=Category::Node|Category::Chosen1;
         changeColor->elapsedTime=Motion::INSERT_TIME;
         changeColor->duration=Motion::INSERT_TIME;
-        changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(color));
+        changeColor->animators.push_back(derivedAnimator<Node>(NodeAnimation::ChangeColor(color)));
         mAnimationQueue.push(std::move(changeColor));
     }
 }
@@ -376,7 +376,7 @@ void SinglyLinkedList::moveVtx(sf::Vector2f delta)
         move->category=Category::Node|Category::Chosen1;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front]));
+        move->animators.push_back(derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front])));
         mAnimationQueue.push(std::move(move));
     }
 }
@@ -389,7 +389,7 @@ void SinglyLinkedList::changeArrowColor(sf::Color color)
         changeColor->category=Category::Arrow|Category::Chosen1;
         changeColor->elapsedTime=Motion::INSERT_TIME;
         changeColor->duration=Motion::INSERT_TIME;
-        changeColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(color));
+        changeColor->animators.push_back(derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(color)));
         mAnimationQueue.push(std::move(changeColor));
     }
 }
@@ -408,7 +408,7 @@ std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
         makeNew->category=Category::Node|Category::Chosen1;
         makeNew->elapsedTime=Motion::INSERT_TIME;
         makeNew->duration=Motion::INSERT_TIME;
-        makeNew->animator=derivedAnimator<Node>(NodeAnimation::MakeNew());
+        makeNew->animators.push_back(derivedAnimator<Node>(NodeAnimation::MakeNew()));
         mAnimationQueue.push(std::move(makeNew));
     }
 
@@ -430,7 +430,7 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
             applyColor->category=Category::Arrow|Category::Chosen1;
             applyColor->elapsedTime=Motion::INSERT_TIME;
             applyColor->duration=Motion::INSERT_TIME;
-            applyColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::ORANGE));
+            applyColor->animators.push_back(derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::ORANGE)));
             mAnimationQueue.push(std::move(applyColor));
         }
 
@@ -441,7 +441,7 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
             appear->category=Category::Arrow|Category::Chosen1;
             appear->elapsedTime=sf::Time::Zero;
             appear->duration=Motion::INSERT_TIME;
-            appear->animator=derivedAnimator<SceneNode>(SNAnimation::Scale(0));
+            appear->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(0)));
             mAnimationQueue.push(std::move(appear));
         }
     }

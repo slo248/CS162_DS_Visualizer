@@ -4,6 +4,8 @@
 #include <cassert>
 #include <SFML/Graphics.hpp>
 
+#define Animator std::function<void(SceneNode&, sf::Time, sf::Time)>
+
 class SceneNode;
 
 struct Animation
@@ -14,12 +16,11 @@ struct Animation
     unsigned int    category;
     sf::Time        duration;
     sf::Time        elapsedTime;
-    std::function<void(SceneNode&, sf::Time, sf::Time)> animator;
+    std::vector<Animator> animators;
 };
 
 template <class Object, class Function>
-std::function<void(SceneNode&, sf::Time, sf::Time)>
-    derivedAnimator(Function fn)
+Animator derivedAnimator(Function fn)
 {
     return [=] (SceneNode& node, sf::Time elapsedTime, sf::Time duration)
     {

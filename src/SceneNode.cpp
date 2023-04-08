@@ -49,7 +49,8 @@ void SceneNode::onAnimation(Animation *animation, sf::Time dt)
     if((animation->exactly && animation->category==type) 
         || (!animation->exactly && animation->category&type))
     {
-        animation->animator(*this,animation->elapsedTime,animation->duration);
+        for(Animator& animator: animation->animators)
+            animator(*this,animation->elapsedTime,animation->duration);
         if(animation->isLast && animation->elapsedTime>=animation->duration)
             mChosen=Category::None;
     }
