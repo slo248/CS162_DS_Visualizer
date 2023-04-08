@@ -375,6 +375,20 @@ void SinglyLinkedList::moveVtx(sf::Vector2f delta)
     }
 }
 
+void SinglyLinkedList::changeArrowColor(sf::Color color)
+{
+    // change arrow color to black
+    {
+        std::unique_ptr<Animation> changeColor(new Animation);
+        changeColor->exactly=true;
+        changeColor->category=Category::Arrow|Category::Chosen;
+        changeColor->elapsedTime=Motion::INSERT_TIME;
+        changeColor->duration=Motion::INSERT_TIME;
+        changeColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(color));
+        mAnimationQueue.push(std::move(changeColor));
+    }
+}
+
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
@@ -444,16 +458,7 @@ void SinglyLinkedList::insertFront()
 
     changeVtxColor(NodeConfig::HEAD_BG_COLOR);
 
-    // change arrow color to black
-    {
-        std::unique_ptr<Animation> changeColor(new Animation);
-        changeColor->exactly=true;
-        changeColor->category=Category::Arrow|Category::Chosen;
-        changeColor->elapsedTime=Motion::INSERT_TIME;
-        changeColor->duration=Motion::INSERT_TIME;
-        changeColor->animator=derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(ArrowConfig::DEFAULT_COLOR));
-        mAnimationQueue.push(std::move(changeColor));
-    }
+    changeArrowColor(ArrowConfig::DEFAULT_COLOR);
 
     becomeHead();
 
