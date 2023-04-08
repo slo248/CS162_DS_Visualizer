@@ -186,6 +186,14 @@ void SinglyLinkedList::processInput(sf::Event event)
                                 insertWhenEmpty();
                             break;
                         }
+                        case Category::ButtonInsertBack:
+                        {
+                            if(pHead)
+                                insertBack();
+                            else
+                                insertWhenEmpty();
+                            break;
+                        }
                     case Category::ButtonUpdate:
                         mAnimationQueue.push(std::move(disappear));
                         break;
@@ -439,6 +447,26 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
     return std::move(arr);
 }
 
+void SinglyLinkedList::insertWhenEmpty()
+{
+    // normal head config
+    normalPHead();
+
+    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS,getRand(1,MAX_NUM));
+
+    appearNewNode();
+
+    // change vtx color to green
+    changeVtxColor(NodeConfig::HEAD_BG_COLOR);
+
+    becomeHead();
+
+    removeAllChosen();
+
+    pHead=newNode.get();
+    mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+}
+
 void SinglyLinkedList::insertFront()
 {
     // normal head config
@@ -473,22 +501,7 @@ void SinglyLinkedList::insertFront()
     mSceneLayers[Layer::Front]->attachChild(std::move(arr));
 }
 
-void SinglyLinkedList::insertWhenEmpty()
+void SinglyLinkedList::insertBack()
 {
-    // normal head config
-    normalPHead();
 
-    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS,getRand(1,MAX_NUM));
-
-    appearNewNode();
-
-    // change vtx color to green
-    changeVtxColor(NodeConfig::HEAD_BG_COLOR);
-
-    becomeHead();
-
-    removeAllChosen();
-
-    pHead=newNode.get();
-    mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
 }
