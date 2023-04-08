@@ -180,7 +180,10 @@ void SinglyLinkedList::processInput(sf::Event event)
                     }
                         case Category::ButtonInsertFront:
                         {
-                            insertFront();
+                            if(pHead)
+                                insertFront();
+                            else
+                                insertWhenEmpty();
                             break;
                         }
                     case Category::ButtonUpdate:
@@ -417,4 +420,79 @@ void SinglyLinkedList::insertFront()
     pHead=newNode.get();
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
     mSceneLayers[Layer::Front]->attachChild(std::move(arr));
+}
+
+void SinglyLinkedList::insertWhenEmpty()
+{
+    std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
+    newNode->setChosen(true);
+    newNode->setPosition(DEFAULT_POS);
+    newNode->setPrePos(newNode->getPosition());
+
+    // set pHead to normal
+    {
+        std::unique_ptr<Animation> normal(new Animation);
+        normal->category=Category::Node;
+        normal->elapsedTime=Motion::INSERT_TIME;
+        normal->duration=Motion::INSERT_TIME;
+        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
+        mAnimationQueue.push(std::move(normal));
+    }
+
+    // make new node
+    {
+        std::unique_ptr<Animation> makeNew(new Animation);
+        makeNew->exactly=true;
+        makeNew->category=Category::Node|Category::Chosen;
+        makeNew->elapsedTime=Motion::INSERT_TIME;
+        makeNew->duration=Motion::INSERT_TIME;
+        makeNew->animator=derivedAnimator<Node>(NodeAnimation::MakeNew());
+        mAnimationQueue.push(std::move(makeNew));
+    }
+
+    // appear new node
+    {
+        std::unique_ptr<Animation> appear(new Animation);
+        appear->exactly=true;
+        appear->category=Category::Node|Category::Chosen;
+        appear->elapsedTime=sf::Time::Zero;
+        appear->duration=Motion::INSERT_TIME;
+        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
+        mAnimationQueue.push(std::move(appear));
+    }
+
+    // change vtx color to green
+    {
+        std::unique_ptr<Animation> changeColor(new Animation);
+        changeColor->exactly=true;
+        changeColor->category=Category::Node|Category::Chosen;
+        changeColor->elapsedTime=Motion::INSERT_TIME;
+        changeColor->duration=Motion::INSERT_TIME;
+        changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(NodeConfig::HEAD_BG_COLOR));
+        mAnimationQueue.push(std::move(changeColor));
+    }
+
+    // become head
+    {
+        std::unique_ptr<Animation> becomeHead(new Animation);
+        becomeHead->exactly=true;
+        becomeHead->category=Category::Node|Category::Chosen;
+        becomeHead->elapsedTime=Motion::INSERT_TIME;
+        becomeHead->duration=Motion::INSERT_TIME;
+        becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
+        mAnimationQueue.push(std::move(becomeHead));
+    }
+
+    // remove all chosen
+    {
+        std::unique_ptr<Animation> remove(new Animation);
+        remove->category=Category::Chosen;
+        remove->elapsedTime=Motion::INSERT_TIME;
+        remove->duration=Motion::INSERT_TIME;
+        remove->animator=derivedAnimator<SceneNode>(SNAnimation::RemoveChosen());
+        mAnimationQueue.push(std::move(remove));
+    }
+
+    pHead=newNode.get();
+    mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
 }

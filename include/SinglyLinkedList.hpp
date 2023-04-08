@@ -52,4 +52,5 @@ class SinglyLinkedList : private sf::NonCopyable
         void                    buildScene();
         void                    removeSubButton();
         void                    insertFront();
+        void                    insertWhenEmpty();
 };
