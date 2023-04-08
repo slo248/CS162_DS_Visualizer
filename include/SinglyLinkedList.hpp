@@ -55,6 +55,7 @@ class SinglyLinkedList : private sf::NonCopyable
         void        appearNewNode();
         void        normalPHead();
         void        moveList(sf::Vector2f delta);
+        void        becomeHead();
         std::unique_ptr<Node>  createNode(sf::Vector2f pos, int value);
         std::unique_ptr<Arrow> createArrow(Node* a, Node* b);
         void        insertFront();

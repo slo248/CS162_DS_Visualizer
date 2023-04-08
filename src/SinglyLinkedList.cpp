@@ -335,6 +335,20 @@ void SinglyLinkedList::moveList(sf::Vector2f delta)
     }
 }
 
+void SinglyLinkedList::becomeHead()
+{
+    // change subscript of newNode
+    {
+        std::unique_ptr<Animation> becomeHead(new Animation);
+        becomeHead->exactly=true;
+        becomeHead->category=Category::Node|Category::Chosen;
+        becomeHead->elapsedTime=Motion::INSERT_TIME;
+        becomeHead->duration=Motion::INSERT_TIME;
+        becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
+        mAnimationQueue.push(std::move(becomeHead));
+    }
+}
+
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
@@ -424,16 +438,7 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(changeColor));
     }
 
-    // change subscript of newNode
-    {
-        std::unique_ptr<Animation> becomeHead(new Animation);
-        becomeHead->exactly=true;
-        becomeHead->category=Category::Node|Category::Chosen;
-        becomeHead->elapsedTime=Motion::INSERT_TIME;
-        becomeHead->duration=Motion::INSERT_TIME;
-        becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
-        mAnimationQueue.push(std::move(becomeHead));
-    }
+    becomeHead();
 
     moveList(sf::Vector2f(DEFAULT_LEN,0));
 
@@ -457,15 +462,7 @@ void SinglyLinkedList::insertFront()
 
 void SinglyLinkedList::insertWhenEmpty()
 {
-    // set pHead to normal
-    {
-        std::unique_ptr<Animation> normal(new Animation);
-        normal->category=Category::Node;
-        normal->elapsedTime=Motion::INSERT_TIME;
-        normal->duration=Motion::INSERT_TIME;
-        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
-        mAnimationQueue.push(std::move(normal));
-    }
+    normalPHead();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS,getRand(1,MAX_NUM));
 
@@ -482,16 +479,7 @@ void SinglyLinkedList::insertWhenEmpty()
         mAnimationQueue.push(std::move(changeColor));
     }
 
-    // become head
-    {
-        std::unique_ptr<Animation> becomeHead(new Animation);
-        becomeHead->exactly=true;
-        becomeHead->category=Category::Node|Category::Chosen;
-        becomeHead->elapsedTime=Motion::INSERT_TIME;
-        becomeHead->duration=Motion::INSERT_TIME;
-        becomeHead->animator=derivedAnimator<Node>(NodeAnimation::BecomeHead());
-        mAnimationQueue.push(std::move(becomeHead));
-    }
+    becomeHead();
 
     removeAllChosen();
 
