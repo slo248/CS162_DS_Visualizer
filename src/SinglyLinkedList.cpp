@@ -296,7 +296,6 @@ void SinglyLinkedList::removeAllChosen()
 
 void SinglyLinkedList::appearNewNode()
 {                
-    // appear new node
     {
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
@@ -310,7 +309,6 @@ void SinglyLinkedList::appearNewNode()
 
 void SinglyLinkedList::normalPHead()
 {
-    // set pHead to normal
     {
         std::unique_ptr<Animation> normal(new Animation);
         normal->category=Category::Node;
@@ -323,7 +321,6 @@ void SinglyLinkedList::normalPHead()
 
 void SinglyLinkedList::moveList(sf::Vector2f delta)
 {
-    // move original list to the right
     {
         std::unique_ptr<Animation> move(new Animation);
         move->exactly=true;
@@ -337,7 +334,6 @@ void SinglyLinkedList::moveList(sf::Vector2f delta)
 
 void SinglyLinkedList::becomeHead()
 {
-    // change subscript of newNode
     {
         std::unique_ptr<Animation> becomeHead(new Animation);
         becomeHead->exactly=true;
@@ -377,7 +373,6 @@ void SinglyLinkedList::moveVtx(sf::Vector2f delta)
 
 void SinglyLinkedList::changeArrowColor(sf::Color color)
 {
-    // change arrow color to black
     {
         std::unique_ptr<Animation> changeColor(new Animation);
         changeColor->exactly=true;
@@ -446,6 +441,7 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
 
 void SinglyLinkedList::insertFront()
 {
+    // normal head config
     normalPHead();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
@@ -456,14 +452,18 @@ void SinglyLinkedList::insertFront()
 
     std::unique_ptr<Arrow> arr=createArrow(newNode.get(),pHead);
 
+    // change vtx color to green
     changeVtxColor(NodeConfig::HEAD_BG_COLOR);
 
+    // change arrow color to black
     changeArrowColor(ArrowConfig::DEFAULT_COLOR);
 
     becomeHead();
 
+    // move original list to the right
     moveList(sf::Vector2f(DEFAULT_LEN,0));
 
+    // move vtx to same row
     moveVtx(sf::Vector2f(0,-DEFAULT_LEN));
 
     removeAllChosen();
@@ -475,12 +475,14 @@ void SinglyLinkedList::insertFront()
 
 void SinglyLinkedList::insertWhenEmpty()
 {
+    // normal head config
     normalPHead();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS,getRand(1,MAX_NUM));
 
     appearNewNode();
 
+    // change vtx color to green
     changeVtxColor(NodeConfig::HEAD_BG_COLOR);
 
     becomeHead();
