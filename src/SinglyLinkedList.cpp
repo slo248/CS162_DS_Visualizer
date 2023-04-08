@@ -329,28 +329,12 @@ std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
     return std::move(newNode);
 }
 
-void SinglyLinkedList::insertFront()
+std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
 {
-    // set pHead to normal
-    {
-        std::unique_ptr<Animation> normal(new Animation);
-        normal->category=Category::Node;
-        normal->elapsedTime=Motion::INSERT_TIME;
-        normal->duration=Motion::INSERT_TIME;
-        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
-        mAnimationQueue.push(std::move(normal));
-    }
-
-    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
-    newNode->setNext(pHead);
-    pHead->setPrev(newNode.get());
-
-    appearNewNode();
-
     // Add new arrow
-    std::unique_ptr<Arrow> arr=newNode->makeArrow(pHead);
+    std::unique_ptr<Arrow> arr=a->makeArrow(b);
     {
-        newNode->setArrowNext(arr.get());
+        a->setArrowNext(arr.get());
         arr->setChosen(true);
         
         // apply color orange
@@ -375,6 +359,29 @@ void SinglyLinkedList::insertFront()
             mAnimationQueue.push(std::move(appear));
         }
     }
+
+    return std::move(arr);
+}
+
+void SinglyLinkedList::insertFront()
+{
+    // set pHead to normal
+    {
+        std::unique_ptr<Animation> normal(new Animation);
+        normal->category=Category::Node;
+        normal->elapsedTime=Motion::INSERT_TIME;
+        normal->duration=Motion::INSERT_TIME;
+        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
+        mAnimationQueue.push(std::move(normal));
+    }
+
+    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
+    newNode->setNext(pHead);
+    pHead->setPrev(newNode.get());
+
+    appearNewNode();
+
+    std::unique_ptr<Arrow> arr=createArrow(newNode.get(),pHead);
 
     // change vtx color to green
     {
