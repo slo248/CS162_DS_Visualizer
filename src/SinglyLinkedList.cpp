@@ -362,6 +362,19 @@ void SinglyLinkedList::changeVtxColor(sf::Color color)
     }
 }
 
+void SinglyLinkedList::moveVtx(sf::Vector2f delta)
+{
+    {
+        std::unique_ptr<Animation> move(new Animation);
+        move->exactly=true;
+        move->category=Category::Node|Category::Chosen;
+        move->elapsedTime=sf::Time::Zero;
+        move->duration=Motion::INSERT_TIME;
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(delta,mSceneLayers[Layer::Front]));
+        mAnimationQueue.push(std::move(move));
+    }
+}
+
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
@@ -446,16 +459,7 @@ void SinglyLinkedList::insertFront()
 
     moveList(sf::Vector2f(DEFAULT_LEN,0));
 
-    // move newNode to same row
-    {
-        std::unique_ptr<Animation> move(new Animation);
-        move->exactly=true;
-        move->category=Category::Node|Category::Chosen;
-        move->elapsedTime=sf::Time::Zero;
-        move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(0,-DEFAULT_LEN),mSceneLayers[Layer::Front]));
-        mAnimationQueue.push(std::move(move));
-    }
+    moveVtx(sf::Vector2f(0,-DEFAULT_LEN));
 
     removeAllChosen();
 
