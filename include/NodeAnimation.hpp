@@ -35,6 +35,18 @@ namespace NodeAnimation
         }
     };
 
+    struct NormalHead
+    {
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            if(node.isHead()){
+                node.setBGColor(NodeConfig::INSIDE_COLOR);
+                node.setNumColor(NodeConfig::CHAR_COLOR);
+                node.setSubscript("pHead");
+            }      
+        }
+    };
+
     struct Move
     {
         sf::Vector2f delta;

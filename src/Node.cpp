@@ -92,6 +92,11 @@ sf::Vector2f Node::getPrePos()
     return prePos;
 }
 
+bool Node::isHead()
+{
+    return mIsHead;
+}
+
 std::unique_ptr<Arrow> Node::makeArrow(Node *dest)
 {
     sf::Vector2f dist=dest->getPosition()-this->getPosition();
