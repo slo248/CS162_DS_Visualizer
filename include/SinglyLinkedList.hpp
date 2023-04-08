@@ -49,9 +49,10 @@ class SinglyLinkedList : private sf::NonCopyable
         std::vector<Button*>                        mButtons;
 
     private:
-        void                    buildScene();
-        void                    removeSubButton();
-        void                    removeAllChosen();
-        void                    insertFront();
-        void                    insertWhenEmpty();
+        void        buildScene();
+        void        removeSubButton();
+        void        removeAllChosen();
+        void        appearNewNode();
+        void        insertFront();
+        void        insertWhenEmpty();
 };

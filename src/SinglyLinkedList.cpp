@@ -294,6 +294,20 @@ void SinglyLinkedList::removeAllChosen()
     }
 }
 
+void SinglyLinkedList::appearNewNode()
+{                
+    // appear new node
+    {
+        std::unique_ptr<Animation> appear(new Animation);
+        appear->exactly=true;
+        appear->category=Category::Node|Category::Chosen;
+        appear->elapsedTime=sf::Time::Zero;
+        appear->duration=Motion::INSERT_TIME;
+        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
+        mAnimationQueue.push(std::move(appear));
+    }
+}
+
 void SinglyLinkedList::insertFront()
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
@@ -324,16 +338,7 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(makeNew));
     }
 
-    // appear new node
-    {
-        std::unique_ptr<Animation> appear(new Animation);
-        appear->exactly=true;
-        appear->category=Category::Node|Category::Chosen;
-        appear->elapsedTime=sf::Time::Zero;
-        appear->duration=Motion::INSERT_TIME;
-        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
-        mAnimationQueue.push(std::move(appear));
-    }
+    appearNewNode();
 
     // Add new arrow
     std::unique_ptr<Arrow> arr=newNode->makeArrow(pHead);
@@ -455,16 +460,7 @@ void SinglyLinkedList::insertWhenEmpty()
         mAnimationQueue.push(std::move(makeNew));
     }
 
-    // appear new node
-    {
-        std::unique_ptr<Animation> appear(new Animation);
-        appear->exactly=true;
-        appear->category=Category::Node|Category::Chosen;
-        appear->elapsedTime=sf::Time::Zero;
-        appear->duration=Motion::INSERT_TIME;
-        appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
-        mAnimationQueue.push(std::move(appear));
-    }
+    appearNewNode();
 
     // change vtx color to green
     {
