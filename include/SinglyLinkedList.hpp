@@ -7,6 +7,7 @@
 #include <SNAnimation.hpp>
 #include <NodeAnimation.hpp>
 #include <ArrowAnimation.hpp>
+#include <Colors.hpp>
 #include <SFML/Graphics.hpp>
 
 namespace Layer{

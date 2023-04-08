@@ -483,10 +483,10 @@ void SinglyLinkedList::insertFront()
     std::unique_ptr<Arrow> arr=createArrow(newNode.get(),pHead);
 
     // change vtx color to green
-    changeVtxColor(NodeConfig::HEAD_BG_COLOR);
+    changeVtxColor(Colors::GREEN);
 
     // change arrow color to black
-    changeArrowColor(ArrowConfig::DEFAULT_COLOR);
+    changeArrowColor(Colors::BLACK);
 
     becomeHead();
 
