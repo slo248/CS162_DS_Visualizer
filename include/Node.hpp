@@ -48,6 +48,7 @@ class Node: public Entity
         void            setNumColor(const sf::Color& color);
         void            setPos(sf::Vector2f pos);
         void            setPrePos(sf::Vector2f pos);
+        void            normalize();
 
         Node*           getNext();
         Node*           getPrev();

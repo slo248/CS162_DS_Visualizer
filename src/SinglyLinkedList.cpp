@@ -304,6 +304,13 @@ void SinglyLinkedList::removeAllChosen()
     }
 }
 
+void SinglyLinkedList::normallizeAll()
+{
+    if(pHead)
+        for(Node* cur=pHead; cur; cur=cur->getNext())
+            cur->normalize();
+}
+
 void SinglyLinkedList::appearNewNode()
 {                
     {
@@ -314,18 +321,6 @@ void SinglyLinkedList::appearNewNode()
         appear->duration=Motion::INSERT_TIME;
         appear->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(0)));
         mAnimationQueue.push(std::move(appear));
-    }
-}
-
-void SinglyLinkedList::normalPHead()
-{
-    {
-        std::unique_ptr<Animation> normal(new Animation);
-        normal->category=Category::Node;
-        normal->elapsedTime=Motion::INSERT_TIME;
-        normal->duration=Motion::INSERT_TIME;
-        normal->animators.push_back(derivedAnimator<Node>(NodeAnimation::NormalHead()));
-        mAnimationQueue.push(std::move(normal));
     }
 }
 
@@ -452,7 +447,7 @@ std::unique_ptr<Arrow> SinglyLinkedList::createArrow(Node *a, Node *b)
 void SinglyLinkedList::insertWhenEmpty()
 {
     // normal head config
-    normalPHead();
+    normallizeAll();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS,getRand(1,MAX_NUM));
 
@@ -471,8 +466,7 @@ void SinglyLinkedList::insertWhenEmpty()
 
 void SinglyLinkedList::insertFront()
 {
-    // normal head config
-    normalPHead();
+    normallizeAll();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
     newNode->setNext(pHead);
@@ -508,8 +502,7 @@ void SinglyLinkedList::insertFront()
 
 void SinglyLinkedList::insertBack()
 {
-    // normal head config
-    normalPHead();
+    normallizeAll();
 
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+1.f*mNumNode*sf::Vector2f(DEFAULT_LEN,0),getRand(1,MAX_NUM));
 

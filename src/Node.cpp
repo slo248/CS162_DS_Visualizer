@@ -184,6 +184,36 @@ void Node::setPrePos(sf::Vector2f pos)
     prePos=pos;
 }
 
+void Node::normalize()
+{
+    mCircle.setRadius(RADIUS);
+    mCircle.setFillColor(INSIDE_COLOR);
+    mCircle.setOutlineThickness(OUTLINE_THICKNESS);
+    mCircle.setOutlineColor(OUTLINE_COLOR);
+
+    {
+        sf::FloatRect bounds=mCircle.getLocalBounds();
+        mCircle.setOrigin(bounds.left+bounds.width/2.f,
+                            bounds.top+bounds.height/2.f);
+    }
+
+    mNum->setFillColor(CHAR_COLOR);
+    {
+        sf::FloatRect bounds=mNum->getLocalBounds();
+        mNum->setOrigin(bounds.left+bounds.width/2.f,
+                        bounds.top+bounds.height/2.f);
+    }
+    mNum->setPosition(RADIUS,RADIUS);
+
+    if(mIsHead) mSubscript->setString("pHead");
+    mSubscript->setFillColor(SUBSCRIPT_COLOR);
+    {
+        sf::FloatRect bounds=mSubscript->getLocalBounds();
+        mSubscript->setOrigin(bounds.left+bounds.width/2.f,0);
+    }
+    mSubscript->setPosition(RADIUS,2*RADIUS);  
+}
+
 void Node::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mCircle,states);

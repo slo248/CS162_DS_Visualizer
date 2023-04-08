@@ -53,8 +53,8 @@ class SinglyLinkedList : private sf::NonCopyable
         void        buildScene();
         void        removeSubButton();
         void        removeAllChosen();
+        void        normallizeAll();
         void        appearNewNode();
-        void        normalPHead();
         void        moveList(sf::Vector2f delta);
         void        becomeHead();
         void        changeVtxColor(sf::Color color);
