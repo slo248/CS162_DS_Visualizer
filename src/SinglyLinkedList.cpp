@@ -293,9 +293,12 @@ void SinglyLinkedList::insertFront()
 
     // set pHead to normal
     {
-        pHead->setBGColor(NodeConfig::INSIDE_COLOR);
-        pHead->setNumColor(NodeConfig::CHAR_COLOR);
-        pHead->setSubscript("pHead");
+        std::unique_ptr<Animation> normal(new Animation);
+        normal->category=Category::Node;
+        normal->elapsedTime=Motion::INSERT_TIME;
+        normal->duration=Motion::INSERT_TIME;
+        normal->animator=derivedAnimator<Node>(NodeAnimation::NormalHead());
+        mAnimationQueue.push(std::move(normal));
     }
 
     {
