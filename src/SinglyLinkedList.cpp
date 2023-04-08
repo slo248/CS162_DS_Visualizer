@@ -41,6 +41,7 @@ void SinglyLinkedList::setRandom()
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
         node->setPrePos(node->getPosition());
+        node->setPrev(pre);
         std::unique_ptr<Arrow> arr=pre->makeArrow(tmp);
         pre->setArrowNext(arr.get());
         mSceneLayers[Layer::Front]->attachChild(std::move(node));
@@ -71,6 +72,7 @@ void SinglyLinkedList::loadFromFile(std::string dir)
             std::unique_ptr<Arrow> arr=cur->makeArrow(newNode.get());
             cur->setArrowNext(arr.get());
             cur->setNext(newNode.get());
+            newNode->setPrev(cur);
             cur=cur->getNext();
             mSceneLayers[Layer::Front]->attachChild(std::move(arr));
         }
@@ -279,16 +281,16 @@ void SinglyLinkedList::insertFront()
 {
     // Add new node
     std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
+    newNode->setChosen(true);
+    newNode->setPos(DEFAULT_POS);
+    newNode->move(0,DEFAULT_LEN);
+    newNode->setPrePos(newNode->getPosition());
+    newNode->setSubscript("vtx");
+    newNode->setNumColor(NodeConfig::VTX_NUM_COLOR);
+    newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
+    newNode->setNext(pHead);
+    pHead->setPrev(newNode.get());
     {
-        newNode->setChosen(true);
-        newNode->setPos(DEFAULT_POS);
-        newNode->move(0,DEFAULT_LEN);
-        newNode->setPrePos(newNode->getPosition());
-        newNode->setSubscript("vtx");
-        newNode->setNumColor(NodeConfig::VTX_NUM_COLOR);
-        newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
-        newNode->setNext(pHead);
-
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
         appear->category=Category::Node|Category::Chosen;
