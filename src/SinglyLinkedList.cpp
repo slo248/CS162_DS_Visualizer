@@ -349,6 +349,19 @@ void SinglyLinkedList::becomeHead()
     }
 }
 
+void SinglyLinkedList::changeVtxColor(sf::Color color)
+{
+    {
+        std::unique_ptr<Animation> changeColor(new Animation);
+        changeColor->exactly=true;
+        changeColor->category=Category::Node|Category::Chosen;
+        changeColor->elapsedTime=Motion::INSERT_TIME;
+        changeColor->duration=Motion::INSERT_TIME;
+        changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(color));
+        mAnimationQueue.push(std::move(changeColor));
+    }
+}
+
 std::unique_ptr<Node> SinglyLinkedList::createNode(sf::Vector2f pos, int value)
 {
     std::unique_ptr<Node> newNode(new Node(mFont,false,value));
@@ -416,16 +429,7 @@ void SinglyLinkedList::insertFront()
 
     std::unique_ptr<Arrow> arr=createArrow(newNode.get(),pHead);
 
-    // change vtx color to green
-    {
-        std::unique_ptr<Animation> changeColor(new Animation);
-        changeColor->exactly=true;
-        changeColor->category=Category::Node|Category::Chosen;
-        changeColor->elapsedTime=Motion::INSERT_TIME;
-        changeColor->duration=Motion::INSERT_TIME;
-        changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(NodeConfig::HEAD_BG_COLOR));
-        mAnimationQueue.push(std::move(changeColor));
-    }
+    changeVtxColor(NodeConfig::HEAD_BG_COLOR);
 
     // change arrow color to black
     {
@@ -468,16 +472,7 @@ void SinglyLinkedList::insertWhenEmpty()
 
     appearNewNode();
 
-    // change vtx color to green
-    {
-        std::unique_ptr<Animation> changeColor(new Animation);
-        changeColor->exactly=true;
-        changeColor->category=Category::Node|Category::Chosen;
-        changeColor->elapsedTime=Motion::INSERT_TIME;
-        changeColor->duration=Motion::INSERT_TIME;
-        changeColor->animator=derivedAnimator<Node>(NodeAnimation::ChangeColor(NodeConfig::HEAD_BG_COLOR));
-        mAnimationQueue.push(std::move(changeColor));
-    }
+    changeVtxColor(NodeConfig::HEAD_BG_COLOR);
 
     becomeHead();
 
