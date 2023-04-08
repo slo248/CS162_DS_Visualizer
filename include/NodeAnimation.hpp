@@ -47,6 +47,17 @@ namespace NodeAnimation
         }
     };
 
+    struct MakeNew
+    {
+        MakeNew(){}
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            node.setSubscript("vtx");
+            node.setNumColor(NodeConfig::VTX_NUM_COLOR);
+            node.setBGColor(NodeConfig::VTX_BG_COLOR);
+        }
+    };
+
     struct Move
     {
         sf::Vector2f delta;

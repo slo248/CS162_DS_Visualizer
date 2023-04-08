@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cassert>
 #include "SinglyLinkedList.hpp"
+#include <iostream>
 
 SinglyLinkedList::SinglyLinkedList(sf::RenderWindow &window,sf::Font& font):
     mWindow(window),
@@ -279,15 +280,10 @@ void SinglyLinkedList::removeSubButton()
 
 void SinglyLinkedList::insertFront()
 {
-    // Add new node
     std::unique_ptr<Node> newNode(new Node(mFont,false,getRand(1,MAX_NUM)));
     newNode->setChosen(true);
-    newNode->setPos(DEFAULT_POS);
-    newNode->move(0,DEFAULT_LEN);
+    newNode->setPosition(DEFAULT_POS+sf::Vector2f(0,DEFAULT_LEN));
     newNode->setPrePos(newNode->getPosition());
-    newNode->setSubscript("vtx");
-    newNode->setNumColor(NodeConfig::VTX_NUM_COLOR);
-    newNode->setBGColor(NodeConfig::VTX_BG_COLOR);
     newNode->setNext(pHead);
     pHead->setPrev(newNode.get());
 
@@ -301,6 +297,18 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(normal));
     }
 
+    // make new node
+    {
+        std::unique_ptr<Animation> makeNew(new Animation);
+        makeNew->exactly=true;
+        makeNew->category=Category::Node|Category::Chosen;
+        makeNew->elapsedTime=Motion::INSERT_TIME;
+        makeNew->duration=Motion::INSERT_TIME;
+        makeNew->animator=derivedAnimator<Node>(NodeAnimation::MakeNew());
+        mAnimationQueue.push(std::move(makeNew));
+    }
+
+    // appear new node
     {
         std::unique_ptr<Animation> appear(new Animation);
         appear->exactly=true;
@@ -310,6 +318,7 @@ void SinglyLinkedList::insertFront()
         appear->animator=derivedAnimator<SceneNode>(SNAnimation::Grow());
         mAnimationQueue.push(std::move(appear));
     }
+
     // Add new arrow
     std::unique_ptr<Arrow> arr=newNode->makeArrow(pHead);
     {
