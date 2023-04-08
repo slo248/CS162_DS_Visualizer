@@ -40,6 +40,7 @@ void SinglyLinkedList::setRandom()
         std::unique_ptr<Node> node(new Node(mFont,false,getRand(1,MAX_NUM)));
         Node *tmp=node.get();
         node->setPosition(pHead->getPosition()+float(i)*DEFAULT_DIST);
+        node->setPrePos(node->getPosition());
         std::unique_ptr<Arrow> arr=pre->makeArrow(tmp);
         pre->setArrowNext(arr.get());
         mSceneLayers[Layer::Front]->attachChild(std::move(node));
@@ -358,6 +359,18 @@ void SinglyLinkedList::insertFront()
         mAnimationQueue.push(std::move(becomeHead));
     }
 
+    // move original list to the right
+    {
+        // the graph crashed 
+        std::unique_ptr<Animation> move(new Animation);
+        move->exactly=true;
+        move->category=Category::Node;
+        move->elapsedTime=sf::Time::Zero;
+        move->duration=Motion::INSERT_TIME;
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(DEFAULT_LEN,0),mSceneLayers[Layer::Front]));
+        mAnimationQueue.push(std::move(move));
+    }
+
     // move newNode to same row
     {
         std::unique_ptr<Animation> move(new Animation);
@@ -365,7 +378,7 @@ void SinglyLinkedList::insertFront()
         move->category=Category::Node|Category::Chosen;
         move->elapsedTime=sf::Time::Zero;
         move->duration=Motion::INSERT_TIME;
-        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(DEFAULT_LEN,0),mSceneLayers[Layer::Front]));
+        move->animator=derivedAnimator<Node>(NodeAnimation::Move(sf::Vector2f(0,-DEFAULT_LEN),mSceneLayers[Layer::Front]));
         mAnimationQueue.push(std::move(move));
     }
 
