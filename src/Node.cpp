@@ -95,6 +95,11 @@ sf::Vector2f Node::getPrePos()
     return prePos;
 }
 
+int Node::getVal()
+{
+    return val;
+}
+
 bool Node::isHead()
 {
     return mIsHead;

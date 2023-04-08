@@ -58,6 +58,7 @@ class Node: public Entity
         Arrow*          getArrowNext();
         Arrow*          getArrowPrev();
         sf::Vector2f    getPrePos();
+        int             getVal();
         bool            isHead();
 
         std::unique_ptr<Arrow> makeArrow(Node* dest);
