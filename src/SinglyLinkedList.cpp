@@ -141,6 +141,7 @@ void SinglyLinkedList::processInput(sf::Event event)
                         case Category::ButtonEmpty:
                         {
                             pHead=nullptr;
+                            mNumNode=0;
                             mSceneLayers[Layer::Front]->clearChildren();
                             break;
                         }
@@ -182,6 +183,15 @@ void SinglyLinkedList::processInput(sf::Event event)
                         {
                             if(pHead)
                                 insertFront();
+                            else
+                                insertWhenEmpty();
+                            mNumNode++;
+                            break;
+                        }
+                        case Category::ButtonInsertMiddle:
+                        {
+                            if(pHead)
+                                insertMiddle((mNumNode-1)/2);
                             else
                                 insertWhenEmpty();
                             mNumNode++;
@@ -617,6 +627,65 @@ void SinglyLinkedList::insertBack()
         addSubscript->animators.push_back(derivedAnimator<Node>(NodeAnimation::AddSubscript("tail")));
         mAnimationQueue.push(std::move(addSubscript));
     }
+
+    removeAllChosen();
+
+    mSceneLayers[Layer::Front]->attachChild(std::move(newNode));
+}
+
+void SinglyLinkedList::insertMiddle(int pos)
+{
+    std::cout<<pos<<'\n';
+    normallizeAll();
+
+    pHead->setChosen(Category::Chosen2);
+    for(int i=0; i<=pos; ++i){
+        // set subscript by preSubscript of pre node
+        {
+            std::unique_ptr<Animation> animation(new Animation);
+            animation->exactly=true;
+            animation->category=Category::Node|Category::Chosen2;
+            animation->elapsedTime=Motion::INSERT_TIME;
+            animation->duration=Motion::INSERT_TIME;
+            animation->animators.push_back(derivedAnimator<Node>(NodeAnimation::SetSubscriptPreNode()));
+            mAnimationQueue.push(std::move(animation));
+        }
+        // add subscript "vtx"
+        {
+            std::unique_ptr<Animation> addSubscript(new Animation);
+            addSubscript->exactly=true;
+            addSubscript->category=Category::Node|Category::Chosen2;
+            addSubscript->elapsedTime=Motion::INSERT_TIME;
+            addSubscript->duration=Motion::INSERT_TIME;
+            addSubscript->animators.push_back(derivedAnimator<Node>(NodeAnimation::AddSubscript("tail")));
+            mAnimationQueue.push(std::move(addSubscript));
+        }
+        // color to blue
+        {
+            std::unique_ptr<Animation> changeColor(new Animation);
+            changeColor->exactly=true;
+            changeColor->category=Category::Node|Category::Chosen2;
+            changeColor->elapsedTime=Motion::INSERT_TIME;
+            changeColor->duration=Motion::INSERT_TIME;
+            changeColor->animators.push_back(derivedAnimator<Node>(NodeAnimation::ChangeColor(Colors::BLUE)));
+            mAnimationQueue.push(std::move(changeColor));
+        }
+        // move chosen
+        {
+            std::unique_ptr<Animation> moveChosen(new Animation);
+            moveChosen->exactly=true;
+            moveChosen->once=true;
+            moveChosen->category=Category::Node|Category::Chosen2;
+            moveChosen->elapsedTime=sf::Time::Zero;
+            moveChosen->duration=Motion::INSERT_TIME;
+            moveChosen->animators.push_back(derivedAnimator<Node>(NodeAnimation::MoveChosenToNext()));
+            mAnimationQueue.push(std::move(moveChosen));
+        }
+    }
+
+    std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+1.f*pos*sf::Vector2f(DEFAULT_LEN,0)+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
+
+    appearNewNode();
 
     removeAllChosen();
 

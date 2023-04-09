@@ -65,4 +65,5 @@ class SinglyLinkedList : private sf::NonCopyable
         void        insertWhenEmpty();
         void        insertFront();
         void        insertBack();
+        void        insertMiddle(int pos);
 };
