@@ -11,6 +11,10 @@ namespace NodeAnimation
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
             node.setBGColor(mColor);
+            if(mColor!=sf::Color::White)
+                node.setNumColor(sf::Color::White);
+            else
+                node.setNumColor(sf::Color::Black);
         }
     };
  
