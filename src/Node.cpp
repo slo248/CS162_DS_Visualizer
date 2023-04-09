@@ -223,6 +223,7 @@ void Node::normalize()
     mNum->setPosition(RADIUS,RADIUS);
 
     if(mIsHead) mSubscript->setString("head");
+    else mSubscript->setString("");
     preSubscript="";
     mSubscript->setFillColor(SUBSCRIPT_COLOR);
     {

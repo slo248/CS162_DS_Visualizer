@@ -552,6 +552,72 @@ void SinglyLinkedList::insertBack()
         }
     }
 
+    // make arrow from tail to vtx
+    {
+        std::unique_ptr<Animation> makeArrow(new Animation);
+        makeArrow->exactly=true;
+        makeArrow->category=Category::Node|Category::Chosen2;
+        makeArrow->elapsedTime=Motion::INSERT_TIME;
+        makeArrow->duration=Motion::INSERT_TIME;
+        makeArrow->animators.push_back(derivedAnimator<Node>(NodeAnimation::MakeArrowNext(newNode.get(),mSceneLayers[Layer::Front])));
+        mAnimationQueue.push(std::move(makeArrow));
+    }
+
+    // appear that arrow
+    {
+        std::unique_ptr<Animation> appearArrow(new Animation);
+        appearArrow->exactly=true;
+        appearArrow->category=Category::Arrow|Category::Chosen2;
+        appearArrow->elapsedTime=sf::Time::Zero;
+        appearArrow->duration=Motion::INSERT_TIME;
+        appearArrow->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(0)));
+        mAnimationQueue.push(std::move(appearArrow));
+    }
+
+    // change arrow color to black
+    {
+        std::unique_ptr<Animation> changeColor(new Animation);
+        changeColor->exactly=true;
+        changeColor->category=Category::Arrow|Category::Chosen2;
+        changeColor->elapsedTime=Motion::INSERT_TIME;
+        changeColor->duration=Motion::INSERT_TIME;
+        changeColor->animators.push_back(derivedAnimator<Arrow>(ArrowAnimation::ChangeColor(Colors::BLACK)));
+        mAnimationQueue.push(std::move(changeColor));
+    }
+
+    // move chosen tail to vtx
+    {
+        std::unique_ptr<Animation> moveChosen(new Animation);
+        moveChosen->exactly=true;
+        moveChosen->once=true;
+        moveChosen->category=Category::Node|Category::Chosen2;
+        moveChosen->elapsedTime=sf::Time::Zero;
+        moveChosen->duration=Motion::INSERT_TIME;
+        moveChosen->animators.push_back(derivedAnimator<Node>(NodeAnimation::MoveChosenToNext()));
+        mAnimationQueue.push(std::move(moveChosen));
+    }
+
+    // set subscript by preSubscript of pre node
+    {
+        std::unique_ptr<Animation> animation(new Animation);
+        animation->exactly=true;
+        animation->category=Category::Node|Category::Chosen2;
+        animation->elapsedTime=Motion::INSERT_TIME;
+        animation->duration=Motion::INSERT_TIME;
+        animation->animators.push_back(derivedAnimator<Node>(NodeAnimation::SetSubscriptPreNode()));
+        mAnimationQueue.push(std::move(animation));
+    }
+    // add subscript "vtx"
+    {
+        std::unique_ptr<Animation> addSubscript(new Animation);
+        addSubscript->exactly=true;
+        addSubscript->category=Category::Node|Category::Chosen2;
+        addSubscript->elapsedTime=Motion::INSERT_TIME;
+        addSubscript->duration=Motion::INSERT_TIME;
+        addSubscript->animators.push_back(derivedAnimator<Node>(NodeAnimation::AddSubscript("tail")));
+        mAnimationQueue.push(std::move(addSubscript));
+    }
+
     removeAllChosen();
 
     mSceneLayers[Layer::Front]->attachChild(std::move(newNode));

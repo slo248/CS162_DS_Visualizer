@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Node.hpp>
-#include <iostream>
 
 namespace NodeAnimation
 {
@@ -36,7 +35,6 @@ namespace NodeAnimation
             Node* pre=node.getPrev();
             if(pre){ 
                 pre->setSubscript(pre->getPreSubscript());
-                // std::cout<<pre->getSubscript()<<' '<<pre->getPreSubscript()<<std::endl;
             }
         }
     };
@@ -48,11 +46,9 @@ namespace NodeAnimation
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
             std::string curSub=node.getSubscript();
-            std::cout<<node.getSubscript()<<' '<<node.getPreSubscript()<<std::endl;
             if(curSub.empty()) curSub=mStr;
             else curSub+="/"+mStr;
             node.setSubscript(curSub);
-            std::cout<<node.getSubscript()<<' '<<node.getPreSubscript()<<std::endl<<std::endl;
         }
     };
 
@@ -101,6 +97,23 @@ namespace NodeAnimation
                 next->setChosen(node.getChosen());
                 node.setChosen(Category::None);
             }
+        }
+    };
+    
+    struct MakeArrowNext
+    {
+        Node* dest;
+        SceneNode* layer;
+        MakeArrowNext(Node* dest, SceneNode* layer):dest(dest),layer(layer){}
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            node.setNext(dest);
+            dest->setPrev(&node);
+            std::unique_ptr<Arrow> newArr=node.makeArrow(dest);
+            node.setArrowNext(newArr.get());
+            newArr->setChosen(Category::Chosen2);
+            newArr->setColor(Colors::BLUE);
+            layer->attachChild(std::move(newArr));
         }
     };
 
