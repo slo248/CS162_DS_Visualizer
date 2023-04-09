@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Node.hpp>
+#include <iostream>
 
 namespace NodeAnimation
 {
@@ -28,12 +29,39 @@ namespace NodeAnimation
         }
     };
 
+    struct SetSubscriptPreNode
+    {
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            Node* pre=node.getPrev();
+            if(pre){ 
+                pre->setSubscript(pre->getPreSubscript());
+                // std::cout<<pre->getSubscript()<<' '<<pre->getPreSubscript()<<std::endl;
+            }
+        }
+    };
+
+    struct AddSubscript
+    {
+        std::string mStr;
+        AddSubscript(std::string str):mStr(str){}
+        void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
+        {
+            std::string curSub=node.getSubscript();
+            std::cout<<node.getSubscript()<<' '<<node.getPreSubscript()<<std::endl;
+            if(curSub.empty()) curSub=mStr;
+            else curSub+="/"+mStr;
+            node.setSubscript(curSub);
+            std::cout<<node.getSubscript()<<' '<<node.getPreSubscript()<<std::endl<<std::endl;
+        }
+    };
+
     struct BecomeHead
     {
         void operator() (Node& node, sf::Time elapsedTime, sf::Time duration) const
         {
             node.setHead(true);
-            ChangeSubscript("pHead/vtx")(node,elapsedTime,duration);
+            ChangeSubscript("head/vtx")(node,elapsedTime,duration);
             if(node.getNext()){
                 node.getNext()->setHead(false);
                 ChangeSubscript("")(*node.getNext(),elapsedTime,duration);
@@ -48,7 +76,7 @@ namespace NodeAnimation
             if(node.isHead()){
                 node.setBGColor(NodeConfig::INSIDE_COLOR);
                 node.setNumColor(NodeConfig::CHAR_COLOR);
-                node.setSubscript("pHead");
+                node.setSubscript("head");
             }      
         }
     };

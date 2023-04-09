@@ -58,6 +58,8 @@ class Node: public Entity
         Arrow*          getArrowNext();
         Arrow*          getArrowPrev();
         sf::Vector2f    getPrePos();
+        std::string     getSubscript();
+        std::string     getPreSubscript();
         int             getVal();
         bool            isHead();
 

@@ -28,7 +28,7 @@ Node::Node(sf::Font& font, bool isHead, int _val, Node *_pNext, Node *_pPrev) :
     mNum->setPosition(RADIUS,RADIUS);
 
     mSubscript=std::make_unique<sf::Text>("",font,DEFAULT_SIZE);
-    if(isHead) mSubscript->setString("pHead");
+    if(isHead) setSubscript("head");
     mSubscript->setFillColor(SUBSCRIPT_COLOR);
     {
         sf::FloatRect bounds=mSubscript->getLocalBounds();
@@ -95,6 +95,16 @@ sf::Vector2f Node::getPrePos()
     return prePos;
 }
 
+std::string Node::getSubscript()
+{
+    return mSubscript->getString();
+}
+
+std::string Node::getPreSubscript()
+{
+    return preSubscript;
+}
+
 int Node::getVal()
 {
     return val;
@@ -158,10 +168,7 @@ void Node::setHead(bool isHead)
 
 void Node::setSubscript(const std::string &str)
 {
-    if(preSubscript.empty()) 
-        preSubscript=str;
-    else
-        preSubscript=mSubscript->getString();
+    preSubscript=mSubscript->getString();
     mSubscript->setString(str);
     {
         sf::FloatRect bounds=mSubscript->getLocalBounds();
@@ -215,7 +222,8 @@ void Node::normalize()
     }
     mNum->setPosition(RADIUS,RADIUS);
 
-    if(mIsHead) mSubscript->setString("pHead");
+    if(mIsHead) mSubscript->setString("head");
+    preSubscript="";
     mSubscript->setFillColor(SUBSCRIPT_COLOR);
     {
         sf::FloatRect bounds=mSubscript->getLocalBounds();

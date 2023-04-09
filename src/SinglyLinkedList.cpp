@@ -509,6 +509,26 @@ void SinglyLinkedList::insertBack()
 
     pHead->setChosen(Category::Chosen2);
     for(int i=0; i<mNumNode; ++i){
+        // set subscript by preSubscript of pre node
+        {
+            std::unique_ptr<Animation> animation(new Animation);
+            animation->exactly=true;
+            animation->category=Category::Node|Category::Chosen2;
+            animation->elapsedTime=Motion::INSERT_TIME;
+            animation->duration=Motion::INSERT_TIME;
+            animation->animators.push_back(derivedAnimator<Node>(NodeAnimation::SetSubscriptPreNode()));
+            mAnimationQueue.push(std::move(animation));
+        }
+        // add subscript "vtx"
+        {
+            std::unique_ptr<Animation> addSubscript(new Animation);
+            addSubscript->exactly=true;
+            addSubscript->category=Category::Node|Category::Chosen2;
+            addSubscript->elapsedTime=Motion::INSERT_TIME;
+            addSubscript->duration=Motion::INSERT_TIME;
+            addSubscript->animators.push_back(derivedAnimator<Node>(NodeAnimation::AddSubscript("tail")));
+            mAnimationQueue.push(std::move(addSubscript));
+        }
         // color to blue
         {
             std::unique_ptr<Animation> changeColor(new Animation);
