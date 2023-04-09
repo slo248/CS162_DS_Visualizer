@@ -639,7 +639,9 @@ void SinglyLinkedList::insertMiddle(int pos)
     normallizeAll();
 
     pHead->setChosen(Category::Chosen2);
+    Node* cur=pHead;
     for(int i=0; i<=pos; ++i){
+        if(i) cur=cur->getNext();
         // set subscript by preSubscript of pre node
         {
             std::unique_ptr<Animation> animation(new Animation);
@@ -686,6 +688,20 @@ void SinglyLinkedList::insertMiddle(int pos)
     std::unique_ptr<Node> newNode=createNode(DEFAULT_POS+1.f*pos*sf::Vector2f(DEFAULT_LEN,0)+sf::Vector2f(0,DEFAULT_LEN),getRand(1,MAX_NUM));
 
     appearNewNode();
+
+    if(cur->getArrowNext())
+        cur->getArrowNext()->setChosen(Category::Chosen2);
+
+    // disappear old arrow
+    {
+        std::unique_ptr<Animation> disappearArrow(new Animation);
+        disappearArrow->exactly=true;
+        disappearArrow->category=Category::Arrow|Category::Chosen2;
+        disappearArrow->elapsedTime=sf::Time::Zero;
+        disappearArrow->duration=Motion::INSERT_TIME;
+        disappearArrow->animators.push_back(derivedAnimator<SceneNode>(SNAnimation::Scale(1)));
+        mAnimationQueue.push(std::move(disappearArrow));
+    }
 
     removeAllChosen();
 
