@@ -10,6 +10,7 @@ public:
 
     void processInput();
     void render();
+    void run();
 
 private:
     int FPS;

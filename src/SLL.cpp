@@ -23,3 +23,13 @@ void SLL::render()
 {
     graph.draw();
 }
+
+void SLL::run()
+{
+    while(window->isOpen()){
+        processInput();
+        window->clear(sf::Color::White);
+        render();
+        window->display();
+    }
+}
