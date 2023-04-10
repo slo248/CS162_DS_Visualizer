@@ -39,6 +39,12 @@ void Graph::draw(List<Node> *list, int i, CircleType type, sf::Color inColor, sf
     draw(&list->begin()->getNext(i)->data, type, inColor, outColor);
 }
 
+void Graph::draw(List<Node> *list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor)
+{
+    for(int i=from; i<=to; i++)
+        draw(list, i, type, inColor, outColor);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
