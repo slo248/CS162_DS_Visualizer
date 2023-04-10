@@ -3,6 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace CircleConfig
+{
+    const float RADIUS = 30.f;
+    const float THICKNESS = 6.f;
+}
+
 struct Figure
 {
     sf::CircleShape* hCircle; // hollow circle
