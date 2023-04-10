@@ -16,4 +16,11 @@ private:
     int size;
 };
 
+template <class T>
+inline List<T>::List()
+{
+    head=tail=nullptr;
+    size=0;
+}
+
 #endif // LIST_H
