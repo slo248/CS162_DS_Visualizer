@@ -1,21 +1,28 @@
 #include "SLL.h"
 #include "Figure.h"
 
+namespace WindowConfig
+{
+    const int WIDTH = 1400;
+    const int HEIGHT = 800;
+    const int FPS = 60;
+    const sf::String TITLE = "Data Structure Visualizer";
+    const sf::Uint32 STYLE = sf::Style::Titlebar | sf::Style::Close;
+    const sf::ContextSettings SETTINGS = sf::ContextSettings(0, 0, 8);
+}
+
 int main()
 {
     system("cls");
 
-    // window init
-    sf::ContextSettings settings;
-    settings.antialiasingLevel = 8;
-
+    // gen window
     sf::RenderWindow window(
-        sf::VideoMode(800, 600),
-        "SFML works!",
-        sf::Style::Titlebar | sf::Style::Close,
-        settings
+        sf::VideoMode(WindowConfig::WIDTH, WindowConfig::HEIGHT),
+        WindowConfig::TITLE,
+        WindowConfig::STYLE,
+        WindowConfig::SETTINGS
     );
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(WindowConfig::FPS);
     //
 
     // gen figure
@@ -23,7 +30,7 @@ int main()
     //
 
     // gen SLL
-    SLL sll(&window, 60, figure.hCircle, figure.sCircle);
+    SLL sll(&window, WindowConfig::FPS, figure.hCircle, figure.sCircle);
     sll.run();
     return 0;
 }
