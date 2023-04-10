@@ -1,11 +1,10 @@
 #include "SLL.h"
 #include "Random.h"
 
-SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure *arrowFigure):
+SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure *arrowFig):
     FPS(FPS),
     window(window),
-    arrowFigure(arrowFigure),
-    graph(window, sanf, hCircle, sCircle)
+    graph(window, sanf, hCircle, sCircle, arrowFig)
 {
     graph.clear();
 }
@@ -47,14 +46,10 @@ void SLL::processInput()
 void SLL::render()
 {
     graph.draw();
-    window->draw(*arrowFigure);
 }
 
 void SLL::run()
 {
-    arrowFigure->setPosition(200,100);
-    arrowFigure->setFillColor(Colors::BLUE);
-
     randomList(4);
     makeList();
     while(window->isOpen()){

@@ -9,7 +9,7 @@
 class Graph
 {
 public:
-    Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
+    Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFig);
 
     void clear();
     void addStep(int frames);
@@ -32,6 +32,7 @@ private:
     sf::Text* text;
     sf::CircleShape* hCircle;
     sf::CircleShape* sCircle;
+    ArrowFigure* arrowFig;
 
     int curFrame, curStep;
     std::vector<int> nFrames;

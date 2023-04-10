@@ -1,7 +1,7 @@
 #include "Graph.h"
 
-Graph::Graph(sf::RenderWindow *window, sf::Font *sanf, sf::CircleShape *hCircle, sf::CircleShape *sCircle):
-    window(window), hCircle(hCircle), sCircle(sCircle)
+Graph::Graph(sf::RenderWindow *window, sf::Font *sanf, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure* arrowFig):
+    window(window), hCircle(hCircle), sCircle(sCircle), arrowFig(arrowFig)
 {
     text=new sf::Text("", *sanf, 23);
     clear();

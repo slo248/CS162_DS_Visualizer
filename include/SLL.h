@@ -27,7 +27,6 @@ private:
     Graph graph;
 
     List<Node> listNode;
-    ArrowFigure* arrowFigure;
 };
 
 #endif // SLL_H
