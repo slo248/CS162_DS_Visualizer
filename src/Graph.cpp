@@ -29,6 +29,11 @@ void Graph::drawGrow(Node *node, CircleType type, sf::Color inColor, sf::Color o
     drawFunc.back().push_back(std::bind(&Node::drawGrow, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, std::placeholders::_1));
 }
 
+void Graph::drawShrink(Node *node, CircleType type, sf::Color inColor, sf::Color outColor)
+{
+    drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, std::placeholders::_1));
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;

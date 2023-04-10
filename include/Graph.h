@@ -15,6 +15,7 @@ public:
     // Node
     void draw(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
     void drawGrow(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
+    void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
     //
 
     void draw();
