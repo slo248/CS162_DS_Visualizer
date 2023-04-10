@@ -7,3 +7,14 @@ SLL::SLL(sf::RenderWindow *window, int FPS, sf::CircleShape *hCircle, sf::Circle
 {
     graph.clear();
 }
+
+void SLL::processInput()
+{
+    sf::Event event;
+    while(window->pollEvent(event))
+        switch (event.type){
+            case sf::Event::Closed:
+                window->close();
+                break;
+        }
+}
