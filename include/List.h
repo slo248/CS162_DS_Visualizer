@@ -49,4 +49,10 @@ inline void List<T>::pushBack(const ListNode<T>* node)
     size++;
 }
 
+template <class T>
+inline void List<T>::pushBack(const T &data)
+{
+    pushBack(new ListNode<T>(data));
+}
+
 #endif // LIST_H
