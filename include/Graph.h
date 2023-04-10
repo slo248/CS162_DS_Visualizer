@@ -22,6 +22,7 @@ public:
     // List
     void draw(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor);
     void draw(List<Node>* list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor);
+    void draw(List<Node>* list, CircleType type, sf::Color inColor, sf::Color outColor);
 
     void draw();
 
