@@ -33,3 +33,9 @@ void ArrowFigure::draw(sf::RenderTarget &target, sf::RenderStates states) const
     states.transform*=getTransform();
     target.draw(*triangle, states);
 }
+
+void ArrowFigure::setFillColor(sf::Color color)
+{
+    bar->setFillColor(color);
+    triangle->setFillColor(color);
+}

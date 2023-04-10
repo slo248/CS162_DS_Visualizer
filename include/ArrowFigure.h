@@ -14,6 +14,7 @@ public:
 
     ArrowFigure(float barWidth, float triangleWidth, float heightEach);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;    
+    void setFillColor(sf::Color color);
 };
 
 #endif // ARROW_FIGURE_H
