@@ -10,6 +10,11 @@ public:
     List();
     ~List();
 
+    List<T>* begin();
+    List<T>* end();
+    List<T>* rbegin();
+    List<T>* rend();
+
     void pushBack(const ListNode<T>* node);
     void pushBack(const T& data);
 
@@ -34,6 +39,30 @@ inline List<T>::~List()
         head=head->next;
         delete tmp;
     }
+}
+
+template <class T>
+inline List<T> *List<T>::begin()
+{
+    return head;
+}
+
+template <class T>
+inline List<T> *List<T>::end()
+{
+    return nullptr;
+}
+
+template <class T>
+inline List<T> *List<T>::rbegin()
+{
+    return tail;
+}
+
+template <class T>
+inline List<T> *List<T>::rend()
+{
+    return nullptr;
 }
 
 template <class T>
