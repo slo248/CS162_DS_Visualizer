@@ -1,3 +1,4 @@
+#include "Node.h"
 #include <SFML/Graphics.hpp>
 
 int main()
@@ -14,6 +15,18 @@ int main()
         sf::Style::Titlebar | sf::Style::Close,
         settings
     );
+    //
+
+    // Circle init
+    // Hollow circle
+    sf::CircleShape hCircle;
+    hCircle.setRadius(30);
+    hCircle.setOutlineThickness(5);
+    //
+    // Solid circle
+    //
+    sf::CircleShape sCircle;
+    sCircle.setRadius(30);
     //
 
     while(window.isOpen()){
