@@ -8,6 +8,8 @@ public:
     void clear();
     void addStep(int frames);
 
+    void draw();
+
 private:
     sf::RenderWindow* window;
     sf::CircleShape* hCircle;

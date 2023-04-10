@@ -18,3 +18,18 @@ void Graph::addStep(int frames)
     nFrames.push_back(frames);
     drawFunc.push_back(std::vector<functor>());
 }
+
+void Graph::draw()
+{
+    if(nFrames.empty()) return;
+
+    for(functor f : drawFunc[curStep])
+        f(1.f*curFrame/nFrames[curStep]);
+
+    if(curFrame<nFrames[curStep])
+        curFrame++;
+    else if(curStep<drawFunc.size()-1){
+        curFrame=0;
+        curStep++;
+    }
+}
