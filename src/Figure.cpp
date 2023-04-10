@@ -32,7 +32,7 @@ void Figure::genHollowCircle()
 void Figure::genSolidCircle()
 {
     sCircle = new sf::CircleShape;
-    sCircle->setRadius(CircleConfig::RADIUS);
+    sCircle->setRadius(CircleConfig::RADIUS+CircleConfig::THICKNESS);
     {
         sf::FloatRect bounds = sCircle->getLocalBounds();
         sCircle->setOrigin(
