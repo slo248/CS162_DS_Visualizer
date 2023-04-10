@@ -16,6 +16,22 @@ void SLL::randomList(int n)
         listNode.pushBack(Node(getRand(0,99)));
 }
 
+void SLL::makeList()
+{
+    if(listNode.empty()) return;
+
+    ListElement<Node>* node=listNode.begin();
+    node->data.position=START_POSITION;
+    for(node=node->next; node!=listNode.end(); node=node->next)
+        node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
+
+    // add new steps
+    graph.addStep(FPS);
+
+    // Add nodes to graph
+    graph.draw(&listNode,Hollow,Colors::WHITE,Colors::BLACK);
+}
+
 void SLL::processInput()
 {
     sf::Event event;
@@ -34,6 +50,8 @@ void SLL::render()
 
 void SLL::run()
 {
+    randomList(4);
+    makeList();
     while(window->isOpen()){
         processInput();
         window->clear(sf::Color::White);
