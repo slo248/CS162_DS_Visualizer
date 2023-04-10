@@ -1,5 +1,4 @@
-#include "Node.h"
-#include <SFML/Graphics.hpp>
+#include "Graph.h"
 
 int main()
 {
@@ -15,6 +14,7 @@ int main()
         sf::Style::Titlebar | sf::Style::Close,
         settings
     );
+    window.setFramerateLimit(60);
     //
 
     // Circle init
@@ -44,17 +44,22 @@ int main()
     //
 
     Node node(1, sf::Vector2f(100, 100));
+    
+    Graph graph(&window, &hCircle, &sCircle);
+    graph.addStep(60);
+    graph.drawGrow(&node, Hollow, Colors::GREEN, Colors::BLACK);
 
     while(window.isOpen()){
         sf::Event event;
-        while(window.pollEvent(event)){
-            if(event.type == sf::Event::Closed){
-                window.close();
+        while(window.pollEvent(event))
+            switch (event.type){
+                case sf::Event::Closed:
+                    window.close();
+                    break;
             }
-        }
 
         window.clear(sf::Color::White);
-        node.draw(&window, &hCircle, sf::Color::Red, sf::Color::Black, 0);
+        graph.draw();
         window.display();
     }
 
