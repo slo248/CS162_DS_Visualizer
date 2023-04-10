@@ -16,6 +16,7 @@ public:
     ListElement<T>* rend();
 
     void clear();
+    bool empty() const;
 
     int getSize() const;
 
@@ -79,6 +80,12 @@ inline void List<T>::clear()
     }
     head=tail=nullptr;
     size=0;
+}
+
+template <class T>
+inline bool List<T>::empty() const
+{
+    return head==nullptr;
 }
 
 template <class T>
