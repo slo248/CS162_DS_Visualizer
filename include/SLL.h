@@ -3,10 +3,14 @@
 
 #include "Graph.h"
 
-class SLL_H
+class SLL
 {
+public:
+    SLL(sf::RenderWindow* window, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
+
 private:
-    sf::RenderWindow& window;
+    int FPS;
+    sf::RenderWindow* window;
     
     Graph graph;
 
