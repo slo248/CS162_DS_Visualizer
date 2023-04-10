@@ -22,11 +22,25 @@ int main()
     sf::CircleShape hCircle;
     hCircle.setRadius(30);
     hCircle.setOutlineThickness(5);
+    {
+        sf::FloatRect bounds = hCircle.getLocalBounds();
+        hCircle.setOrigin(
+            bounds.left + bounds.width / 2.f,
+            bounds.top + bounds.height / 2.f
+        );
+    }
     //
     // Solid circle
     //
     sf::CircleShape sCircle;
     sCircle.setRadius(30);
+    {
+        sf::FloatRect bounds = sCircle.getLocalBounds();
+        sCircle.setOrigin(
+            bounds.left + bounds.width / 2.f,
+            bounds.top + bounds.height / 2.f
+        );
+    }
     //
 
     Node node(1, sf::Vector2f(100, 100));
