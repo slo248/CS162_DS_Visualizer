@@ -3,6 +3,8 @@
 int main()
 {
     system("cls");
+
+    // window init
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
@@ -12,6 +14,7 @@ int main()
         sf::Style::Titlebar | sf::Style::Close,
         settings
     );
+    //
 
     while(window.isOpen()){
         sf::Event event;
