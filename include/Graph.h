@@ -6,6 +6,7 @@ public:
     Graph(sf::RenderWindow* window, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
 
     void clear();
+    void addStep(int frames);
 
 private:
     sf::RenderWindow* window;
