@@ -23,4 +23,14 @@ inline List<T>::List()
     size=0;
 }
 
+template <class T>
+inline List<T>::~List()
+{
+    while(head!=nullptr){
+        ListNode<T>* tmp=head;
+        head=head->next;
+        delete tmp;
+    }
+}
+
 #endif // LIST_H
