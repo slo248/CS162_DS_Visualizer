@@ -15,6 +15,8 @@ public:
     ListElement<T>* rbegin();
     ListElement<T>* rend();
 
+    void clear();
+
     int getSize() const;
 
     void pushBack(ListElement<T>* node);
@@ -65,6 +67,18 @@ template <class T>
 inline ListElement<T> *List<T>::rend()
 {
     return nullptr;
+}
+
+template <class T>
+inline void List<T>::clear()
+{
+    while(head!=nullptr){
+        ListElement<T>* tmp=head;
+        head=head->next;
+        delete tmp;
+    }
+    head=tail=nullptr;
+    size=0;
 }
 
 template <class T>
