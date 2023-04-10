@@ -11,7 +11,7 @@ struct Arrow
     Arrow(Node* src, Node* dest) : src(src), dest(dest) {}
 
     void update(ArrowFigure* arrowFig);
-    void draw(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color);
+    void draw(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color, float nothing);
 };
 
 #endif // ARROW_H

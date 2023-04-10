@@ -22,14 +22,19 @@ void SLL::makeList()
 
     ListElement<Node>* node=listNode.begin();
     node->data.position=START_POSITION;
-    for(node=node->next; node!=listNode.end(); node=node->next)
+    for(node=node->next; node!=listNode.end(); node=node->next){
         node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
+        listArrow.pushBack(Arrow(&node->prev->data, &node->data));
+    }
 
     // add new steps
     graph.addStep(FPS);
 
-    // Add nodes to graph
+    // draw nodes to graph
     graph.draw(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    
+    // draw arrows to graph
+    graph.draw(&listArrow.begin()->data,Colors::BLUE);
 }
 
 void SLL::processInput()

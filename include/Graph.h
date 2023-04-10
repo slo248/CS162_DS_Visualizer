@@ -20,10 +20,13 @@ public:
     void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     //
 
-    // List
+    // List of nodes
     void draw(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void draw(List<Node>* list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void draw(List<Node>* list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+
+    // Arrow
+    void draw(Arrow* arrow, sf::Color color);
 
     void draw();
 
