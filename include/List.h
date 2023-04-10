@@ -1,7 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "List.h"
+#include "ListNode.h"
 
 template<class T>
 class List
@@ -9,6 +9,9 @@ class List
 public:
     List();
     ~List();
+
+    void pushBack(const ListNode<T>* node);
+    void pushBack(const T& data);
 
 private:
     ListNode<T>* head;
@@ -31,6 +34,19 @@ inline List<T>::~List()
         head=head->next;
         delete tmp;
     }
+}
+
+template <class T>
+inline void List<T>::pushBack(const ListNode<T>* node)
+{
+    if(head==nullptr){
+        head=tail=node;
+    }else{
+        tail->next=node;
+        node->prev=tail;
+        tail=node;
+    }
+    size++;
 }
 
 #endif // LIST_H
