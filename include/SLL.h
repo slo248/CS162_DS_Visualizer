@@ -8,6 +8,8 @@ class SLL
 public:
     SLL(sf::RenderWindow* window, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
 
+    void randomList(int n);
+
     void processInput();
     void render();
     void run();

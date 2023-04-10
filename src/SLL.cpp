@@ -1,4 +1,5 @@
 #include "SLL.h"
+#include "Random.h"
 
 SLL::SLL(sf::RenderWindow *window, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle):
     FPS(FPS),
@@ -6,6 +7,13 @@ SLL::SLL(sf::RenderWindow *window, int FPS, sf::CircleShape *hCircle, sf::Circle
     graph(window, hCircle, sCircle)
 {
     graph.clear();
+}
+
+void SLL::randomList(int n)
+{
+    listNode.clear();
+    while(n--)
+        listNode.pushBack(Node(getRand(0,99)));
 }
 
 void SLL::processInput()
