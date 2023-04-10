@@ -15,6 +15,8 @@ public:
     ListElement<T>* rbegin();
     ListElement<T>* rend();
 
+    int getSize() const;
+
     void pushBack(const ListElement<T>* node);
     void pushBack(const T& data);
 
@@ -63,6 +65,12 @@ template <class T>
 inline ListElement<T> *List<T>::rend()
 {
     return nullptr;
+}
+
+template <class T>
+inline int List<T>::getSize() const
+{
+    return size;
 }
 
 template <class T>
