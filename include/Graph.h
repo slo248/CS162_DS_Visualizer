@@ -28,6 +28,9 @@ public:
     // Arrow
     void draw(Arrow* arrow, sf::Color color);
 
+    // List of arrows
+    void draw(List<Arrow>* list, int i, sf::Color color);
+
     void draw();
 
 private:
