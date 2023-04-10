@@ -9,6 +9,7 @@ public:
     SLL(sf::RenderWindow* window, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
 
     void processInput();
+    void render();
 
 private:
     int FPS;

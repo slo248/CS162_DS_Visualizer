@@ -18,3 +18,8 @@ void SLL::processInput()
                 break;
         }
 }
+
+void SLL::render()
+{
+    graph.draw();
+}
