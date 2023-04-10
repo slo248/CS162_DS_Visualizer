@@ -11,7 +11,7 @@ public:
     float           DISTANCE        = 100.f;
 
 public:
-    SLL(sf::RenderWindow* window, sf::Font* sanf, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
+    SLL(sf::RenderWindow* window, sf::Font* sanf, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFigure);
 
     void randomList(int n);
     void makeList();
@@ -27,6 +27,7 @@ private:
     Graph graph;
 
     List<Node> listNode;
+    ArrowFigure* arrowFigure;
 };
 
 #endif // SLL_H

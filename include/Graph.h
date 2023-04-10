@@ -4,6 +4,7 @@
 #include "HNeed.h"
 #include "Node.h"
 #include "List.h"
+#include "ArrowFigure.h"
 
 class Graph
 {
