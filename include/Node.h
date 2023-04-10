@@ -12,6 +12,7 @@ struct Node
     
     void draw(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, float nothing);
     void drawGrow(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, float percent);
+    void drawShrink(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, float percent);
 };
 
 #endif // NODE_H
