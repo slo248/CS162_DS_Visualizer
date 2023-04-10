@@ -1,7 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "ListNode.h"
+#include "ListElement.h"
 
 template<class T>
 class List
@@ -15,12 +15,12 @@ public:
     List<T>* rbegin();
     List<T>* rend();
 
-    void pushBack(const ListNode<T>* node);
+    void pushBack(const ListElement<T>* node);
     void pushBack(const T& data);
 
 private:
-    ListNode<T>* head;
-    ListNode<T>* tail;
+    ListElement<T>* head;
+    ListElement<T>* tail;
     int size;
 };
 
@@ -35,7 +35,7 @@ template <class T>
 inline List<T>::~List()
 {
     while(head!=nullptr){
-        ListNode<T>* tmp=head;
+        ListElement<T>* tmp=head;
         head=head->next;
         delete tmp;
     }
@@ -66,7 +66,7 @@ inline List<T> *List<T>::rend()
 }
 
 template <class T>
-inline void List<T>::pushBack(const ListNode<T>* node)
+inline void List<T>::pushBack(const ListElement<T>* node)
 {
     if(head==nullptr){
         head=tail=node;
@@ -81,7 +81,7 @@ inline void List<T>::pushBack(const ListNode<T>* node)
 template <class T>
 inline void List<T>::pushBack(const T &data)
 {
-    pushBack(new ListNode<T>(data));
+    pushBack(new ListElement<T>(data));
 }
 
 #endif // LIST_H
