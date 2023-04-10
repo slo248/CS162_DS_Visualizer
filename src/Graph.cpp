@@ -61,6 +61,12 @@ void Graph::draw(List<Arrow> *list, int i, sf::Color color)
     draw(&list->begin()->getNext(i)->data, color);
 }
 
+void Graph::draw(List<Arrow> *list, int from, int to, sf::Color color)
+{
+    for(int i=from; i<=to; i++)
+        draw(list, i, color);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
