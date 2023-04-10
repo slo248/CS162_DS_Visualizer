@@ -29,6 +29,8 @@ int main()
     sCircle.setRadius(30);
     //
 
+    Node node(1, sf::Vector2f(100, 100));
+
     while(window.isOpen()){
         sf::Event event;
         while(window.pollEvent(event)){
@@ -38,6 +40,7 @@ int main()
         }
 
         window.clear(sf::Color::White);
+        node.draw(&window, &hCircle, sf::Color::Red, sf::Color::Black, 0);
         window.display();
     }
 
