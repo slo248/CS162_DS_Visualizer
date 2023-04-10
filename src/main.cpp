@@ -29,8 +29,16 @@ int main()
     Figure figure;
     //
 
+    // font
+    sf::Font sanf;
+    if(!sanf.loadFromFile("font/SFProDisplay.ttf")){
+        std::cout << "Error: font not found" << std::endl;
+        return 1;
+    }
+    //
+
     // gen SLL
-    SLL sll(&window, WindowConfig::FPS, figure.hCircle, figure.sCircle);
+    SLL sll(&window, &sanf, WindowConfig::FPS, figure.hCircle, figure.sCircle);
     sll.run();
     return 0;
 }

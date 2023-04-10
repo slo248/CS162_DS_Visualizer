@@ -8,7 +8,7 @@
 class Graph
 {
 public:
-    Graph(sf::RenderWindow* window, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
+    Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
 
     void clear();
     void addStep(int frames);
@@ -28,6 +28,7 @@ public:
 
 private:
     sf::RenderWindow* window;
+    sf::Text* text;
     sf::CircleShape* hCircle;
     sf::CircleShape* sCircle;
 
