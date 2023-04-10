@@ -17,7 +17,7 @@ public:
 
     int getSize() const;
 
-    void pushBack(const ListElement<T>* node);
+    void pushBack(ListElement<T>* node);
     void pushBack(const T& data);
 
 private:
@@ -74,7 +74,7 @@ inline int List<T>::getSize() const
 }
 
 template <class T>
-inline void List<T>::pushBack(const ListElement<T>* node)
+inline void List<T>::pushBack(ListElement<T>* node)
 {
     if(head==nullptr){
         head=tail=node;

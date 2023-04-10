@@ -22,11 +22,14 @@ int main()
     Figure figure;
     //
 
-    Node node(1, sf::Vector2f(100, 100));
-    
+    // list of integers
+    List<Node> list;
+    list.pushBack(1);
+    //
+
     Graph graph(&window, figure.hCircle, figure.sCircle);
     graph.addStep(60);
-    graph.drawGrow(&node, Hollow, Colors::GREEN, Colors::BLACK);
+    graph.draw(&list,Hollow,Colors::GREEN,Colors::BLACK);
 
     while(window.isOpen()){
         sf::Event event;
