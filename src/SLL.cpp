@@ -54,7 +54,7 @@ void SLL::run()
     makeList();
     while(window->isOpen()){
         processInput();
-        window->clear(sf::Color::White);
+        window->clear(Colors::WHITE);
         render();
         window->display();
     }

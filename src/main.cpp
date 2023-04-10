@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "SLL.h"
 #include "Figure.h"
 
 int main()
@@ -22,28 +22,8 @@ int main()
     Figure figure;
     //
 
-    // list of integers
-    List<Node> list;
-    list.pushBack(1);
-    //
-
-    Graph graph(&window, figure.hCircle, figure.sCircle);
-    graph.addStep(60);
-    graph.draw(&list,Hollow,Colors::GREEN,Colors::BLACK);
-
-    while(window.isOpen()){
-        sf::Event event;
-        while(window.pollEvent(event))
-            switch (event.type){
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-            }
-
-        window.clear(sf::Color::White);
-        graph.draw();
-        window.display();
-    }
-
+    // gen SLL
+    SLL sll(&window, 60, figure.hCircle, figure.sCircle);
+    sll.run();
     return 0;
 }
