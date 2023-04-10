@@ -8,10 +8,13 @@
 #include <functional>
 #include <cassert>
 #include <cmath>
+#include <vector>
 
 enum CircleType
 {
     Hollow, Solid
 };
+
+typedef std::function<float(float)> functor;
 
 #endif // HNEED_H
