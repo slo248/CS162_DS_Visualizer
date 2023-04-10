@@ -1,3 +1,6 @@
+#ifndef MOTION_H
+#define MOTION_H
+
 namespace Motion
 {
     float linear(float time);
@@ -5,3 +8,5 @@ namespace Motion
     float cubic(float time);
     float Bezier(float time);
 }
+
+#endif // MOTION_H
