@@ -31,6 +31,7 @@ public:
     // List of arrows
     void draw(List<Arrow>* list, int i, sf::Color color);
     void draw(List<Arrow>* list, int from, int to, sf::Color color);
+    void draw(List<Arrow>* list, sf::Color color);
 
     void draw();
 

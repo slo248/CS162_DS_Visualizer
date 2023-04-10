@@ -34,7 +34,7 @@ void SLL::makeList()
     graph.draw(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     
     // draw arrows to graph
-    graph.draw(&listArrow.begin()->data,Colors::BLUE);
+    graph.draw(&listArrow,Colors::BLUE);
 }
 
 void SLL::processInput()
