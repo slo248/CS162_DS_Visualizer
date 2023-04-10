@@ -1,7 +1,7 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
-#include <SFML/Graphics.hpp>
+#include "ArrowFigure.h"
 
 namespace CircleConfig
 {
@@ -20,8 +20,7 @@ struct Figure
 {
     sf::CircleShape* hCircle; // hollow circle
     sf::CircleShape* sCircle; // solid circle
-    sf::RectangleShape* bar; // body of an arrow
-    sf::ConvexShape* triangle; // arrow head
+    ArrowFigure* arrow; // arrow
     Figure();
     ~Figure();
     void genHollowCircle();
