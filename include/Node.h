@@ -11,6 +11,7 @@ struct Node
         value(value), position(position) {}
     
     void draw(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, float nothing);
+    void drawGrow(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, float percent);
 };
 
 #endif // NODE_H
