@@ -19,3 +19,16 @@ void Figure::genHollowCircle()
         );
     }
 }
+
+void Figure::genSolidCircle()
+{
+    sCircle = new sf::CircleShape;
+    sCircle->setRadius(30);
+    {
+        sf::FloatRect bounds = sCircle->getLocalBounds();
+        sCircle->setOrigin(
+            bounds.left + bounds.width / 2.f,
+            bounds.top + bounds.height / 2.f
+        );
+    }
+}
