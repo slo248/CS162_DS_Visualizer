@@ -8,6 +8,7 @@ struct Figure
     sf::CircleShape* hCircle; // hollow circle
     sf::CircleShape* sCircle; // solid circle
     ~Figure();
+    void genHollowCircle();
 };
 
 #endif // FIGURE_H
