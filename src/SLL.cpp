@@ -53,6 +53,7 @@ void SLL::render()
 void SLL::run()
 {
     arrowFigure->setPosition(200,100);
+    arrowFigure->setFillColor(Colors::BLUE);
 
     randomList(4);
     makeList();

@@ -15,7 +15,7 @@ ArrowFigure::ArrowFigure(float barWidth, float triangleWidth, float heightEach)
     triangle = new sf::ConvexShape;
     triangle->setPointCount(3);
     triangle->setPoint(0, sf::Vector2f(0, 0));
-    triangle->setPoint(1, sf::Vector2f(triangleWidth, (3/2)*heightEach));
+    triangle->setPoint(1, sf::Vector2f(triangleWidth, (3.f/2.f)*heightEach));
     triangle->setPoint(2, sf::Vector2f(0, 3*heightEach));
     {
         sf::FloatRect bounds = triangle->getLocalBounds();
@@ -24,13 +24,13 @@ ArrowFigure::ArrowFigure(float barWidth, float triangleWidth, float heightEach)
             bounds.top + bounds.height / 2.f
         );
     }
-    triangle->move(sf::Vector2f(barWidth, 0));
+    triangle->move(barWidth, 0);
 }
 
 void ArrowFigure::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    target.draw(*bar, states);
     states.transform*=getTransform();
+    target.draw(*bar, states);
     target.draw(*triangle, states);
 }
 
