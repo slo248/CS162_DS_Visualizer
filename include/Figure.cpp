@@ -1,5 +1,11 @@
 #include "Figure.h"
 
+Figure::Figure()
+{
+    genHollowCircle();
+    genSolidCircle();
+}
+
 Figure::~Figure()
 {
     delete hCircle;
