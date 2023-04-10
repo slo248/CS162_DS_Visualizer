@@ -2,6 +2,11 @@
 
 class Graph
 {
+public:
+    Graph(sf::RenderWindow* window, sf::CircleShape* hCircle, sf::CircleShape* sCircle);
+
+    void clear();
+
 private:
     sf::RenderWindow* window;
     sf::CircleShape* hCircle;
