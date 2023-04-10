@@ -7,7 +7,7 @@
 class SLL
 {
 public:
-    sf::Vector2f    START_POSITION  = sf::Vector2f(100, 100);
+    sf::Vector2f    START_POSITION  = sf::Vector2f(150, 200);
     float           DISTANCE        = 100.f;
 
 public:

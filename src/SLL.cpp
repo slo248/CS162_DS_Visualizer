@@ -29,7 +29,7 @@ void SLL::makeList()
     graph.addStep(FPS);
 
     // Add nodes to graph
-    graph.draw(&listNode,Hollow,Colors::WHITE,Colors::BLACK);
+    graph.draw(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
 }
 
 void SLL::processInput()

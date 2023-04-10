@@ -5,7 +5,7 @@
 
 namespace CircleConfig
 {
-    const float RADIUS = 30.f;
+    const float RADIUS = 20.f;
     const float THICKNESS = 6.f;
 }
 

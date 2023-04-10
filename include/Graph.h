@@ -14,15 +14,15 @@ public:
     void addStep(int frames);
 
     // Node
-    void draw(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
-    void drawGrow(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
-    void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
+    void draw(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     //
 
     // List
-    void draw(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor);
-    void draw(List<Node>* list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor);
-    void draw(List<Node>* list, CircleType type, sf::Color inColor, sf::Color outColor);
+    void draw(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
 
     void draw();
 
