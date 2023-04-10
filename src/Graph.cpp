@@ -34,6 +34,11 @@ void Graph::drawShrink(Node *node, CircleType type, sf::Color inColor, sf::Color
     drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, std::placeholders::_1));
 }
 
+void Graph::draw(List<Node> *list, int i, CircleType type, sf::Color inColor, sf::Color outColor)
+{
+    draw(&list->begin()->getNext(i)->data, type, inColor, outColor);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;

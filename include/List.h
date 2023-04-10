@@ -10,10 +10,10 @@ public:
     List();
     ~List();
 
-    List<T>* begin();
-    List<T>* end();
-    List<T>* rbegin();
-    List<T>* rend();
+    ListElement<T>* begin();
+    ListElement<T>* end();
+    ListElement<T>* rbegin();
+    ListElement<T>* rend();
 
     void pushBack(const ListElement<T>* node);
     void pushBack(const T& data);
@@ -42,25 +42,25 @@ inline List<T>::~List()
 }
 
 template <class T>
-inline List<T> *List<T>::begin()
+inline ListElement<T> *List<T>::begin()
 {
     return head;
 }
 
 template <class T>
-inline List<T> *List<T>::end()
+inline ListElement<T> *List<T>::end()
 {
     return nullptr;
 }
 
 template <class T>
-inline List<T> *List<T>::rbegin()
+inline ListElement<T> *List<T>::rbegin()
 {
     return tail;
 }
 
 template <class T>
-inline List<T> *List<T>::rend()
+inline ListElement<T> *List<T>::rend()
 {
     return nullptr;
 }

@@ -3,6 +3,7 @@
 
 #include "HNeed.h"
 #include "Node.h"
+#include "List.h"
 
 class Graph
 {
@@ -17,6 +18,9 @@ public:
     void drawGrow(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
     void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor);
     //
+
+    // List
+    void draw(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor);
 
     void draw();
 
