@@ -28,6 +28,7 @@ public:
     // Arrow
     void draw(Arrow* arrow, sf::Color color);
     void drawGrow(Arrow* arrow, sf::Color color);
+    void drawShrink(Arrow* arrow, sf::Color color);
 
     // List of arrows
     void draw(List<Arrow>* list, int i, sf::Color color);
