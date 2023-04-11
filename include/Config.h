@@ -20,7 +20,6 @@ namespace ButtonConfig
 {
     const float HEIGHT = 60.f;
     const float WIDTH = 100.f;
-    const float THICK = 3.f;
 }
 
 #endif // CONFIG_H

@@ -43,7 +43,7 @@ void SLL::makeList()
     }
 
     // add new steps
-    graph.addStep(FPS);
+    graph.addStep(FPS/2);
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);

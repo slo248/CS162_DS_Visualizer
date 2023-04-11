@@ -6,8 +6,6 @@ Button::Button(sf::Font *font, std::string str,sf::Vector2f size, sf::Color bgCo
 {
     rect=new sf::RectangleShape(size);
     rect->setFillColor(bgColorNormal);
-    rect->setOutlineThickness(THICK);
-    rect->setOutlineColor(Colors::BLACK);
     {
         sf::FloatRect bounds=rect->getLocalBounds();
         rect->setOrigin(bounds.left,bounds.top);
@@ -22,7 +20,7 @@ Button::Button(sf::Font *font, std::string str,sf::Vector2f size, sf::Color bgCo
             bounds.top+bounds.height/2
         );
     }
-    text->setPosition(THICK+size.x/2.f, THICK+size.y/2.f);
+    text->setPosition(size.x/2.f, size.y/2.f);
 }
 
 Button::~Button()

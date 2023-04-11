@@ -9,8 +9,6 @@ class Button:
     private sf::NonCopyable
 {
 public:
-    const float THICK=3.f;
-
     Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColorNormal, sf::Color bgColorHit, sf::Color textColor);
     ~Button();
 
