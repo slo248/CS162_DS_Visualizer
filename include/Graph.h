@@ -24,6 +24,7 @@ public:
     void drawMove(Node* node, sf::Vector2f src, sf::Vector2f dest,sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawHead(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawTail(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawVtx(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     //
 
     // List of nodes
