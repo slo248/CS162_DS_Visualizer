@@ -98,6 +98,11 @@ void Graph::draw(List<Arrow> *list, sf::Color color)
     draw(list, 0, list->getSize()-1, color);
 }
 
+void Graph::drawGrow(List<Arrow> *list, int i, sf::Color color)
+{
+    drawGrow(&list->begin()->getNext(i)->data, color);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
