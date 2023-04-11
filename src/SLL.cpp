@@ -31,10 +31,10 @@ void SLL::makeList()
     graph.addStep(FPS);
 
     // draw nodes to graph
-    graph.draw(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     
     // draw arrows to graph
-    graph.draw(&listArrow,Colors::BLUE);
+    graph.drawGrow(&listArrow,Colors::BLUE);
 }
 
 void SLL::processInput()

@@ -1,5 +1,6 @@
 #include "Node.h"
 #include "Motion.h"
+#include "HNeed.h"
 
 void Node::draw(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text* num, sf::Color numColor, float nothing)
 {
@@ -23,6 +24,7 @@ void Node::drawGrow(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color
 {
     float ratio=Motion::Bezier(percent);
     circle->setScale(ratio,ratio);
+    num->setScale(ratio,ratio);
     draw(window, circle, inColor, outColor, num, numColor, 0);
 }
 
@@ -30,5 +32,6 @@ void Node::drawShrink(sf::RenderWindow *window, sf::CircleShape *circle, sf::Col
 {
     float ratio=Motion::Bezier(1-percent);
     circle->setScale(ratio,ratio);
+    num->setScale(ratio,ratio);
     draw(window, circle, inColor, outColor, num, numColor, 0);
 }
