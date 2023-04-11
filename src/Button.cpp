@@ -35,3 +35,10 @@ void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(*rect, states);
     target.draw(*text, states);
 }
+
+bool Button::isMouseOver(sf::RenderWindow *window)
+{
+    sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+    sf::FloatRect bounds=rect->getGlobalBounds();
+    return bounds.contains(mousePos);
+}
