@@ -46,3 +46,10 @@ void Arrow::drawShrink(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Colo
     arrowFig->setFillColor(color);
     window->draw(*arrowFig);
 }
+
+void Arrow::drawFadeOut(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color color, float percent)
+{
+    update(arrowFig);
+    arrowFig->setFillColor(sf::Color(color.r,color.g,color.b,255*Motion::Bezier(1-percent)));
+    window->draw(*arrowFig);
+}
