@@ -20,7 +20,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     insertBtn = new Button(sanf, "Insert", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
     insertFrontBtn = new Button(sanf, "Front", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
     insertBackBtn = new Button(sanf, "Back", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
-    insertAfterBtn = new Button(sanf, "After", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
+    insertPosBtn = new Button(sanf, "Position", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
     updateBtn = new Button(sanf, "Update", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
@@ -38,7 +38,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     insertBtn->setPosition(sf::Vector2f(0,windowSize.y-4*insertBtn->getSize().y));
     insertFrontBtn->setPosition(sf::Vector2f(insertBtn->getSize().x+10.f,windowSize.y-4*insertFrontBtn->getSize().y));
     insertBackBtn->setPosition(sf::Vector2f(2*insertBtn->getSize().x+10.f,windowSize.y-4*insertBackBtn->getSize().y));
-    insertAfterBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-4*insertAfterBtn->getSize().y));
+    insertPosBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-4*insertPosBtn->getSize().y));
 
     updateBtn->setPosition(sf::Vector2f(0,windowSize.y-3*updateBtn->getSize().y));
 
@@ -219,18 +219,18 @@ void SLL::insertBack(int value)
     //
 }
 
-void SLL::insertAfter(int value, int after)
+void SLL::insertPos(int value, int pos)
 {
     if(listNode.empty()){ 
         insertWhenEmpty(value);
         return;
     }
 
-    // step 1: traverse to node at 'after'
+    // step 1: traverse to node at 'pos'
     int i;
     ListElement<Node> *curNode=listNode.begin();
     ListElement<Arrow> *curArrow=listArrow.begin();
-    for(i=0; i<after; i++, curNode=curNode->next, curArrow=curArrow->next){
+    for(i=0; i<pos; i++, curNode=curNode->next, curArrow=curArrow->next){
         // substep 1: draw node at i
         graph.addStep(0.5*FPS);
 
@@ -314,9 +314,9 @@ void SLL::processInput()
                         insertBack(getRand(0,99));
                         curBtn=Button::NONE;
                     }
-                    else if(curBtn==Button::INSERT && insertAfterBtn->isMouseOver(window)){
+                    else if(curBtn==Button::INSERT && insertPosBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertAfter(getRand(0,99),2);
+                        insertPos(getRand(0,99),2);
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
@@ -342,7 +342,7 @@ void SLL::processInput()
     if(curBtn==Button::INSERT){
         insertFrontBtn->update(window);
         insertBackBtn->update(window);
-        insertAfterBtn->update(window);
+        insertPosBtn->update(window);
     }
 
     updateBtn->update(window);
@@ -369,7 +369,7 @@ void SLL::render()
     if(curBtn==Button::INSERT){
         window->draw(*insertFrontBtn);
         window->draw(*insertBackBtn);
-        window->draw(*insertAfterBtn);
+        window->draw(*insertPosBtn);
     }
 
     window->draw(*updateBtn);

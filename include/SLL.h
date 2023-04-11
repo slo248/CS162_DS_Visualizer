@@ -24,7 +24,7 @@ public:
     void insertWhenEmpty(int value);
     void insertFront(int value);
     void insertBack(int value);
-    void insertAfter(int value, int after);
+    void insertPos(int value, int after);
 
     // a frame
     void processInput();
@@ -55,7 +55,7 @@ private:
     Button* insertBtn;
         Button* insertFrontBtn;
         Button* insertBackBtn;
-        Button* insertAfterBtn;
+        Button* insertPosBtn;
 
     Button* updateBtn;
 
