@@ -1,7 +1,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include <SFML/Graphics.hpp>
+#include "HNeed.h"
 
 class Button:
     public sf::Drawable,
@@ -9,6 +9,9 @@ class Button:
     private sf::NonCopyable
 {
 public:
+    const float THICK=3.f;
+
+    Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColor, sf::Color textColor);
     ~Button();
 private:
     sf::RectangleShape* rect;
