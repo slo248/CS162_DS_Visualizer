@@ -16,6 +16,7 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     bool isMouseOver(sf::RenderWindow* window);
+    void update(sf::RenderWindow* window);
 private:
     sf::RectangleShape* rect;
     sf::Text* text;

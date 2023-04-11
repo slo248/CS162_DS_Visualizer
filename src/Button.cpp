@@ -44,3 +44,11 @@ bool Button::isMouseOver(sf::RenderWindow *window)
     sf::FloatRect bounds=rect->getGlobalBounds();
     return bounds.contains(mousePos);
 }
+
+void Button::update(sf::RenderWindow *window)
+{
+    if(isMouseOver(window))
+        rect->setFillColor(bgColorHit);
+    else
+        rect->setFillColor(bgColorNormal);
+}
