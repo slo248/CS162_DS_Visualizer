@@ -36,7 +36,7 @@ void Node::drawShrink(sf::RenderWindow *window, sf::CircleShape *circle, sf::Col
     draw(window, circle, inColor, outColor, num, numColor, 0);
 }
 
-void Node::move(sf::RenderWindow *window, sf::Vector2f src, sf::Vector2f dest, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
+void Node::drawMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector2f dest, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
 {
     position=src+(dest-src)*Motion::Bezier(percent);
     draw(window, circle, inColor, outColor, num, numColor, 0);

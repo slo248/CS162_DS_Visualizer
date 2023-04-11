@@ -19,7 +19,7 @@ public:
     void draw(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawGrow(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void move(Node* node, sf::Vector2f src, sf::Vector2f dest,CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(Node* node, sf::Vector2f src, sf::Vector2f dest,CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     //
 
     // List of nodes
