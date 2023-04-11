@@ -103,3 +103,18 @@ void Node::drawVtx(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color 
     text->setPosition(position.x, position.y+2*CircleConfig::RADIUS);
     window->draw(*text);
 }
+
+void Node::drawHeadVtx(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *text, sf::Color textColor, float percent)
+{
+    text->setString("head/vtx");
+    {
+        sf::FloatRect textRect = text->getLocalBounds();
+        text->setOrigin(
+            textRect.left + textRect.width/2.0f, 
+            textRect.top  + textRect.height/2.0f
+        );
+    }
+    text->setFillColor(textColor);
+    text->setPosition(position.x, position.y+2*CircleConfig::RADIUS);
+    window->draw(*text);
+}
