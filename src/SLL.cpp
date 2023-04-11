@@ -227,9 +227,10 @@ void SLL::insertAfter(int value, int after)
     }
 
     // step 1: traverse to node at 'after'
+    int i;
     ListElement<Node> *curNode=listNode.begin();
     ListElement<Arrow> *curArrow=listArrow.begin();
-    for(int i=0; i<after; i++, curNode=curNode->next, curArrow=curArrow->next){
+    for(i=0; i<after; i++, curNode=curNode->next, curArrow=curArrow->next){
         // substep 1: draw node at i
         graph.addStep(0.5*FPS);
 
@@ -257,6 +258,10 @@ void SLL::insertAfter(int value, int after)
         graph.drawGrow(&curArrow->data,Colors::ORANGE);
         //
     }
+
+    // step 2: draw i_th node
+    graph.drawFadeIn(&curNode->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
+    //
 }
 
 void SLL::processInput()
