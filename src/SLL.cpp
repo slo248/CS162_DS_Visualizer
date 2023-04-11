@@ -87,7 +87,7 @@ void SLL::makeList()
     }
 
     // add new steps
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -106,7 +106,7 @@ void SLL::insertWhenEmpty(int value)
     listNode.begin()->data.position=START_POSITION;
 
     // add new steps
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -126,7 +126,7 @@ void SLL::insertFront(int value)
     listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
 
     // step 1: draw new node
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
@@ -137,7 +137,7 @@ void SLL::insertFront(int value)
     //
 
     // step 2: draw new arrow
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
@@ -149,7 +149,7 @@ void SLL::insertFront(int value)
     //
 
     // step 3: assign head to new node
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
@@ -160,7 +160,7 @@ void SLL::insertFront(int value)
     //
 
     // step 4: move new node to correct position
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     for(ListElement<Node>* node=listNode.begin()->next; node!=listNode.end(); node=node->next)
         graph.drawMove(&node->data,node->data.position,node->data.position+sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -183,7 +183,7 @@ void SLL::insertBack(int value)
     listNode.rbegin()->data.position=START_POSITION+sf::Vector2f(DISTANCE*(listNode.size()-1), 0);
 
     // step 1: draw new node
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
@@ -194,7 +194,7 @@ void SLL::insertBack(int value)
     //
 
     // step 2: draw new arrow
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawFadeIn(&listNode.rbegin()->prev->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
@@ -207,7 +207,7 @@ void SLL::insertBack(int value)
     //
 
     // step 3: assign tail to new node
-    graph.addStep(FPS/2);
+    graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawFadeOut(&listNode.rbegin()->prev->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
@@ -231,7 +231,7 @@ void SLL::insertAfter(int value, int after)
     ListElement<Arrow> *curArrow=listArrow.begin();
     for(int i=0; i<after; i++, curNode=curNode->next, curArrow=curArrow->next){
         // substep 1: draw node at i
-        graph.addStep(FPS/2);
+        graph.addStep(0.5*FPS);
 
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
@@ -243,7 +243,7 @@ void SLL::insertAfter(int value, int after)
         //
 
         // substep 2: draw flowing arrow
-        graph.addStep(FPS/2);
+        graph.addStep(0.5*FPS);
 
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
