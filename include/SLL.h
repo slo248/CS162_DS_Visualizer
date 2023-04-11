@@ -34,6 +34,8 @@ public:
     void run();
 
 private:
+    bool isPause;
+
     int FPS;
     sf::RenderWindow* window;
     sf::Sprite* bg;

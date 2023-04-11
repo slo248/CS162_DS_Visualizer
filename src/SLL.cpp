@@ -7,6 +7,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     window(window),
     bg(bg),
     curBtn(Button::NONE),
+    isPause(false),
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
@@ -265,6 +266,14 @@ void SLL::processInput()
         switch (event.type){
             case sf::Event::Closed:
                 window->close();
+                break;
+            case sf::Event::LostFocus:
+                isPause=true;
+                window->setFramerateLimit(1);
+                break;
+            case sf::Event::GainedFocus:
+                isPause=false;
+                window->setFramerateLimit(FPS);
                 break;
             case sf::Event::MouseButtonReleased:
                 if(createBtn->isMouseOver(window)){
