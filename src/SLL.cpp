@@ -90,7 +90,7 @@ void SLL::makeList()
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     
     // draw arrows to graph
     graph.drawGrow(&listArrow,Colors::BLACK);
@@ -108,7 +108,7 @@ void SLL::insertWhenEmpty(int value)
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
 }
 
 void SLL::insertFront(int value)
@@ -126,7 +126,7 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     //
@@ -135,7 +135,7 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
@@ -145,7 +145,7 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawShrink(&listArrow.begin()->data,Colors::ORANGE);
@@ -156,7 +156,7 @@ void SLL::insertFront(int value)
 
     for(ListElement<Node>* node=listNode.begin()->next; node!=listNode.end(); node=node->next)
         graph.drawMove(&node->data,node->data.position,node->data.position+sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.drawMove(&listNode.begin()->data,listNode.begin()->data.position,START_POSITION,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     //
