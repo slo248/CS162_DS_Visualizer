@@ -40,6 +40,15 @@ void Node::drawFadeIn(sf::RenderWindow *window, sf::CircleShape *circle, sf::Col
 {
     inColor.a=255*Motion::Bezier(percent);
     outColor.a=255*Motion::Bezier(percent);
+    numColor.a=255*Motion::Bezier(percent);
+    draw(window, circle, inColor, outColor, num, numColor, 0);
+}
+
+void Node::drawFadeOut(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
+{
+    inColor.a=255*(1-Motion::Bezier(percent));
+    outColor.a=255*(1-Motion::Bezier(percent));
+    numColor.a=255*(1-Motion::Bezier(percent));
     draw(window, circle, inColor, outColor, num, numColor, 0);
 }
 
