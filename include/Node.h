@@ -21,6 +21,7 @@ struct Node
     void drawVtx(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
     void drawHeadVtx(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
     void drawTailVtx(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
+    void drawSubscript(sf::RenderWindow* window, sf::Text* text, std::string str, sf::Color textColor);
 };
 
 #endif // NODE_H

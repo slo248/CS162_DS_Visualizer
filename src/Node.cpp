@@ -133,3 +133,18 @@ void Node::drawTailVtx(sf::RenderWindow *window, sf::CircleShape *circle, sf::Co
     text->setPosition(position.x, position.y+2*CircleConfig::RADIUS);
     window->draw(*text);
 }
+
+void Node::drawSubscript(sf::RenderWindow *window, sf::Text *text, std::string str, sf::Color textColor)
+{
+    text->setString(str);
+    {
+        sf::FloatRect textRect = text->getLocalBounds();
+        text->setOrigin(
+            textRect.left + textRect.width/2.0f, 
+            textRect.top  + textRect.height/2.0f
+        );
+    }
+    text->setFillColor(textColor);
+    text->setPosition(position.x, position.y+2*CircleConfig::RADIUS);
+    window->draw(*text);
+}
