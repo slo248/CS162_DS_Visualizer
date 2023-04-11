@@ -128,20 +128,22 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawHead(&listNode.begin()->next->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawVtx(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
     //
 
     // step 2: draw new arrow
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawHead(&listNode.begin()->next->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawVtx(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
     //
 
