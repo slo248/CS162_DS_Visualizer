@@ -31,6 +31,7 @@ public:
     void drawGrow(List<Node>* list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawGrow(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawGrow(List<Node>* list, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(List<Node>* list, int i, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor);
 
     // Arrow
     void draw(Arrow* arrow, sf::Color color);
