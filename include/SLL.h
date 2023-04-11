@@ -49,6 +49,9 @@ private:
         Button* loadFromFileBtn;
 
     Button* insertBtn;
+        Button* insertFrontBtn;
+        Button* insertBackBtn;
+        Button* insertAfterBtn;
 
     Button* updateBtn;
 

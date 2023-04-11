@@ -17,6 +17,9 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     loadFromFileBtn = new Button(sanf, "File", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
 
     insertBtn = new Button(sanf, "Insert", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    insertFrontBtn = new Button(sanf, "Front", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    insertBackBtn = new Button(sanf, "Back", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    insertAfterBtn = new Button(sanf, "After", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
 
     updateBtn = new Button(sanf, "Update", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
 
@@ -32,6 +35,9 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     loadFromFileBtn->setPosition(sf::Vector2f(3*createBtn->getSize().x+10.f,windowSize.y-5*loadFromFileBtn->getSize().y));
 
     insertBtn->setPosition(sf::Vector2f(0,windowSize.y-4*insertBtn->getSize().y));
+    insertFrontBtn->setPosition(sf::Vector2f(insertBtn->getSize().x+10.f,windowSize.y-4*insertFrontBtn->getSize().y));
+    insertBackBtn->setPosition(sf::Vector2f(2*insertBtn->getSize().x+10.f,windowSize.y-4*insertBackBtn->getSize().y));
+    insertAfterBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-4*insertAfterBtn->getSize().y));
 
     updateBtn->setPosition(sf::Vector2f(0,windowSize.y-3*updateBtn->getSize().y));
 
@@ -180,10 +186,21 @@ void SLL::processInput()
                         curBtn=Button::NONE;
                     }
                 else if(insertBtn->isMouseOver(window)){
-                    graph.finishAllSteps();
                     curBtn=Button::INSERT;
-                    insertFront(getRand(0,99));
                 }
+                    else if(curBtn==Button::INSERT && insertFrontBtn->isMouseOver(window)){
+                        graph.finishAllSteps();
+                        insertFront(getRand(0,99));
+                        curBtn=Button::NONE;
+                    }
+                    else if(curBtn==Button::INSERT && insertBackBtn->isMouseOver(window)){
+                        graph.finishAllSteps();
+                        curBtn=Button::NONE;
+                    }
+                    else if(curBtn==Button::INSERT && insertAfterBtn->isMouseOver(window)){
+                        graph.finishAllSteps();
+                        curBtn=Button::NONE;
+                    }
                 else if(updateBtn->isMouseOver(window)){
                     curBtn=Button::UPDATE;
                 }
@@ -197,11 +214,18 @@ void SLL::processInput()
         }
 
     createBtn->update(window);
-    emptyBtn->update(window);
-    randomBtn->update(window);
-    loadFromFileBtn->update(window);
+    if(curBtn==Button::CREATE){
+        emptyBtn->update(window);
+        randomBtn->update(window);
+        loadFromFileBtn->update(window);
+    }
 
     insertBtn->update(window);
+    if(curBtn==Button::INSERT){
+        insertFrontBtn->update(window);
+        insertBackBtn->update(window);
+        insertAfterBtn->update(window);
+    }
 
     updateBtn->update(window);
 
@@ -222,6 +246,11 @@ void SLL::render()
     }
 
     window->draw(*insertBtn);
+    if(curBtn==Button::INSERT){
+        window->draw(*insertFrontBtn);
+        window->draw(*insertBackBtn);
+        window->draw(*insertAfterBtn);
+    }
 
     window->draw(*updateBtn);
 
