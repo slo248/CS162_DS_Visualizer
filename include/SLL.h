@@ -16,6 +16,7 @@ public:
 
     void randomList(int n);
     void makeList();
+    void insertWhenEmpty(int value);
 
     void processInput();
     void render();

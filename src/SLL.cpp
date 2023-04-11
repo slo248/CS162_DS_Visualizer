@@ -52,6 +52,20 @@ void SLL::makeList()
     graph.drawGrow(&listArrow,Colors::BLUE);
 }
 
+void SLL::insertWhenEmpty(int value)
+{
+    if(!listNode.empty()) return;
+
+    listNode.pushBack(value);
+    listNode.begin()->data.position=START_POSITION;
+
+    // add new steps
+    graph.addStep(FPS/2);
+
+    // draw nodes to graph
+    graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+}
+
 void SLL::processInput()
 {
     sf::Event event;
