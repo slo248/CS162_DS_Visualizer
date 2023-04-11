@@ -33,12 +33,16 @@ void Arrow::draw(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color colo
 
 void Arrow::drawGrow(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color color, float percent)
 {
+    update(arrowFig);
     arrowFig->setScale(arrowFig->getScale().x*Motion::Bezier(percent),1);
-    draw(window, arrowFig, color, 0);
+    arrowFig->setFillColor(color);
+    window->draw(*arrowFig);
 }
 
 void Arrow::drawShrink(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color color, float percent)
 {
+    update(arrowFig);
     arrowFig->setScale(arrowFig->getScale().x*Motion::Bezier(1-percent),1);
-    draw(window, arrowFig, color, 0);
+    arrowFig->setFillColor(color);
+    window->draw(*arrowFig);
 }
