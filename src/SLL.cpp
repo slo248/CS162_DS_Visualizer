@@ -23,10 +23,15 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCi
     removeBtn->setPosition(sf::Vector2f(0,windowSize.y-1*createBtn->getSize().y));
 }
 
-void SLL::loadFromFile(std::string path)
+void SLL::empty()
 {
     listNode.clear();
     listArrow.clear();
+}
+
+void SLL::loadFromFile(std::string path)
+{
+    empty();
 
     std::ifstream fi(path);
     if(!fi.is_open()) return;
@@ -41,8 +46,7 @@ void SLL::loadFromFile(std::string path)
 
 void SLL::randomList(int n)
 {
-    listNode.clear();
-    listArrow.clear();
+    empty();
     while(n--)
         listNode.pushBack(Node(getRand(0,99)));
 }

@@ -14,6 +14,7 @@ public:
 public:
     SLL(sf::RenderWindow* window, sf::Font* sanf, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFigure);
 
+    void empty();
     void loadFromFile(std::string path);
     void randomList(int n);
     void makeList();
