@@ -31,7 +31,7 @@ int main()
 
     // font
     sf::Font sanf;
-    if(!sanf.loadFromFile("font/SFProDisplay.ttf")){
+    if(!sanf.loadFromFile("media/font/SFProDisplay.ttf")){
         std::cout << "Error: font not found" << std::endl;
         return 1;
     }
