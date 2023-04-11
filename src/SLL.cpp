@@ -1,5 +1,6 @@
 #include "SLL.h"
 #include "Random.h"
+#include "Config.h"
 
 SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure *arrowFig):
     FPS(FPS),
@@ -8,11 +9,11 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCi
 {
     graph.clear();
 
-    createBtn = new Button(sanf, "Create", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
-    insertBtn = new Button(sanf, "Insert", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
-    updateBtn = new Button(sanf, "Update", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
-    searchBtn = new Button(sanf, "Search", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
-    removeBtn = new Button(sanf, "Remove", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    createBtn = new Button(sanf, "Create", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    insertBtn = new Button(sanf, "Insert", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    updateBtn = new Button(sanf, "Update", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    searchBtn = new Button(sanf, "Search", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    removeBtn = new Button(sanf, "Remove", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::SILVER, Colors::GRAY, Colors::BLACK);
 
     sf::Vector2u windowSize = window->getSize();
     createBtn->setPosition(sf::Vector2f(0,windowSize.y-5*createBtn->getSize().y));
