@@ -286,6 +286,25 @@ void SLL::insertPos(int value, int pos)
     graph.drawGrow(newNode,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawSubscript(newNode,"vtx",Colors::RED);
     //
+
+    // step 4: draw new arrow
+    Arrow *newArrow=new Arrow(newNode,&curNode->data);
+    listArrow.insert(*newArrow,pos);
+
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+    graph.draw(&listNode,i+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,i+1,listArrow.size()-1,Colors::BLACK);
+    graph.draw(&curArrow->data,Colors::BLACK);
+    graph.draw(&curNode->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
+    graph.draw(newNode,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawSubscript(newNode,"vtx",Colors::RED);
+    graph.drawGrow(newArrow,Colors::GREEN);
+    //
 }
 
 void SLL::processInput()
