@@ -141,8 +141,13 @@ void Graph::draw()
 {
     if(nFrames.empty()) return;
 
-    for(functor f : drawFunc[curStep])
+    for(functor f : drawFunc[curStep]){
+        text->setScale(1,1);
+        hCircle->setScale(1,1);
+        sCircle->setScale(1,1);
+        arrowFig->setScale(1,1);
         f(1.f*curFrame/nFrames[curStep]);
+    }
 
     if(curFrame<nFrames[curStep])
         curFrame++;

@@ -86,7 +86,7 @@ void SLL::makeList()
     graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     
     // draw arrows to graph
-    graph.drawGrow(&listArrow,Colors::BLUE);
+    graph.drawGrow(&listArrow,Colors::BLACK);
 }
 
 void SLL::insertWhenEmpty(int value)
@@ -110,14 +110,16 @@ void SLL::insertFront(int value)
         return;
     }
 
+    listNode.pushFront(value);
+    listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
+    listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
+
     // step 1: draw new node
     graph.addStep(FPS/2);
 
-    listNode.pushFront(value);
-    listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
-
     graph.draw(&listNode,1,listNode.size()-1,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawGrow(&listNode.begin()->data,Hollow,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
+    graph.drawGrow(&listNode.begin()->data,Solid,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     //
 }
 
@@ -151,7 +153,9 @@ void SLL::processInput()
                         curBtn=Button::NONE;
                     }
                 else if(insertBtn->isMouseOver(window)){
+                    graph.finishAllSteps();
                     curBtn=Button::INSERT;
+                    insertFront(getRand(0,99));
                 }
                 else if(updateBtn->isMouseOver(window)){
                     curBtn=Button::UPDATE;
