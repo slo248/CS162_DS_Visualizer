@@ -155,7 +155,7 @@ void SLL::insertFront(int value)
     graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawShrink(&listArrow.begin()->data,Colors::ORANGE);
+    graph.drawFadeOut(&listArrow.begin()->data,Colors::ORANGE);
     //
 
     // step 4: move new node to correct position

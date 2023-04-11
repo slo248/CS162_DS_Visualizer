@@ -156,6 +156,11 @@ void Graph::drawShrink(Arrow *arrow, sf::Color color)
     drawFunc.back().push_back(std::bind(&Arrow::drawShrink, arrow, window, arrowFig, color, std::placeholders::_1));
 }
 
+void Graph::drawFadeOut(Arrow *arrow, sf::Color color)
+{
+    drawFunc.back().push_back(std::bind(&Arrow::drawFadeOut, arrow, window, arrowFig, color, std::placeholders::_1));
+}
+
 void Graph::draw(List<Arrow> *list, int i, sf::Color color)
 {
     draw(&list->begin()->getNext(i)->data, color);
