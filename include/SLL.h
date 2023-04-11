@@ -12,7 +12,7 @@ public:
     float           DISTANCE        = 120.f;
 
 public:
-    SLL(sf::RenderWindow* window, sf::Font* sanf, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFigure);
+    SLL(sf::RenderWindow* window, sf::Font* sanf, sf::Sprite* bg, int FPS, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFigure);
 
     // create
     void empty();
@@ -30,6 +30,7 @@ public:
 private:
     int FPS;
     sf::RenderWindow* window;
+    sf::Sprite* bg;
     
     Graph graph;
 

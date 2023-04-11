@@ -8,7 +8,7 @@ namespace WindowConfig
     const int FPS = 60;
     const sf::String TITLE = "Data Structure Visualizer";
     const sf::Uint32 STYLE = sf::Style::Titlebar | sf::Style::Close;
-    const sf::ContextSettings SETTINGS = sf::ContextSettings(0, 0, 8);
+    const sf::ContextSettings SETTINGS = sf::ContextSettings(0, 0, 10);
 }
 
 int main()
@@ -29,16 +29,30 @@ int main()
     Figure figure;
     //
 
-    // font
+    // load sanfrancisco font
     sf::Font sanf;
     if(!sanf.loadFromFile("media/font/SFProDisplay.ttf")){
-        std::cout << "Error: font not found" << std::endl;
+        std::cout << "Error: sanfrancisco font not found" << std::endl;
         return 1;
     }
     //
 
+    // load background image
+    sf::Texture bgTexture;
+    if(!bgTexture.loadFromFile("media/image/bg.jpg")){
+        std::cout << "Error: background image not found" << std::endl;
+        return 1;
+    }
+    sf::Sprite bgSprite;
+    bgSprite.setTexture(bgTexture);
+    bgSprite.setScale(
+        (float)WindowConfig::WIDTH/(float)bgTexture.getSize().x,
+        (float)WindowConfig::HEIGHT/(float)bgTexture.getSize().y
+    );
+    //
+
     // gen SLL
-    SLL sll(&window, &sanf, WindowConfig::FPS, figure.hCircle, figure.sCircle, figure.arrow);
+    SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.hCircle, figure.sCircle, figure.arrow);
     sll.run();
     return 0;
 }

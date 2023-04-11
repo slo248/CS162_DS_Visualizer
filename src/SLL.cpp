@@ -2,9 +2,10 @@
 #include "Random.h"
 #include "Config.h"
 
-SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure *arrowFig):
+SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure *arrowFig):
     FPS(FPS),
     window(window),
+    bg(bg),
     curBtn(Button::NONE),
     graph(window, sanf, hCircle, sCircle, arrowFig)
 {
@@ -162,6 +163,8 @@ void SLL::processInput()
 
 void SLL::render()
 {
+    window->draw(*bg);
+
     window->draw(*createBtn);
     if(curBtn==Button::CREATE){
         window->draw(*emptyBtn);
