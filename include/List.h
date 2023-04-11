@@ -25,7 +25,8 @@ public:
     void pushBack(ListElement<T>* node);
     void pushBack(const T& data);
 
-    void insert(ListElement<T>* node, int after);
+    void insert(ListElement<T>* node, int pos);
+    void insert(const T& data, int pos);
 
 private:
     ListElement<T>* head;
@@ -137,21 +138,25 @@ inline void List<T>::pushBack(const T &data)
 }
 
 template <class T>
-inline void List<T>::insert(ListElement<T> *node, int after)
+inline void List<T>::insert(ListElement<T> *node, int pos)
 {
-    if(after==0) pushFront(node);
-    else if(after==num) pushBack(node);
+    if(pos==0) pushFront(node);
+    else if(pos==num) pushBack(node);
     else{
         ListElement<T>* cur=head;
-        while(after--)
-            cur=cur->next;
-
+        while(pos--) cur=cur->next;
         node->next=cur;
         node->prev=cur->prev;
         cur->prev->next=node;
         cur->prev=node;
         num++;
     }
+}
+
+template <class T>
+inline void List<T>::insert(const T &data, int pos)
+{
+    insert(new ListElement<T>(data), pos);
 }
 
 #endif // LIST_H
