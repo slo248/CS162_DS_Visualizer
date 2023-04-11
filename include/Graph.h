@@ -40,6 +40,7 @@ public:
     void draw(Arrow* arrow, sf::Color color);
     void drawGrow(Arrow* arrow, sf::Color color);
     void drawShrink(Arrow* arrow, sf::Color color);
+    void drawFadeIn(Arrow* arrow, sf::Color color);
     void drawFadeOut(Arrow* arrow, sf::Color color);
 
     // List of arrows
