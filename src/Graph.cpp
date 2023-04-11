@@ -40,7 +40,7 @@ void Graph::addStep(int frames)
 
 void Graph::draw(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::draw, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::draw, node, window, circle, inColor, outColor, text, numColor));
 }
 
 void Graph::drawGrow(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
