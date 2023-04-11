@@ -340,6 +340,8 @@ void SLL::processInput()
 
 void SLL::render()
 {
+    window->clear(Colors::WHITE);
+
     window->draw(*bg);
 
     window->draw(*createBtn);
@@ -363,6 +365,8 @@ void SLL::render()
     window->draw(*removeBtn);
 
     graph.draw();
+
+    window->display();
 }
 
 void SLL::run()
@@ -371,8 +375,6 @@ void SLL::run()
     makeList();
     while(window->isOpen()){
         processInput();
-        window->clear(Colors::WHITE);
         render();
-        window->display();
     }
 }
