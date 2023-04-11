@@ -170,6 +170,54 @@ void SLL::insertFront(int value)
     //
 }
 
+void SLL::insertBack(int value)
+{
+    if(listNode.empty()){ 
+        insertWhenEmpty(value);
+        return;
+    }
+
+    listNode.pushBack(value);
+    listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data, &listNode.rbegin()->data));
+    listNode.rbegin()->data.position=START_POSITION+sf::Vector2f(DISTANCE*(listNode.size()-1), 0);
+
+    // step 1: draw new node
+    graph.addStep(FPS/2);
+
+    graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawTail(&listNode.rbegin()->prev->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.draw(&listArrow,0,listArrow.size()-2,Colors::BLACK);
+    graph.drawGrow(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawVtx(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
+    //
+
+    // step 2: draw new arrow
+    graph.addStep(FPS/2);
+
+    graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawTail(&listNode.rbegin()->prev->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.draw(&listArrow,0,listArrow.size()-2,Colors::BLACK);
+    graph.draw(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawVtx(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
+    graph.drawGrow(&listArrow.rbegin()->data,Colors::ORANGE);
+    //
+
+    // step 3: assign tail to new node
+    graph.addStep(FPS/2);
+
+    graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeOut(&listNode.rbegin()->prev->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawTailVtx(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawFadeOut(&listArrow.rbegin()->data,Colors::ORANGE);
+    //
+}
+
 void SLL::processInput()
 {
     sf::Event event;
@@ -209,6 +257,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertBackBtn->isMouseOver(window)){
                         graph.finishAllSteps();
+                        insertBack(getRand(0,99));
                         curBtn=Button::NONE;
                     }
                     else if(curBtn==Button::INSERT && insertAfterBtn->isMouseOver(window)){

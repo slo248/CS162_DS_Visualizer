@@ -23,6 +23,7 @@ public:
     // insert
     void insertWhenEmpty(int value);
     void insertFront(int value);
+    void insertBack(int value);
 
     // a frame
     void processInput();
