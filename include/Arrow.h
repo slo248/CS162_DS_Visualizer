@@ -16,6 +16,7 @@ struct Arrow
     void draw(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color);
     void drawGrow(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color, float percent);
     void drawShrink(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color, float percent);
+    void drawFadeIn(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color, float percent);
     void drawFadeOut(sf::RenderWindow* window, ArrowFigure* arrowFig, sf::Color color, float percent);
 };
 
