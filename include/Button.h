@@ -9,6 +9,7 @@ class Button:
     private sf::NonCopyable
 {
 public:
+    ~Button();
 private:
     sf::RectangleShape* rect;
     sf::Text* text;
