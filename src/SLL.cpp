@@ -139,6 +139,15 @@ void SLL::insertFront(int value)
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawShrink(&listArrow.begin()->data,Colors::ORANGE);
     //
+
+    // step 4: move new node to correct position
+    graph.addStep(FPS/2);
+
+    for(ListElement<Node>* node=listNode.begin()->next; node!=listNode.end(); node=node->next)
+        graph.drawMove(&node->data,node->data.position,node->data.position+sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawMove(&listNode.begin()->data,listNode.begin()->data.position,START_POSITION,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listArrow,Colors::BLACK);
+    //
 }
 
 void SLL::processInput()
