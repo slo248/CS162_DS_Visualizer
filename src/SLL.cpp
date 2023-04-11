@@ -221,8 +221,13 @@ void SLL::insertBack(int value)
 
 void SLL::insertPos(int value, int pos)
 {
-    if(listNode.empty()){ 
-        insertWhenEmpty(value);
+    if(pos<0 || pos>listNode.size()){
+        std::cout << "Invalid position!" << std::endl;
+        return;
+    }
+
+    if(pos==0){
+        insertFront(value);
         return;
     }
 
