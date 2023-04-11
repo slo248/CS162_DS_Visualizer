@@ -1,5 +1,6 @@
 #include "Arrow.h"
 #include "Config.h"
+#include "Motion.h"
 #include <cmath>
 
 void Arrow::update(ArrowFigure *arrowFig)
@@ -28,4 +29,10 @@ void Arrow::draw(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color colo
     update(arrowFig);
     arrowFig->setFillColor(color);
     window->draw(*arrowFig);
+}
+
+void Arrow::drawGrow(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color color, float percent)
+{
+    arrowFig->setScale(arrowFig->getScale().x*Motion::Bezier(percent),1);
+    draw(window, arrowFig, color, 0);
 }
