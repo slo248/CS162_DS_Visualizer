@@ -12,6 +12,7 @@ public:
     Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFig);
 
     void clear();
+    void finishAllSteps();
     void addStep(int frames);
 
     // Node

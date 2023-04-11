@@ -49,7 +49,7 @@ void SLL::processInput()
             case sf::Event::KeyPressed:
                 switch (event.key.code){
                     case sf::Keyboard::Space:
-                        graph.clear();
+                        graph.finishAllSteps();
                         randomList(getRand(1, 10));
                         makeList();
                         break;

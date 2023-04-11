@@ -14,6 +14,24 @@ void Graph::clear()
     drawFunc.clear();
 }
 
+void Graph::finishAllSteps()
+{
+    if(nFrames.empty()) return;
+    while(curFrame<nFrames[curStep] || curStep<nFrames.size()-1){
+        for(functor f: drawFunc[curStep])
+            f(1.f*curFrame/nFrames[curStep]);
+        
+        if(curFrame==nFrames[curStep] && curStep<nFrames.size()-1){
+            curFrame=0;
+            curStep++;
+        }
+        
+        if(curFrame<nFrames[curStep])
+            curFrame++;
+    }
+    clear();
+}
+
 void Graph::addStep(int frames)
 {
     nFrames.push_back(frames);
