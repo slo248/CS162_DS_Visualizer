@@ -62,6 +62,11 @@ void Graph::drawGrow(List<Node> *list, int from, int to, CircleType type, sf::Co
         drawGrow(list, i, type, inColor, outColor, numColor);
 }
 
+void Graph::drawGrow(List<Node> *list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawGrow(list, 0, list->getSize()-1, type, inColor, outColor, numColor);
+}
+
 void Graph::draw(Arrow *arrow, sf::Color color)
 {
     drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, arrowFig, color, std::placeholders::_1));
