@@ -68,31 +68,6 @@ void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, sf::Color 
     drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawHead(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawFunc.back().push_back(std::bind(&Node::drawHead, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
-}
-
-void Graph::drawTail(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawFunc.back().push_back(std::bind(&Node::drawTail, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
-}
-
-void Graph::drawVtx(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawFunc.back().push_back(std::bind(&Node::drawVtx, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
-}
-
-void Graph::drawHeadVtx(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawFunc.back().push_back(std::bind(&Node::drawHeadVtx, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
-}
-
-void Graph::drawTailVtx(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawFunc.back().push_back(std::bind(&Node::drawTailVtx, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
-}
-
 void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
 {
     drawFunc.back().push_back(std::bind(&Node::drawSubscript, node, window, text, str, textColor));

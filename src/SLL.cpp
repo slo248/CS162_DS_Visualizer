@@ -90,8 +90,8 @@ void SLL::makeList()
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     
     // draw arrows to graph
     graph.drawGrow(&listArrow,Colors::BLACK);
@@ -109,8 +109,8 @@ void SLL::insertWhenEmpty(int value)
 
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
 }
 
 void SLL::insertFront(int value)
@@ -128,22 +128,22 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->next->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.drawVtx(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
     //
 
     // step 2: draw new arrow
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->next->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.drawVtx(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
     //
 
@@ -151,8 +151,8 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHeadVtx(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawFadeOut(&listArrow.begin()->data,Colors::ORANGE);
@@ -163,8 +163,8 @@ void SLL::insertFront(int value)
 
     for(ListElement<Node>* node=listNode.begin()->next; node!=listNode.end(); node=node->next)
         graph.drawMove(&node->data,node->data.position,node->data.position+sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHeadVtx(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.drawMove(&listNode.begin()->data,listNode.begin()->data.position,START_POSITION,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     //
@@ -185,11 +185,11 @@ void SLL::insertBack(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->prev->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",Colors::RED);
     graph.draw(&listArrow,0,listArrow.size()-2,Colors::BLACK);
     graph.drawGrow(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.drawVtx(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"vtx",Colors::RED);
     //
 
     // step 2: draw new arrow
@@ -197,11 +197,11 @@ void SLL::insertBack(int value)
 
     graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawFadeIn(&listNode.rbegin()->prev->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTail(&listNode.rbegin()->prev->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",Colors::RED);
     graph.draw(&listArrow,0,listArrow.size()-2,Colors::BLACK);
     graph.draw(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.drawVtx(&listNode.rbegin()->data,Colors::ORANGE,Colors::ORANGE,Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"vtx",Colors::RED);
     graph.drawGrow(&listArrow.rbegin()->data,Colors::ORANGE);
     //
 
@@ -210,8 +210,8 @@ void SLL::insertBack(int value)
 
     graph.draw(&listNode,0,listNode.size()-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawFadeOut(&listNode.rbegin()->prev->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
-    graph.drawTailVtx(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail/vtx",Colors::RED);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.rbegin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawFadeOut(&listArrow.rbegin()->data,Colors::ORANGE);
