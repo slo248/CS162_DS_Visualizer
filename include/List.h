@@ -20,6 +20,8 @@ public:
 
     int getSize() const;
 
+    void pushFront(ListElement<T>* node);
+    void pushFront(const T& data);
     void pushBack(ListElement<T>* node);
     void pushBack(const T& data);
 
@@ -92,6 +94,25 @@ template <class T>
 inline int List<T>::getSize() const
 {
     return size;
+}
+
+template <class T>
+inline void List<T>::pushFront(ListElement<T> *node)
+{
+    if(head==nullptr){
+        head=tail=node;
+    }else{
+        head->prev=node;
+        node->next=head;
+        head=node;
+    }
+    size++;
+}
+
+template <class T>
+inline void List<T>::pushFront(const T &data)
+{
+    pushFront(new ListElement<T>(data));
 }
 
 template <class T>
