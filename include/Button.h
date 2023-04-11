@@ -9,6 +9,18 @@ class Button:
     private sf::NonCopyable
 {
 public:
+    enum Type{
+        NONE,
+        CREATE,
+        EMPTY,
+        RANDOM,
+        LOAD_FROM_FILE,
+        INSERT,
+        UPDATE,
+        SEARCH,
+        REMOVE
+    };
+
     Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColorNormal, sf::Color bgColorHit, sf::Color textColor);
     ~Button();
 

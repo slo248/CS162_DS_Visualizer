@@ -30,14 +30,23 @@ private:
     
     Graph graph;
 
-    Button* createBtn;
-    Button* insertBtn;
-    Button* updateBtn;
-    Button* searchBtn;
-    Button* removeBtn;
-
     List<Node> listNode;
     List<Arrow> listArrow;
+
+    Button::Type curBtn;
+
+    Button* createBtn;
+        Button* emptyBtn;
+        Button* randomBtn;
+        Button* loadFromFileBtn;
+
+    Button* insertBtn;
+
+    Button* updateBtn;
+
+    Button* searchBtn;
+
+    Button* removeBtn;
 };
 
 #endif // SLL_H
