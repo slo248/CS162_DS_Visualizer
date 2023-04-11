@@ -28,3 +28,10 @@ Button::~Button()
     delete rect;
     delete text;
 }
+
+void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    states.transform*=getTransform();
+    target.draw(*rect, states);
+    target.draw(*text, states);
+}

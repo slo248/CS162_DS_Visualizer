@@ -13,6 +13,8 @@ public:
 
     Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColor, sf::Color textColor);
     ~Button();
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
     sf::RectangleShape* rect;
     sf::Text* text;
