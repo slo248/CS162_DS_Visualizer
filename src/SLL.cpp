@@ -74,14 +74,26 @@ void SLL::processInput()
             case sf::Event::Closed:
                 window->close();
                 break;
-            case sf::Event::KeyPressed:
-                switch (event.key.code){
-                    case sf::Keyboard::Space:
-                        graph.finishAllSteps();
-                        randomList(getRand(1, 10));
-                        makeList();
-                        break;
-                }            
+            case sf::Event::MouseButtonReleased:
+                if(createBtn->isMouseOver(window)){
+                    graph.finishAllSteps();
+                    randomList(getRand(1, 10));
+                    makeList();
+                }
+                else if(insertBtn->isMouseOver(window)){
+                    graph.finishAllSteps();
+                    insertWhenEmpty(getRand(0, 99));
+                }
+                else if(updateBtn->isMouseOver(window)){
+                    graph.finishAllSteps();
+                }
+                else if(searchBtn->isMouseOver(window)){
+                    graph.finishAllSteps();
+                }
+                else if(removeBtn->isMouseOver(window)){
+                    graph.finishAllSteps();
+                }
+                break;           
         }
     createBtn->update(window);
     insertBtn->update(window);
