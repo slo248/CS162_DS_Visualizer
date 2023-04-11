@@ -12,6 +12,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCi
 void SLL::randomList(int n)
 {
     listNode.clear();
+    listArrow.clear();
     while(n--)
         listNode.pushBack(Node(getRand(0,99)));
 }
@@ -23,7 +24,7 @@ void SLL::makeList()
     ListElement<Node>* node=listNode.begin();
     node->data.position=START_POSITION;
     for(node=node->next; node!=listNode.end(); node=node->next){
-        node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, DISTANCE);
+        node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
         listArrow.pushBack(Arrow(&node->prev->data, &node->data));
     }
 
@@ -45,6 +46,14 @@ void SLL::processInput()
             case sf::Event::Closed:
                 window->close();
                 break;
+            case sf::Event::KeyPressed:
+                switch (event.key.code){
+                    case sf::Keyboard::Space:
+                        graph.clear();
+                        randomList(getRand(1, 10));
+                        makeList();
+                        break;
+                }            
         }
 }
 
