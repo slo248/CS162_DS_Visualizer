@@ -20,6 +20,7 @@ struct Node
     void drawTail(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
     void drawVtx(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
     void drawHeadVtx(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
+    void drawTailVtx(sf::RenderWindow* window, sf::CircleShape* circle, sf::Color inColor, sf::Color outColor, sf::Text* text, sf::Color textColor, float percent);
 };
 
 #endif // NODE_H
