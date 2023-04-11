@@ -109,6 +109,11 @@ void Graph::drawGrow(List<Arrow> *list, int from, int to, sf::Color color)
         drawGrow(list, i, color);
 }
 
+void Graph::drawGrow(List<Arrow> *list, sf::Color color)
+{
+    drawGrow(list, 0, list->getSize()-1, color);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
