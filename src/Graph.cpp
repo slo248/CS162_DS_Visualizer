@@ -53,6 +53,11 @@ void Graph::drawShrink(Node *node, CircleType type, sf::Color inColor, sf::Color
     drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
+void Graph::move(Node *node, sf::Vector2f src, sf::Vector2f dest, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawFunc.back().push_back(std::bind(&Node::move, node, window, src, dest, type==Hollow?hCircle:sCircle, inColor, outColor, text, numColor, std::placeholders::_1));
+}
+
 void Graph::draw(List<Node> *list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     draw(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
