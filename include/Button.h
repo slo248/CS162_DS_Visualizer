@@ -11,7 +11,7 @@ class Button:
 public:
     const float THICK=3.f;
 
-    Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColor, sf::Color textColor);
+    Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColorNormal, sf::Color bgColorHit, sf::Color textColor);
     ~Button();
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -19,6 +19,8 @@ public:
 private:
     sf::RectangleShape* rect;
     sf::Text* text;
+    sf::Color bgColorNormal;
+    sf::Color bgColorHit;
 };
 
 #endif // BUTTON_H

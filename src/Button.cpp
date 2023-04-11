@@ -1,9 +1,11 @@
 #include "Button.h"
 
-Button::Button(sf::Font *font, std::string str,sf::Vector2f size, sf::Color bgColor, sf::Color textColor)
+Button::Button(sf::Font *font, std::string str,sf::Vector2f size, sf::Color bgColorNormal, sf::Color bgColorHit ,sf::Color textColor):
+    bgColorNormal(bgColorNormal),
+    bgColorHit(bgColorHit)
 {
     rect=new sf::RectangleShape(size);
-    rect->setFillColor(bgColor);
+    rect->setFillColor(bgColorNormal);
     rect->setOutlineThickness(THICK);
     rect->setOutlineColor(Colors::BLACK);
     {
