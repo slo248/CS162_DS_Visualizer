@@ -151,7 +151,7 @@ void SLL::insertFront(int value)
     graph.addStep(FPS/2);
 
     graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawHeadVtx(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
@@ -163,7 +163,7 @@ void SLL::insertFront(int value)
 
     for(ListElement<Node>* node=listNode.begin()->next; node!=listNode.end(); node=node->next)
         graph.drawMove(&node->data,node->data.position,node->data.position+sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawHead(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
+    graph.drawHeadVtx(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.drawTail(&listNode.rbegin()->data,Colors::WHITE,Colors::BLACK,Colors::RED);
     graph.drawMove(&listNode.begin()->data,listNode.begin()->data.position,START_POSITION,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
