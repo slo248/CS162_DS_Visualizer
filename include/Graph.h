@@ -20,6 +20,7 @@ public:
     void drawGrow(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawShrink(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawFadeIn(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawFadeOut(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(Node* node, sf::Vector2f src, sf::Vector2f dest,sf::Color inColor, sf::Color outColor, sf::Color numColor);
     //
 

@@ -58,6 +58,11 @@ void Graph::drawFadeIn(Node *node, sf::Color inColor, sf::Color outColor, sf::Co
     drawFunc.back().push_back(std::bind(&Node::drawFadeIn, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
+void Graph::drawFadeOut(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawFunc.back().push_back(std::bind(&Node::drawFadeOut, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+}
+
 void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, circle, inColor, outColor, text, numColor, std::placeholders::_1));
