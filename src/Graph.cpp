@@ -71,7 +71,7 @@ void Graph::draw(List<Node> *list, int from, int to, CircleType type, sf::Color 
 
 void Graph::draw(List<Node> *list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    draw(list, 0, list->getSize()-1, type, inColor, outColor, numColor);
+    draw(list, 0, list->size()-1, type, inColor, outColor, numColor);
 }
 
 void Graph::drawGrow(List<Node> *list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
@@ -87,7 +87,7 @@ void Graph::drawGrow(List<Node> *list, int from, int to, CircleType type, sf::Co
 
 void Graph::drawGrow(List<Node> *list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawGrow(list, 0, list->getSize()-1, type, inColor, outColor, numColor);
+    drawGrow(list, 0, list->size()-1, type, inColor, outColor, numColor);
 }
 
 void Graph::draw(Arrow *arrow, sf::Color color)
@@ -118,7 +118,7 @@ void Graph::draw(List<Arrow> *list, int from, int to, sf::Color color)
 
 void Graph::draw(List<Arrow> *list, sf::Color color)
 {
-    draw(list, 0, list->getSize()-1, color);
+    draw(list, 0, list->size()-1, color);
 }
 
 void Graph::drawGrow(List<Arrow> *list, int i, sf::Color color)
@@ -134,7 +134,7 @@ void Graph::drawGrow(List<Arrow> *list, int from, int to, sf::Color color)
 
 void Graph::drawGrow(List<Arrow> *list, sf::Color color)
 {
-    drawGrow(list, 0, list->getSize()-1, color);
+    drawGrow(list, 0, list->size()-1, color);
 }
 
 void Graph::draw()

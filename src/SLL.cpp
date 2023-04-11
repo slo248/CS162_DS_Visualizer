@@ -54,7 +54,7 @@ void SLL::loadFromFile(std::string path)
     int val;
     while(fi>>val){
         assert(0<=val && val<=99);
-        if(listNode.getSize()==10) break;
+        if(listNode.size()==10) break;
         listNode.pushBack(Node(val));
     }
     fi.close();

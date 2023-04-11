@@ -18,7 +18,7 @@ public:
     void clear();
     bool empty() const;
 
-    int getSize() const;
+    int size() const;
 
     void pushFront(ListElement<T>* node);
     void pushFront(const T& data);
@@ -28,14 +28,14 @@ public:
 private:
     ListElement<T>* head;
     ListElement<T>* tail;
-    int size;
+    int num;
 };
 
 template <class T>
 inline List<T>::List()
 {
     head=tail=nullptr;
-    size=0;
+    num=0;
 }
 
 template <class T>
@@ -81,7 +81,7 @@ inline void List<T>::clear()
         delete tmp;
     }
     head=tail=nullptr;
-    size=0;
+    num=0;
 }
 
 template <class T>
@@ -91,9 +91,9 @@ inline bool List<T>::empty() const
 }
 
 template <class T>
-inline int List<T>::getSize() const
+inline int List<T>::size() const
 {
-    return size;
+    return num;
 }
 
 template <class T>
@@ -106,7 +106,7 @@ inline void List<T>::pushFront(ListElement<T> *node)
         node->next=head;
         head=node;
     }
-    size++;
+    num++;
 }
 
 template <class T>
@@ -125,7 +125,7 @@ inline void List<T>::pushBack(ListElement<T>* node)
         node->prev=tail;
         tail=node;
     }
-    size++;
+    num++;
 }
 
 template <class T>
