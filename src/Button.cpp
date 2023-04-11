@@ -52,3 +52,8 @@ void Button::update(sf::RenderWindow *window)
     else
         rect->setFillColor(bgColorNormal);
 }
+
+sf::Vector2f Button::getSize()
+{
+    return rect->getSize();
+}

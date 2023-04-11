@@ -7,6 +7,19 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, int FPS, sf::CircleShape *hCi
     graph(window, sanf, hCircle, sCircle, arrowFig)
 {
     graph.clear();
+
+    createBtn = new Button(sanf, "Create", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    insertBtn = new Button(sanf, "Insert", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    updateBtn = new Button(sanf, "Update", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    searchBtn = new Button(sanf, "Search", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+    removeBtn = new Button(sanf, "Remove", sf::Vector2f(100, 50), Colors::SILVER, Colors::GRAY, Colors::BLACK);
+
+    sf::Vector2u windowSize = window->getSize();
+    createBtn->setPosition(sf::Vector2f(0,windowSize.y-5*createBtn->getSize().y));
+    insertBtn->setPosition(sf::Vector2f(0,windowSize.y-4*createBtn->getSize().y));
+    updateBtn->setPosition(sf::Vector2f(0,windowSize.y-3*createBtn->getSize().y));
+    searchBtn->setPosition(sf::Vector2f(0,windowSize.y-2*createBtn->getSize().y));
+    removeBtn->setPosition(sf::Vector2f(0,windowSize.y-1*createBtn->getSize().y));
 }
 
 void SLL::randomList(int n)
@@ -55,10 +68,21 @@ void SLL::processInput()
                         break;
                 }            
         }
+    createBtn->update(window);
+    insertBtn->update(window);
+    updateBtn->update(window);
+    searchBtn->update(window);
+    removeBtn->update(window);
 }
 
 void SLL::render()
 {
+    window->draw(*createBtn);
+    window->draw(*insertBtn);
+    window->draw(*updateBtn);
+    window->draw(*searchBtn);
+    window->draw(*removeBtn);
+
     graph.draw();
 }
 

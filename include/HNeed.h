@@ -26,6 +26,8 @@ namespace Colors
     const sf::Color GREEN = sf::Color(82, 188, 105, 255);
     const sf::Color BLUE = sf::Color(46, 187, 209, 255);
     const sf::Color RED = sf::Color(217, 81, 60, 255);
+    const sf::Color SILVER = sf::Color(192, 192, 192, 255);
+    const sf::Color GRAY = sf::Color(128, 128, 128, 255);
 }
 
 #endif // HNEED_H

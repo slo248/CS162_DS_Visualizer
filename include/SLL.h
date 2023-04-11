@@ -3,6 +3,7 @@
 
 #include "Graph.h"
 #include "HNeed.h"
+#include "Button.h"
 
 class SLL
 {
@@ -25,6 +26,12 @@ private:
     sf::RenderWindow* window;
     
     Graph graph;
+
+    Button* createBtn;
+    Button* insertBtn;
+    Button* updateBtn;
+    Button* searchBtn;
+    Button* removeBtn;
 
     List<Node> listNode;
     List<Arrow> listArrow;
