@@ -6,13 +6,11 @@
 
 struct Figure
 {
-    sf::CircleShape* hCircle; // hollow circle
-    sf::CircleShape* sCircle; // solid circle
+    sf::CircleShape* circle;
     ArrowFigure* arrow; // arrow
     Figure();
     ~Figure();
-    void genHollowCircle();
-    void genSolidCircle();
+    void genCircle();
     void genArrow();
 };
 

@@ -2,12 +2,12 @@
 #include "Random.h"
 #include "Config.h"
 
-SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure *arrowFig):
+SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
     FPS(FPS),
     window(window),
     bg(bg),
     curBtn(Button::NONE),
-    graph(window, sanf, hCircle, sCircle, arrowFig)
+    graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
 
@@ -83,7 +83,7 @@ void SLL::makeList()
     graph.addStep(FPS/2);
 
     // draw nodes to graph
-    graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     
     // draw arrows to graph
     graph.drawGrow(&listArrow,Colors::BLACK);
@@ -100,7 +100,7 @@ void SLL::insertWhenEmpty(int value)
     graph.addStep(FPS/2);
 
     // draw nodes to graph
-    graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
 }
 
 void SLL::insertFront(int value)
@@ -117,9 +117,9 @@ void SLL::insertFront(int value)
     // step 1: draw new node
     graph.addStep(FPS/2);
 
-    graph.draw(&listNode,1,listNode.size()-1,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
-    graph.drawGrow(&listNode.begin()->data,Solid,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     //
 }
 

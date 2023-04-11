@@ -10,11 +10,6 @@
 #include <cmath>
 #include <vector>
 
-enum CircleType
-{
-    Hollow, Solid
-};
-
 typedef std::function<void(float)> functor;
 
 namespace Colors

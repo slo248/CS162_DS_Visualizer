@@ -9,26 +9,26 @@
 class Graph
 {
 public:
-    Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* hCircle, sf::CircleShape* sCircle, ArrowFigure* arrowFig);
+    Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* circle, ArrowFigure* arrowFig);
 
     void clear();
     void finishAllSteps();
     void addStep(int frames);
 
     // Node
-    void draw(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawShrink(Node* node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawMove(Node* node, sf::Vector2f src, sf::Vector2f dest,CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawShrink(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(Node* node, sf::Vector2f src, sf::Vector2f dest,sf::Color inColor, sf::Color outColor, sf::Color numColor);
     //
 
     // List of nodes
-    void draw(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void draw(List<Node>* list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void draw(List<Node>* list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(List<Node>* list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(List<Node>* list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(List<Node>* list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(List<Node>* list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(List<Node>* list, sf::Color inColor, sf::Color outColor, sf::Color numColor);
 
     // Arrow
     void draw(Arrow* arrow, sf::Color color);
@@ -48,8 +48,7 @@ public:
 private:
     sf::RenderWindow* window;
     sf::Text* text;
-    sf::CircleShape* hCircle;
-    sf::CircleShape* sCircle;
+    sf::CircleShape* circle;
     ArrowFigure* arrowFig;
 
     int curFrame, curStep;

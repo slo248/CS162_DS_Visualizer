@@ -2,40 +2,25 @@
 
 Figure::Figure()
 {
-    genHollowCircle();
-    genSolidCircle();
+    genCircle();
     genArrow();
 }
 
 Figure::~Figure()
 {
-    delete hCircle;
-    delete sCircle;
+    delete circle;
     delete arrow->bar;
     delete arrow->triangle;
 }
 
-void Figure::genHollowCircle()
+void Figure::genCircle()
 {
-    hCircle = new sf::CircleShape;
-    hCircle->setRadius(CircleConfig::RADIUS);
-    hCircle->setOutlineThickness(CircleConfig::THICKNESS);
+    circle = new sf::CircleShape;
+    circle->setRadius(CircleConfig::RADIUS);
+    circle->setOutlineThickness(CircleConfig::THICKNESS);
     {
-        sf::FloatRect bounds = hCircle->getLocalBounds();
-        hCircle->setOrigin(
-            bounds.left + bounds.width / 2.f,
-            bounds.top + bounds.height / 2.f
-        );
-    }
-}
-
-void Figure::genSolidCircle()
-{
-    sCircle = new sf::CircleShape;
-    sCircle->setRadius(CircleConfig::HALF_WIDTH);
-    {
-        sf::FloatRect bounds = sCircle->getLocalBounds();
-        sCircle->setOrigin(
+        sf::FloatRect bounds = circle->getLocalBounds();
+        circle->setOrigin(
             bounds.left + bounds.width / 2.f,
             bounds.top + bounds.height / 2.f
         );

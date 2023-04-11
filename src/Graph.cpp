@@ -1,7 +1,7 @@
 #include "Graph.h"
 
-Graph::Graph(sf::RenderWindow *window, sf::Font *sanf, sf::CircleShape *hCircle, sf::CircleShape *sCircle, ArrowFigure* arrowFig):
-    window(window), hCircle(hCircle), sCircle(sCircle), arrowFig(arrowFig)
+Graph::Graph(sf::RenderWindow *window, sf::Font *sanf, sf::CircleShape *circle, ArrowFigure* arrowFig):
+    window(window), circle(circle), arrowFig(arrowFig)
 {
     text=new sf::Text("", *sanf, 23);
     clear();
@@ -38,56 +38,56 @@ void Graph::addStep(int frames)
     drawFunc.push_back(std::vector<functor>());
 }
 
-void Graph::draw(Node *node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::draw, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::draw, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawGrow(Node *node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawGrow, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawGrow, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawShrink(Node *node, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawShrink(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, type==Hollow?hCircle:sCircle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, type==Hollow?hCircle:sCircle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::draw(List<Node> *list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(List<Node> *list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    draw(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
+    draw(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
 }
 
-void Graph::draw(List<Node> *list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     for(int i=from; i<=to; i++)
-        draw(list, i, type, inColor, outColor, numColor);
+        draw(list, i, inColor, outColor, numColor);
 }
 
-void Graph::draw(List<Node> *list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(List<Node> *list, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    draw(list, 0, list->size()-1, type, inColor, outColor, numColor);
+    draw(list, 0, list->size()-1, inColor, outColor, numColor);
 }
 
-void Graph::drawGrow(List<Node> *list, int i, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(List<Node> *list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawGrow(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
+    drawGrow(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
 }
 
-void Graph::drawGrow(List<Node> *list, int from, int to, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     for(int i=from; i<=to; i++)
-        drawGrow(list, i, type, inColor, outColor, numColor);
+        drawGrow(list, i, inColor, outColor, numColor);
 }
 
-void Graph::drawGrow(List<Node> *list, CircleType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(List<Node> *list, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawGrow(list, 0, list->size()-1, type, inColor, outColor, numColor);
+    drawGrow(list, 0, list->size()-1, inColor, outColor, numColor);
 }
 
 void Graph::draw(Arrow *arrow, sf::Color color)
@@ -143,8 +143,7 @@ void Graph::draw()
 
     for(functor f : drawFunc[curStep]){
         text->setScale(1,1);
-        hCircle->setScale(1,1);
-        sCircle->setScale(1,1);
+        circle->setScale(1,1);
         arrowFig->setScale(1,1);
         f(1.f*curFrame/nFrames[curStep]);
     }

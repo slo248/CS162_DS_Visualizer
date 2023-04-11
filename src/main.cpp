@@ -52,7 +52,7 @@ int main()
     //
 
     // gen SLL
-    SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.hCircle, figure.sCircle, figure.arrow);
+    SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
     sll.run();
     return 0;
 }
