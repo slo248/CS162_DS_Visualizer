@@ -24,7 +24,7 @@ void Arrow::update(ArrowFigure *arrowFig)
     );
 }
 
-void Arrow::draw(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color color, float nothing)
+void Arrow::draw(sf::RenderWindow *window, ArrowFigure *arrowFig, sf::Color color)
 {
     update(arrowFig);
     arrowFig->setFillColor(color);

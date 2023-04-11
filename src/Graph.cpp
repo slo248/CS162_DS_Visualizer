@@ -123,7 +123,7 @@ void Graph::drawMove(List<Node> *list, sf::Vector2f src, sf::Vector2f dest, sf::
 
 void Graph::draw(Arrow *arrow, sf::Color color)
 {
-    drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, arrowFig, color, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, arrowFig, color));
 }
 
 void Graph::drawGrow(Arrow *arrow, sf::Color color)
