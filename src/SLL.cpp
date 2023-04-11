@@ -130,6 +130,15 @@ void SLL::insertFront(int value)
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
     //
+
+    // step 3: assign head to new node
+    graph.addStep(FPS/2);
+
+    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawShrink(&listArrow.begin()->data,Colors::ORANGE);
+    //
 }
 
 void SLL::processInput()
