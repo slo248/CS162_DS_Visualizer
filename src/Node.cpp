@@ -1,6 +1,7 @@
 #include "Node.h"
 #include "Motion.h"
 #include "HNeed.h"
+#include "Config.h"
 
 void Node::draw(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text* num, sf::Color numColor, float nothing)
 {
@@ -56,4 +57,21 @@ void Node::drawMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector2f des
 {
     position=src+(dest-src)*Motion::Bezier(percent);
     draw(window, circle, inColor, outColor, num, numColor, 0);
+}
+
+void Node::drawHead(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *text, sf::Color textColor, float percent)
+{
+    draw(window, circle, inColor, outColor, text, textColor, 0);
+
+    text->setString("head");
+    {
+        sf::FloatRect textRect = text->getLocalBounds();
+        text->setOrigin(
+            textRect.left + textRect.width/2.0f, 
+            textRect.top  + textRect.height/2.0f
+        );
+    }
+    text->setFillColor(Colors::RED);
+    text->setPosition(position.x, position.y+2*CircleConfig::RADIUS);
+    window->draw(*text);
 }
