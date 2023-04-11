@@ -61,8 +61,6 @@ void Node::drawMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector2f des
 
 void Node::drawHead(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *text, sf::Color textColor, float percent)
 {
-    draw(window, circle, inColor, outColor, text, textColor, 0);
-
     text->setString("head");
     {
         sf::FloatRect textRect = text->getLocalBounds();
