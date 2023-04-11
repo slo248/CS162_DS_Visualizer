@@ -42,7 +42,8 @@ bool Button::isMouseOver(sf::RenderWindow *window)
 {
     sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds=rect->getGlobalBounds();
-    return bounds.contains(mousePos);
+    sf::Vector2f buttonPos=getPosition();
+    return bounds.contains(mousePos.x-buttonPos.x, mousePos.y-buttonPos.y);
 }
 
 void Button::update(sf::RenderWindow *window)
