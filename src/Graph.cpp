@@ -93,6 +93,11 @@ void Graph::drawTailVtx(Node *node, sf::Color inColor, sf::Color outColor, sf::C
     drawFunc.back().push_back(std::bind(&Node::drawTailVtx, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
+void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
+{
+    drawFunc.back().push_back(std::bind(&Node::drawSubscript, node, window, text, str, textColor));
+}
+
 void Graph::draw(List<Node> *list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     draw(&list->begin()->getNext(i)->data, inColor, outColor, numColor);

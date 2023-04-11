@@ -27,6 +27,7 @@ public:
     void drawVtx(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawHeadVtx(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawTailVtx(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawSubscript(Node* node, std::string str, sf::Color textColor);
     //
 
     // List of nodes
