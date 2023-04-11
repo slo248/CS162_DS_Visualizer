@@ -24,6 +24,7 @@ public:
     void insertWhenEmpty(int value);
     void insertFront(int value);
     void insertBack(int value);
+    void insertAfter(int value, int after);
 
     // a frame
     void processInput();

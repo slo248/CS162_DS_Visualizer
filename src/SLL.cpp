@@ -218,6 +218,46 @@ void SLL::insertBack(int value)
     //
 }
 
+void SLL::insertAfter(int value, int after)
+{
+    if(listNode.empty()){ 
+        insertWhenEmpty(value);
+        return;
+    }
+
+    // step 1: traverse to node at 'after'
+    ListElement<Node> *curNode=listNode.begin();
+    ListElement<Arrow> *curArrow=listArrow.begin();
+    for(int i=0; i<after; i++, curNode=curNode->next, curArrow=curArrow->next){
+        // substep 1: draw node at i
+        graph.addStep(FPS/2);
+
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+        graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+        graph.draw(&listNode,i,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+        graph.drawFadeIn(&curNode->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        //
+
+        // substep 2: draw flowing arrow
+        graph.addStep(FPS/2);
+
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+        graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+        graph.draw(&listNode,i+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listArrow,i+1,listArrow.size()-1,Colors::BLACK);
+        graph.drawFadeOut(&curNode->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.drawFadeIn(&curNode->data,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&curArrow->data,Colors::BLACK);
+        graph.drawGrow(&curArrow->data,Colors::ORANGE);
+        //
+    }
+}
+
 void SLL::processInput()
 {
     sf::Event event;
@@ -262,6 +302,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertAfterBtn->isMouseOver(window)){
                         graph.finishAllSteps();
+                        insertAfter(getRand(0,99),2);
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
