@@ -105,6 +105,12 @@ void Graph::drawMove(List<Node> *list, int i, sf::Vector2f src, sf::Vector2f des
     drawMove(&list->begin()->getNext(i)->data, src, dest, inColor, outColor, numColor);
 }
 
+void Graph::drawMove(List<Node> *list, int from, int to, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    for(int i=from; i<=to; i++)
+        drawMove(list, i, src, dest, inColor, outColor, numColor);
+}
+
 void Graph::draw(Arrow *arrow, sf::Color color)
 {
     drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, arrowFig, color, std::placeholders::_1));
