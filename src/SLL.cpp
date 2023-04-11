@@ -121,6 +121,15 @@ void SLL::insertFront(int value)
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     //
+
+    // step 2: draw new arrow
+    graph.addStep(FPS/2);
+
+    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
+    graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
+    //
 }
 
 void SLL::processInput()
