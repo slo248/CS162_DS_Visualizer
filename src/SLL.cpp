@@ -103,6 +103,24 @@ void SLL::insertWhenEmpty(int value)
     graph.drawGrow(&listNode,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
 }
 
+void SLL::insertFront(int value)
+{
+    if(listNode.empty()){ 
+        insertWhenEmpty(value);
+        return;
+    }
+
+    // step 1: draw new node
+    graph.addStep(FPS/2);
+
+    listNode.pushFront(value);
+    listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
+
+    graph.draw(&listNode,1,listNode.size()-1,Hollow,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawGrow(&listNode.begin()->data,Hollow,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    //
+}
+
 void SLL::processInput()
 {
     sf::Event event;

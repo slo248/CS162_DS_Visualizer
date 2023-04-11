@@ -22,9 +22,13 @@ public:
 
     // insert
     void insertWhenEmpty(int value);
+    void insertFront(int value);
 
+    // a frame
     void processInput();
     void render();
+
+    // run
     void run();
 
 private:
