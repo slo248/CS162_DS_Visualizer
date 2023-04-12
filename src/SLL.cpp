@@ -350,6 +350,24 @@ void SLL::insertPos(int value, int pos)
     graph.draw(&listArrow.begin()->getNext(pos)->data,Colors::GREEN);
     graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
     //
+
+    // step 5: move new node to correct position
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
+    graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    {
+        sf::Vector2f src=listNode.begin()->getNext(pos)->data.position;
+        graph.drawMove(&listNode,pos,src,src-sf::Vector2f(0,DISTANCE),Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    }
+    for(int i=pos+1;i<listNode.size();i++){
+        sf::Vector2f src=listNode.begin()->getNext(i)->data.position;
+        graph.drawMove(&listNode,i,src,src+sf::Vector2f(DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    }
+    graph.draw(&listArrow,Colors::BLACK);
+    //
 }
 
 void SLL::processInput()
@@ -404,7 +422,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertPosBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertPos(3,2);
+                        insertPos(getRand(0,99),getRand(1,listNode.size()-1));
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
