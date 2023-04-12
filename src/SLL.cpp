@@ -332,6 +332,24 @@ void SLL::insertPos(int value, int pos)
     graph.drawGrow(&listArrow.begin()->getNext(pos)->data,Colors::GREEN);
     graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
     //
+
+    // step 4: move arrow from arrow[pos-1] to arrow[pos]
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
+    graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,pos+1,Colors::BLUE,Colors::BLUE,Colors::WHITE);
+    graph.draw(&listNode,pos+2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawMove(&tmpNode,tmpNode.position,listNode.begin()->getNext(pos)->data.position,Colors::BLANK,Colors::BLANK,Colors::BLANK);
+    graph.draw(&listArrow,0,pos-2,Colors::ORANGE);
+    graph.draw(&tmpArrow,Colors::ORANGE);
+    graph.draw(&listArrow.begin()->getNext(pos)->data,Colors::GREEN);
+    graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
+    //
 }
 
 void SLL::processInput()
