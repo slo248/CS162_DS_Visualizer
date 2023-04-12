@@ -274,7 +274,7 @@ void SLL::insertPos(int value, int pos)
         graph.draw(&listArrow,0,i-1,Colors::ORANGE);
         graph.draw(&listArrow,i,pos-2,Colors::BLACK);
         graph.draw(&tmpArrow,Colors::BLACK);
-        graph.draw(&listArrow,pos+1,listNode.size()-1,Colors::BLACK);
+        graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
         graph.drawFadeIn(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         //
 
@@ -290,7 +290,7 @@ void SLL::insertPos(int value, int pos)
         graph.draw(&listArrow,0,i-1,Colors::ORANGE);
         graph.draw(&listArrow,i,pos-2,Colors::BLACK);
         graph.draw(&tmpArrow,Colors::BLACK);
-        graph.draw(&listArrow,pos+1,listNode.size()-1,Colors::BLACK);
+        graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
         if(i<pos-1)
             graph.drawGrow(&listArrow,i,Colors::ORANGE);
         else{
@@ -422,7 +422,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertPosBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertPos(getRand(0,99),getRand(1,listNode.size()-1));
+                        insertPos(getRand(0,99),getRand(0,listNode.size()));
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
