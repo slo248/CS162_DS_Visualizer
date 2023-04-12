@@ -45,7 +45,8 @@ private:
 
     List<Node> listNode;
     List<Arrow> listArrow;
-    Node* tmpNode;
+    Node tmpNode;
+    Arrow tmpArrow;
 
     Button::Type curBtn;
 

@@ -8,7 +8,6 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     bg(bg),
     curBtn(Button::NONE),
     isPause(false),
-    tmpNode(new Node),
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
@@ -65,8 +64,6 @@ SLL::~SLL()
     delete searchBtn;
 
     delete removeBtn;
-
-    delete tmpNode;
 }
 
 void SLL::empty()
@@ -247,85 +244,93 @@ void SLL::insertPos(int value, int pos)
         std::cout << "Invalid position!" << std::endl;
         return;
     }
-
     if(pos==0){
         insertFront(value);
         return;
     }
+    if(pos==listNode.size()){
+        insertBack(value);
+        return;
+    }
 
-    // step 1: traverse to node at 'pos'
-    int i;
-    ListElement<Node> *curNode=listNode.begin();
-    ListElement<Arrow> *curArrow=listArrow.begin();
-    for(i=0; i<pos; i++, curNode=curNode->next, curArrow=curArrow->next){
+    listNode.insert(value,pos);
+    listNode.begin()->getNext(pos)->data.position=START_POSITION+sf::Vector2f(DISTANCE*pos, DISTANCE);
+    listArrow.insert(Arrow(&listNode.begin()->getNext(pos)->data, &listNode.begin()->getNext(pos+1)->data),pos);
+    listArrow.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
+    tmpNode.position=listNode.begin()->getNext(pos+1)->data.position;
+    tmpArrow.src=&listNode.begin()->getNext(pos-1)->data;
+    tmpArrow.dest=&tmpNode;
+
+    // step 1: traverse to node at 'pos+1'
+    for(int i=0; i<pos; i++){
         // substep 1: draw node at i
         graph.addStep(0.5*FPS);
 
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listNode,i,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listNode,pos+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-        graph.draw(&listNode,i,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
-        graph.drawFadeIn(&curNode->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.draw(&listArrow,i,pos-2,Colors::BLACK);
+        graph.draw(&tmpArrow,Colors::BLACK);
+        graph.draw(&listArrow,pos+1,listNode.size()-1,Colors::BLACK);
+        graph.drawFadeIn(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         //
 
-        // substep 2: draw flowing arrow
+        // substep 2: draw arrow at i
         graph.addStep(0.5*FPS);
 
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listNode,i,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.draw(&listNode,i+1,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listNode,pos+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-        graph.draw(&listNode,i+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listArrow,i+1,listArrow.size()-1,Colors::BLACK);
-        graph.drawFadeOut(&curNode->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.drawFadeIn(&curNode->data,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-        graph.draw(&curArrow->data,Colors::BLACK);
-        graph.drawGrow(&curArrow->data,Colors::ORANGE);
+        graph.draw(&listArrow,i,pos-2,Colors::BLACK);
+        graph.draw(&tmpArrow,Colors::BLACK);
+        graph.draw(&listArrow,pos+1,listNode.size()-1,Colors::BLACK);
+        if(i<pos-1)
+            graph.drawGrow(&listArrow,i,Colors::ORANGE);
+        else{
+            graph.drawGrow(&tmpArrow,Colors::ORANGE);
+            graph.drawFadeIn(&listNode.begin()->getNext(pos+1)->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
+        }
         //
     }
 
-    // step 2: draw i_th node
-    graph.drawFadeIn(&curNode->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
-    //
-
-    // step 3: draw new node
-    Node *newNode=new Node(value);
-    listNode.insert(*newNode,pos);
-    newNode->position=curNode->data.position+sf::Vector2f(0,DISTANCE);
-
+    // step 2: draw new node
     graph.addStep(0.5*FPS);
 
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
-    graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-    graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-    graph.draw(&listNode,i+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,i+1,listArrow.size()-1,Colors::BLACK);
-    graph.draw(&curArrow->data,Colors::BLACK);
-    graph.draw(&curNode->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
-    graph.drawGrow(newNode,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawSubscript(newNode,"vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
+    graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawGrow(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,pos+1,Colors::BLUE,Colors::BLUE,Colors::WHITE);
+    graph.draw(&listNode,pos+2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,pos-2,Colors::ORANGE);
+    graph.draw(&tmpArrow,Colors::ORANGE);
+    graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
     //
-
-    // step 4: draw new arrow
-    Arrow *newArrow=new Arrow(newNode,&curNode->data);
-    listArrow.insert(*newArrow,pos);
-
+    
+    // step 3: draw new arrow
     graph.addStep(0.5*FPS);
 
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
-    graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-    graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-    graph.draw(&listNode,i+1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,i+1,listArrow.size()-1,Colors::BLACK);
-    graph.draw(&curArrow->data,Colors::BLACK);
-    graph.draw(&curNode->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
-    graph.draw(newNode,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawSubscript(newNode,"vtx",Colors::RED);
-    graph.drawGrow(newArrow,Colors::GREEN);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
+    graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,pos+1,Colors::BLUE,Colors::BLUE,Colors::WHITE);
+    graph.draw(&listNode,pos+2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,pos-2,Colors::ORANGE);
+    graph.draw(&tmpArrow,Colors::ORANGE);
+    graph.drawGrow(&listArrow.begin()->getNext(pos)->data,Colors::GREEN);
+    graph.draw(&listArrow,pos+1,listArrow.size()-1,Colors::BLACK);
     //
 }
 
@@ -381,7 +386,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertPosBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertPos(getRand(0,99),2);
+                        insertPos(3,2);
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
