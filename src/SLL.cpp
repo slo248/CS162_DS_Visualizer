@@ -266,7 +266,14 @@ void SLL::insertPos(int value, int pos)
         // substep 1: draw node at i
         graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        for(int j=1; j<=i; j++)
+            graph.drawSubscript(&listNode.begin()->getNext(j)->data,std::to_string(j)+"/pre",Colors::RED);
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,i,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -281,7 +288,12 @@ void SLL::insertPos(int value, int pos)
         // substep 2: draw arrow at i
         graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        for(int j=1; j<=i; j++)
+            graph.drawSubscript(&listNode.begin()->getNext(j)->data,std::to_string(j)+"/pre",Colors::RED);
+        if(i)
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,i,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
@@ -303,6 +315,9 @@ void SLL::insertPos(int value, int pos)
     // step 2: draw new node
     graph.addStep(0.5*FPS);
 
+    for(int i=1; i<pos; i++)
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
@@ -319,6 +334,9 @@ void SLL::insertPos(int value, int pos)
     // step 3: draw new arrow
     graph.addStep(0.5*FPS);
 
+    for(int i=1; i<pos; i++)
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
@@ -336,9 +354,12 @@ void SLL::insertPos(int value, int pos)
     // step 4: move arrow from arrow[pos-1] to arrow[pos]
     graph.addStep(0.5*FPS);
 
+    for(int i=1; i<pos; i++)
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",Colors::RED);
     graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
@@ -356,7 +377,7 @@ void SLL::insertPos(int value, int pos)
 
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",Colors::RED);
     graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     {
         sf::Vector2f src=listNode.begin()->getNext(pos)->data.position;
@@ -422,7 +443,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertPosBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertPos(getRand(0,99),getRand(0,listNode.size()));
+                        insertPos(getRand(0,99),getRand(1,listNode.size()-1));
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
