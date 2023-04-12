@@ -13,6 +13,7 @@ public:
 
 public:
     SLL(sf::RenderWindow* window, sf::Font* sanf, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
+    ~SLL();
 
     // create
     void empty();
@@ -44,6 +45,7 @@ private:
 
     List<Node> listNode;
     List<Arrow> listArrow;
+    Node* tmpNode;
 
     Button::Type curBtn;
 

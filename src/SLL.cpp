@@ -8,6 +8,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     bg(bg),
     curBtn(Button::NONE),
     isPause(false),
+    tmpNode(new Node),
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
@@ -45,6 +46,27 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     searchBtn->setPosition(sf::Vector2f(0,windowSize.y-2*searchBtn->getSize().y));
 
     removeBtn->setPosition(sf::Vector2f(0,windowSize.y-1*removeBtn->getSize().y));
+}
+
+SLL::~SLL()
+{
+    delete createBtn;
+    delete emptyBtn;
+    delete randomBtn;
+    delete loadFromFileBtn;
+
+    delete insertBtn;
+    delete insertFrontBtn;
+    delete insertBackBtn;
+    delete insertPosBtn;
+
+    delete updateBtn;
+
+    delete searchBtn;
+
+    delete removeBtn;
+
+    delete tmpNode;
 }
 
 void SLL::empty()
