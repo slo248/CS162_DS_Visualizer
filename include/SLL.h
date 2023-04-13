@@ -25,7 +25,7 @@ public:
     void insertWhenEmpty(int value);
     void insertFront(int value);
     void insertBack(int value);
-    void insertPos(int value, int after);
+    void insertMiddle(int value, int after);
 
     // a frame
     void processInput();
@@ -58,7 +58,7 @@ private:
     Button* insertBtn;
         Button* insertFrontBtn;
         Button* insertBackBtn;
-        Button* insertPosBtn;
+        Button* insertMiddleBtn;
 
     Button* updateBtn;
 

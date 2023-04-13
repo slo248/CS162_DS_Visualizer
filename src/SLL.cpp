@@ -20,7 +20,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     insertBtn = new Button(sanf, "Insert", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
     insertFrontBtn = new Button(sanf, "Front", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
     insertBackBtn = new Button(sanf, "Back", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
-    insertPosBtn = new Button(sanf, "Position", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
+    insertMiddleBtn = new Button(sanf, "Middle", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
     updateBtn = new Button(sanf, "Update", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
@@ -38,7 +38,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     insertBtn->setPosition(sf::Vector2f(0,windowSize.y-4*insertBtn->getSize().y));
     insertFrontBtn->setPosition(sf::Vector2f(insertBtn->getSize().x+10.f,windowSize.y-4*insertFrontBtn->getSize().y));
     insertBackBtn->setPosition(sf::Vector2f(2*insertBtn->getSize().x+10.f,windowSize.y-4*insertBackBtn->getSize().y));
-    insertPosBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-4*insertPosBtn->getSize().y));
+    insertMiddleBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-4*insertMiddleBtn->getSize().y));
 
     updateBtn->setPosition(sf::Vector2f(0,windowSize.y-3*updateBtn->getSize().y));
 
@@ -57,7 +57,7 @@ SLL::~SLL()
     delete insertBtn;
     delete insertFrontBtn;
     delete insertBackBtn;
-    delete insertPosBtn;
+    delete insertMiddleBtn;
 
     delete updateBtn;
 
@@ -237,7 +237,7 @@ void SLL::insertBack(int value)
     //
 }
 
-void SLL::insertPos(int value, int pos)
+void SLL::insertMiddle(int value, int pos)
 {
     if(pos<0 || pos>listNode.size()){
         std::cout << "Invalid position!" << std::endl;
@@ -453,9 +453,9 @@ void SLL::processInput()
                         insertBack(getRand(0,99));
                         curBtn=Button::NONE;
                     }
-                    else if(curBtn==Button::INSERT && insertPosBtn->isMouseOver(window)){
+                    else if(curBtn==Button::INSERT && insertMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertPos(getRand(0,99),getRand(1,listNode.size()-1));
+                        insertMiddle(getRand(0,99),getRand(1,listNode.size()-1));
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
@@ -481,7 +481,7 @@ void SLL::processInput()
     if(curBtn==Button::INSERT){
         insertFrontBtn->update(window);
         insertBackBtn->update(window);
-        insertPosBtn->update(window);
+        insertMiddleBtn->update(window);
     }
 
     updateBtn->update(window);
@@ -508,7 +508,7 @@ void SLL::render()
     if(curBtn==Button::INSERT){
         window->draw(*insertFrontBtn);
         window->draw(*insertBackBtn);
-        window->draw(*insertPosBtn);
+        window->draw(*insertMiddleBtn);
     }
 
     window->draw(*updateBtn);
