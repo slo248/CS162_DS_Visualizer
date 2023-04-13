@@ -411,6 +411,21 @@ void SLL::insertMiddle(int value, int pos)
     //
 }
 
+void SLL::deleteFirst()
+{
+    if(listNode.size()==0) return;
+
+    // step 1: assign temp=head
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head/temp",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    //
+}
+
 void SLL::processInput()
 {
     sf::Event event;
@@ -475,6 +490,19 @@ void SLL::processInput()
                 else if(deleteBtn->isMouseOver(window)){
                     curBtn=Button::DELETE;
                 }
+                    else if (curBtn==Button::DELETE && deleteFirstBtn->isMouseOver(window)){
+                        graph.finishAllSteps();
+                        deleteFirst();
+                        curBtn=Button::NONE;
+                    }
+                    else if (curBtn==Button::DELETE && deleteLastBtn->isMouseOver(window)){
+                        graph.finishAllSteps();
+                        curBtn=Button::NONE;
+                    }
+                    else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
+                        graph.finishAllSteps();
+                        curBtn=Button::NONE;
+                    }
                 break;           
         }
 

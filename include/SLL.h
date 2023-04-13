@@ -27,6 +27,9 @@ public:
     void insertBack(int value);
     void insertMiddle(int value, int after);
 
+    // delete
+    void deleteFirst();
+
     // a frame
     void processInput();
     void render();
