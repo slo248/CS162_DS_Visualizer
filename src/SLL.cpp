@@ -245,7 +245,7 @@ void SLL::insertBack(int value)
     // step 2: draw new node
     graph.addStep(0.5*FPS);
 
-    if(n==1)
+    if(n==2)
         graph.drawSubscript(&listNode.begin()->data,"head/tail",Colors::RED);
     else{
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
@@ -261,7 +261,7 @@ void SLL::insertBack(int value)
     // step 3: draw new arrow
     graph.addStep(0.5*FPS);
 
-    if(n==1)
+    if(n==2)
         graph.drawSubscript(&listNode.begin()->data,"head/tail",Colors::RED);
     else{
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
