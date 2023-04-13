@@ -316,9 +316,15 @@ void SLL::insertPos(int value, int pos)
 
     for(int i=1; i<pos; i++)
         graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
+    if(pos+1<listNode.size()-1){
+        graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    }
+    else
+        graph.drawSubscript(&listNode.rbegin()->data,std::to_string(pos)+"/tail/aft",Colors::RED);
+    // graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    // graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
     graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
@@ -335,9 +341,13 @@ void SLL::insertPos(int value, int pos)
 
     for(int i=1; i<pos; i++)
         graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
+    if(pos+1<listNode.size()-1){
+        graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",Colors::RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    }
+    else
+        graph.drawSubscript(&listNode.rbegin()->data,std::to_string(pos)+"/tail/aft",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",Colors::RED);
     graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
@@ -355,9 +365,15 @@ void SLL::insertPos(int value, int pos)
 
     for(int i=1; i<pos; i++)
         graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",Colors::RED);
+    if(pos+1<listNode.size()-1){
+        graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",Colors::RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    }
+    else
+        graph.drawSubscript(&listNode.rbegin()->data,std::to_string(pos+1)+"/tail/aft",Colors::RED);
+    // graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    // graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",Colors::RED);
     graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
