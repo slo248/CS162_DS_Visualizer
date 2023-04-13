@@ -72,6 +72,9 @@ SLL::~SLL()
     delete deleteFirstBtn;
     delete deleteLastBtn;
     delete deleteMiddleBtn;
+
+    for(Node *node : deletedNode) delete node;
+    for(Arrow *arrow : deletedArrow) delete arrow;
 }
 
 void SLL::empty()
@@ -451,7 +454,7 @@ void SLL::deleteWhenSingle()
     graph.drawShrink(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     //
 
-    listNode.popFront();
+    deletedNode.push_back(listNode.popFront());
 }
 
 void SLL::deleteFirst()
@@ -514,8 +517,8 @@ void SLL::deleteFirst()
     }
     
 
-    listNode.popFront();
-    listArrow.popFront();
+    deletedNode.push_back(listNode.popFront());
+    deletedArrow.push_back(listArrow.popFront());
 }
 
 void SLL::processInput()

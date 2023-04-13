@@ -72,6 +72,9 @@ private:
         Button* deleteFirstBtn;
         Button* deleteLastBtn;
         Button* deleteMiddleBtn;
+
+    std::vector<Node*> deletedNode;
+    std::vector<Arrow*> deletedArrow;
 };
 
 #endif // SLL_H
