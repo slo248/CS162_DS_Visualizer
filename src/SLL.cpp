@@ -439,6 +439,18 @@ void SLL::deleteFirst()
     graph.drawFadeIn(&listNode.begin()->getNext()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawFadeIn(&listArrow.begin()->data,Colors::GREEN);
     //
+
+    // step 3: delete temp
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.draw(&listNode,1,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
+    graph.drawShrink(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawShrink(&listArrow.begin()->data,Colors::GREEN);
+    //
 }
 
 void SLL::processInput()
