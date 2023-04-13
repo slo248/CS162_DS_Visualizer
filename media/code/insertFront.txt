@@ -1,0 +1,3 @@
+Vertex vtx = new Vertex(v)
+vtx.next = head
+head = vtx

@@ -1,5 +1,6 @@
 *.vscode
 *.o
 *.exe
-*.txt
+inp.txt
+past.txt
 makefile
