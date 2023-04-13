@@ -181,11 +181,10 @@ void SLL::insertFront(int value)
     // step 4: move new node to correct position
     graph.addStep(0.5*FPS);
 
-    for(ListElement<Node>* node=listNode.begin()->next; node!=listNode.end(); node=node->next)
-        graph.drawMove(&node->data,node->data.position,node->data.position+sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawMove(&listNode,1,listNode.size()-1,sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
-    graph.drawMove(&listNode.begin()->data,listNode.begin()->data.position,START_POSITION,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawMove(&listNode.begin()->data,START_POSITION-listNode.begin()->data.position,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     //
 }
@@ -383,10 +382,7 @@ void SLL::insertPos(int value, int pos)
         Node* node=&listNode.begin()->getNext(pos)->data;
         graph.drawMove(node,sf::Vector2f(0,-DISTANCE),Colors::GREEN,Colors::GREEN,Colors::WHITE);
     }
-    for(int i=pos+1;i<listNode.size();i++){
-        sf::Vector2f src=listNode.begin()->getNext(i)->data.position;
-        graph.drawMove(&listNode,i,src,src+sf::Vector2f(DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    }
+    graph.drawMove(&listNode,pos+1,listNode.size()-1,sf::Vector2f(DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,Colors::BLACK);
     //
 }

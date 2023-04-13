@@ -110,22 +110,6 @@ void Graph::drawGrow(List<Node> *list, sf::Color inColor, sf::Color outColor, sf
     drawGrow(list, 0, list->size()-1, inColor, outColor, numColor);
 }
 
-void Graph::drawMove(List<Node> *list, int i, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawMove(&list->begin()->getNext(i)->data, src, dest, inColor, outColor, numColor);
-}
-
-void Graph::drawMove(List<Node> *list, int from, int to, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    for(int i=from; i<=to; i++)
-        drawMove(list, i, src, dest, inColor, outColor, numColor);
-}
-
-void Graph::drawMove(List<Node> *list, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawMove(list, 0, list->size()-1, src, dest, inColor, outColor, numColor);
-}
-
 void Graph::drawMove(List<Node> *list, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     drawMove(&list->begin()->getNext(i)->data, delta, inColor, outColor, numColor);
