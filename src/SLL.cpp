@@ -27,7 +27,9 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     searchBtn = new Button(sanf, "Search", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
     deleteBtn = new Button(sanf, "Delete", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
-
+    deleteFirstBtn = new Button(sanf, "First", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
+    deleteLastBtn = new Button(sanf, "Last", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
+    deleteMiddleBtn = new Button(sanf, "Middle", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
     sf::Vector2u windowSize = window->getSize();
     createBtn->setPosition(sf::Vector2f(0,windowSize.y-5*createBtn->getSize().y));
@@ -45,6 +47,9 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     searchBtn->setPosition(sf::Vector2f(0,windowSize.y-2*searchBtn->getSize().y));
 
     deleteBtn->setPosition(sf::Vector2f(0,windowSize.y-1*deleteBtn->getSize().y));
+    deleteFirstBtn->setPosition(sf::Vector2f(deleteBtn->getSize().x+10.f,windowSize.y-1*deleteFirstBtn->getSize().y));
+    deleteLastBtn->setPosition(sf::Vector2f(2*deleteBtn->getSize().x+10.f,windowSize.y-1*deleteLastBtn->getSize().y));
+    deleteMiddleBtn->setPosition(sf::Vector2f(3*deleteBtn->getSize().x+10.f,windowSize.y-1*deleteMiddleBtn->getSize().y));
 }
 
 SLL::~SLL()
@@ -64,6 +69,9 @@ SLL::~SLL()
     delete searchBtn;
 
     delete deleteBtn;
+    delete deleteFirstBtn;
+    delete deleteLastBtn;
+    delete deleteMiddleBtn;
 }
 
 void SLL::empty()
@@ -489,6 +497,11 @@ void SLL::processInput()
     searchBtn->update(window);
 
     deleteBtn->update(window);
+    if(curBtn==Button::DELETE){
+        deleteFirstBtn->update(window);
+        deleteLastBtn->update(window);
+        deleteMiddleBtn->update(window);
+    }
 }
 
 void SLL::render()
@@ -516,6 +529,11 @@ void SLL::render()
     window->draw(*searchBtn);
 
     window->draw(*deleteBtn);
+    if(curBtn==Button::DELETE){
+        window->draw(*deleteFirstBtn);
+        window->draw(*deleteLastBtn);
+        window->draw(*deleteMiddleBtn);
+    }
 
     graph.draw();
 

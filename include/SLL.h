@@ -65,6 +65,9 @@ private:
     Button* searchBtn;
 
     Button* deleteBtn;
+        Button* deleteFirstBtn;
+        Button* deleteLastBtn;
+        Button* deleteMiddleBtn;
 };
 
 #endif // SLL_H
