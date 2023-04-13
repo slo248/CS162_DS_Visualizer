@@ -137,7 +137,6 @@ void SLL::insertWhenEmpty(int value)
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
 }
 
 void SLL::insertFront(int value)
