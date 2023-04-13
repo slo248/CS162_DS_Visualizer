@@ -68,6 +68,11 @@ void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, sf::Color 
     drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
+void Graph::drawMove(Node *node, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, node->position, node->position + delta, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+}
+
 void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
 {
     drawFunc.back().push_back(std::bind(&Node::drawSubscript, node, window, text, str, textColor));
