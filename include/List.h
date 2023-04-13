@@ -25,11 +25,12 @@ public:
     void pushBack(ListElement<T>* node);
     void pushBack(const T& data);
 
-    T popFront();
-    T popBack();
-
     void insert(ListElement<T>* node, int pos);
     void insert(const T& data, int pos);
+
+    T* popFront();
+    T* popBack();
+    T* pop(int pos);
 
 private:
     ListElement<T>* head;
@@ -141,7 +142,7 @@ inline void List<T>::pushBack(const T &data)
 }
 
 template <class T>
-inline T List<T>::popFront()
+inline T* List<T>::popFront()
 {
     if(head==nullptr) return nullptr;
     ListElement<T>* tmp=head;
@@ -149,11 +150,11 @@ inline T List<T>::popFront()
     if(head==nullptr) tail=nullptr;
     else head->prev=nullptr;
     num--;
-    return tmp->data;
+    return &tmp->data;
 }
 
 template <class T>
-inline T List<T>::popBack()
+inline T* List<T>::popBack()
 {
     if(head==nullptr) return nullptr;
     ListElement<T>* tmp=tail;
@@ -161,7 +162,22 @@ inline T List<T>::popBack()
     if(tail==nullptr) head=nullptr;
     else tail->next=nullptr;
     num--;
-    return tmp->data;
+    return &tmp->data;
+}
+
+template <class T>
+inline T* List<T>::pop(int pos)
+{
+    if(pos==0) return popFront();
+    else if(pos==num-1) return popBack();
+    else{
+        ListElement<T>* cur=head;
+        while(pos--) cur=cur->next;
+        cur->prev->next=cur->next;
+        cur->next->prev=cur->prev;
+        num--;
+        return &cur->data;
+    }
 }
 
 template <class T>
