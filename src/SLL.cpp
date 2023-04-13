@@ -442,10 +442,25 @@ void SLL::insertMiddle(int value, int pos)
     //
 }
 
+void SLL::deleteWhenSingle()
+{
+    if(listNode.size()==0) return;
+    // step 1: delete head
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    //
+
+    listNode.popFront();
+}
+
 void SLL::deleteFirst()
 {
     int sz=listNode.size();
-    if(sz==0) return;
+    if(sz<=1){
+        deleteWhenSingle();
+        return;
+    }
 
     // step 1: assign temp=head
     graph.addStep(0.5*FPS);

@@ -28,6 +28,7 @@ public:
     void insertMiddle(int value, int after);
 
     // delete
+    void deleteWhenSingle();
     void deleteFirst();
 
     // a frame
