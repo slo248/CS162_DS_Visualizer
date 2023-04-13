@@ -424,6 +424,21 @@ void SLL::deleteFirst()
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     //
+
+    if(listNode.size()==1) return;
+
+    // step 2: assign head to next node
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"temp",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawFadeIn(&listNode.begin()->getNext()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawFadeIn(&listArrow.begin()->data,Colors::GREEN);
+    //
 }
 
 void SLL::processInput()
