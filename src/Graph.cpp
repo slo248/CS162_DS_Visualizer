@@ -38,6 +38,11 @@ void Graph::addStep(int frames)
     drawFunc.push_back(std::vector<functor>());
 }
 
+bool Graph::isDoneAllSteps()
+{
+    return curStep==nFrames.size()-1 && curFrame==nFrames[curStep];
+}
+
 void Graph::draw(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     drawFunc.back().push_back(std::bind(&Node::draw, node, window, circle, inColor, outColor, text, numColor));

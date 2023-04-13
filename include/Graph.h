@@ -14,6 +14,7 @@ public:
     void clear();
     void finishAllSteps();
     void addStep(int frames);
+    bool isDoneAllSteps();
 
     // Node
     void draw(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
