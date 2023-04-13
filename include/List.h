@@ -25,6 +25,8 @@ public:
     void pushBack(ListElement<T>* node);
     void pushBack(const T& data);
 
+    T popFront();
+
     void insert(ListElement<T>* node, int pos);
     void insert(const T& data, int pos);
 
@@ -135,6 +137,18 @@ template <class T>
 inline void List<T>::pushBack(const T &data)
 {
     pushBack(new ListElement<T>(data));
+}
+
+template <class T>
+inline T List<T>::popFront()
+{
+    if(head==nullptr) return nullptr;
+    ListElement<T>* tmp=head;
+    head=head->next;
+    if(head==nullptr) tail=nullptr;
+    else head->prev=nullptr;
+    num--;
+    return tmp->data;
 }
 
 template <class T>
