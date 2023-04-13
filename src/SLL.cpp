@@ -380,8 +380,8 @@ void SLL::insertPos(int value, int pos)
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",Colors::RED);
     graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     {
-        sf::Vector2f src=listNode.begin()->getNext(pos)->data.position;
-        graph.drawMove(&listNode,pos,src,src-sf::Vector2f(0,DISTANCE),Colors::GREEN,Colors::GREEN,Colors::WHITE);
+        Node* node=&listNode.begin()->getNext(pos)->data;
+        graph.drawMove(node,sf::Vector2f(0,-DISTANCE),Colors::GREEN,Colors::GREEN,Colors::WHITE);
     }
     for(int i=pos+1;i<listNode.size();i++){
         sf::Vector2f src=listNode.begin()->getNext(i)->data.position;
