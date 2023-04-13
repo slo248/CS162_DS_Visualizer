@@ -1,0 +1,5 @@
+Node *tail=head
+while(tail->next!=NULL)
+    tail=tail->next
+Node *node=new Node(value)
+tail->next=node
