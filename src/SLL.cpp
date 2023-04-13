@@ -451,6 +451,16 @@ void SLL::deleteFirst()
     graph.drawShrink(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.drawShrink(&listArrow.begin()->data,Colors::GREEN);
     //
+    
+    // step 4: move the rest of the list to the left
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",Colors::RED);
+    graph.drawMove(&listNode,1,sf::Vector2f(-DISTANCE,0),Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawMove(&listNode,2,listNode.size()-1,sf::Vector2f(-DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
+    //
 }
 
 void SLL::processInput()
