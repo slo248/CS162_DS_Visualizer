@@ -461,6 +461,9 @@ void SLL::deleteFirst()
     graph.drawMove(&listNode,2,listNode.size()-1,sf::Vector2f(-DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
     //
+
+    listNode.popFront();
+    listArrow.popFront();
 }
 
 void SLL::processInput()
