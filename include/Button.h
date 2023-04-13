@@ -18,7 +18,7 @@ public:
         INSERT,
         UPDATE,
         SEARCH,
-        REMOVE
+        DELETE
     };
 
     Button(sf::Font* font, std::string str, sf::Vector2f size, sf::Color bgColorNormal, sf::Color bgColorHit, sf::Color textColor);

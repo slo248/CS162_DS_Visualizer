@@ -26,7 +26,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
 
     searchBtn = new Button(sanf, "Search", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
-    removeBtn = new Button(sanf, "Remove", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
+    deleteBtn = new Button(sanf, "Delete", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
 
 
     sf::Vector2u windowSize = window->getSize();
@@ -44,7 +44,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
 
     searchBtn->setPosition(sf::Vector2f(0,windowSize.y-2*searchBtn->getSize().y));
 
-    removeBtn->setPosition(sf::Vector2f(0,windowSize.y-1*removeBtn->getSize().y));
+    deleteBtn->setPosition(sf::Vector2f(0,windowSize.y-1*deleteBtn->getSize().y));
 }
 
 SLL::~SLL()
@@ -63,7 +63,7 @@ SLL::~SLL()
 
     delete searchBtn;
 
-    delete removeBtn;
+    delete deleteBtn;
 }
 
 void SLL::empty()
@@ -464,8 +464,8 @@ void SLL::processInput()
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
                 }
-                else if(removeBtn->isMouseOver(window)){
-                    curBtn=Button::REMOVE;
+                else if(deleteBtn->isMouseOver(window)){
+                    curBtn=Button::DELETE;
                 }
                 break;           
         }
@@ -488,7 +488,7 @@ void SLL::processInput()
 
     searchBtn->update(window);
 
-    removeBtn->update(window);
+    deleteBtn->update(window);
 }
 
 void SLL::render()
@@ -515,7 +515,7 @@ void SLL::render()
 
     window->draw(*searchBtn);
 
-    window->draw(*removeBtn);
+    window->draw(*deleteBtn);
 
     graph.draw();
 
