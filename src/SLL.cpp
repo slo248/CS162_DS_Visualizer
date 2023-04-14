@@ -587,16 +587,15 @@ void SLL::deleteLast()
         graph.drawFadeIn(&listArrow.begin()->getNext(i-1)->data,Colors::BLACK);
         graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
         //
+
+        if(i==n-1) break;
+
         // substep 2
         graph.addStep(0.5*FPS);
 
-        if(i==1)
-            graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
-        else{
-            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"pre",Colors::RED);
-        }
-        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         graph.drawFadeIn(&listNode.begin()->getNext(i-1)->data,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
