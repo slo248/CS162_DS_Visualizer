@@ -228,21 +228,22 @@ void SLL::insertBack(int value)
         //
 
         // substep 2
-        graph.addStep(0.5*FPS);
+        if(i<n-2){
+            graph.addStep(0.5*FPS);
 
-        if(i==0)
-            graph.drawSubscript(&listNode.begin()->data,"head/tail",Colors::RED);
-        else{
-            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
-        }
-        graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-        graph.draw(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.draw(&listNode,i+1,n-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-        graph.draw(&listArrow,i,listArrow.size()-2,Colors::BLACK);
-        if(i<n-2)
+            if(i==0)
+                graph.drawSubscript(&listNode.begin()->data,"head/tail",Colors::RED);
+            else{
+                graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+                graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
+            }
+            graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+            graph.draw(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+            graph.draw(&listNode,i+1,n-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+            graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+            graph.draw(&listArrow,i,listArrow.size()-2,Colors::BLACK);
             graph.drawGrow(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
+        }
         //
     }
     //
@@ -286,7 +287,10 @@ void SLL::insertBack(int value)
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail/vtx",Colors::RED);
     graph.draw(&listNode,0,n-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeOut(&listNode,0,n-3,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.drawFadeOut(&listNode,n-2,n-2,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeOut(&listArrow,0,listArrow.size()-1,Colors::ORANGE);
     graph.draw(&listNode.rbegin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     //
 }
