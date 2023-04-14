@@ -16,6 +16,8 @@ public:
     void addStep(int frames);
     bool isDoneAllSteps();
 
+    void nextStep();
+
     void setVisualDir(VisualDir d);
     void setVisualType(VisualType t);
 

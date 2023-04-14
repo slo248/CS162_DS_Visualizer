@@ -45,6 +45,25 @@ bool Graph::isDoneAllSteps()
     return curStep==nFrames.size()-1 && curFrame==nFrames[curStep];
 }
 
+void Graph::nextStep()
+{
+    if(nFrames.empty()) return;
+
+    if(dir!=FORWARD) dir=FORWARD;
+
+    while(curFrame<nFrames[curStep]){
+        for(functor f: drawFunc[curStep])
+            f(1.f*curFrame/nFrames[curStep]);
+        
+        curFrame++;
+    }
+
+    if(curStep<nFrames.size()-1){
+        curFrame=0;
+        curStep++;
+    }
+}
+
 void Graph::setVisualDir(VisualDir d)
 {
     dir=d;
