@@ -734,7 +734,10 @@ void SLL::processInput()
         graph.setVisualType(STEP_BY_STEP);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         graph.setVisualType(AUTO);
+}
 
+void SLL::update()
+{
     createBtn->update(window);
     if(curBtn==Button::CREATE){
         emptyBtn->update(window);
@@ -803,6 +806,7 @@ void SLL::run()
     makeList();
     while(window->isOpen()){
         processInput();
+        update();
         render();
     }
 }

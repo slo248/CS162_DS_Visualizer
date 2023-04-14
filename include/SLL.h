@@ -34,6 +34,7 @@ public:
 
     // a frame
     void processInput();
+    void update();
     void render();
 
     // run
