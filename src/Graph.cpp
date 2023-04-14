@@ -177,6 +177,12 @@ void Graph::drawFadeIn(List<Node> *list, int from, int to, sf::Color inColor, sf
         drawFadeIn(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
 }
 
+void Graph::drawFadeOut(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    for(int i=from; i<=to; i++)
+        drawFadeOut(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
+}
+
 void Graph::draw(Arrow *arrow, sf::Color color)
 {
     drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, arrowFig, color));

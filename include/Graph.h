@@ -44,6 +44,7 @@ public:
     void drawMove(List<Node>* list, int from, int to, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(List<Node>* list, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawFadeIn(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawFadeOut(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
 
     // Arrow
     void draw(Arrow* arrow, sf::Color color);
