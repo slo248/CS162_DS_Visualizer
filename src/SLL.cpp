@@ -640,6 +640,9 @@ void SLL::deleteLast()
     graph.draw(&listArrow,0,i-2,Colors::ORANGE);
     graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
     //
+
+    deletedNode.push_back(listNode.popBack());
+    deletedArrow.push_back(listArrow.popBack());
 }
 
 void SLL::processInput()
