@@ -19,19 +19,19 @@ void Graph::clear()
 void Graph::finishAllSteps()
 {
     if(nFrames.empty()) return;
-    while(curFrame<nFrames[curStep] || curStep<nFrames.size()-1){
-        for(functor f: drawFunc[curStep])
-            f(1.f*curFrame/nFrames[curStep]);
-        
-        if(curFrame==nFrames[curStep] && curStep<nFrames.size()-1){
-            curFrame=0;
+    while (curFrame < nFrames[curStep] || curStep < nFrames.size() - 1) {
+        for (auto draw : drawFunc[curStep]) 
+            draw(curFrame / (float)nFrames[curStep]);
+        if (curFrame == nFrames[curStep] && curStep + 1 < nFrames.size()){
             curStep++;
+            curFrame = 0;
         }
-        
-        if(curFrame<nFrames[curStep])
-            curFrame++;
+        if (curFrame < nFrames[curStep]) curFrame++;
     }
-    clear();
+    curFrame=curStep=0;
+    nFrames.clear();
+    drawFunc.clear();
+    // clear();
 }
 
 void Graph::addStep(int frames)

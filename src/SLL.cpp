@@ -11,6 +11,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
+    graph.setVisualType(STEP_BY_STEP);
 
     createBtn = new Button(sanf, "Create", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
     emptyBtn = new Button(sanf, "Empty", sf::Vector2f(ButtonConfig::WIDTH,ButtonConfig::HEIGHT), Colors::GREEN, Colors::BLACK, Colors::WHITE);
@@ -614,6 +615,12 @@ void SLL::processInput()
                 isPause=false;
                 window->setFramerateLimit(FPS);
                 break;
+            case sf::Event::KeyPressed:
+                switch (event.key.code){
+                    case sf::Keyboard::Right:
+                        if(!isPause) graph.nextStep();
+                        break;
+                }
             case sf::Event::MouseButtonReleased:
                 if(createBtn->isMouseOver(window)){
                     curBtn=Button::CREATE;
