@@ -13,7 +13,7 @@ void Graph::clear()
     nFrames.clear();
     drawFunc.clear();
     dir=FORWARD;
-    type=CONTINUOUS;
+    type=AUTO;
 }
 
 void Graph::finishAllSteps()
@@ -61,6 +61,25 @@ void Graph::nextStep()
     if(curStep<nFrames.size()-1){
         curFrame=0;
         curStep++;
+    }
+}
+
+void Graph::prevStep()
+{
+    if(nFrames.empty()) return;
+
+    if(dir!=BACKWARD) dir=BACKWARD;
+
+    while(curFrame>0){
+        for(functor f: drawFunc[curStep])
+            f(1.f*curFrame/nFrames[curStep]);
+        
+        curFrame--;
+    }
+
+    if(curStep>0){
+        curStep--;
+        curFrame=nFrames[curStep];
     }
 }
 
@@ -233,7 +252,7 @@ void Graph::draw()
     if(dir==FORWARD){
         if(curFrame<nFrames[curStep])
             curFrame++;
-        else if(type==CONTINUOUS && curStep<drawFunc.size()-1){
+        else if(type==AUTO && curStep<drawFunc.size()-1){
             curFrame=0;
             curStep++;
         }
@@ -241,7 +260,7 @@ void Graph::draw()
     else{
         if(curFrame>0)
             curFrame--;
-        else if(type==CONTINUOUS && curStep>0){
+        else if(type==AUTO && curStep>0){
             curStep--;
             curFrame=nFrames[curStep];
         }

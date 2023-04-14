@@ -17,6 +17,7 @@ public:
     bool isDoneAllSteps();
 
     void nextStep();
+    void prevStep();
 
     void setVisualDir(VisualDir d);
     void setVisualType(VisualType t);

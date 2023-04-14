@@ -13,7 +13,7 @@
 typedef std::function<void(float)> functor;
 
 enum VisualDir {FORWARD, BACKWARD};
-enum VisualType {CONTINUOUS, STEP_BY_STEP};
+enum VisualType {AUTO, STEP_BY_STEP};
 
 namespace Colors
 {

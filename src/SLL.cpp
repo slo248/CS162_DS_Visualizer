@@ -620,6 +620,15 @@ void SLL::processInput()
                     case sf::Keyboard::Right:
                         if(!isPause) graph.nextStep();
                         break;
+                    case sf::Keyboard::Left:
+                        if(!isPause) graph.prevStep();
+                        break;
+                    case sf::Keyboard::S:
+                        graph.setVisualType(STEP_BY_STEP);
+                        break;
+                    case sf::Keyboard::A:
+                        graph.setVisualType(AUTO);
+                        break;
                 }
             case sf::Event::MouseButtonReleased:
                 if(createBtn->isMouseOver(window)){
