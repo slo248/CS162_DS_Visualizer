@@ -16,6 +16,9 @@ public:
     void addStep(int frames);
     bool isDoneAllSteps();
 
+    void setVisualDir(VisualDir d);
+    void setVisualType(VisualType t);
+
     // Node
     void draw(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawGrow(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
@@ -60,6 +63,9 @@ private:
     sf::Text* text;
     sf::CircleShape* circle;
     ArrowFigure* arrowFig;
+
+    VisualDir dir;
+    VisualType type;
 
     int curFrame, curStep;
     std::vector<int> nFrames;
