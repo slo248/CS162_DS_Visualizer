@@ -625,6 +625,21 @@ void SLL::deleteLast()
     graph.drawShrink(&listArrow.begin()->getNext(i-1)->data,Colors::BLACK);
     graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
     //
+
+    // step 5: delete tail
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"tail",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
+    graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawFadeIn(&listNode.begin()->getNext(i-1)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawShrink(&listNode.begin()->getNext(i)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,i-2,Colors::ORANGE);
+    graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+    //
 }
 
 void SLL::processInput()
