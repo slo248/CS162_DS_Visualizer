@@ -211,10 +211,20 @@ void Graph::draw()
         f(1.f*curFrame/nFrames[curStep]);
     }
 
-    if(curFrame<nFrames[curStep])
-        curFrame++;
-    else if(curStep<drawFunc.size()-1){
-        curFrame=0;
-        curStep++;
+    if(dir==FORWARD){
+        if(curFrame<nFrames[curStep])
+            curFrame++;
+        else if(type==CONTINUOUS && curStep<drawFunc.size()-1){
+            curFrame=0;
+            curStep++;
+        }
+    }
+    else{
+        if(curFrame>0)
+            curFrame--;
+        else if(type==CONTINUOUS && curStep>0){
+            curStep--;
+            curFrame=nFrames[curStep];
+        }
     }
 }
