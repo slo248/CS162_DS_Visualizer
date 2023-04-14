@@ -614,8 +614,9 @@ void SLL::deleteLast()
     // step 4: shrink the last arrow
     graph.addStep(0.5*FPS);
 
+    if(i>1)
+        graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"pre",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
     graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
@@ -629,8 +630,9 @@ void SLL::deleteLast()
     // step 5: delete tail
     graph.addStep(0.5*FPS);
 
+    if(i>1)
+        graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"tail",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
     graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
