@@ -246,6 +246,12 @@ void Graph::drawFadeIn(List<Arrow> *list, int from, int to, sf::Color color)
         drawFadeIn(&list->begin()->getNext(i)->data, color);
 }
 
+void Graph::drawFadeOut(List<Arrow> *list, int from, int to, sf::Color color)
+{
+    for(int i=from; i<=to; i++)
+        drawFadeOut(&list->begin()->getNext(i)->data, color);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
