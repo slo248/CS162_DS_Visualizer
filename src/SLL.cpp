@@ -447,7 +447,14 @@ void SLL::insertMiddle(int value, int pos)
         graph.drawMove(node,sf::Vector2f(0,-DISTANCE),Colors::GREEN,Colors::GREEN,Colors::WHITE);
     }
     graph.drawMove(&listNode,pos+1,listNode.size()-1,sf::Vector2f(DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeOut(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.drawFadeOut(&listNode.begin()->getNext(pos-1)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawFadeOut(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawFadeOut(&listNode.begin()->getNext(pos+1)->data,Colors::BLUE,Colors::BLUE,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeOut(&listArrow,0,pos-2,Colors::ORANGE);
+    graph.drawFadeOut(&listArrow.begin()->getNext(pos-1)->data,Colors::ORANGE);
+    graph.drawFadeOut(&listArrow.begin()->getNext(pos)->data,Colors::GREEN);
     //
 }
 
