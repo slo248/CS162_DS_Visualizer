@@ -521,6 +521,36 @@ void SLL::deleteFirst()
     deletedArrow.push_back(listArrow.popFront());
 }
 
+void SLL::deleteLast()
+{
+    int sz=listNode.size();
+    if(sz<=1){
+        deleteWhenSingle();
+        return;
+    }
+
+    // step 1: assign pre=head
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    //
+
+    // step 2: 
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->next->data,"tail",Colors::RED);
+    graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->next->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
+    //
+}
+
 void SLL::processInput()
 {
     sf::Event event;
@@ -592,6 +622,7 @@ void SLL::processInput()
                     }
                     else if (curBtn==Button::DELETE && deleteLastBtn->isMouseOver(window)){
                         graph.finishAllSteps();
+                        deleteLast();
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){

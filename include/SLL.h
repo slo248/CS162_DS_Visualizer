@@ -30,6 +30,7 @@ public:
     // delete
     void deleteWhenSingle();
     void deleteFirst();
+    void deleteLast();
 
     // a frame
     void processInput();
