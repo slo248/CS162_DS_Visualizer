@@ -628,21 +628,6 @@ void SLL::processInput()
                 isPause=false;
                 window->setFramerateLimit(FPS);
                 break;
-            case sf::Event::KeyPressed:
-                switch (event.key.code){
-                    case sf::Keyboard::Right:
-                        if(!isPause) graph.nextStep();
-                        break;
-                    case sf::Keyboard::Left:
-                        if(!isPause) graph.prevStep();
-                        break;
-                    case sf::Keyboard::S:
-                        graph.setVisualType(STEP_BY_STEP);
-                        break;
-                    case sf::Keyboard::A:
-                        graph.setVisualType(AUTO);
-                        break;
-                }
             case sf::Event::MouseButtonReleased:
                 if(createBtn->isMouseOver(window)){
                     curBtn=Button::CREATE;
@@ -707,6 +692,15 @@ void SLL::processInput()
                     }
                 break;           
         }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !isPause)
+        graph.nextStep();
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !isPause)
+        graph.prevStep();
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        graph.setVisualType(STEP_BY_STEP);
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        graph.setVisualType(AUTO);
 
     createBtn->update(window);
     if(curBtn==Button::CREATE){
