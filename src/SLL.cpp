@@ -494,6 +494,7 @@ void SLL::deleteFirst()
     if(sz>1){
         graph.addStep(0.5*FPS);
 
+        graph.drawSubscript(&listNode.begin()->data,"temp",Colors::RED);
         graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
         graph.draw(&listNode,1,Colors::GREEN,Colors::GREEN,Colors::WHITE);
         graph.draw(&listNode,2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
