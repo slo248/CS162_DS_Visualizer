@@ -12,6 +12,9 @@
 
 typedef std::function<void(float)> functor;
 
+enum VisualDir {FORWARD, BACKWARD};
+enum VisualType {CONTINUOUS, STEP_BY_STEP};
+
 namespace Colors
 {
     const sf::Color BLANK = sf::Color(0, 0, 0, 0);
