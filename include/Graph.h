@@ -60,6 +60,7 @@ public:
     void drawGrow(List<Arrow>* list, int i, sf::Color color);
     void drawGrow(List<Arrow>* list, int from, int to, sf::Color color);
     void drawGrow(List<Arrow>* list, sf::Color color);
+    void drawFadeIn(List<Arrow>* list, int from, int to, sf::Color color);
 
     void draw();
 

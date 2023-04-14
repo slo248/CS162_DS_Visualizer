@@ -240,6 +240,12 @@ void Graph::drawGrow(List<Arrow> *list, sf::Color color)
     drawGrow(list, 0, list->size()-1, color);
 }
 
+void Graph::drawFadeIn(List<Arrow> *list, int from, int to, sf::Color color)
+{
+    for(int i=from; i<=to; i++)
+        drawFadeIn(&list->begin()->getNext(i)->data, color);
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
