@@ -12,6 +12,8 @@ void Graph::clear()
     curFrame=curStep=0;
     nFrames.clear();
     drawFunc.clear();
+    dir=FORWARD;
+    type=CONTINUOUS;
 }
 
 void Graph::finishAllSteps()
