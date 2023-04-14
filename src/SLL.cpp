@@ -178,10 +178,11 @@ void SLL::insertFront(int value)
     // step 3: assign head to new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);    
     graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
-    graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeOut(&listArrow.begin()->data,Colors::ORANGE);
     //
 

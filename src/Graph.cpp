@@ -47,39 +47,29 @@ bool Graph::isDoneAllSteps()
 
 void Graph::nextStep()
 {
+    dir=FORWARD;
+
     if(nFrames.empty()) return;
 
-    if(dir!=FORWARD) dir=FORWARD;
-
-    while(curFrame<nFrames[curStep]){
-        for(functor f: drawFunc[curStep])
-            f(1.f*curFrame/nFrames[curStep]);
-        
-        curFrame++;
-    }
-
-    if(curStep<nFrames.size()-1){
-        curFrame=0;
+    if(curFrame==nFrames[curStep] && curStep<nFrames.size()-1){
         curStep++;
+        curFrame=0;
+        for(auto draw: drawFunc[curStep])
+            draw(curFrame/(float)nFrames[curStep]);
     }
 }
 
 void Graph::prevStep()
 {
+    dir=BACKWARD;
+
     if(nFrames.empty()) return;
 
-    if(dir!=BACKWARD) dir=BACKWARD;
-
-    while(curFrame>0){
-        for(functor f: drawFunc[curStep])
-            f(1.f*curFrame/nFrames[curStep]);
-        
-        curFrame--;
-    }
-
-    if(curStep>0){
+    if(curFrame==0 && curStep>0){
         curStep--;
         curFrame=nFrames[curStep];
+        for(auto draw: drawFunc[curStep])
+            draw(curFrame/(float)nFrames[curStep]);
     }
 }
 
