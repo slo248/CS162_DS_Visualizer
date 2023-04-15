@@ -458,8 +458,19 @@ void SLL::insertMiddle(int value, int pos)
     //
 }
 
-void SLL::search(int value)
+int SLL::search(int value)
 {
+    int n=listNode.size();
+    if(n==0) return -1;
+
+    // step 1: index=0, temp=head
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"0/head/temp",Colors::RED);
+    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listArrow,Colors::BLACK);
+    //
 }
 
 void SLL::deleteWhenSingle()

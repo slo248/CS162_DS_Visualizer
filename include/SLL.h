@@ -28,7 +28,7 @@ public:
     void insertMiddle(int value, int after);
 
     // search
-    void search(int value);
+    int search(int value);
 
     // delete
     void deleteWhenSingle();
