@@ -458,6 +458,10 @@ void SLL::insertMiddle(int value, int pos)
     //
 }
 
+void SLL::search(int value)
+{
+}
+
 void SLL::deleteWhenSingle()
 {
     if(listNode.size()==0) return;
@@ -842,6 +846,9 @@ void SLL::processInput()
                 }
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
+                    graph.finishAllSteps();
+                    search(2);
+                    curBtn=Button::NONE;
                 }
                 else if(deleteBtn->isMouseOver(window)){
                     curBtn=Button::DELETE;
@@ -858,7 +865,7 @@ void SLL::processInput()
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        deleteMiddle(2);
+                        deleteMiddle(getRand(1,listNode.size()-1));
                         curBtn=Button::NONE;
                     }
                 break;           
