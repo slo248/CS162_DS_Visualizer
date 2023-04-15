@@ -1,0 +1,5 @@
+Node* cur=head
+int index=0
+for(;index<pos; index++)
+    cur=cur->next
+cur->value=newValue
