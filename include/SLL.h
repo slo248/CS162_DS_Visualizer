@@ -30,6 +30,9 @@ public:
     // search
     int search(int value);
 
+    // update
+    void update(int pos, int newValue);
+
     // delete
     void deleteWhenSingle();
     void deleteFirst();

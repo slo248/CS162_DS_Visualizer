@@ -511,6 +511,24 @@ int SLL::search(int value)
     return i;
 }
 
+void SLL::update(int pos, int newValue)
+{
+    int n=listNode.size();
+    if(n==0 || pos<0 || pos>=n) return;
+
+    tmpNode.value=listNode.begin()->getNext(pos)->data.value;
+    listNode.begin()->getNext(pos)->data.value=newValue;
+
+    // step 1: assign cur=head
+    graph.addStep(0.5*FPS);
+
+    graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
+    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listArrow,Colors::BLACK);
+    //
+}
+
 void SLL::deleteWhenSingle()
 {
     if(listNode.size()==0) return;
