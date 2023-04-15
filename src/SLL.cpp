@@ -768,11 +768,13 @@ void SLL::deleteLast()
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
     graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.drawFadeIn(&listNode,0,i-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.drawFadeIn(&listNode.begin()->getNext(i-1)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawShrink(&listNode.begin()->getNext(i)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,0,i-2,Colors::ORANGE);
+    graph.drawFadeIn(&listArrow,0,i-2,Colors::BLACK);
     graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
     //
 
