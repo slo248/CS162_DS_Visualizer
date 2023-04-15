@@ -78,86 +78,6 @@ SLL::~SLL()
     for(Arrow *arrow : deletedArrow) delete arrow;
 }
 
-void SLL::update(int pos, int newValue)
-{
-    int n=listNode.size();
-    if(n==0 || pos<0 || pos>=n) return;
-
-    tmpNode.value=listNode.begin()->getNext(pos)->data.value;
-    tmpNode.position=listNode.begin()->getNext(pos)->data.position;
-    listNode.begin()->getNext(pos)->data.value=newValue;
-
-    // step 1: assign cur=head
-    graph.addStep(0.5*FPS);
-
-    graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
-    graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&tmpNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    if(pos)
-        graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    else
-        graph.drawFadeIn(&tmpNode,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.draw(&listArrow,Colors::BLACK);
-    //
-
-    // step 2: while index<pos
-    for(int i=0; i<pos; i++){
-        // substep 1: change color of cur
-        graph.addStep(0.5*FPS);
-
-        graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
-        if(i>0)
-            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/cur",Colors::RED);
-        graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-        graph.draw(&listNode,i+1,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&tmpNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.drawFadeOut(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-        graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
-        //
-
-        // substep 2: cur=cur->next, index++
-        graph.addStep(0.5*FPS);
-
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/cur",Colors::RED);
-        graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-        graph.draw(&listNode,i+1,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&tmpNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        if(i<pos-1)
-            graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        else
-            graph.drawFadeIn(&tmpNode,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-        graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
-        graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
-        //
-    }
-    //
-
-    // step 3: cur->value=newValue
-    graph.addStep(0.5*FPS);
-
-    if(pos>0){
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/cur",Colors::RED);
-    }
-    else
-        graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
-    graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-    graph.draw(&tmpNode,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawFadeIn(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawFadeIn(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,0,pos-1,Colors::ORANGE);
-    graph.drawFadeIn(&listArrow,0,pos-1,Colors::BLACK);
-    graph.draw(&listArrow,pos,listArrow.size()-1,Colors::BLACK);
-    //
-}
-
 void SLL::processInput()
 {
     sf::Event event;
@@ -254,6 +174,34 @@ void SLL::processInput()
         graph.setVisualType(STEP_BY_STEP);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         graph.setVisualType(AUTO);
+}
+
+void SLL::update()
+{
+    createBtn->update(window);
+    if(curBtn==Button::CREATE){
+        emptyBtn->update(window);
+        randomBtn->update(window);
+        loadFromFileBtn->update(window);
+    }
+
+    insertBtn->update(window);
+    if(curBtn==Button::INSERT){
+        insertFrontBtn->update(window);
+        insertBackBtn->update(window);
+        insertMiddleBtn->update(window);
+    }
+
+    updateBtn->update(window);
+
+    searchBtn->update(window);
+
+    deleteBtn->update(window);
+    if(curBtn==Button::DELETE){
+        deleteFirstBtn->update(window);
+        deleteLastBtn->update(window);
+        deleteMiddleBtn->update(window);
+    }
 }
 
 void SLL::render()
