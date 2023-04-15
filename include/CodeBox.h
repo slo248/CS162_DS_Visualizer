@@ -5,9 +5,11 @@
 
 class CodeBox
 {
+public:
+    void loadFromFile(std::string path);
 private:
-    sf::RectangleShape* rect;
-    sf::Text* text;
+    sf::RectangleShape rect;
+    sf::Text text;
     std::vector<std::string> code;
 };
 
