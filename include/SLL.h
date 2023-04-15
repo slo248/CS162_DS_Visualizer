@@ -31,6 +31,7 @@ public:
     void deleteWhenSingle();
     void deleteFirst();
     void deleteLast();
+    void deleteMiddle(int pos);
 
     // a frame
     void processInput();

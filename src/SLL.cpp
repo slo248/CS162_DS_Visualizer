@@ -647,6 +647,17 @@ void SLL::deleteLast()
     deletedArrow.push_back(listArrow.popBack());
 }
 
+void SLL::deleteMiddle(int pos)
+{
+    int n=listNode.size();
+    if(n<=1) deleteWhenSingle();
+    else if(pos==0) deleteFirst();
+    else if(pos==n-1) deleteLast();
+    else{
+
+    }
+}
+
 void SLL::processInput()
 {
     sf::Event event;
@@ -723,6 +734,7 @@ void SLL::processInput()
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
+                        deleteMiddle(2);
                         curBtn=Button::NONE;
                     }
                 break;           
