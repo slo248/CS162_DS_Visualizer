@@ -654,7 +654,14 @@ void SLL::deleteMiddle(int pos)
     else if(pos==0) deleteFirst();
     else if(pos==n-1) deleteLast();
     else{
+        // step 1: assign pre=head
+        graph.addStep(0.5*FPS);
 
+        graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+        graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.draw(&listArrow,Colors::BLACK);
+        //
     }
 }
 
