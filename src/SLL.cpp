@@ -662,6 +662,22 @@ void SLL::deleteMiddle(int pos)
         graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         graph.draw(&listArrow,Colors::BLACK);
         //
+
+        // step 2: move pre to the node before the node to be deleted
+        for(int i=0; i<pos-1; i++){
+            graph.addStep(0.5*FPS);
+
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/pre",Colors::RED);
+            graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+            graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+            graph.drawFadeOut(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+            graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+            graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+            graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+            graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
+        }
+        //
     }
 }
 
