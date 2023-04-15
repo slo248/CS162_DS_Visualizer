@@ -28,7 +28,8 @@ void CodeBox::draw(sf::RenderWindow *window, int pos)
 {
     sf::Vector2f O=window->getView().getSize();
     const int maxBlk=10;
-    for(int i=0; i<10; i++)
+    for(int i=0; i<10; i++){
+        rect.setFillColor(BG_COLOR);
         if(i<code.size()){
             text.setString(code[i]);
             {
@@ -39,10 +40,7 @@ void CodeBox::draw(sf::RenderWindow *window, int pos)
                 );
             }
             
-            if(pos<code.size() && i==pos)
-                rect.setFillColor(CUR_LINE);
-            else
-                rect.setFillColor(BG_COLOR);
+            if(i==pos) rect.setFillColor(CUR_LINE);               
 
             rect.setPosition(
                 O.x-WIDTH,
@@ -64,4 +62,5 @@ void CodeBox::draw(sf::RenderWindow *window, int pos)
             );
             window->draw(rect);
         }
+    }
 }
