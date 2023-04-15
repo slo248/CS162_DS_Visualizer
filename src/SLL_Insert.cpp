@@ -34,6 +34,7 @@ void SLL::insertFront(int value)
     graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
+    graph.draw(&codeBox,0);
     //
 
     // step 2: draw new arrow
@@ -45,6 +46,7 @@ void SLL::insertFront(int value)
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
+    graph.draw(&codeBox,1);
     //
 
     // step 3: assign head to new node
@@ -56,6 +58,7 @@ void SLL::insertFront(int value)
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeOut(&listArrow.begin()->data,Colors::ORANGE);
+    graph.draw(&codeBox,2);
     //
 
     // step 4: move new node to correct position
@@ -65,6 +68,7 @@ void SLL::insertFront(int value)
     graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
     graph.drawMove(&listNode.begin()->data,START_POSITION-listNode.begin()->data.position,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
+    graph.draw(&codeBox,3);
     //
 }
 
