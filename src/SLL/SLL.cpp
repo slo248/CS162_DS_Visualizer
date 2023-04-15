@@ -2,12 +2,13 @@
 #include "Random.h"
 #include "Config.h"
 
-SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
+SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
     FPS(FPS),
     window(window),
     bg(bg),
     curBtn(Button::NONE),
     isPause(false),
+    codeBox(cons),
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
@@ -121,28 +122,33 @@ void SLL::processInput()
                     else if(curBtn==Button::INSERT && insertFrontBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         insertFront(getRand(0,99));
+                        codeBox.loadFromFile("media/code/insertFront.txt");
                         curBtn=Button::NONE;
                     }
                     else if(curBtn==Button::INSERT && insertBackBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         insertBack(getRand(0,99));
+                        codeBox.loadFromFile("media/code/insertBack.txt");
                         curBtn=Button::NONE;
                     }
                     else if(curBtn==Button::INSERT && insertMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         insertMiddle(getRand(0,99),getRand(1,listNode.size()-1));
+                        codeBox.loadFromFile("media/code/insertMiddle.txt");
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
                     curBtn=Button::UPDATE;
                     graph.finishAllSteps();
                     update(getRand(0,listNode.size()-1),getRand(0,99));
+                    codeBox.loadFromFile("media/code/update.txt");
                     curBtn=Button::NONE;
                 }
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
                     graph.finishAllSteps();
                     search(getRand(0,99));
+                    codeBox.loadFromFile("media/code/search.txt");
                     curBtn=Button::NONE;
                 }
                 else if(deleteBtn->isMouseOver(window)){
@@ -151,16 +157,19 @@ void SLL::processInput()
                     else if (curBtn==Button::DELETE && deleteFirstBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         deleteFirst();
+                        codeBox.loadFromFile("media/code/deleteFirst.txt");
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteLastBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         deleteLast();
+                        codeBox.loadFromFile("media/code/deleteLast.txt");
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         deleteMiddle(1);
+                        codeBox.loadFromFile("media/code/deleteMiddle.txt");
                         curBtn=Button::NONE;
                     }
                 break;           
@@ -236,6 +245,7 @@ void SLL::render()
     }
 
     graph.draw();
+    codeBox.draw(window);
 
     window->display();
 }

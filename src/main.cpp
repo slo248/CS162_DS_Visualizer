@@ -60,12 +60,8 @@ int main()
     );
     //
 
-    // code box
-    CodeBox codeBox(&consolas, "media/code/insertFront.txt");
-    //
-
     // gen SLL
-    SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
+    SLL sll(&window, &sanf, &consolas, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
     sll.run();
     return 0;
 }

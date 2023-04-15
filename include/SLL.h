@@ -4,6 +4,7 @@
 #include "Graph.h"
 #include "HNeed.h"
 #include "Button.h"
+#include "CodeBox.h"
 
 class SLL
 {
@@ -12,7 +13,7 @@ public:
     float           DISTANCE        = 120.f;
 
 public:
-    SLL(sf::RenderWindow* window, sf::Font* sanf, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
+    SLL(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
     ~SLL();
 
     // create
@@ -55,6 +56,7 @@ private:
     sf::Sprite* bg;
     
     Graph graph;
+    CodeBox codeBox;
 
     List<Node> listNode;
     List<Arrow> listArrow;
