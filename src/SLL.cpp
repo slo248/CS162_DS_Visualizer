@@ -758,8 +758,12 @@ void SLL::deleteMiddle(int pos)
         // step 3: assign del=pre->next, aft=del->next
         graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
+        if(pos>1){
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
         graph.drawSubscript(deletedN,std::to_string(pos)+"/del",Colors::RED);
         if(pos<n)
             graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",Colors::RED);
@@ -783,8 +787,12 @@ void SLL::deleteMiddle(int pos)
         // step 4: pre->next=aft
         graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
+        if(pos>1){
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
         graph.drawSubscript(deletedN,std::to_string(pos)+"/del",Colors::RED);
         if(pos<n)
             graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",Colors::RED);
@@ -914,7 +922,7 @@ void SLL::processInput()
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        deleteMiddle(getRand(1,listNode.size()-1));
+                        deleteMiddle(1);
                         curBtn=Button::NONE;
                     }
                 break;           
