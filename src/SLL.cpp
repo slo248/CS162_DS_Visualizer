@@ -754,13 +754,29 @@ void SLL::deleteMiddle(int pos)
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.draw(&listNode,pos,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.drawShrink(deletedN,Colors::RED,Colors::RED,Colors::WHITE);
         if(pos<n)
             graph.draw(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
 
         graph.draw(&listArrow,0,pos-1,Colors::ORANGE);
         graph.drawShrink(deletedA,Colors::ORANGE);
+        graph.draw(&listArrow,pos,listArrow.size()-1,Colors::BLACK);
+        //
+
+        // step 6: move nodes from the right of del to the left
+        graph.addStep(0.5*FPS);
+
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.drawFadeIn(&listNode,0,pos-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.drawMove(&listNode,pos+1,n-1,sf::Vector2f(-DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        if(pos<n)
+            graph.drawMove(&listNode.begin()->getNext(pos)->data,sf::Vector2f(-DISTANCE,0),Colors::GREEN,Colors::GREEN,Colors::WHITE);
+
+        graph.draw(&listArrow,0,pos-1,Colors::ORANGE);
+        graph.drawFadeIn(&listArrow,0,pos-1,Colors::BLACK);
         graph.draw(&listArrow,pos,listArrow.size()-1,Colors::BLACK);
         //
     }
