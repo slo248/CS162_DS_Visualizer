@@ -654,13 +654,32 @@ void SLL::deleteMiddle(int pos)
     else if(pos==0) deleteFirst();
     else if(pos==n-1) deleteLast();
     else{
+        n--;
+
+        Node *deletedN=listNode.pop(pos);
+        deletedNode.push_back(deletedN);
+
+        Arrow *deletedA=listArrow.pop(pos);
+        deletedArrow.push_back(deletedA);
+        if(deletedA)
+            listArrow.begin()->getNext(pos-1)->data.dest=deletedA->dest;
+        else
+            listArrow.begin()->getNext(pos-1)->data.dest=nullptr;
+
+        tmpArrow.src=&listNode.begin()->getNext(pos-1)->data;
+        tmpArrow.dest=deletedN;
+
         // step 1: assign pre=head
         graph.addStep(0.5*FPS);
 
         graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
         graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.draw(&listArrow,Colors::BLACK);
+        graph.draw(&listArrow,0,pos-2,Colors::BLACK);
+        graph.draw(&tmpArrow,Colors::BLACK);
+        graph.draw(deletedA,Colors::BLACK);
+        graph.draw(&listArrow,pos,listArrow.size()-1,Colors::BLACK);
         //
 
         // step 2: move pre to the node before the node to be deleted
@@ -671,10 +690,14 @@ void SLL::deleteMiddle(int pos)
             graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/pre",Colors::RED);
             graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
             graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+            graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
             graph.drawFadeOut(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
             graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
             graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-            graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+            graph.draw(&listArrow,i,pos-2,Colors::BLACK);
+            graph.draw(&tmpArrow,Colors::BLACK);
+            graph.draw(deletedA,Colors::BLACK);
+            graph.draw(&listArrow,pos,listArrow.size()-1,Colors::BLACK);
             graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
         }
         //
@@ -684,21 +707,25 @@ void SLL::deleteMiddle(int pos)
 
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/del",Colors::RED);
-        if(pos<n-1)
-            graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",Colors::RED);
+        graph.drawSubscript(deletedN,std::to_string(pos)+"/del",Colors::RED);
+        if(pos<n)
+            graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",Colors::RED);
         graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         graph.draw(&listNode,pos,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.drawFadeIn(&listNode.begin()->getNext(pos)->data,Colors::RED,Colors::RED,Colors::WHITE);
-        if(pos<n-1)
-            graph.drawFadeIn(&listNode.begin()->getNext(pos+1)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+        graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.drawFadeIn(deletedN,Colors::RED,Colors::RED,Colors::WHITE);
+        if(pos<n)
+            graph.drawFadeIn(&listNode.begin()->getNext(pos)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
 
         graph.draw(&listArrow,0,pos-2,Colors::ORANGE);
-        graph.draw(&listArrow,pos-1,listArrow.size()-1,Colors::BLACK);
-        graph.drawFadeIn(&listArrow.begin()->getNext(pos-1)->data,Colors::ORANGE);
-        if(pos<n-1)
-            graph.drawFadeIn(&listArrow.begin()->getNext(pos)->data,Colors::ORANGE);
+        // graph.draw(&listArrow,pos-1,listArrow.size()-1,Colors::BLACK);
+        graph.draw(&tmpArrow,Colors::BLACK);
+        graph.draw(deletedA,Colors::BLACK);
+        graph.draw(&listArrow,pos,listArrow.size()-1,Colors::BLACK);
+        graph.drawFadeIn(&tmpArrow,Colors::ORANGE);
+        if(pos<n)
+            graph.drawFadeIn(deletedA,Colors::ORANGE);
         //
     }
 }
