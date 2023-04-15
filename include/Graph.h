@@ -5,6 +5,7 @@
 #include "Node.h"
 #include "List.h"
 #include "Arrow.h"
+#include "CodeBox.h"
 
 class Graph
 {
@@ -62,6 +63,9 @@ public:
     void drawGrow(List<Arrow>* list, sf::Color color);
     void drawFadeIn(List<Arrow>* list, int from, int to, sf::Color color);
     void drawFadeOut(List<Arrow>* list, int from, int to, sf::Color color);
+
+    // CodeBox
+    void draw(CodeBox* codeBox, int pos);
 
     void draw();
 

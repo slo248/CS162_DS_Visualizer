@@ -252,6 +252,11 @@ void Graph::drawFadeOut(List<Arrow> *list, int from, int to, sf::Color color)
         drawFadeOut(&list->begin()->getNext(i)->data, color);
 }
 
+void Graph::draw(CodeBox *codeBox, int pos)
+{
+    drawFunc.back().push_back(std::bind(&CodeBox::draw, codeBox, window, pos));
+}
+
 void Graph::draw()
 {
     if(nFrames.empty()) return;
