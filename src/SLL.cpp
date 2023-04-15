@@ -527,6 +527,21 @@ void SLL::update(int pos, int newValue)
     graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     //
+
+    // step 2: while index<pos
+    for(int i=0; i<pos; i++){
+        // substep 1: change color of cur
+        graph.addStep(0.5*FPS);
+
+        graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
+        graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.drawFadeOut(&listNode.begin()->getNext(i)->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+        graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+        //
+    }
+    //
 }
 
 void SLL::deleteWhenSingle()
@@ -918,6 +933,9 @@ void SLL::processInput()
                     }
                 else if(updateBtn->isMouseOver(window)){
                     curBtn=Button::UPDATE;
+                    graph.finishAllSteps();
+                    update(1,3);
+                    curBtn=Button::NONE;
                 }
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
