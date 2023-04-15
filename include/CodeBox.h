@@ -14,6 +14,7 @@ public:
 
     CodeBox(sf::Font* font, std::string path);
     void loadFromFile(std::string path);
+    void draw(sf::RenderWindow* window);
 private:
     sf::RectangleShape rect;
     sf::Text text;
