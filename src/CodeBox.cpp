@@ -12,6 +12,8 @@ CodeBox::CodeBox(sf::Font *font)
 
 void CodeBox::loadFromFile(std::string path)
 {
+    code.clear();
+
     std::ifstream fin(path);
     if(!fin.is_open()){
         std::cout << "Error: code file not found" << std::endl;
