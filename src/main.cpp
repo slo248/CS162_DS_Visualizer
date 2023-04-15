@@ -1,9 +1,10 @@
 #include "SLL.h"
 #include "Figure.h"
+#include "CodeBox.h"
 
 namespace WindowConfig
 {
-    const int WIDTH = 1400;
+    const int WIDTH = 1500;
     const int HEIGHT = 800;
     const int FPS = 60;
     const sf::String TITLE = "Data Structure Visualizer";
@@ -37,6 +38,14 @@ int main()
     }
     //
 
+    // load consolas font
+    sf::Font consolas;
+    if(!consolas.loadFromFile("media/font/consola.ttf")){
+        std::cout << "Error: consolas font not found" << std::endl;
+        return 1;
+    }
+    //
+
     // load background image
     sf::Texture bgTexture;
     if(!bgTexture.loadFromFile("media/image/bg.jpg")){
@@ -51,8 +60,22 @@ int main()
     );
     //
 
-    // gen SLL
-    SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
-    sll.run();
+    // code box
+    CodeBox codeBox(&consolas, "media/code/insertFront.txt");
+    //
+
+    while(window.isOpen()){
+        sf::Event event;
+        while(window.pollEvent(event)){
+            if(event.type == sf::Event::Closed) window.close();
+        }
+        window.clear(sf::Color::White);
+        codeBox.draw(&window);
+        window.display();
+    }
+
+    // // gen SLL
+    // SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
+    // sll.run();
     return 0;
 }

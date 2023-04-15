@@ -4,24 +4,12 @@ CodeBox::CodeBox(sf::Font *font, std::string path)
 {
     text.setFont(*font);
     text.setCharacterSize(CHAR_SIZE);
-    {
-        sf::FloatRect bounds = text.getLocalBounds();
-        text.setOrigin(
-            8.f,
-            bounds.top + bounds.height/2
-        );
-    }
     text.setFillColor(TEXT_COLOR);
 
     rect.setSize(sf::Vector2f(WIDTH, HEIGHT));
     rect.setFillColor(BG_COLOR);
-    {
-        sf::FloatRect bounds = rect.getLocalBounds();
-        rect.setOrigin(
-            bounds.left + bounds.width,
-            bounds.top + bounds.height
-        );
-    }
+
+    loadFromFile(path);
 }
 
 void CodeBox::loadFromFile(std::string path)
@@ -39,20 +27,36 @@ void CodeBox::loadFromFile(std::string path)
 void CodeBox::draw(sf::RenderWindow *window)
 {
     sf::Vector2f O=window->getView().getSize();
-    for(int i=0; i<code.size(); i++){
-        text.setString(code[i]);
+    const int maxBlk=10;
+    for(int i=0; i<10; i++)
+        if(i<code.size()){
+            text.setString(code[i]);
+            {
+                sf::FloatRect bounds = text.getLocalBounds();
+                text.setOrigin(
+                    bounds.left, 
+                    bounds.top  + bounds.height/2.0f
+                );
+            }
 
-        rect.setPosition(
-            O.x,
-            O.y-(code.size()-i-1)*rect.getSize().y
-        );
+            rect.setPosition(
+                O.x-WIDTH,
+                O.y-HEIGHT*(maxBlk-i)
+            );
 
-        text.setPosition(
-            rect.getPosition().x-rect.getSize().x+10.f,
-            rect.getPosition().y-rect.getSize().y/2
-        );
+            text.setPosition(
+                rect.getPosition().x+10.f, 
+                rect.getPosition().y+rect.getSize().y/2
+            );
 
-        window->draw(rect);
-        window->draw(text);
-    }
+            window->draw(rect);
+            window->draw(text);
+        }
+        else{
+            rect.setPosition(
+                O.x-WIDTH,
+                O.y-HEIGHT*(maxBlk-i)
+            );
+            window->draw(rect);
+        }
 }
