@@ -1,0 +1,7 @@
+if empty, return NOT_FOUND
+index = 0, temp = head
+while (temp->value != v)
+  index++, temp = temp->next
+  if temp == null
+    return NOT_FOUND
+return index
