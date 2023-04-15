@@ -1,6 +1,4 @@
 #include "SLL.h"
-#include "Random.h"
-#include "Config.h"
 
 void SLL::insertWhenEmpty(int value)
 {
