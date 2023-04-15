@@ -527,7 +527,10 @@ void SLL::update(int pos, int newValue)
     graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&tmpNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    if(pos)
+        graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    else
+        graph.drawFadeIn(&tmpNode,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     //
 
@@ -537,6 +540,8 @@ void SLL::update(int pos, int newValue)
         graph.addStep(0.5*FPS);
 
         graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
+        if(i>0)
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/cur",Colors::RED);
         graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,i+1,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.draw(&tmpNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -569,8 +574,12 @@ void SLL::update(int pos, int newValue)
     // step 3: cur->value=newValue
     graph.addStep(0.5*FPS);
 
-    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/cur",Colors::RED);
+    if(pos>0){
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/cur",Colors::RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/cur",Colors::RED);
     graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
     graph.draw(&tmpNode,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -972,13 +981,13 @@ void SLL::processInput()
                 else if(updateBtn->isMouseOver(window)){
                     curBtn=Button::UPDATE;
                     graph.finishAllSteps();
-                    update(1,3);
+                    update(getRand(0,listNode.size()-1),getRand(0,99));
                     curBtn=Button::NONE;
                 }
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
                     graph.finishAllSteps();
-                    search(2);
+                    search(getRand(0,99));
                     curBtn=Button::NONE;
                 }
                 else if(deleteBtn->isMouseOver(window)){
