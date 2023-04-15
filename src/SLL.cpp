@@ -245,7 +245,6 @@ void SLL::render()
     }
 
     graph.draw();
-    codeBox.draw(window);
 
     window->display();
 }
