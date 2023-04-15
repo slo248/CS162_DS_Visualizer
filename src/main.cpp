@@ -64,18 +64,8 @@ int main()
     CodeBox codeBox(&consolas, "media/code/insertFront.txt");
     //
 
-    while(window.isOpen()){
-        sf::Event event;
-        while(window.pollEvent(event)){
-            if(event.type == sf::Event::Closed) window.close();
-        }
-        window.clear(sf::Color::White);
-        codeBox.draw(&window);
-        window.display();
-    }
-
-    // // gen SLL
-    // SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
-    // sll.run();
+    // gen SLL
+    SLL sll(&window, &sanf, &bgSprite, WindowConfig::FPS, figure.circle, figure.arrow);
+    sll.run();
     return 0;
 }

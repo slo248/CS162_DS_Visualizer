@@ -12,7 +12,7 @@ public:
     const sf::Color     BG_COLOR = Colors::SILVER;
     const sf::Color     TEXT_COLOR = Colors::BLACK;
 
-    CodeBox(sf::Font* font, std::string path);
+    CodeBox(sf::Font* font);
     void loadFromFile(std::string path);
     void draw(sf::RenderWindow* window);
 private:

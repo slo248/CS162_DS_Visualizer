@@ -1,6 +1,6 @@
 #include "CodeBox.h"
 
-CodeBox::CodeBox(sf::Font *font, std::string path)
+CodeBox::CodeBox(sf::Font *font)
 {
     text.setFont(*font);
     text.setCharacterSize(CHAR_SIZE);
@@ -8,8 +8,6 @@ CodeBox::CodeBox(sf::Font *font, std::string path)
 
     rect.setSize(sf::Vector2f(WIDTH, HEIGHT));
     rect.setFillColor(BG_COLOR);
-
-    loadFromFile(path);
 }
 
 void CodeBox::loadFromFile(std::string path)
