@@ -133,7 +133,7 @@ void SLL::processInput()
                     }
                     else if(curBtn==Button::INSERT && insertMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        insertMiddle(getRand(0,99),getRand(1,listNode.size()-1));
+                        insertMiddle(getRand(0,99),2);
                         codeBox.loadFromFile("media/code/insertMiddle.txt");
                         curBtn=Button::NONE;
                     }
