@@ -218,8 +218,28 @@ void SLL::deleteMiddle(int pos)
 
     Node* deletedN=listNode.pop(pos);
     Arrow* deletedA=listArrow.pop(pos);
+    listArrow.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
+    deletedNode.push_back(deletedN);
+    deletedArrow.push_back(deletedA);
+
     tmpArrow.src=&listNode.begin()->getNext(pos-1)->data;
     tmpArrow.dest=deletedN;
 
-    
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    // step 1: pre=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listNode,pos,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,pos-2,Colors::BLACK);
+    graph.draw(&tmpArrow,Colors::BLACK);
+    graph.draw(deletedA,Colors::BLACK);
+    graph.draw(&listArrow,pos,m-1,Colors::BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
+    graph.draw(&codeBox,1);
+    //
 }
