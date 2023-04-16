@@ -138,14 +138,12 @@ void SLL::processInput()
                     curBtn=Button::UPDATE;
                     graph.finishAllSteps();
                     update(getRand(0,listNode.size()-1),getRand(0,99));
-                    codeBox.loadFromFile("media/code/update.txt");
                     curBtn=Button::NONE;
                 }
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
                     graph.finishAllSteps();
                     search(getRand(0,99));
-                    codeBox.loadFromFile("media/code/search.txt");
                     curBtn=Button::NONE;
                 }
                 else if(deleteBtn->isMouseOver(window)){

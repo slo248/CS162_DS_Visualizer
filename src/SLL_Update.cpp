@@ -2,6 +2,8 @@
 
 void SLL::update(int pos, int newValue)
 {
+    codeBox.loadFromFile("media/code/update.txt");
+
     int n=listNode.size();
     if(n==0 || pos<0 || pos>=n) return;
 

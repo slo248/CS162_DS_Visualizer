@@ -2,6 +2,8 @@
 
 int SLL::search(int value)
 {
+    codeBox.loadFromFile("media/code/search.txt");
+
     int n=listNode.size();
     if(n==0) return -1;
 
