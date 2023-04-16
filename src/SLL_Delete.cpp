@@ -344,4 +344,19 @@ void SLL::deleteMiddle(int pos)
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.draw(&codeBox,6);
     //
+
+    // step 6: normalize
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawMove(&listNode,pos,sf::Vector2f(-DISTANCE,0),Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawMove(&listNode,pos+1,n-1,sf::Vector2f(-DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeIn(&listNode,0,pos-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,pos-1,Colors::ORANGE);
+    graph.draw(&listArrow,pos,m-1,Colors::BLACK);
+    graph.drawFadeIn(&listArrow,0,pos-1,Colors::BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.draw(&codeBox,7);
+    //
 }
