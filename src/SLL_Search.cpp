@@ -56,8 +56,7 @@ int SLL::search(int value)
             graph.draw(&listArrow,0,i-1,Colors::ORANGE);
             graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
             graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
-            graph.draw(&codeBox,3);
-            graph.draw(&codeBox,4);
+            graph.draw(&codeBox,34);
             //
         }
         else{

@@ -26,6 +26,12 @@ void CodeBox::loadFromFile(std::string path)
 
 void CodeBox::draw(sf::RenderWindow *window, int pos)
 {
+    std::vector<int> high;
+    while(pos){
+        high.push_back(pos%10);
+        pos/=10;
+    }
+
     sf::Vector2f O=window->getView().getSize();
     const int maxBlk=10;
     for(int i=0; i<10; i++){
@@ -40,7 +46,8 @@ void CodeBox::draw(sf::RenderWindow *window, int pos)
                 );
             }
             
-            if(i==pos) rect.setFillColor(CUR_LINE);               
+            for(int j:high) if(i==j)
+                rect.setFillColor(CUR_LINE);               
 
             rect.setPosition(
                 O.x-WIDTH,
