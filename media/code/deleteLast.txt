@@ -4,5 +4,4 @@ temp = head->next
 while (temp->next != null)
   pre = pre->next
 pre->next = null
-delete temp
-tail = pre
+delete temp, tail = pre

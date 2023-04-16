@@ -94,33 +94,30 @@ void SLL::deleteFirst()
 
 void SLL::deleteLast()
 {
-    int sz=listNode.size();
-    if(sz<=1){
-        deleteWhenSingle();
-        return;
-    }
-
     const int n=listNode.size();
+    const int m=listArrow.size();
 
     // step 1: assign pre=head
     graph.addStep(0.5*FPS);
 
-    graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
     graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+    graph.draw(&codeBox,1);
     //
 
-    // step 2: 
+    // step 2: temp=head->next
     graph.addStep(0.5*FPS);
 
-    graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->next->data,"tail",Colors::RED);
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listNode,1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->next->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
+    graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->next->data,"temp",Colors::RED);
+    graph.draw(&codeBox,2);
     //
 
     // step 3: traverse tail
@@ -129,13 +126,6 @@ void SLL::deleteLast()
         // substep 1
         graph.addStep(0.5*FPS);
 
-        if(i==1)
-            graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
-        else{
-            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"pre",Colors::RED);
-        }
-        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         graph.draw(&listNode,i,Colors::GREEN,Colors::GREEN,Colors::WHITE);
@@ -144,6 +134,14 @@ void SLL::deleteLast()
         graph.draw(&listArrow.begin()->getNext(i-1)->data,Colors::GREEN);
         graph.drawFadeIn(&listArrow.begin()->getNext(i-1)->data,Colors::BLACK);
         graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+        if(i==1)
+            graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+        else{
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"pre",Colors::RED);
+        }
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"temp",Colors::RED);
+        graph.draw(&codeBox,3);
         //
 
         if(i==n-1) break;
@@ -151,9 +149,6 @@ void SLL::deleteLast()
         // substep 2
         graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"tail",Colors::RED);
         graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
         graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         graph.drawFadeIn(&listNode.begin()->getNext(i-1)->data,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
@@ -165,41 +160,46 @@ void SLL::deleteLast()
         graph.draw(&listArrow,i-1,listArrow.size()-1,Colors::BLACK);
         graph.drawGrow(&listArrow.begin()->getNext(i-1)->data,Colors::ORANGE);
         graph.drawGrow(&listArrow.begin()->getNext(i)->data,Colors::GREEN);
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"temp",Colors::RED);
+        graph.draw(&codeBox,4);
         //
     }
 
     // step 4: shrink the last arrow
     graph.addStep(0.5*FPS);
 
-    if(i>1)
-        graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"tail",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
-    graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-    graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.draw(&listNode,i,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,0,i-2,Colors::ORANGE);
-    graph.drawShrink(&listArrow.begin()->getNext(i-1)->data,Colors::BLACK);
-    graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+    graph.draw(&listNode,0,n-3,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,n-2,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listNode,n-1,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listArrow,0,m-2,Colors::ORANGE);
+    graph.drawShrink(&listArrow.begin()->getNext(m-1)->data,Colors::BLACK);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"pre",Colors::RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/pre",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(n-1)->data,"temp",Colors::RED);
+    graph.draw(&codeBox,5);
     //
 
-    // step 5: delete tail
+    // step 5: delete temp
     graph.addStep(0.5*FPS);
 
-    if(i>1)
-        graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"tail",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",Colors::RED);
-    graph.draw(&listNode,0,i-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-    graph.drawFadeIn(&listNode,0,i-2,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listNode,i-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.drawFadeIn(&listNode.begin()->getNext(i-1)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.drawShrink(&listNode.begin()->getNext(i)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-    graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,0,i-2,Colors::ORANGE);
-    graph.drawFadeIn(&listArrow,0,i-2,Colors::BLACK);
-    graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+    graph.draw(&listNode,0,n-3,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,n-2,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawFadeIn(&listNode,n-2,n-2,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawShrink(&listNode.begin()->getNext(n-1)->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listArrow,0,m-2,Colors::ORANGE);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"tail",Colors::RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",Colors::RED);
+    graph.draw(&codeBox,6);
     //
 
     deletedNode.push_back(listNode.popBack());
