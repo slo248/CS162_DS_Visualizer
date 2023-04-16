@@ -41,63 +41,52 @@ void SLL::deleteWhenSingle()
 void SLL::deleteFirst()
 {
     int sz=listNode.size();
-    if(sz<=1){
-        deleteWhenSingle();
-        return;
-    }
 
     // step 1: assign temp=head
     graph.addStep(0.5*FPS);
 
-    graph.drawSubscript(&listNode.begin()->data,"head/temp",Colors::RED);
     graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head/temp",Colors::RED);
+    graph.draw(&codeBox,1);
     //
 
     // step 2: assign head to next node
-    if(sz>1){
-        graph.addStep(0.5*FPS);
+    graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"temp",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
-        graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listArrow,Colors::BLACK);
-        graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.drawFadeIn(&listNode.begin()->getNext()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-        graph.drawFadeIn(&listArrow.begin()->data,Colors::GREEN);
-    }
+    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,Colors::BLACK);
+    graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawFadeIn(&listNode.begin()->getNext()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawFadeIn(&listArrow.begin()->data,Colors::GREEN);
+    graph.drawSubscript(&listNode.begin()->data,"temp",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
+    graph.draw(&codeBox,2);
     //
 
     // step 3: delete temp
-    if(sz>1){
-        graph.addStep(0.5*FPS);
+    graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->data,"temp",Colors::RED);
-        graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
-        graph.draw(&listNode,1,Colors::GREEN,Colors::GREEN,Colors::WHITE);
-        graph.draw(&listNode,2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
-        graph.drawShrink(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.drawShrink(&listArrow.begin()->data,Colors::GREEN);
-    }
-    else{
-        graph.addStep(0.5*FPS);
-
-        graph.drawShrink(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    }
-    
+    graph.draw(&listNode,1,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,2,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
+    graph.drawShrink(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawShrink(&listArrow.begin()->data,Colors::GREEN);
+    graph.drawSubscript(&listNode.begin()->data,"temp",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
+    graph.draw(&codeBox,3);
+    //
     
     // step 4: move the rest of the list to the left
-    if(sz>1){
-        graph.addStep(0.5*FPS);
+    graph.addStep(0.5*FPS);
 
-        graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
-        graph.drawMove(&listNode,1,sf::Vector2f(-DISTANCE,0),Colors::GREEN,Colors::GREEN,Colors::WHITE);
-        graph.drawMove(&listNode,2,listNode.size()-1,sf::Vector2f(-DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
-    }
-    
+    graph.drawMove(&listNode,1,sf::Vector2f(-DISTANCE,0),Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.drawMove(&listNode,2,listNode.size()-1,sf::Vector2f(-DISTANCE,0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,1,listArrow.size()-1,Colors::BLACK);
+    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",Colors::RED);
+    graph.draw(&codeBox,4);
+    //    
 
     deletedNode.push_back(listNode.popFront());
     deletedArrow.push_back(listArrow.popFront());
