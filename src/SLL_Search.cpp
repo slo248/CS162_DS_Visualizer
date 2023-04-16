@@ -24,9 +24,7 @@ int SLL::search(int value)
     // step 2: while temp->value!=value
     int i=0;
     ListElement<Node>* temp=listNode.begin();
-    for(;temp && temp->data.value!=value; i++, temp=temp->next){
-        if(i==n-1) return -1;
-        
+    for(;temp && temp->data.value!=value; i++, temp=temp->next){        
         // substep 1: change color of temp
         graph.addStep(0.5*FPS);
 
@@ -60,7 +58,17 @@ int SLL::search(int value)
             //
         }
         else{
+            // substep 3: return -1
+            graph.addStep(0.5*FPS);
 
+            graph.draw(&listNode,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+            graph.draw(&listArrow,Colors::ORANGE);
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",Colors::RED);
+            graph.draw(&codeBox,45);
+            //
+
+            return -1;
         }
     }
     //
