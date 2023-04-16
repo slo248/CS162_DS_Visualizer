@@ -31,12 +31,15 @@ void SLL::insertFront(int value)
     listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
     listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
 
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
     // step 1: draw new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
+    graph.draw(&listNode,1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listArrow,1,m-1,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
     graph.draw(&codeBox,0);
@@ -45,9 +48,9 @@ void SLL::insertFront(int value)
     // step 2: draw new arrow
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,1,listNode.size()-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&listArrow,1,listNode.size()-1,Colors::BLACK);
+    graph.draw(&listNode,1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.draw(&listArrow,1,m-1,Colors::BLACK);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
     graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
