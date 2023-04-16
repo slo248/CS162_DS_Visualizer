@@ -156,35 +156,22 @@ void SLL::processInput()
                 }
                     else if (curBtn==Button::DELETE && deleteFirstBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        if(listNode.size()<=1)
-                            deleteWhenSingle();
-                        else
-                            deleteFirst();
-                        codeBox.loadFromFile("media/code/deleteFirst.txt");
+                        if(listNode.size()<=1) deleteWhenSingle();
+                        else deleteFirst();
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteLastBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        if(listNode.size()<=1){
-                            deleteWhenSingle();
-                            codeBox.loadFromFile("media/code/deleteFirst.txt");
-                        }
-                        else{
-                            deleteLast();
-                            codeBox.loadFromFile("media/code/deleteLast.txt");
-                        }
+                        if(listNode.size()<=1) deleteWhenSingle();
+                        else deleteLast();
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        if(listNode.size()<=1){
-                            deleteWhenSingle();
-                            codeBox.loadFromFile("media/code/deleteFirst.txt");
-                        }
-                        else{
-                            deleteMiddle(1);
-                            codeBox.loadFromFile("media/code/deleteMiddle.txt");
-                        }
+                        int pos=1;
+                        if(pos==0) deleteFirst();
+                        else if(pos==listNode.size()-1) deleteLast();
+                        else deleteMiddle(pos);
                         curBtn=Button::NONE;
                     }
                 break;           

@@ -2,7 +2,6 @@ if empty, do nothing
 Node *pre = head
 for (k = 0; k < i-1; k++)
   pre = pre->next
-Node *del = pre->next
-Node *aft = del->next
+Node *del = pre->next, *aft = del->next
 pre->next = aft // bypass del
 delete del

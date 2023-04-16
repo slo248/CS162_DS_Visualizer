@@ -6,7 +6,7 @@
 class CodeBox
 {
 public:
-    const float         WIDTH = 500;
+    const float         WIDTH = 600;
     const float         HEIGHT = 40;
     const float         CHAR_SIZE=23;
     const sf::Color     BG_COLOR = sf::Color(192, 192, 192, 160);
