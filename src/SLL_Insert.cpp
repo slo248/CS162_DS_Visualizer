@@ -4,6 +4,8 @@ void SLL::insertWhenEmpty(int value)
 {
     if(!listNode.empty()) return;
 
+    codeBox.loadFromFile("media/code/insertEmpty.txt");
+
     listNode.pushBack(value);
     listNode.begin()->data.position=START_POSITION;
 
@@ -13,6 +15,7 @@ void SLL::insertWhenEmpty(int value)
     // draw nodes to graph
     graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.draw(&codeBox,0);
 }
 
 void SLL::insertFront(int value)
