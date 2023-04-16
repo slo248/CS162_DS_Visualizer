@@ -156,20 +156,35 @@ void SLL::processInput()
                 }
                     else if (curBtn==Button::DELETE && deleteFirstBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        deleteFirst();
+                        if(listNode.size()<=1)
+                            deleteWhenSingle();
+                        else
+                            deleteFirst();
                         codeBox.loadFromFile("media/code/deleteFirst.txt");
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteLastBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        deleteLast();
-                        codeBox.loadFromFile("media/code/deleteLast.txt");
+                        if(listNode.size()<=1){
+                            deleteWhenSingle();
+                            codeBox.loadFromFile("media/code/deleteFirst.txt");
+                        }
+                        else{
+                            deleteLast();
+                            codeBox.loadFromFile("media/code/deleteLast.txt");
+                        }
                         curBtn=Button::NONE;
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        deleteMiddle(1);
-                        codeBox.loadFromFile("media/code/deleteMiddle.txt");
+                        if(listNode.size()<=1){
+                            deleteWhenSingle();
+                            codeBox.loadFromFile("media/code/deleteFirst.txt");
+                        }
+                        else{
+                            deleteMiddle(1);
+                            codeBox.loadFromFile("media/code/deleteMiddle.txt");
+                        }
                         curBtn=Button::NONE;
                     }
                 break;           
