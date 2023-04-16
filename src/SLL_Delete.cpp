@@ -231,7 +231,7 @@ void SLL::deleteMiddle(int pos)
     // step 1: pre=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,0,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.draw(&listNode,pos,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
@@ -241,5 +241,34 @@ void SLL::deleteMiddle(int pos)
     graph.draw(&listArrow,pos,m-1,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
     graph.draw(&codeBox,1);
+    //
+
+    // step 2: for loop
+    for(int i=0; i<pos; i++){
+        // substep 1
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,0,i-1,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listNode,i,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+        graph.draw(&listNode,i+1,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listNode,pos,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
+        graph.draw(&listArrow,i,pos-2,Colors::BLACK);
+        graph.draw(&tmpArrow,Colors::BLACK);
+        graph.draw(deletedA,Colors::BLACK);
+        graph.draw(&listArrow,pos,m-1,Colors::BLACK);
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"/pre",Colors::RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",Colors::RED);
+        graph.draw(&codeBox,2);
+        //
+        if(i==pos-1) break;
+        // substep 2
+        //
+    }
     //
 }
