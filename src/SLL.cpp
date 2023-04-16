@@ -168,7 +168,7 @@ void SLL::processInput()
                     }
                     else if (curBtn==Button::DELETE && deleteMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
-                        int pos=1;
+                        int pos=2;
                         if(pos==0) deleteFirst();
                         else if(pos==listNode.size()-1) deleteLast();
                         else deleteMiddle(pos);
