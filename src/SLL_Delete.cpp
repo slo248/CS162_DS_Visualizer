@@ -2,11 +2,37 @@
 
 void SLL::deleteWhenSingle()
 {
+    graph.addStep(0.5*FPS);
+    graph.draw(&codeBox,0);
+
     if(listNode.size()==0) return;
-    // step 1: delete head
+
+    graph.draw(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    
+    // step 1: temp=head
     graph.addStep(0.5*FPS);
 
-    graph.drawShrink(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listNode.begin()->data,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.draw(&codeBox,1);
+    //
+
+    // step 2: head=null
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.draw(&codeBox,2);
+    //
+
+    // step 3: delete temp
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.draw(&codeBox,3);
     //
 
     deletedNode.push_back(listNode.popFront());
