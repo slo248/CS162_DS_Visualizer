@@ -22,6 +22,8 @@ void SLL::insertFront(int value)
         return;
     }
 
+    codeBox.loadFromFile("media/code/insertFront.txt");
+
     listNode.pushFront(value);
     listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
     listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
@@ -78,6 +80,8 @@ void SLL::insertBack(int value)
         insertWhenEmpty(value);
         return;
     }
+
+    codeBox.loadFromFile("media/code/insertBack.txt");
 
     listNode.pushBack(value);
     listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data, &listNode.rbegin()->data));
@@ -198,6 +202,8 @@ void SLL::insertMiddle(int value, int pos)
         insertBack(value);
         return;
     }
+
+    codeBox.loadFromFile("media/code/insertMiddle.txt");
 
     listNode.insert(value,pos);
     listNode.begin()->getNext(pos)->data.position=START_POSITION+sf::Vector2f(DISTANCE*pos, DISTANCE);

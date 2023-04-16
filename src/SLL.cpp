@@ -122,19 +122,16 @@ void SLL::processInput()
                     else if(curBtn==Button::INSERT && insertFrontBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         insertFront(getRand(0,99));
-                        codeBox.loadFromFile("media/code/insertFront.txt");
                         curBtn=Button::NONE;
                     }
                     else if(curBtn==Button::INSERT && insertBackBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         insertBack(getRand(0,99));
-                        codeBox.loadFromFile("media/code/insertBack.txt");
                         curBtn=Button::NONE;
                     }
                     else if(curBtn==Button::INSERT && insertMiddleBtn->isMouseOver(window)){
                         graph.finishAllSteps();
                         insertMiddle(getRand(0,99),2);
-                        codeBox.loadFromFile("media/code/insertMiddle.txt");
                         curBtn=Button::NONE;
                     }
                 else if(updateBtn->isMouseOver(window)){
