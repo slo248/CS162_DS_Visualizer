@@ -329,4 +329,19 @@ void SLL::deleteMiddle(int pos)
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",Colors::RED);
     graph.draw(&codeBox,5);
     //
+
+    // step 5: delete del
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawShrink(deletedN,Colors::RED,Colors::RED,Colors::WHITE);
+    graph.draw(&listNode,pos,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,pos-1,Colors::ORANGE);
+    graph.draw(&listArrow,pos,m-1,Colors::BLACK);
+    graph.drawShrink(deletedA,Colors::ORANGE);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.draw(&codeBox,6);
+    //
 }
