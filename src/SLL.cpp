@@ -143,7 +143,7 @@ void SLL::processInput()
                 else if(searchBtn->isMouseOver(window)){
                     curBtn=Button::SEARCH;
                     graph.finishAllSteps();
-                    search(getRand(0,99));
+                    search(2);
                     curBtn=Button::NONE;
                 }
                 else if(deleteBtn->isMouseOver(window)){
