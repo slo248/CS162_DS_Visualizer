@@ -271,6 +271,7 @@ void SLL::deleteMiddle(int pos)
         graph.addStep(0.5*FPS);
 
         graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+        graph.draw(&listNode,i+1,pos-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.draw(deletedN,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.draw(&listNode,pos,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
         graph.drawFadeOut(&listNode,i,i,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
@@ -308,5 +309,24 @@ void SLL::deleteMiddle(int pos)
     graph.drawSubscript(deletedN,std::to_string(pos)+"/del",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",Colors::RED);
     graph.draw(&codeBox,4);
+    //
+
+    // step 4: pre->next=aft
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-2,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
+    graph.draw(&listNode,pos-1,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
+    graph.drawMove(deletedN,sf::Vector2f(0,DISTANCE),Colors::RED,Colors::RED,Colors::WHITE);
+    graph.draw(&listNode,pos,Colors::GREEN,Colors::GREEN,Colors::WHITE);
+    graph.draw(&listNode,pos+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
+    graph.draw(&listArrow,0,pos-2,Colors::ORANGE);
+    graph.draw(deletedA,Colors::ORANGE);
+    graph.draw(&listArrow,pos,m-1,Colors::BLACK);
+    graph.drawGrow(&listArrow,pos-1,Colors::ORANGE);
+    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
+    graph.drawSubscript(deletedN,"del",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",Colors::RED);
+    graph.draw(&codeBox,5);
     //
 }
