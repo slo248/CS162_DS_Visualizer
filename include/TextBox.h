@@ -33,6 +33,7 @@ public:
     void                    update(float dt);
     void                    draw(sf::RenderWindow* window);
     int                     getValue();
+    void                    setPosition(const sf::Vector2f& position);
 
 private:
     sf::RectangleShape      box;
