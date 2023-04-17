@@ -92,7 +92,7 @@ void TextBox::setPosition(const sf::Vector2f &position)
 {
     box.setPosition(position);
     text.setPosition(
-        position.x+3.f,
-        position.y + box.getSize().y / 2.f
+        position.x-box.getSize().x/2+10.f,
+        position.y
     );
 }
