@@ -6,11 +6,18 @@ const int DELETE_KEY = 8;
 const int ESCAPE_KEY = 27;
 
 TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &bgColor, const sf::Color &textColor, const float &charSize, const int &limit):
-    isSelected(true), flag(true), str("1"), limit(limit)
+    isSelected(false), flag(true), str("1"), limit(limit)
 {
     box.setSize(size);
-    box.setPosition(position);
     box.setFillColor(bgColor);
+    {
+        sf::FloatRect bounds = box.getLocalBounds();
+        box.setOrigin(
+            bounds.left+bounds.width/2,
+            bounds.top+bounds.height/2
+        );
+    }
+    box.setPosition(position);
 
     text.setFont(*font);
     text.setString(str);
@@ -21,13 +28,13 @@ TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &p
         sf::FloatRect bounds = text.getLocalBounds();
         text.setOrigin(
             bounds.left,
-            bounds.top + bounds.height / 2.f
+            bounds.top+bounds.height/2
         );
     }
 
     text.setPosition(
-        position.x+3.f,
-        position.y + size.y / 2.f
+        position.x-box.getSize().x/2+10.f,
+        position.y
     );
 }
 
