@@ -24,6 +24,7 @@ public:
         const float&            charSize = TextBoxConfig::CHAR_SIZE
     );
 
+    void                    addChar(char c);
     void                    update(sf::Time dt);
     void                    draw(sf::RenderWindow* window);
 

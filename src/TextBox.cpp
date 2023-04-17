@@ -16,6 +16,14 @@ TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &p
     );
 }
 
+void TextBox::addChar(char c)
+{
+    if(str.size() < limit){
+        str += c;
+        text.setString(str);
+    }
+}
+
 void TextBox::update(sf::Time dt)
 {
     timer += dt;
