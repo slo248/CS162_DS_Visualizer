@@ -31,6 +31,19 @@ Button::Button(
     );
 }
 
+bool Button::isMouseOver(sf::RenderWindow *window)
+{
+    sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+    sf::Vector2f rectPos=mRect.getPosition();
+    sf::FloatRect bounds=mRect.getLocalBounds();
+    bool res=bounds.contains(mousePos.x-rectPos.x, mousePos.y-rectPos.y);
+    if(res)
+        mRect.setColor(BG_MOUSE_OVER);
+    else
+        mRect.setColor(BG_COLOR);
+    return res;
+}
+
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mRect);

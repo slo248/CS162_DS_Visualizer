@@ -13,6 +13,7 @@ public:
         sf::Vector2f    position
     );
 
+    bool isMouseOver(sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:

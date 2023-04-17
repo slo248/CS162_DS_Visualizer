@@ -78,6 +78,8 @@ void SLL::run()
         processInput();
         update();
         
+        btn.isMouseOver(window);
+
         window->clear();
 
         window->draw(*bg);
