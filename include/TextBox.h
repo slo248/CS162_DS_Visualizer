@@ -9,7 +9,7 @@ namespace TextBoxConfig
     const sf::Vector2f      POSITION(200, 300);
     const sf::Color         BG_COLOR(Colors::BLUE);
     const sf::Color         TEXT_COLOR(Colors::BLACK);
-    const float             CHAR_SIZE(20);
+    const float             CHAR_SIZE(22);
 }
 
 class TextBox

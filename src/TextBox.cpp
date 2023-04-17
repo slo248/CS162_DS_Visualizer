@@ -1,18 +1,28 @@
 #include "TextBox.h"
 
 TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &bgColor, const sf::Color &textColor, const float &charSize):
-    isSelected(true), flag(true), limit(20)
+    isSelected(true), flag(true), limit(20), str("1")
 {
     box.setSize(size);
     box.setPosition(position);
     box.setFillColor(bgColor);
 
     text.setFont(*font);
+    text.setString(str);
     text.setCharacterSize(charSize);
     text.setFillColor(textColor);
+
+    {
+        sf::FloatRect bounds = text.getLocalBounds();
+        text.setOrigin(
+            bounds.left,
+            bounds.top + bounds.height / 2.f
+        );
+    }
+
     text.setPosition(
-        position.x + 3.f,
-        position.y + 0.05f * size.y
+        position.x+3.f,
+        position.y + size.y / 2.f
     );
 }
 
@@ -30,7 +40,7 @@ void TextBox::update(float dt)
     if(timer > 1.0f){
         timer = 0;
         text.setString(str);
-        if(isSelected && flag)
+        if(isSelected && flag && str.size() < limit)
             text.setString(str + "_");
         flag=!flag;
     }
