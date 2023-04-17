@@ -32,6 +32,7 @@ public:
     void                    addChar(char c);
     void                    update(float dt);
     void                    draw(sf::RenderWindow* window);
+    int                     getValue();
 
 private:
     sf::RectangleShape      box;

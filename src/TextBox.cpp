@@ -66,3 +66,8 @@ void TextBox::draw(sf::RenderWindow *window)
     window->draw(box);
     window->draw(text);
 }
+
+int TextBox::getValue()
+{
+    return std::stoi(str);
+}
