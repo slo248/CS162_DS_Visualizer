@@ -29,7 +29,7 @@ public:
 
     bool                    isMouseOver(sf::RenderWindow* window);
     void                    setSelect(bool flag);
-    void                    addChar(char c);
+    void                    handleInput(char c);
     void                    update(float dt);
     void                    draw(sf::RenderWindow* window);
     int                     getValue();

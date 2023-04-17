@@ -98,7 +98,7 @@ void SLL::processInput()
                 break;
             case sf::Event::TextEntered:
             {
-                textBox.addChar(event.text.unicode);
+                textBox.handleInput(event.text.unicode);
                 break;
             }
             case sf::Event::MouseButtonReleased:

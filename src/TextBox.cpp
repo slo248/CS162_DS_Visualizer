@@ -2,6 +2,9 @@
 
 using namespace TextBoxConfig;
 
+const int DELETE_KEY = 8;
+const int ESCAPE_KEY = 27;
+
 TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &bgColor, const sf::Color &textColor, const float &charSize, const int &limit):
     isSelected(true), flag(true), str("1"), limit(limit)
 {
@@ -41,12 +44,18 @@ void TextBox::setSelect(bool flag)
     isSelected = flag;
 }
 
-void TextBox::addChar(char c)
+void TextBox::handleInput(char c)
 {
-    if(isSelected && c < 128 && str.size() < limit){
-        str += c;
-        text.setString(str);
+    if(!isSelected || c>=128) return;
+
+    if(c == DELETE_KEY){
+        if(str.size() > 0)
+            str.erase(str.size()-1);
     }
+    else if(c==ESCAPE_KEY)
+        isSelected=false;
+    else if('0'<=c && c<='9' && str.size() < limit)
+        str += c;
 }
 
 void TextBox::update(float dt)
