@@ -72,7 +72,7 @@ void Node::drawSubscript(sf::RenderWindow *window, sf::Text *text, std::string s
         );
     }
     text->setFillColor(textColor);
-    text->setPosition(position.x, position.y+2*CircleConfig::RADIUS);
+    text->setPosition(position.x, position.y+2*Config::Circle::RADIUS);
     text->setScale(scaleFactor);
     window->draw(*text);
 }

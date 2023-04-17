@@ -9,9 +9,9 @@ void Arrow::update(ArrowFigure *arrowFig)
     arrowFig->setPosition(src->position);
 
     float dist=sqrt(pow(dest->position.x-src->position.x,2)+pow(dest->position.y-src->position.y,2))
-        -2*CircleConfig::HALF_WIDTH;
+        -2*Config::Circle::HALF_WIDTH;
     // scale length
-    arrowFig->setScale(dist/ArrowConfig::WIDTH,1);
+    arrowFig->setScale(dist/Config::Arrow::WIDTH,1);
 
     // rotate
     float angle=atan2(dest->position.y-src->position.y,dest->position.x-src->position.x);
@@ -19,8 +19,8 @@ void Arrow::update(ArrowFigure *arrowFig)
 
     // move arrow to just outside the node
     arrowFig->move(
-        CircleConfig::HALF_WIDTH*cos(angle),
-        CircleConfig::HALF_WIDTH*sin(angle)
+        Config::Circle::HALF_WIDTH*cos(angle),
+        Config::Circle::HALF_WIDTH*sin(angle)
     );
 }
 

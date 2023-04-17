@@ -1,5 +1,7 @@
 #include "Figure.h"
 
+using namespace Config;
+
 Figure::Figure()
 {
     genCircle();
@@ -16,8 +18,8 @@ Figure::~Figure()
 void Figure::genCircle()
 {
     circle = new sf::CircleShape;
-    circle->setRadius(CircleConfig::RADIUS);
-    circle->setOutlineThickness(CircleConfig::THICKNESS);
+    circle->setRadius(Circle::RADIUS);
+    circle->setOutlineThickness(Circle::THICKNESS);
     {
         sf::FloatRect bounds = circle->getLocalBounds();
         circle->setOrigin(
@@ -29,5 +31,5 @@ void Figure::genCircle()
 
 void Figure::genArrow()
 {
-    arrow = new ArrowFigure(ArrowConfig::BAR_WIDTH, ArrowConfig::TRIANGLE_WIDTH, ArrowConfig::HEIGHT_EACH);
+    arrow = new ArrowFigure(Arrow::BAR_WIDTH, Arrow::TRIANGLE_WIDTH, Arrow::HEIGHT_EACH);
 }
