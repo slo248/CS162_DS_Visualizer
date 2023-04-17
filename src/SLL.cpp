@@ -9,6 +9,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* b
     curBtn(Button::NONE),
     isPause(false),
     codeBox(cons),
+    textBox(sanf),
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
@@ -95,6 +96,12 @@ void SLL::processInput()
                 isPause=false;
                 window->setFramerateLimit(FPS);
                 break;
+            case sf::Event::TextEntered:
+            {
+                char c = event.text.unicode;
+                if(0<='c' && c<='9') textBox.addChar(c);
+                break;
+            }
             case sf::Event::MouseButtonReleased:
                 if(createBtn->isMouseOver(window)){
                     curBtn=Button::CREATE;
@@ -208,6 +215,8 @@ void SLL::update()
         deleteLastBtn->update(window);
         deleteMiddleBtn->update(window);
     }
+
+    textBox.update(1.0f/FPS);
 }
 
 void SLL::render()
@@ -242,6 +251,8 @@ void SLL::render()
     }
 
     graph.draw();
+
+    textBox.draw(window);
 
     window->display();
 }

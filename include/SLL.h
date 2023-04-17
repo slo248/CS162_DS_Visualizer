@@ -4,6 +4,7 @@
 #include "Graph.h"
 #include "HNeed.h"
 #include "Button.h"
+#include "TextBox.h"
 
 class SLL
 {
@@ -56,6 +57,7 @@ private:
     
     Graph graph;
     CodeBox codeBox;
+    TextBox textBox;
 
     List<Node> listNode;
     List<Arrow> listArrow;

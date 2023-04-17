@@ -5,8 +5,8 @@
 
 namespace TextBoxConfig
 {
-    const sf::Vector2f      SIZE(400, 100);
-    const sf::Vector2f      POSITION(200, 200);
+    const sf::Vector2f      SIZE(400, 70);
+    const sf::Vector2f      POSITION(200, 300);
     const sf::Color         BG_COLOR(Colors::BLUE);
     const sf::Color         TEXT_COLOR(Colors::BLACK);
     const float             CHAR_SIZE(20);
@@ -25,7 +25,7 @@ public:
     );
 
     void                    addChar(char c);
-    void                    update(sf::Time dt);
+    void                    update(float dt);
     void                    draw(sf::RenderWindow* window);
 
 private:
@@ -33,7 +33,7 @@ private:
     sf::Text                text;
     std::string             str;
 
-    sf::Time                timer;
+    float                   timer;
     bool                    isSelected;
     int                     limit;
 };

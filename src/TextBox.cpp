@@ -24,11 +24,11 @@ void TextBox::addChar(char c)
     }
 }
 
-void TextBox::update(sf::Time dt)
+void TextBox::update(float dt)
 {
     timer += dt;
-    if(timer.asSeconds() > 1.0f){
-        timer = sf::Time::Zero;
+    if(timer > 1.0f){
+        timer = 0;
         if(isSelected){
             if(str.size() < limit)
                 str += '_';
