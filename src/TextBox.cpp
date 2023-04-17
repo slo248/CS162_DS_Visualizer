@@ -34,6 +34,11 @@ bool TextBox::isMouseOver(sf::RenderWindow *window)
     return bounds.contains(mousePos.x-boxPos.x, mousePos.y-boxPos.y);
 }
 
+void TextBox::setSelect(bool flag)
+{
+    isSelected = flag;
+}
+
 void TextBox::addChar(char c)
 {
     if(str.size() < limit){

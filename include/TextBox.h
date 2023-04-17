@@ -27,6 +27,7 @@ public:
     );
 
     bool                    isMouseOver(sf::RenderWindow* window);
+    void                    setSelect(bool flag);
     void                    addChar(char c);
     void                    update(float dt);
     void                    draw(sf::RenderWindow* window);
