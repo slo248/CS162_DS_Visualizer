@@ -7,15 +7,10 @@ Button::Button(
     sf::Font*       font,
     std::string     str,
     sf::Texture*    bgTexture,
-    sf::Vector2f    size,
     sf::Vector2f    position
 )
 {
     mRect.setTexture(*bgTexture);
-    mRect.setScale(
-        size.x / bgTexture->getSize().x,
-        size.y / bgTexture->getSize().y
-    );
     mRect.setPosition(position);
     mRect.setColor(BG_COLOR);
 
@@ -31,8 +26,8 @@ Button::Button(
         );
     }
     mText.setPosition(
-        position.x + size.x / 2,
-        position.y + size.y / 2
+        position.x + mRect.getLocalBounds().width/2.0f,
+        position.y + mRect.getLocalBounds().height/2.0f
     );
 }
 
