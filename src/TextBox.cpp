@@ -26,6 +26,14 @@ TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &p
     );
 }
 
+bool TextBox::isMouseOver(sf::RenderWindow *window)
+{
+    sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+    sf::FloatRect bounds=box.getGlobalBounds();
+    sf::Vector2f boxPos=box.getPosition();
+    return bounds.contains(mousePos.x-boxPos.x, mousePos.y-boxPos.y);
+}
+
 void TextBox::addChar(char c)
 {
     if(str.size() < limit){

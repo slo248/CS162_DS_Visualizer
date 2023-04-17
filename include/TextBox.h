@@ -26,6 +26,7 @@ public:
         const int&              limit = TextBoxConfig::LIMIT
     );
 
+    bool                    isMouseOver(sf::RenderWindow* window);
     void                    addChar(char c);
     void                    update(float dt);
     void                    draw(sf::RenderWindow* window);
