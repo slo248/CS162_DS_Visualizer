@@ -1,7 +1,7 @@
 #include "Arrow.h"
 #include "Config.h"
 #include "Motion.h"
-#include "HNeed.h"
+#include "Global.h"
 
 void Arrow::update(ArrowFigure *arrowFig)
 {

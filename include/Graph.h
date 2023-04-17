@@ -1,7 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "HNeed.h"
+#include "Global.h"
 #include "Node.h"
 #include "List.h"
 #include "Arrow.h"

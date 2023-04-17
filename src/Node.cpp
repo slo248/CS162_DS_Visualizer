@@ -1,6 +1,6 @@
 #include "Node.h"
 #include "Motion.h"
-#include "HNeed.h"
+#include "Global.h"
 #include "Config.h"
 
 void Node::draw(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text* num, sf::Color numColor)

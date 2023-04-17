@@ -2,9 +2,7 @@
 #define SLL_H
 
 #include "Graph.h"
-#include "HNeed.h"
-#include "Button.h"
-#include "TextBox.h"
+#include "Global.h"
 
 class SLL
 {
@@ -57,35 +55,11 @@ private:
     
     Graph graph;
     CodeBox codeBox;
-    TextBox textBox;
 
     List<Node> listNode;
     List<Arrow> listArrow;
     Node tmpNode;
     Arrow tmpArrow;
-
-    sf::RectangleShape* inputBG;
-
-    Button::Type curBtn;
-
-    Button* createBtn;
-        Button* emptyBtn;
-        Button* randomBtn;
-        Button* loadFromFileBtn;
-
-    Button* insertBtn;
-        Button* insertFrontBtn;
-        Button* insertBackBtn;
-        Button* insertMiddleBtn;
-
-    Button* updateBtn;
-
-    Button* searchBtn;
-
-    Button* deleteBtn;
-        Button* deleteFirstBtn;
-        Button* deleteLastBtn;
-        Button* deleteMiddleBtn;
 
     std::vector<Node*> deletedNode;
     std::vector<Arrow*> deletedArrow;

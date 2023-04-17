@@ -1,7 +1,7 @@
 #ifndef CODE_BOX_H
 #define CODE_BOX_H
 
-#include "HNeed.h"
+#include "Global.h"
 
 class CodeBox
 {
