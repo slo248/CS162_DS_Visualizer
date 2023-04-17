@@ -17,11 +17,12 @@ Button::Button(
         size.y / bgTexture->getSize().y
     );
     mRect.setPosition(position);
+    mRect.setColor(BG_COLOR);
 
     mText.setFont(*font);
     mText.setString(str);
     mText.setCharacterSize(CHAR_SIZE);
-    mText.setFillColor(sf::Color::White);
+    mText.setFillColor(TEXT_COLOR);
     {
         sf::FloatRect textRect = mText.getLocalBounds();
         mText.setOrigin(
