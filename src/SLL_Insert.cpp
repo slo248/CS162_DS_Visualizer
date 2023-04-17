@@ -41,7 +41,7 @@ void SLL::insertFront(int value)
     graph.drawGrow(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
     graph.draw(&listArrow,1,m-1,Colors::BLACK);
     graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"node",Colors::RED);
     graph.draw(&codeBox,0);
     //
 
@@ -53,7 +53,7 @@ void SLL::insertFront(int value)
     graph.draw(&listArrow,1,m-1,Colors::BLACK);
     graph.drawGrow(&listArrow.begin()->data,Colors::ORANGE);
     graph.drawSubscript(&listNode.begin()->next->data,"head",Colors::RED);
-    graph.drawSubscript(&listNode.begin()->data,"vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"node",Colors::RED);
     graph.draw(&codeBox,1);
     //
 
@@ -65,7 +65,7 @@ void SLL::insertFront(int value)
     graph.drawFadeIn(&listNode.begin()->data,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
     graph.drawFadeOut(&listArrow.begin()->data,Colors::ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head/node",Colors::RED);
     graph.draw(&codeBox,2);
     //
 
@@ -75,7 +75,7 @@ void SLL::insertFront(int value)
     graph.drawMove(&listNode,1,listNode.size()-1,sf::Vector2f(DISTANCE, 0),Colors::WHITE,Colors::BLACK,Colors::BLACK);
     graph.drawMove(&listNode.begin()->data,START_POSITION-listNode.begin()->data.position,Colors::GREEN,Colors::GREEN,Colors::WHITE);
     graph.draw(&listArrow,Colors::BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head/vtx",Colors::RED);
+    graph.drawSubscript(&listNode.begin()->data,"head/node",Colors::RED);
     graph.draw(&codeBox,3);
     //
 }
