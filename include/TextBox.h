@@ -24,6 +24,7 @@ public:
         const float&            charSize = TextBoxConfig::CHAR_SIZE
     );
 
+    void                    update(sf::Time dt);
     void                    draw(sf::RenderWindow* window);
 
 private:
@@ -31,6 +32,7 @@ private:
     sf::Text                text;
     std::string             str;
 
+    sf::Time                timer;
     bool                    isSelected;
     int                     limit;
 };
