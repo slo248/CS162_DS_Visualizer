@@ -5,8 +5,17 @@
 
 class Button
 {
+public:
+    Button(
+        sf::Font*       font,
+        std::string     str,
+        sf::Texture*    bgTexture,
+        sf::Vector2f    size,
+        sf::Vector2f    position
+    );
+
 private:
-    sf::Sprite*     mRect;
+    sf::Sprite      mRect;
     sf::Text        mText;
 };
 

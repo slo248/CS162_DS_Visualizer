@@ -24,7 +24,7 @@ namespace Config
     {
         const float HEIGHT              = 60.f;
         const float WIDTH               = 100.f;
-        const float CHAR_SIZE           = 30.f;
+        const float CHAR_SIZE           = 25.f;
         const sf::Color BG_COLOR        = GREEN;
         const sf::Color BG_MOUSE_OVER   = BLACK;
         const sf::Color TEXT_COLOR      = WHITE;
