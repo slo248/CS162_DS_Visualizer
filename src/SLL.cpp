@@ -41,18 +41,18 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* b
     loadFromFileBtn->setPosition(sf::Vector2f(3*createBtn->getSize().x+10.f,windowSize.y-5*loadFromFileBtn->getSize().y));
 
     insertBtn->setPosition(sf::Vector2f(0,windowSize.y-4*insertBtn->getSize().y));
-    insertFrontBtn->setPosition(sf::Vector2f(insertBtn->getSize().x+10.f,windowSize.y-4*insertFrontBtn->getSize().y));
-    insertBackBtn->setPosition(sf::Vector2f(2*insertBtn->getSize().x+10.f,windowSize.y-4*insertBackBtn->getSize().y));
-    insertMiddleBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-4*insertMiddleBtn->getSize().y));
+    insertFrontBtn->setPosition(sf::Vector2f(insertBtn->getSize().x+10.f,windowSize.y-5*insertFrontBtn->getSize().y));
+    insertBackBtn->setPosition(sf::Vector2f(2*insertBtn->getSize().x+10.f,windowSize.y-5*insertBackBtn->getSize().y));
+    insertMiddleBtn->setPosition(sf::Vector2f(3*insertBtn->getSize().x+10.f,windowSize.y-5*insertMiddleBtn->getSize().y));
 
     updateBtn->setPosition(sf::Vector2f(0,windowSize.y-3*updateBtn->getSize().y));
 
     searchBtn->setPosition(sf::Vector2f(0,windowSize.y-2*searchBtn->getSize().y));
 
     deleteBtn->setPosition(sf::Vector2f(0,windowSize.y-1*deleteBtn->getSize().y));
-    deleteFirstBtn->setPosition(sf::Vector2f(deleteBtn->getSize().x+10.f,windowSize.y-1*deleteFirstBtn->getSize().y));
-    deleteLastBtn->setPosition(sf::Vector2f(2*deleteBtn->getSize().x+10.f,windowSize.y-1*deleteLastBtn->getSize().y));
-    deleteMiddleBtn->setPosition(sf::Vector2f(3*deleteBtn->getSize().x+10.f,windowSize.y-1*deleteMiddleBtn->getSize().y));
+    deleteFirstBtn->setPosition(sf::Vector2f(deleteBtn->getSize().x+10.f,windowSize.y-5*deleteFirstBtn->getSize().y));
+    deleteLastBtn->setPosition(sf::Vector2f(2*deleteBtn->getSize().x+10.f,windowSize.y-5*deleteLastBtn->getSize().y));
+    deleteMiddleBtn->setPosition(sf::Vector2f(3*deleteBtn->getSize().x+10.f,windowSize.y-5*deleteMiddleBtn->getSize().y));
 
     inputBG=new sf::RectangleShape(sf::Vector2f(4*ButtonConfig::WIDTH,5*ButtonConfig::HEIGHT));
     inputBG->setFillColor(sf::Color(192,192,192,150));
