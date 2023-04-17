@@ -45,9 +45,9 @@ void SLL::makeList()
     graph.addStep(0.5*FPS);
 
     // draw nodes to graph
-    graph.drawGrow(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
+    graph.drawGrow(&listNode,WHITE,BLACK,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
     
     // draw arrows to graph
-    graph.drawGrow(&listArrow,Colors::BLACK);
+    graph.drawGrow(&listArrow,BLACK);
 }

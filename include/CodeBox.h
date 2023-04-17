@@ -11,7 +11,7 @@ public:
     const float         CHAR_SIZE=23;
     const sf::Color     BG_COLOR = sf::Color(192, 192, 192, 160);
     const sf::Color     CUR_LINE = sf::Color(255, 217, 61);
-    const sf::Color     TEXT_COLOR = Colors::BLACK;
+    const sf::Color     TEXT_COLOR = BLACK;
 
     CodeBox(sf::Font* font);
     void loadFromFile(std::string path);

@@ -55,7 +55,7 @@ void SLL::update()
 
 void SLL::render()
 {
-    window->clear(Colors::WHITE);
+    window->clear(WHITE);
 
     window->draw(*bg);
 

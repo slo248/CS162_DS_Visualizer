@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include "SFML/Graphics.hpp"
+#include "Global.h"
 
 namespace CircleConfig
 {
@@ -22,9 +22,9 @@ namespace ButtonConfig
 {
     const float HEIGHT = 60.f;
     const float WIDTH = 100.f;
-    const sf::Color BG_COLOR = Colors::GREEN;
-    const sf::Color BG_MOUSE_OVER = Colors::BLACK;
-    const sf::Color TEXT_COLOR = Colors::WHITE;
+    const sf::Color BG_COLOR = GREEN;
+    const sf::Color BG_MOUSE_OVER = BLACK;
+    const sf::Color TEXT_COLOR = WHITE;
 }
 
 #endif // CONFIG_H

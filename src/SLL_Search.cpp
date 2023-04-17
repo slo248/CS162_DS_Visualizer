@@ -14,10 +14,10 @@ int SLL::search(int value)
     // step 1: index=0, temp=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.draw(&listArrow,Colors::BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"0/head/temp",Colors::RED);
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
     graph.draw(&codeBox,1);
     //
 
@@ -29,16 +29,16 @@ int SLL::search(int value)
         graph.addStep(0.5*FPS);
 
         if(i){
-            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",Colors::RED);
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
         }
         else
-            graph.drawSubscript(&listNode.begin()->data,"0/head/temp",Colors::RED);
-        graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-        graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-        graph.drawFadeOut(&temp->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-        graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-        graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+            graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
+        graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeOut(&temp->data,ORANGE,ORANGE,WHITE);
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
         graph.draw(&codeBox,2);
         //
 
@@ -46,14 +46,14 @@ int SLL::search(int value)
             // substep 2: temp=temp->next, index++
             graph.addStep(0.5*FPS);
 
-            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/temp",Colors::RED);
-            graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-            graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-            graph.drawFadeIn(&temp->next->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-            graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-            graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
-            graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/temp",RED);
+            graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
+            graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
+            graph.drawFadeIn(&temp->next->data,ORANGE,ORANGE,WHITE);
+            graph.draw(&listArrow,0,i-1,ORANGE);
+            graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
+            graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,ORANGE);
             graph.draw(&codeBox,34);
             //
         }
@@ -61,10 +61,10 @@ int SLL::search(int value)
             // substep 3: return -1
             graph.addStep(0.5*FPS);
 
-            graph.draw(&listNode,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-            graph.draw(&listArrow,Colors::ORANGE);
-            graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",Colors::RED);
+            graph.draw(&listNode,WHITE,ORANGE,ORANGE);
+            graph.draw(&listArrow,ORANGE);
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
             graph.draw(&codeBox,45);
             //
 
@@ -76,16 +76,16 @@ int SLL::search(int value)
     graph.addStep(0.5*FPS);
 
     if(i){
-        graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
-        graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",Colors::RED);
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
     }
     else
-        graph.drawSubscript(&listNode.begin()->data,"0/head/temp",Colors::RED);
-    graph.draw(&listNode,0,i,Colors::WHITE,Colors::ORANGE,Colors::ORANGE);
-    graph.draw(&listNode,i+1,n-1,Colors::WHITE,Colors::BLACK,Colors::BLACK);
-    graph.draw(&temp->data,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
-    graph.draw(&listArrow,0,i-1,Colors::ORANGE);
-    graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
+        graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
+    graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&temp->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow,0,i-1,ORANGE);
+    graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
     graph.draw(&codeBox,6);
 
     return i;
