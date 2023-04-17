@@ -15,8 +15,14 @@ namespace TextBoxConfig
 class TextBox
 {
 public:
-    TextBox();
-    ~TextBox();
+    TextBox(
+        sf::Font*               font,
+        const sf::Vector2f&     size = TextBoxConfig::SIZE,
+        const sf::Vector2f&     position = TextBoxConfig::POSITION,
+        const sf::Color&        bgColor = TextBoxConfig::BG_COLOR,
+        const sf::Color&        textColor = TextBoxConfig::TEXT_COLOR,
+        const float&            charSize = TextBoxConfig::CHAR_SIZE
+    );
 
 private:
     sf::RectangleShape      box;
