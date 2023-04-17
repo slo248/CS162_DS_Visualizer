@@ -5,11 +5,12 @@
 
 namespace TextBoxConfig
 {
-    const sf::Vector2f      SIZE(400, 70);
+    const sf::Vector2f      SIZE(100, 50);
     const sf::Vector2f      POSITION(200, 300);
     const sf::Color         BG_COLOR(Colors::BLUE);
     const sf::Color         TEXT_COLOR(Colors::BLACK);
     const float             CHAR_SIZE(22);
+    const int               LIMIT(7);
 }
 
 class TextBox
@@ -21,7 +22,8 @@ public:
         const sf::Vector2f&     position = TextBoxConfig::POSITION,
         const sf::Color&        bgColor = TextBoxConfig::BG_COLOR,
         const sf::Color&        textColor = TextBoxConfig::TEXT_COLOR,
-        const float&            charSize = TextBoxConfig::CHAR_SIZE
+        const float&            charSize = TextBoxConfig::CHAR_SIZE,
+        const int&              limit = TextBoxConfig::LIMIT
     );
 
     void                    addChar(char c);
