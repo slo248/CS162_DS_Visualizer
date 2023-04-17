@@ -1,5 +1,7 @@
 #include "TextBox.h"
 
+using namespace TextBoxConfig;
+
 TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &bgColor, const sf::Color &textColor, const float &charSize, const int &limit):
     isSelected(true), flag(true), str("1"), limit(limit)
 {
@@ -50,7 +52,7 @@ void TextBox::addChar(char c)
 void TextBox::update(float dt)
 {
     timer += dt;
-    if(timer > 1.0f){
+    if(timer > BLINK_TIME){
         timer = 0;
         text.setString(str);
         if(isSelected && flag && str.size() < limit)

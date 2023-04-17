@@ -10,6 +10,7 @@ namespace TextBoxConfig
     const sf::Color         BG_COLOR(Colors::BLUE);
     const sf::Color         TEXT_COLOR(Colors::BLACK);
     const float             CHAR_SIZE(22);
+    const float             BLINK_TIME(0.5f);
     const int               LIMIT(7);
 }
 
