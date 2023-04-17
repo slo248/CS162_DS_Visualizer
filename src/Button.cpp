@@ -31,3 +31,10 @@ Button::Button(
     }
     mText.setPosition(size.x/2.f,size.y/2.f);
 }
+
+void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mRect);
+    states.transform *= mRect.getTransform();
+    target.draw(mText);
+}

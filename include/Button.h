@@ -3,7 +3,7 @@
 
 #include "Global.h"
 
-class Button
+class Button: public sf::Drawable
 {
 public:
     Button(
@@ -13,6 +13,8 @@ public:
         sf::Vector2f    size,
         sf::Vector2f    position
     );
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     sf::Sprite      mRect;
