@@ -99,7 +99,7 @@ void SLL::processInput()
             case sf::Event::TextEntered:
             {
                 char c = event.text.unicode;
-                if(0<='c' && c<='9') textBox.addChar(c);
+                if(0<='0' && c<='9') textBox.addChar(c);
                 break;
             }
             case sf::Event::MouseButtonReleased:

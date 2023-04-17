@@ -33,6 +33,7 @@ private:
     sf::Text                text;
     std::string             str;
 
+    bool                    flag;
     float                   timer;
     bool                    isSelected;
     int                     limit;
