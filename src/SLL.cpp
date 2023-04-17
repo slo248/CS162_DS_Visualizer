@@ -54,7 +54,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* b
     deleteLastBtn->setPosition(sf::Vector2f(2*deleteBtn->getSize().x+10.f,windowSize.y-5*deleteLastBtn->getSize().y));
     deleteMiddleBtn->setPosition(sf::Vector2f(3*deleteBtn->getSize().x+10.f,windowSize.y-5*deleteMiddleBtn->getSize().y));
 
-    inputBG=new sf::RectangleShape(sf::Vector2f(4*ButtonConfig::WIDTH,5*ButtonConfig::HEIGHT));
+    inputBG=new sf::RectangleShape(sf::Vector2f(3*ButtonConfig::WIDTH,5*ButtonConfig::HEIGHT));
     inputBG->setFillColor(sf::Color(192,192,192,150));
     inputBG->setPosition(sf::Vector2f(10.f+ButtonConfig::WIDTH,windowSize.y-5*ButtonConfig::HEIGHT));
 }

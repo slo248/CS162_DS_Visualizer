@@ -302,8 +302,8 @@ void SLL::deleteMiddle(int pos)
     graph.draw(&tmpArrow,Colors::BLACK);
     graph.draw(deletedA,Colors::BLACK);
     graph.draw(&listArrow,pos,m-1,Colors::BLACK);
-    graph.drawFadeIn(&tmpArrow,Colors::ORANGE);
-    graph.drawFadeIn(deletedA,Colors::ORANGE);
+    graph.drawGrow(&tmpArrow,Colors::ORANGE);
+    graph.drawGrow(deletedA,Colors::ORANGE);
     graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",Colors::RED);
     graph.drawSubscript(deletedN,std::to_string(pos)+"/del",Colors::RED);
