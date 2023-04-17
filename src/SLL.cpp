@@ -98,11 +98,11 @@ void SLL::processInput()
                 break;
             case sf::Event::TextEntered:
             {
-                char c = event.text.unicode;
-                if(0<='0' && c<='9') textBox.addChar(c);
+                textBox.addChar(event.text.unicode);
                 break;
             }
             case sf::Event::MouseButtonReleased:
+                textBox.setSelect(textBox.isMouseOver(window));
                 if(createBtn->isMouseOver(window)){
                     curBtn=Button::CREATE;
                 }

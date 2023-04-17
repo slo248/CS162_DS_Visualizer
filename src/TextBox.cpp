@@ -29,7 +29,7 @@ TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &p
 bool TextBox::isMouseOver(sf::RenderWindow *window)
 {
     sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-    sf::FloatRect bounds=box.getGlobalBounds();
+    sf::FloatRect bounds=box.getLocalBounds();
     sf::Vector2f boxPos=box.getPosition();
     return bounds.contains(mousePos.x-boxPos.x, mousePos.y-boxPos.y);
 }
@@ -41,7 +41,7 @@ void TextBox::setSelect(bool flag)
 
 void TextBox::addChar(char c)
 {
-    if(str.size() < limit){
+    if(isSelected && c < 128 && str.size() < limit){
         str += c;
         text.setString(str);
     }
