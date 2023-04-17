@@ -10,5 +10,14 @@ TextBox::TextBox(sf::Font *font, const sf::Vector2f &size, const sf::Vector2f &p
     text.setFont(*font);
     text.setCharacterSize(charSize);
     text.setFillColor(textColor);
-    text.setPosition(position);
+    text.setPosition(
+        position.x + 3.f,
+        position.y + 0.05f * size.y
+    );
+}
+
+void TextBox::draw(sf::RenderWindow *window)
+{
+    window->draw(box);
+    window->draw(text);
 }

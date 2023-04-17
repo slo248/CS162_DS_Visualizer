@@ -24,6 +24,8 @@ public:
         const float&            charSize = TextBoxConfig::CHAR_SIZE
     );
 
+    void                    draw(sf::RenderWindow* window);
+
 private:
     sf::RectangleShape      box;
     sf::Text                text;
