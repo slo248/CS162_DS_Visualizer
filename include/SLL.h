@@ -51,6 +51,8 @@ private:
 
     int FPS;
     sf::RenderWindow* window;
+    sf::Font* sanf;
+    sf::Font* cons;
     sf::Sprite* bg;
     
     Graph graph;

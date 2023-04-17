@@ -1,6 +1,7 @@
 #include "SLL.h"
 #include "Random.h"
 #include "Config.h"
+#include "Button.h"
 
 SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
     FPS(FPS),
@@ -8,6 +9,8 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* b
     bg(bg),
     isPause(false),
     codeBox(cons),
+    sanf(sanf),
+    cons(cons),
     graph(window, sanf, circle, arrowFig)
 {
     graph.clear();
@@ -55,7 +58,7 @@ void SLL::update()
 
 void SLL::render()
 {
-    window->clear(WHITE);
+    window->clear();
 
     window->draw(*bg);
 
@@ -66,11 +69,21 @@ void SLL::render()
 
 void SLL::run()
 {
-    randomList(4);
-    makeList();
+    sf::Texture texture;
+    texture.loadFromFile("media/image/button.png");
+
+    Button btn(sanf,"Create",&texture, sf::Vector2f(200, 100), sf::Vector2f(200, 400));
+
     while(window->isOpen()){
         processInput();
         update();
-        render();
+        
+        window->clear();
+
+        window->draw(*bg);
+
+        window->draw(btn);
+
+        window->display();
     }
 }

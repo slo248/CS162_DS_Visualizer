@@ -27,7 +27,7 @@ namespace Config
         const float CHAR_SIZE           = 25.f;
         const sf::Color BG_COLOR        = GREEN;
         const sf::Color BG_MOUSE_OVER   = BLACK;
-        const sf::Color TEXT_COLOR      = WHITE;
+        const sf::Color TEXT_COLOR      = BLACK;
     }
 }
 

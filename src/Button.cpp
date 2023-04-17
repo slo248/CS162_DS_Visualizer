@@ -30,12 +30,14 @@ Button::Button(
             textRect.top  + textRect.height/2.0f
         );
     }
-    mText.setPosition(size.x/2.f,size.y/2.f);
+    mText.setPosition(
+        position.x + size.x / 2,
+        position.y + size.y / 2
+    );
 }
 
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mRect);
-    states.transform *= mRect.getTransform();
     target.draw(mText);
 }

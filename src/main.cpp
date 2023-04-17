@@ -9,7 +9,7 @@ namespace WindowConfig
     const int FPS = 60;
     const sf::String TITLE = "Data Structure Visualizer";
     const sf::Uint32 STYLE = sf::Style::Titlebar | sf::Style::Close;
-    const sf::ContextSettings SETTINGS = sf::ContextSettings(0, 0, 10);
+    const sf::ContextSettings SETTINGS = sf::ContextSettings(0, 0, 16);
 }
 
 int main()
