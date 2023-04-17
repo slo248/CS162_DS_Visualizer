@@ -64,7 +64,7 @@ void SLL::update(int pos, int newValue)
             graph.drawFadeIn(&tmpNode,Colors::ORANGE,Colors::ORANGE,Colors::WHITE);
         graph.draw(&listArrow,0,i-1,Colors::ORANGE);
         graph.draw(&listArrow,i,listArrow.size()-1,Colors::BLACK);
-        graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
+        graph.drawGrow(&listArrow.begin()->getNext(i)->data,Colors::ORANGE);
         graph.drawSubscript(&listNode.begin()->data,"head",Colors::RED);
         graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/cur",Colors::RED);
         graph.draw(&codeBox,3);
