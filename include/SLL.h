@@ -64,6 +64,8 @@ private:
     Node tmpNode;
     Arrow tmpArrow;
 
+    sf::RectangleShape* inputBG;
+
     Button::Type curBtn;
 
     Button* createBtn;
