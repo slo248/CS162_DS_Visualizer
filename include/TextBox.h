@@ -10,7 +10,9 @@ public:
         sf::Font* font,
         sf::Vector2f position
     );
-
+    
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    
 private:
     sf::RectangleShape  mRect;
     sf::Text            mText;

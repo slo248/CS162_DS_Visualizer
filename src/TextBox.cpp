@@ -20,5 +20,14 @@ TextBox::TextBox(sf::Font *font, sf::Vector2f position): mStr("1")
         );
     }
     mText.setFillColor(TEXT_COLOR);
-    mText.setPosition(position);
+    mText.setPosition(
+        position.x + 10.f,
+        position.y + HEIGHT / 2.0f
+    );
+}
+
+void TextBox::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mRect, states);
+    target.draw(mText, states);
 }
