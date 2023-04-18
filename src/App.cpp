@@ -48,6 +48,7 @@ void App::processInput()
     sf::Event event;
     while (window.pollEvent(event)){
         sll->handleEvent(event);
+        sllControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:

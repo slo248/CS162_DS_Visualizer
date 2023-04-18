@@ -14,9 +14,6 @@ public:
 private:
     sf::Font* mFont;
 
-    int curOption;
-    int curSuboption;
-
     void genOptions();
     void genSuboptions();
 };

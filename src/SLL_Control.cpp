@@ -2,7 +2,7 @@
 #include "Config.h"
 
 SLL_Control::SLL_Control(sf::Font *font): 
-    mFont(font), curOption(-1), curSuboption(-1)
+    mFont(font)
 {
     genOptions();
     genSuboptions();
