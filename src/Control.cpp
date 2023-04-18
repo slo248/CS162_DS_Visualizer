@@ -5,7 +5,8 @@ Control::Control(sf::Font* font):
     curOption(-1),
     curSuboption(-1),
     mFont(font),
-    inputBox(nullptr),
+    inputBox1(nullptr),
+    inputBox2(nullptr),
     subOption(nullptr)
 {
     if (!btnTexture.loadFromFile("media/image/button.png"))
@@ -25,13 +26,15 @@ Control::Control(sf::Font* font):
 
 Control::~Control()
 {
-    if(inputBox) delete inputBox;
+    if(inputBox1) delete inputBox1;
+    if(inputBox2) delete inputBox2;
     if(subOption) delete subOption;
 }
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
-    if(inputBox) inputBox->handleEvent(event,window);
+    if(inputBox1) inputBox1->handleEvent(event,window);
+    if(inputBox2) inputBox2->handleEvent(event,window);
 
     switch (event.type)
     {
@@ -62,7 +65,8 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
 
 void Control::update(float dt)
 {
-    if(inputBox) inputBox->update(dt);
+    if(inputBox1) inputBox1->update(dt);
+    if(inputBox2) inputBox2->update(dt);
 }
 
 int Control::getCommand()
@@ -85,6 +89,34 @@ void Control::loadSubOption()
             Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
         )
     );
+
+    if(inputBox1) delete inputBox1;
+    inputBox1=nullptr;
+    if(suboptions[curOption][curSuboption].size()>1 && suboptions[curOption][curSuboption][1]!="")
+    {
+        inputBox1=new InputBox(
+            mFont,
+            sf::Vector2f(
+                btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-Config::InputBox::WIDTH)/2,
+                Config::Window::HEIGHT-btnTexture.getSize().y*(options.size()-1)+(btnTexture.getSize().y-Config::InputBox::HEIGHT)/2
+            ),
+            suboptions[curOption][curSuboption][1]
+        );
+    }
+
+    if(inputBox2) delete inputBox2;
+    inputBox2=nullptr;
+    if(suboptions[curOption][curSuboption].size()>1 && suboptions[curOption][curSuboption][2]!="")
+    {
+        inputBox2=new InputBox(
+            mFont,
+            sf::Vector2f(
+                btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-Config::InputBox::WIDTH)/2,
+                Config::Window::HEIGHT-btnTexture.getSize().y*(options.size()-2)+(btnTexture.getSize().y-Config::InputBox::HEIGHT)/2
+            ),
+            suboptions[curOption][curSuboption][2]
+        );
+    }
 }
 
 void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
@@ -93,8 +125,10 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(option, states);
     if(curSuboption!=-1)
         target.draw(bgSuboptionSprite, states);
-    if(inputBox)
-        target.draw(*inputBox, states);
+    if(inputBox1)
+        target.draw(*inputBox1, states);
+    if(inputBox2)
+        target.draw(*inputBox2, states);
     if(subOption)
         target.draw(*subOption, states);
 }
