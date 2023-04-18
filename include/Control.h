@@ -28,6 +28,7 @@ protected:
     std::vector<Button> options;
     std::vector<std::vector<std::vector<std::string>>> suboptions;
     sf::Texture     btnTexture;
+    sf::Texture     triangleBtnTexture;
     sf::Texture     bgSuboptionTexture;
     sf::Texture     suboptionTexture;
     sf::Sprite      bgSuboptionSprite;

@@ -13,6 +13,10 @@ Control::Control(sf::Font* font):
     {
         std::cout << "Error loading btn.png" << std::endl;
     }
+    if (!triangleBtnTexture.loadFromFile("media/image/triangleBtn.png"))
+    {
+        std::cout << "Error loading triangleBtn.png" << std::endl;
+    }
     if (!bgSuboptionTexture.loadFromFile("media/image/bgSuboption.png"))
     {
         std::cout << "Error loading bgSuboption.png" << std::endl;
