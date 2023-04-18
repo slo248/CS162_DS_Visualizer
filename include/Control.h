@@ -3,13 +3,14 @@
 
 #include "Global.h"
 #include "Button.h"
-#include "TextBox.h"
+#include "InputBox.h"
 #include <queue>
 
 class Control
 {
 public: 
     Control(sf::Font* font);
+    ~Control();
 
     void    handleEvent(sf::Event& event, sf::RenderWindow* window);
     void    handleRealTimeInput(sf::RenderWindow* window);
@@ -23,12 +24,13 @@ protected:
 
     std::vector<Button> options;
     std::vector<std::vector<std::string>> suboption;
-    sf::Texture  btnTexture;
-    sf::Texture  bgSuboptionTexture;
-    sf::Sprite   bgSuboptionSprite;
-    sf::Font*    mFont;
+    sf::Texture     btnTexture;
+    sf::Texture     bgSuboptionTexture;
+    sf::Sprite      bgSuboptionSprite;
+    sf::Font*       mFont;
 
-    TextBox      textBox;
+    TextBox         textBox;
+    InputBox*       inputBox;
 };
 
 #endif // CONTROL_H

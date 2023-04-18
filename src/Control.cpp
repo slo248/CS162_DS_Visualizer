@@ -17,6 +17,11 @@ Control::Control(sf::Font* font):
     bgSuboptionSprite.setTexture(bgSuboptionTexture);
 }
 
+Control::~Control()
+{
+    if(inputBox) delete inputBox;
+}
+
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     textBox.handleEvent(event,window);
