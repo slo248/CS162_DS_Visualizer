@@ -1,5 +1,6 @@
 #include "App.h"
 #include "Config.h"
+#include "Random.h"
 
 using namespace Config::Window;
 
@@ -65,7 +66,7 @@ void App::update()
     switch (sllControl->getCommand())
     {
         case 0:
-            sll->insertFront(2);
+            sll->insertFront(getRand(0,99));
             break;
     }
 }
