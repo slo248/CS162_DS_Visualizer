@@ -13,7 +13,7 @@ public:
         sf::Vector2f    position
     );
 protected:
-    sf::Sprite*    mRect;
+    sf::Sprite     mRect;
     sf::Text       mText;
 };
 
