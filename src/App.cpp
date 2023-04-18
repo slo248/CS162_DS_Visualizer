@@ -47,3 +47,12 @@ void App::draw()
     sll->draw();
     window.display();
 }
+
+void App::run()
+{
+    while (window.isOpen())
+    {
+        processInput();
+        draw();
+    }
+}

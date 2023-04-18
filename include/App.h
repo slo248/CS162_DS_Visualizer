@@ -16,6 +16,8 @@ public:
     void draw();
     //
 
+    void run();
+
 private:
     sf::RenderWindow    window;
     sf::Font            cons, sanf;
