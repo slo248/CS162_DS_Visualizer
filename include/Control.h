@@ -3,6 +3,7 @@
 
 #include "Global.h"
 #include "Button.h"
+#include "TextBox.h"
 #include <queue>
 
 class Control
@@ -25,6 +26,8 @@ protected:
     sf::Texture  bgSuboptionTexture;
     sf::Sprite   bgSuboptionSprite;
     sf::Font*    mFont;
+
+    TextBox      textBox;
 };
 
 #endif // CONTROL_H

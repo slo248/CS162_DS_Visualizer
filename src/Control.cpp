@@ -3,7 +3,8 @@
 Control::Control(sf::Font* font):
     curOption(-1),
     curSuboption(-1),
-    mFont(font)
+    mFont(font),
+    textBox(font, sf::Vector2f(400,400))
 {
     if (!btnTexture.loadFromFile("media/image/button.png"))
     {

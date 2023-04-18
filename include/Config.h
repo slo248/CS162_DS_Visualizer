@@ -43,7 +43,7 @@ namespace Config
     namespace TextBox
     {
         const float HEIGHT              = 40.f;
-        const float WIDTH               = 60.f;
+        const float WIDTH               = 100.f;
         const float CHAR_SIZE           = 23.f;
         const float CURSOR_BLINK_TIME   = 0.5f;
         const sf::Color BG_COLOR        = BLACK;
