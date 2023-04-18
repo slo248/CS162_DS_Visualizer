@@ -72,7 +72,7 @@ void SLL::run()
     sf::Texture texture;
     texture.loadFromFile("media/image/button.png");
 
-    Button btn(sanf,"Create",&texture, sf::Vector2f(200, 400));
+    Button btn(sanf,&texture,"Create",sf::Vector2f(200, 400));
 
     while(window->isOpen()){
         processInput();

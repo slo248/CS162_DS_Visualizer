@@ -1,24 +1,19 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "Global.h"
+#include "RectText.h"
 
-class Button: public sf::Drawable
+class Button: public RectText
 {
 public:
     Button(
         sf::Font*       font,
-        std::string     str,
         sf::Texture*    bgTexture,
+        std::string     str,
         sf::Vector2f    position
     );
 
     bool isMouseOver(sf::RenderWindow* window);
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-private:
-    sf::Sprite      mRect;
-    sf::Text        mText;
 };
 
 #endif // BUTTON_H
