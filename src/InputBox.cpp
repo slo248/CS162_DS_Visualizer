@@ -23,6 +23,11 @@ InputBox::InputBox(sf::Font *font, sf::Vector2f position, std::string str):
     ));
 }
 
+void InputBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
+{
+    mTextBox.handleEvent(event, window);
+}
+
 void InputBox::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mRect);

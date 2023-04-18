@@ -12,6 +12,7 @@ public:
         std::string str
     );
 
+    void handleEvent(sf::Event& event, sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
