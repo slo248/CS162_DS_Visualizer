@@ -61,27 +61,28 @@ void App::processInput()
 
 void App::update()
 {
-    if(!sll->isDoneAllSteps()) return;
+    sllControl->update(1.0f/FPS);
 
-    switch (sllControl->getCommand())
-    {
-        case 0:
-            sll->randomList(getRand(0,10));
-            sll->makeList();
-            break;
-        case 1:
-            sll->insertFront(getRand(0,99));
-            break;
-        case 2:
-            sll->search(getRand(0,99));
-            break;
-        case 3:
-            sll->update(getRand(0,10),getRand(0,99));
-            break;
-        case 4:
-            sll->deleteFirst();
-            break;
-    }
+    if(!sll->isDoneAllSteps()) 
+        switch (sllControl->getCommand())
+        {
+            case 0:
+                sll->randomList(getRand(0,10));
+                sll->makeList();
+                break;
+            case 1:
+                sll->insertFront(getRand(0,99));
+                break;
+            case 2:
+                sll->search(getRand(0,99));
+                break;
+            case 3:
+                sll->update(getRand(0,10),getRand(0,99));
+                break;
+            case 4:
+                sll->deleteFirst();
+                break;
+        }
 }
 
 void App::draw()
