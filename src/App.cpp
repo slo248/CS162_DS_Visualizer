@@ -26,6 +26,10 @@ App::App():
         std::cout << "Error loading bg.jpg" << std::endl;
     }
     bgSprite.setTexture(bgImage);
+    bgSprite.setScale(
+        (float)WIDTH/bgImage.getSize().x,
+        (float)HEIGHT/bgImage.getSize().y
+    );
 
     sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
 }
