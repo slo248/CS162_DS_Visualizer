@@ -123,12 +123,13 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     for (auto &option : options)
         target.draw(option, states);
-    if(curSuboption!=-1)
+    if(curSuboption!=-1){
         target.draw(bgSuboptionSprite, states);
-    if(inputBox1)
-        target.draw(*inputBox1, states);
-    if(inputBox2)
-        target.draw(*inputBox2, states);
-    if(subOption)
-        target.draw(*subOption, states);
+        if(inputBox1)
+            target.draw(*inputBox1, states);
+        if(inputBox2)
+            target.draw(*inputBox2, states);
+        if(subOption)
+            target.draw(*subOption, states);
+    }
 }
