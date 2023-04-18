@@ -5,11 +5,18 @@ using namespace Config::InputBox;
 
 InputBox::InputBox(sf::Font *font, sf::Vector2f position, std::string str):
     mRect(sf::Vector2f(WIDTH,HEIGHT)),
-    mText(str, *font, 20),
+    mText(str, *font, CHAR_SIZE),
     mTextBox(font, position)
 {
     mRect.setFillColor(BG_COLOR);
     mText.setFillColor(TEXT_COLOR); 
+    {
+        sf::FloatRect bounds=mText.getLocalBounds();
+        mText.setOrigin(
+            bounds.left,
+            bounds.top + bounds.height / 2.0f
+        );
+    }
     setPosition(position);   
 }
 

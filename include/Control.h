@@ -29,7 +29,6 @@ protected:
     sf::Sprite      bgSuboptionSprite;
     sf::Font*       mFont;
 
-    TextBox         textBox;
     InputBox*       inputBox;
 };
 

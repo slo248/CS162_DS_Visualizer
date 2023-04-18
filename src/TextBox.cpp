@@ -8,7 +8,13 @@ TextBox::TextBox(sf::Font *font, sf::Vector2f position):
 {
     mRect.setSize(sf::Vector2f(WIDTH, HEIGHT));
     mRect.setFillColor(BG_COLOR);
-    mRect.setPosition(position);
+    {
+        sf::FloatRect rect = mRect.getLocalBounds();
+        mRect.setOrigin(
+            rect.left, 
+            rect.top + rect.height / 2.0f
+        );
+    }
 
     mText.setFont(*font);
     mText.setCharacterSize(CHAR_SIZE);
@@ -21,10 +27,8 @@ TextBox::TextBox(sf::Font *font, sf::Vector2f position):
         );
     }
     mText.setFillColor(TEXT_COLOR);
-    mText.setPosition(
-        position.x + 10.f,
-        position.y + HEIGHT / 2.0f
-    );
+    
+    setPosition(position);
 }
 
 int TextBox::getValue()
@@ -55,7 +59,7 @@ void TextBox::setPosition(sf::Vector2f position)
     mRect.setPosition(position);
     mText.setPosition(
         position.x + 10.f,
-        position.y + HEIGHT / 2.0f
+        position.y
     );
 }
 

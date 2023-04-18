@@ -18,7 +18,8 @@ void SLL_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(option, states);
     if(curSuboption!=-1)
         target.draw(bgSuboptionSprite, states);
-    target.draw(textBox, states);
+    if(inputBox)
+        target.draw(*inputBox, states);
 }
 
 void SLL_Control::genOptions(sf::Vector2f windowSize)

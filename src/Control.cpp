@@ -4,7 +4,7 @@ Control::Control(sf::Font* font):
     curOption(-1),
     curSuboption(-1),
     mFont(font),
-    textBox(font, sf::Vector2f(400,400))
+    inputBox(nullptr)
 {
     if (!btnTexture.loadFromFile("media/image/button.png"))
     {
@@ -15,6 +15,8 @@ Control::Control(sf::Font* font):
         std::cout << "Error loading bgSuboption.png" << std::endl;
     }
     bgSuboptionSprite.setTexture(bgSuboptionTexture);
+
+    inputBox=new InputBox(mFont,sf::Vector2f(500,500),"v = ");
 }
 
 Control::~Control()
@@ -24,7 +26,7 @@ Control::~Control()
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
-    textBox.handleEvent(event,window);
+    if(inputBox) inputBox->handleEvent(event,window);
 
     switch (event.type)
     {
@@ -54,7 +56,7 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
 
 void Control::update(float dt)
 {
-    textBox.update(dt);
+    if(inputBox) inputBox->update(dt);
 }
 
 int Control::getCommand()
