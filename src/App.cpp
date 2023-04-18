@@ -62,7 +62,7 @@ void App::update()
 {
     if(!sll->isDoneAllSteps()) return;
 
-    switch (sllControl->getCurOption())
+    switch (sllControl->getCommand())
     {
         case 0:
             sll->insertFront(2);

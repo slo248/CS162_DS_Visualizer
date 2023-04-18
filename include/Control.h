@@ -3,6 +3,7 @@
 
 #include "Global.h"
 #include "Button.h"
+#include <queue>
 
 class Control
 {
@@ -11,11 +12,12 @@ public:
 
     void    handleEvent(sf::Event& event, sf::RenderWindow* window);
     void    handleRealTimeInput(sf::RenderWindow* window);
-    int     getCurOption() const;
+    int     getCommand();
 
 protected:
     int curOption;
     int curSuboption;
+    std::queue<int> command;
 
     std::vector<Button> options;
     std::vector<std::vector<std::string>> suboption;

@@ -27,6 +27,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                     {
                         curOption=i;
                         curSuboption=0;
+                        command.push(i);
                         break;
                     }
                 }
@@ -41,7 +42,10 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
         btn.isMouseOver(window);
 }
 
-int Control::getCurOption() const
+int Control::getCommand()
 {
-    return curOption;
+    if(command.empty()) return -1;
+    int cmd=command.front();
+    command.pop();
+    return cmd;
 }
