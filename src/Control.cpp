@@ -19,6 +19,8 @@ Control::Control(sf::Font* font):
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
+    textBox.handleEvent(event,window);
+
     switch (event.type)
     {
         case sf::Event::MouseButtonReleased:
@@ -33,7 +35,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                         command.push(i);
                         break;
                     }
-                }
+                }                
             }
             break;
     }

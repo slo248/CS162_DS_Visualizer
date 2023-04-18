@@ -42,6 +42,7 @@ void TextBox::update(float dt)
             }
         }
     }
+    else mText.setString(mStr);
 }
 
 void TextBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
