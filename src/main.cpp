@@ -2,6 +2,7 @@
 
 int main()
 {
+    system("cls");
     try
     {
         App app;

@@ -2,6 +2,8 @@
 
 int SLL::search(int value)
 {
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/search.txt");
 
     int n=listNode.size();

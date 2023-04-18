@@ -2,6 +2,8 @@
 
 void SLL::update(int pos, int newValue)
 {
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/update.txt");
 
     int n=listNode.size();

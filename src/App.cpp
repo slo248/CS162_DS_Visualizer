@@ -48,6 +48,7 @@ void App::processInput()
             case sf::Event::KeyPressed:
                 if(event.key.code==sf::Keyboard::I)
                     sll->insertFront(2);
+                break;
             case sf::Event::Closed:
                 window.close();
                 break;

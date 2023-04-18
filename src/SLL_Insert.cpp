@@ -4,6 +4,8 @@ void SLL::insertWhenEmpty(int value)
 {
     if(!listNode.empty()) return;
 
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/insertEmpty.txt");
 
     listNode.pushBack(value);
@@ -24,6 +26,8 @@ void SLL::insertFront(int value)
         insertWhenEmpty(value);
         return;
     }
+
+    graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/insertFront.txt");
 
@@ -86,6 +90,8 @@ void SLL::insertBack(int value)
         insertWhenEmpty(value);
         return;
     }
+
+    graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/insertBack.txt");
 
@@ -208,6 +214,8 @@ void SLL::insertMiddle(int value, int pos)
         insertBack(value);
         return;
     }
+
+    graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/insertMiddle.txt");
 

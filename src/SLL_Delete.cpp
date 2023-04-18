@@ -2,6 +2,8 @@
 
 void SLL::deleteWhenSingle()
 {
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/deleteFirst.txt");
 
     graph.addStep(0.5*FPS);
@@ -42,6 +44,8 @@ void SLL::deleteWhenSingle()
 
 void SLL::deleteFirst()
 {
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/deleteFirst.txt");
 
     int sz=listNode.size();
@@ -98,6 +102,8 @@ void SLL::deleteFirst()
 
 void SLL::deleteLast()
 {
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/deleteLast.txt");
 
     const int n=listNode.size();
@@ -214,6 +220,8 @@ void SLL::deleteLast()
 
 void SLL::deleteMiddle(int pos)
 {
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("media/code/deleteMiddle.txt");
 
     Node* deletedN=listNode.pop(pos);
