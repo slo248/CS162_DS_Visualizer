@@ -32,11 +32,13 @@ App::App():
     );
 
     sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    sllControl=new SLL_Control(&sanf);
 }
 
 App::~App()
 {
     if(sll) delete sll;
+    if(sllControl) delete sllControl;
 }
 
 void App::processInput()
@@ -57,6 +59,7 @@ void App::draw()
 {
     window.clear();
     window.draw(bgSprite);
+    window.draw(*sllControl);
     sll->draw();
     window.display();
 }

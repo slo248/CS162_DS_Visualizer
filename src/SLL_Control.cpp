@@ -16,11 +16,11 @@ void SLL_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 void SLL_Control::genOptions()
 {
-    options.push_back(Button(mFont, &btnSprite, "Create", sf::Vector2f(0, 500)));
-    options.push_back(Button(mFont, &btnSprite, "Insert", sf::Vector2f(0, 500+2*Config::Button::HEIGHT)));
-    options.push_back(Button(mFont, &btnSprite, "Search", sf::Vector2f(0, 500+3*Config::Button::HEIGHT)));
-    options.push_back(Button(mFont, &btnSprite, "Update", sf::Vector2f(0, 500+4*Config::Button::HEIGHT)));
-    options.push_back(Button(mFont, &btnSprite, "Delete", sf::Vector2f(0, 500+5*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Create", sf::Vector2f(0, 400+0*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Insert", sf::Vector2f(0, 400+1*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Search", sf::Vector2f(0, 400+2*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Update", sf::Vector2f(0, 400+3*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Delete", sf::Vector2f(0, 400+4*Config::Button::HEIGHT)));
 }
 
 void SLL_Control::genSuboptions()
