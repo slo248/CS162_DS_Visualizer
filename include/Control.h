@@ -8,7 +8,7 @@
 class Control
 {
 public: 
-    Control();
+    Control(sf::Font* font);
 
     void    handleEvent(sf::Event& event, sf::RenderWindow* window);
     void    handleRealTimeInput(sf::RenderWindow* window);
@@ -24,6 +24,7 @@ protected:
     sf::Texture  btnTexture;
     sf::Texture  bgSuboptionTexture;
     sf::Sprite   bgSuboptionSprite;
+    sf::Font*    mFont;
 };
 
 #endif // CONTROL_H

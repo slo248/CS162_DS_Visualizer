@@ -2,7 +2,7 @@
 #include "Config.h"
 
 SLL_Control::SLL_Control(sf::Font *font, sf::Vector2f windowSize): 
-    mFont(font)
+    Control(font)
 {
     genOptions(windowSize);
     genSuboptions(windowSize);

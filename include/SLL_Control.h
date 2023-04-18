@@ -12,8 +12,6 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
-    sf::Font* mFont;
-
     void genOptions(sf::Vector2f windowSize);
     void genSuboptions(sf::Vector2f windowSize);
 };

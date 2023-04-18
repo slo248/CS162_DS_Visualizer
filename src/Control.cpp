@@ -1,8 +1,9 @@
 #include "Control.h"
 
-Control::Control():
+Control::Control(sf::Font* font):
     curOption(-1),
-    curSuboption(-1)
+    curSuboption(-1),
+    mFont(font)
 {
     if (!btnTexture.loadFromFile("media/image/button.png"))
     {
