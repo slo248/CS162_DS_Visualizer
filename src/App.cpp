@@ -63,7 +63,7 @@ void App::update()
 {
     sllControl->update(1.0f/FPS);
 
-    if(!sll->isDoneAllSteps()) 
+    if(sll->isDoneAllSteps()) 
         switch (sllControl->getCommand())
         {
             case 0:
