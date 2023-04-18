@@ -16,11 +16,11 @@ void SLL_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 void SLL_Control::genOptions(sf::Vector2f windowSize)
 {
-    options.push_back(Button(mFont, &btnSprite, "Create", sf::Vector2f(0, windowSize.y-5*btnSprite.getSize().y)));
-    options.push_back(Button(mFont, &btnSprite, "Insert", sf::Vector2f(0, windowSize.y-4*btnSprite.getSize().y)));
-    options.push_back(Button(mFont, &btnSprite, "Search", sf::Vector2f(0, windowSize.y-3*btnSprite.getSize().y)));
-    options.push_back(Button(mFont, &btnSprite, "Update", sf::Vector2f(0, windowSize.y-2*btnSprite.getSize().y)));
-    options.push_back(Button(mFont, &btnSprite, "Delete", sf::Vector2f(0, windowSize.y-1*btnSprite.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Create", sf::Vector2f(0, windowSize.y-5*btnTexture.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Insert", sf::Vector2f(0, windowSize.y-4*btnTexture.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Search", sf::Vector2f(0, windowSize.y-3*btnTexture.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Update", sf::Vector2f(0, windowSize.y-2*btnTexture.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Delete", sf::Vector2f(0, windowSize.y-1*btnTexture.getSize().y)));
 }
 
 void SLL_Control::genSuboptions(sf::Vector2f windowSize)

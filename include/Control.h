@@ -21,8 +21,8 @@ protected:
 
     std::vector<Button> options;
     std::vector<std::vector<std::string>> suboption;
-    sf::Texture  btnSprite;
-    sf::Texture  bgSprite;
+    sf::Texture  btnTexture;
+    sf::Texture  bgSuboptionTexture;
 };
 
 #endif // CONTROL_H

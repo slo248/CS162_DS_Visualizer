@@ -4,13 +4,13 @@ Control::Control():
     curOption(-1),
     curSuboption(-1)
 {
-    if (!btnSprite.loadFromFile("media/image/button.png"))
+    if (!btnTexture.loadFromFile("media/image/button.png"))
     {
         std::cout << "Error loading btn.png" << std::endl;
     }
-    if (!bgSprite.loadFromFile("media/image/bg.jpg"))
+    if (!bgSuboptionTexture.loadFromFile("media/image/bgSuboption.png"))
     {
-        std::cout << "Error loading bg.png" << std::endl;
+        std::cout << "Error loading bgSuboption.png" << std::endl;
     }
 }
 
