@@ -43,6 +43,8 @@ App::~App()
 
 void App::processInput()
 {
+    sllControl->handleRealTimeInput(&window);
+
     sf::Event event;
     while (window.pollEvent(event)){
         sll->handleEvent(event);

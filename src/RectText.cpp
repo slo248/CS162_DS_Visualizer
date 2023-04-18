@@ -8,6 +8,13 @@ RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::
     mRect.setTexture(*bgTexture);
     mRect.setPosition(position);
     mRect.setColor(BG_COLOR);
+    {
+        sf::FloatRect rectRect = mRect.getLocalBounds();
+        mRect.setOrigin(
+            rectRect.left,
+            rectRect.top
+        );
+    }
 
     mText.setFont(*font);
     mText.setString(str);
