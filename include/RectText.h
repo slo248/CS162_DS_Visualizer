@@ -12,6 +12,8 @@ public:
         std::string     str,
         sf::Vector2f    position
     );
+
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 protected:
     sf::Sprite     mRect;
     sf::Text       mText;

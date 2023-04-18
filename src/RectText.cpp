@@ -25,3 +25,9 @@ RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::
         position.y + mRect.getLocalBounds().height/2.0f
     );
 }
+
+void RectText::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mRect, states);
+    target.draw(mText, states);
+}
