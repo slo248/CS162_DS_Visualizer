@@ -11,6 +11,7 @@ public:
         sf::Vector2f position
     );
     
+    int  getValue();
     void update(float dt);
     bool changeFocus(sf::RenderWindow* window);
     void handleKeyInput(sf::Keyboard::Key key);

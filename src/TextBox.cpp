@@ -27,6 +27,11 @@ TextBox::TextBox(sf::Font *font, sf::Vector2f position):
     );
 }
 
+int TextBox::getValue()
+{
+    return std::stoi(mStr);
+}
+
 void TextBox::update(float dt)
 {
     if(mIsFocus){
