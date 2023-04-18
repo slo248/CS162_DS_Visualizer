@@ -15,13 +15,19 @@ Control::Control(sf::Font* font):
         std::cout << "Error loading bgSuboption.png" << std::endl;
     }
     bgSuboptionSprite.setTexture(bgSuboptionTexture);
+    if(!suboptionTexture.loadFromFile("media/image/suboption.png"))
+    {
+        std::cout << "Error loading suboption.png" << std::endl;
+    }
 
     inputBox=new InputBox(mFont,sf::Vector2f(500,500),"v = ");
+    subOption=new RectText(mFont,&suboptionTexture,"Specify v=",sf::Vector2f(600,600));
 }
 
 Control::~Control()
 {
     if(inputBox) delete inputBox;
+    if(subOption) delete subOption;
 }
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
@@ -75,4 +81,6 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(bgSuboptionSprite, states);
     if(inputBox)
         target.draw(*inputBox, states);
+    if(subOption)
+        target.draw(*subOption, states);
 }

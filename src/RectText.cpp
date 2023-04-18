@@ -17,9 +17,14 @@ RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::
     }
 
     mText.setFont(*font);
-    mText.setString(str);
     mText.setCharacterSize(CHAR_SIZE);
     mText.setFillColor(TEXT_COLOR);
+    setString(str);
+}
+
+void RectText::setString(std::string str)
+{
+    mText.setString(str);
     {
         sf::FloatRect textRect = mText.getLocalBounds();
         mText.setOrigin(
@@ -28,13 +33,14 @@ RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::
         );
     }
     mText.setPosition(
-        position.x + mRect.getLocalBounds().width/2.0f,
-        position.y + mRect.getLocalBounds().height/2.0f
+        mRect.getLocalBounds().width/2.0f,
+        mRect.getLocalBounds().height/2.0f
     );
 }
 
 void RectText::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mRect, states);
+    states.transform *= mRect.getTransform();
     target.draw(mText, states);
 }

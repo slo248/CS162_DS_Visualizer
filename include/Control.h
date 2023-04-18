@@ -28,10 +28,12 @@ protected:
     std::vector<std::vector<std::string>> suboption;
     sf::Texture     btnTexture;
     sf::Texture     bgSuboptionTexture;
+    sf::Texture     suboptionTexture;
     sf::Sprite      bgSuboptionSprite;
     sf::Font*       mFont;
 
     InputBox*       inputBox;
+    RectText*       subOption;
 };
 
 #endif // CONTROL_H
