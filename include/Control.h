@@ -13,6 +13,7 @@ public:
 
     void    handleEvent(sf::Event& event, sf::RenderWindow* window);
     void    handleRealTimeInput(sf::RenderWindow* window);
+    void    update(float dt);
     int     getCommand();
 
 protected:

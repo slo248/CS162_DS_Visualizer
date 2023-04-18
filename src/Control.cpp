@@ -45,6 +45,11 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
         btn.isMouseOver(window);
 }
 
+void Control::update(float dt)
+{
+    textBox.update(dt);
+}
+
 int Control::getCommand()
 {
     if(command.empty()) return -1;
