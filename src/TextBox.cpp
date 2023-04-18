@@ -45,18 +45,22 @@ void TextBox::update(float dt)
     else mText.setString(mStr);
 }
 
+bool TextBox::changeFocus(sf::RenderWindow *window)
+{
+    sf::Vector2f mousePos = window->mapPixelToCoords(
+        sf::Mouse::getPosition(*window)
+    );
+    mIsFocus=mRect.getGlobalBounds().contains(mousePos);
+    return mIsFocus;
+}
+
 void TextBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     switch (event.type)
     {
         case sf::Event::MouseButtonReleased:
             if (event.mouseButton.button == sf::Mouse::Left)
-            {
-                sf::Vector2f mousePos = window->mapPixelToCoords(
-                    sf::Vector2i(event.mouseButton.x, event.mouseButton.y)
-                );
-                mIsFocus=mRect.getGlobalBounds().contains(mousePos);
-            }
+                changeFocus(window);
             break;
     }
 }
