@@ -23,9 +23,34 @@ void SLL_Control::genOptions(sf::Vector2f windowSize)
 
 void SLL_Control::genSuboptions(sf::Vector2f windowSize)
 {
-    suboption.push_back(std::vector<std::string>{"Empty","User defined list","Random"});
-    suboption.push_back(std::vector<std::string>{"i=0 (Head), specify v=","i=N (After Tail), specify v","specify both i in [1,N-1] and v:"});
-    suboption.push_back(std::vector<std::string>{"Specify v="});
-    suboption.push_back(std::vector<std::string>{"Specify i in [1,N] and v="});
-    suboption.push_back(std::vector<std::string>{"i=0 (Head)","i=N-1 (Tail)","specify i in [1,N-2]"});
+    // create
+    suboptions.push_back(std::vector<std::vector<std::string>>{
+        {"Empty", "", ""},
+        {"User defined list", "A =",""},
+        {"Random","n =",""}
+    });
+
+    // insert
+    suboptions.push_back(std::vector<std::vector<std::string>>{
+        {"i=0 (Head), specify v=", "v =", ""},
+        {"i=N (After Tail), specify v =", "A =",""},
+        {"Specify i in [1,N-1] and v ="}
+    });
+
+    //search
+    suboptions.push_back(std::vector<std::vector<std::string>>{
+        {"Specify v = ","v =",""}
+    });
+
+    //update
+    suboptions.push_back(std::vector<std::vector<std::string>>{
+        {"Specify i in [0,N-1] and v =","i = ","v ="}
+    });
+
+    // delete
+    suboptions.push_back(std::vector<std::vector<std::string>>{
+        {"Remove i=0 (Head)", "", ""},
+        {"Remove i=N-1 (Tail)", "",""},
+        {"Specify i in [1,N-2]","i = ",""}
+    });
 }

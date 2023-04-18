@@ -26,7 +26,7 @@ protected:
     std::queue<int> command;
 
     std::vector<Button> options;
-    std::vector<std::vector<std::string>> suboption;
+    std::vector<std::vector<std::vector<std::string>>> suboptions;
     sf::Texture     btnTexture;
     sf::Texture     bgSuboptionTexture;
     sf::Texture     suboptionTexture;

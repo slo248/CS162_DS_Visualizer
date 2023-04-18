@@ -79,7 +79,7 @@ void Control::loadSubOption()
     subOption=new RectText(
         mFont,
         &suboptionTexture,
-        suboption[curOption][curSuboption],
+        suboptions[curOption][curSuboption][0],
         sf::Vector2f(
             btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-suboptionTexture.getSize().x)/2,
             Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
