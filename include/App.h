@@ -13,12 +13,14 @@ public:
 
     // main loop
     void processInput();
+    void draw();
     //
 
 private:
     sf::RenderWindow    window;
     sf::Font            cons, sanf;
     sf::Texture         bgImage;
+    sf::Sprite          bgSprite;
     Figure              figure;
 
     SLL*                sll;

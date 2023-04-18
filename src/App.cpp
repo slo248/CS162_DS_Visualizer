@@ -25,6 +25,7 @@ App::App():
     {
         std::cout << "Error loading bg.jpg" << std::endl;
     }
+    bgSprite.setTexture(bgImage);
 
     sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
 }
@@ -37,4 +38,12 @@ void App::processInput()
         if (event.type == sf::Event::Closed)
             window.close();
     }
+}
+
+void App::draw()
+{
+    window.clear();
+    window.draw(bgSprite);
+    sll->draw();
+    window.display();
 }
