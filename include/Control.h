@@ -6,7 +6,7 @@
 #include "InputBox.h"
 #include <queue>
 
-class Control
+class Control: public sf::Drawable
 {
 public: 
     Control(sf::Font* font);
@@ -16,6 +16,8 @@ public:
     void    handleRealTimeInput(sf::RenderWindow* window);
     void    update(float dt);
     int     getCommand();
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 protected:
     int curOption;

@@ -66,3 +66,13 @@ int Control::getCommand()
     command.pop();
     return cmd;
 }
+
+void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    for (auto &option : options)
+        target.draw(option, states);
+    if(curSuboption!=-1)
+        target.draw(bgSuboptionSprite, states);
+    if(inputBox)
+        target.draw(*inputBox, states);
+}

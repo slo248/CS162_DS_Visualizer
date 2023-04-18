@@ -12,16 +12,6 @@ SLL_Control::SLL_Control(sf::Font *font, sf::Vector2f windowSize):
     ));
 }
 
-void SLL_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
-{
-    for (auto &option : options)
-        target.draw(option, states);
-    if(curSuboption!=-1)
-        target.draw(bgSuboptionSprite, states);
-    if(inputBox)
-        target.draw(*inputBox, states);
-}
-
 void SLL_Control::genOptions(sf::Vector2f windowSize)
 {
     options.push_back(Button(mFont, &btnTexture, "Create", sf::Vector2f(0, windowSize.y-5*btnTexture.getSize().y)));
