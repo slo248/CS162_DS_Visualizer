@@ -12,6 +12,8 @@ public:
         std::string str
     );
 
+    void setPosition(sf::Vector2f position);
+    void setPosition(float x, float y);
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
