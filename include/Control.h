@@ -36,6 +36,7 @@ protected:
     sf::Font*       mFont;
 
     Button*         leftBtn;
+    Button*         rightBtn;
     InputBox*       inputBox1;
     InputBox*       inputBox2;
     RectText*       subOption;

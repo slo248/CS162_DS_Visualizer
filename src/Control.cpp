@@ -37,6 +37,8 @@ Control::~Control()
     if(inputBox1) delete inputBox1;
     if(inputBox2) delete inputBox2;
     if(subOption) delete subOption;
+    if(leftBtn) delete leftBtn;
+    if(rightBtn) delete rightBtn;
 }
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
@@ -60,7 +62,8 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                         break;
                     }
                 }
-                if(leftBtn) leftBtn->isMouseOver(window);                
+                if(leftBtn) leftBtn->isMouseOver(window);  
+                if(rightBtn) rightBtn->isMouseOver(window);              
             }
             break;
     }
@@ -70,7 +73,8 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
 {
     for(Button& btn: options)
         btn.isMouseOver(window);
-    if(leftBtn) leftBtn->isMouseOver(window);
+    if(leftBtn) leftBtn->isMouseOver(window);  
+    if(rightBtn) rightBtn->isMouseOver(window);
 }
 
 void Control::update(float dt)
@@ -137,6 +141,8 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(bgSuboptionSprite, states);
         if(leftBtn) 
             target.draw(*leftBtn, states);
+        if(rightBtn) 
+            target.draw(*rightBtn, states);
         if(inputBox1)
             target.draw(*inputBox1, states);
         if(inputBox2)

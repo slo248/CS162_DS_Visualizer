@@ -20,6 +20,16 @@ SLL_Control::SLL_Control(sf::Font *font, sf::Vector2f windowSize):
             Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-LeftTriBtnTexture.getSize().y)/2
         )
     );
+
+    rightBtn=new Button(
+        mFont, 
+        &RightTriBtnTexture, 
+        "",
+        sf::Vector2f(
+            btnTexture.getSize().x+10.f+bgSuboptionTexture.getSize().x-RightTriBtnTexture.getSize().x-35, 
+            Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-RightTriBtnTexture.getSize().y)/2
+        )
+    );
 }
 
 void SLL_Control::genOptions(sf::Vector2f windowSize)
