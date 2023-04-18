@@ -34,6 +34,8 @@ void SLL::makeList()
 {
     if(listNode.empty()) return;
 
+    graph.finishAllSteps();
+
     ListElement<Node>* node=listNode.begin();
     node->data.position=START_POSITION;
     for(node=node->next; node!=listNode.end(); node=node->next){

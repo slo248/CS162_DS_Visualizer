@@ -39,8 +39,8 @@ public:
     void deleteMiddle(int pos);
 
     void handleEvent(sf::Event& event);
-
     void draw();
+    bool isDoneAllSteps();
 
 private:
     bool isPause;

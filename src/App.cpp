@@ -60,11 +60,12 @@ void App::processInput()
 
 void App::update()
 {
+    if(!sll->isDoneAllSteps()) return;
+
     switch (sllControl->getCurOption())
     {
         case 0:
-            sll->randomList(4);
-            sll->makeList();
+            sll->insertFront(2);
             break;
     }
 }

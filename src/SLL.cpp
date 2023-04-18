@@ -27,6 +27,11 @@ void SLL::draw()
     graph.draw();
 }
 
+bool SLL::isDoneAllSteps()
+{
+    return graph.isDoneAllSteps();
+}
+
 void SLL::handleEvent(sf::Event &event)
 {
     switch (event.type)
