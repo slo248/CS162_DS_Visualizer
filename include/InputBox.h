@@ -5,9 +5,17 @@
 
 class InputBox
 {
+public:
+    InputBox(
+        sf::Font* font,
+        sf::Vector2f position,
+        std::string str
+    );
+
 private:
-    sf::Text    mText;
-    TextBox     mTextBox;
+    sf::RectangleShape  mRect;
+    sf::Text            mText;
+    TextBox             mTextBox;
 };
 
 #endif // INPUT_BOX_H

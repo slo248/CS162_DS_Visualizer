@@ -50,6 +50,15 @@ namespace Config
         const sf::Color BG_COLOR        = BLACK;
         const sf::Color TEXT_COLOR      = WHITE;
     }
+
+    namespace InputBox
+    {
+        const float HEIGHT              = 60.f;
+        const float WIDTH               = 200.f;
+        const float CHAR_SIZE           = 23.f;
+        const sf::Color BG_COLOR        = GREEN;
+        const sf::Color TEXT_COLOR      = WHITE;
+    }
 }
 
 #endif // CONFIG_H
