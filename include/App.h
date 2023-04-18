@@ -8,6 +8,11 @@ class App
 public:
     App();
 
+    // main loop
+    void processInput();
+    
+    //
+
 private:
     sf::RenderWindow    window;
     sf::Font            cons, sanf;

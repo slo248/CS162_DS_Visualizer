@@ -26,3 +26,13 @@ App::App():
         std::cout << "Error loading bg.jpg" << std::endl;
     }
 }
+
+void App::processInput()
+{
+    sf::Event event;
+    while (window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+            window.close();
+    }
+}
