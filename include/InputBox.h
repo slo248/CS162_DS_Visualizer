@@ -3,7 +3,7 @@
 
 #include "TextBox.h"
 
-class InputBox
+class InputBox: public sf::Drawable
 {
 public:
     InputBox(
@@ -11,6 +11,8 @@ public:
         sf::Vector2f position,
         std::string str
     );
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     sf::RectangleShape  mRect;

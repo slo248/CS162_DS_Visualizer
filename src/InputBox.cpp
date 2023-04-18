@@ -22,3 +22,10 @@ InputBox::InputBox(sf::Font *font, sf::Vector2f position, std::string str):
         position.y + HEIGHT / 2.0f
     ));
 }
+
+void InputBox::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mRect);
+    target.draw(mText);
+    target.draw(mTextBox);
+}
