@@ -13,6 +13,7 @@ public:
     
     void update(float dt);
     bool changeFocus(sf::RenderWindow* window);
+    void handleKeyInput(sf::Keyboard::Key key);
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     

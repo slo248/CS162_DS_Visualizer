@@ -54,6 +54,24 @@ bool TextBox::changeFocus(sf::RenderWindow *window)
     return mIsFocus;
 }
 
+void TextBox::handleKeyInput(sf::Keyboard::Key key)
+{
+    if(!mIsFocus) return;
+
+    if(key==sf::Keyboard::Backspace){
+        if(!mStr.empty()) mStr.pop_back();
+    }
+    else if(mStr.length()<LIMIT)
+    {
+        if(sf::Keyboard::Num0<=key && key<=sf::Keyboard::Num9)
+            mStr.push_back(key-sf::Keyboard::Num0+'0');
+        else if(sf::Keyboard::Numpad0<=key && key<=sf::Keyboard::Numpad9)
+            mStr.push_back(key-sf::Keyboard::Numpad0+'0');
+    }
+
+    mText.setString(mStr);
+}
+
 void TextBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     switch (event.type)
@@ -61,6 +79,9 @@ void TextBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
         case sf::Event::MouseButtonReleased:
             if (event.mouseButton.button == sf::Mouse::Left)
                 changeFocus(window);
+            break;
+        case sf::Event::KeyPressed:
+            handleKeyInput(event.key.code);
             break;
     }
 }

@@ -42,6 +42,7 @@ namespace Config
 
     namespace TextBox
     {
+        const int   LIMIT               = 5;
         const float HEIGHT              = 40.f;
         const float WIDTH               = 100.f;
         const float CHAR_SIZE           = 23.f;
