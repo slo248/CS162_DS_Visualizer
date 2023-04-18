@@ -35,6 +35,7 @@ protected:
     sf::Sprite      bgSuboptionSprite;
     sf::Font*       mFont;
 
+    Button*         leftBtn;
     InputBox*       inputBox1;
     InputBox*       inputBox2;
     RectText*       subOption;
