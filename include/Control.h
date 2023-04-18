@@ -17,6 +17,7 @@ public:
     void    update(float dt);
     int     getCommand();
 
+    void loadSubOption(int option);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 protected:

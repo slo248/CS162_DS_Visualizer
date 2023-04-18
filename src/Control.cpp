@@ -1,10 +1,12 @@
 #include "Control.h"
+#include "Config.h"
 
 Control::Control(sf::Font* font):
     curOption(-1),
     curSuboption(-1),
     mFont(font),
-    inputBox(nullptr)
+    inputBox(nullptr),
+    subOption(nullptr)
 {
     if (!btnTexture.loadFromFile("media/image/button.png"))
     {
@@ -19,9 +21,6 @@ Control::Control(sf::Font* font):
     {
         std::cout << "Error loading suboption.png" << std::endl;
     }
-
-    inputBox=new InputBox(mFont,sf::Vector2f(500,500),"v = ");
-    subOption=new RectText(mFont,&suboptionTexture,"Specify v=",sf::Vector2f(600,600));
 }
 
 Control::~Control()
@@ -45,6 +44,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                     {
                         curOption=i;
                         curSuboption=0;
+                        loadSubOption(curOption);
                         command.push(i);
                         break;
                     }
@@ -71,6 +71,20 @@ int Control::getCommand()
     int cmd=command.front();
     command.pop();
     return cmd;
+}
+
+void Control::loadSubOption(int option)
+{
+    if(subOption) delete subOption;
+    subOption=new RectText(
+        mFont,
+        &suboptionTexture,
+        suboption[option][curSuboption],
+        sf::Vector2f(
+            Config::Button::WIDTH+10,
+            Config::Window::HEIGHT-Config::Button::HEIGHT*options.size()
+        )
+    );
 }
 
 void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
