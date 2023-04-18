@@ -26,3 +26,29 @@ void SLL::draw()
 {
     graph.draw();
 }
+
+void SLL::handleEvent(sf::Event &event)
+{
+    switch (event.type)
+    {
+        case sf::Event::KeyPressed:
+            switch (event.key.code)
+            {
+                case sf::Keyboard::A:
+                    graph.setVisualType(AUTO);
+                    break;
+                case sf::Keyboard::S:
+                    graph.setVisualType(STEP_BY_STEP);
+                    break;
+                case sf::Keyboard::I:
+                    insertFront(1);
+                    break;
+                case sf::Keyboard::Left:
+                    graph.prevStep();
+                    break;
+                case sf::Keyboard::Right:
+                    graph.nextStep();
+                    break;
+            }
+    }
+}

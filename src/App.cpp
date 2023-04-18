@@ -42,17 +42,15 @@ App::~App()
 void App::processInput()
 {
     sf::Event event;
-    while (window.pollEvent(event))
+    while (window.pollEvent(event)){
+        sll->handleEvent(event);
         switch (event.type)
         {
-            case sf::Event::KeyPressed:
-                if(event.key.code==sf::Keyboard::I)
-                    sll->insertFront(2);
-                break;
             case sf::Event::Closed:
                 window.close();
                 break;
         }
+    }
 }
 
 void App::draw()
