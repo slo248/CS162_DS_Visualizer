@@ -3,10 +3,9 @@
 #include "Config.h"
 #include "Button.h"
 
-SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, sf::Sprite* bg, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
+SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
     FPS(FPS),
     window(window),
-    bg(bg),
     isPause(false),
     codeBox(cons),
     sanf(sanf),

@@ -25,6 +25,8 @@ App::App():
     {
         std::cout << "Error loading bg.jpg" << std::endl;
     }
+
+    sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
 }
 
 void App::processInput()
