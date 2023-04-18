@@ -47,6 +47,7 @@ namespace Config
         const float WIDTH               = 100.f;
         const float CHAR_SIZE           = 23.f;
         const float CURSOR_BLINK_TIME   = 0.5f;
+        const char  CURSOR              = '_';
         const sf::Color BG_COLOR        = BLACK;
         const sf::Color TEXT_COLOR      = WHITE;
     }

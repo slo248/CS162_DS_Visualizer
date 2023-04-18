@@ -43,10 +43,10 @@ void TextBox::update(float dt)
         if(mTime>CURSOR_BLINK_TIME){
             mTime=0;
             std::string cur=mText.getString();
-            if(cur.empty()) mText.setString(cur+"_");
+            if(cur.empty()) mText.setString(cur+CURSOR);
             else{
-                if(cur.back()=='_') cur.pop_back();
-                else cur.push_back('_');
+                if(cur.back()==CURSOR) cur.pop_back();
+                else cur.push_back(CURSOR);
                 mText.setString(cur);
             }
         }
