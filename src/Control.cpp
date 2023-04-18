@@ -6,7 +6,7 @@ Control::Control()
     {
         std::cout << "Error loading btn.png" << std::endl;
     }
-    if (!bgSprite.loadFromFile("media/image/bg.jgg"))
+    if (!bgSprite.loadFromFile("media/image/bg.jpg"))
     {
         std::cout << "Error loading bg.png" << std::endl;
     }

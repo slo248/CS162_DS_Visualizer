@@ -27,10 +27,12 @@ void CodeBox::loadFromFile(std::string path)
 void CodeBox::draw(sf::RenderWindow *window, int pos)
 {
     std::vector<int> high;
-    while(pos){
-        high.push_back(pos%10);
-        pos/=10;
-    }
+    if(pos==0) high.push_back(0);
+    else
+        while(pos){
+            high.push_back(pos%10);
+            pos/=10;
+        }
 
     sf::Vector2f O=window->getView().getSize();
     const int maxBlk=10;
