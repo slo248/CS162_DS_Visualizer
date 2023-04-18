@@ -10,6 +10,7 @@ class App
 {
 public:
     App();
+    ~App();
 
     // main loop
     void processInput();

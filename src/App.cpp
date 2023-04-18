@@ -34,14 +34,24 @@ App::App():
     sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
 }
 
+App::~App()
+{
+    if(sll) delete sll;
+}
+
 void App::processInput()
 {
     sf::Event event;
     while (window.pollEvent(event))
-    {
-        if (event.type == sf::Event::Closed)
-            window.close();
-    }
+        switch (event.type)
+        {
+            case sf::Event::KeyPressed:
+                if(event.key.code==sf::Keyboard::I)
+                    sll->insertFront(2);
+            case sf::Event::Closed:
+                window.close();
+                break;
+        }
 }
 
 void App::draw()
@@ -54,6 +64,8 @@ void App::draw()
 
 void App::run()
 {
+    sll->randomList(4);
+    sll->makeList();
     while (window.isOpen())
     {
         processInput();
