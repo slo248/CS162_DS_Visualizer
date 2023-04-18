@@ -13,6 +13,11 @@ InputBox::InputBox(sf::Font *font, sf::Vector2f position, std::string str):
     setPosition(position);   
 }
 
+void InputBox::update(float dt)
+{
+    mTextBox.update(dt);
+}
+
 void InputBox::setPosition(sf::Vector2f position)
 {
     mRect.setPosition(position);

@@ -12,6 +12,7 @@ public:
         std::string str
     );
 
+    void update(float dt);
     void setPosition(sf::Vector2f position);
     void setPosition(float x, float y);
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
