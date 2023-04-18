@@ -2,6 +2,8 @@
 
 void SLL::deleteWhenSingle()
 {
+    if(listNode.empty()) return;
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/deleteFirst.txt");
@@ -44,6 +46,11 @@ void SLL::deleteWhenSingle()
 
 void SLL::deleteFirst()
 {
+    if(listNode.size()<=1){
+        deleteWhenSingle();
+        return;
+    }
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/deleteFirst.txt");
@@ -102,6 +109,11 @@ void SLL::deleteFirst()
 
 void SLL::deleteLast()
 {
+    if(listNode.size()<=1){
+        deleteWhenSingle();
+        return;
+    }
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/deleteLast.txt");
@@ -220,6 +232,13 @@ void SLL::deleteLast()
 
 void SLL::deleteMiddle(int pos)
 {
+    if(listNode.size()<=1){
+        deleteWhenSingle();
+        return;
+    }
+
+    assert(1<pos && pos<listNode.size()-1);
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/deleteMiddle.txt");

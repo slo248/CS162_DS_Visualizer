@@ -2,6 +2,8 @@
 
 int SLL::search(int value)
 {
+    assert(0<=value && value<100);
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/search.txt");

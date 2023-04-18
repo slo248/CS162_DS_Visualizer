@@ -25,6 +25,7 @@ void SLL::loadFromFile(std::string path)
 
 void SLL::randomList(int n)
 {
+    assert(0<=n && n<=10);
     empty();
     while(n--)
         listNode.pushBack(Node(getRand(0,99)));

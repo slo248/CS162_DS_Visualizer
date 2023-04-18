@@ -4,6 +4,9 @@ void SLL::update(int pos, int newValue)
 {
     if(pos<0 || pos>=listNode.size()) return;
 
+    assert(0<=pos && pos<listNode.size());
+    assert(0<=newValue && newValue<100);
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/update.txt");
