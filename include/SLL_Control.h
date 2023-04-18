@@ -8,14 +8,14 @@ class SLL_Control :
     public sf::Drawable
 {
 public:
-    SLL_Control(sf::Font* font);
+    SLL_Control(sf::Font* font, sf::Vector2f windowSize);
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
     sf::Font* mFont;
 
-    void genOptions();
-    void genSuboptions();
+    void genOptions(sf::Vector2f windowSize);
+    void genSuboptions(sf::Vector2f windowSize);
 };
 
 #endif // SLL_CONTROL_H

@@ -32,7 +32,7 @@ App::App():
     );
 
     sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    sllControl=new SLL_Control(&sanf);
+    sllControl=new SLL_Control(&sanf,window.getView().getSize());
 }
 
 App::~App()
