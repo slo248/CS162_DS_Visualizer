@@ -1,0 +1,26 @@
+#include "SLL_Control.h"
+#include "Config.h"
+
+SLL_Control::SLL_Control(sf::Font *font): mFont(font)
+{
+    genOptions();
+    genSuboptions();
+}
+
+void SLL_Control::genOptions()
+{
+    options.push_back(Button(mFont, &btnSprite, "Create", sf::Vector2f(0, 500)));
+    options.push_back(Button(mFont, &btnSprite, "Insert", sf::Vector2f(0, 500+2*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Search", sf::Vector2f(0, 500+3*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Update", sf::Vector2f(0, 500+4*Config::Button::HEIGHT)));
+    options.push_back(Button(mFont, &btnSprite, "Delete", sf::Vector2f(0, 500+5*Config::Button::HEIGHT)));
+}
+
+void SLL_Control::genSuboptions()
+{
+    suboption.push_back(std::vector<std::string>{"Empty","User defined list","Random"});
+    suboption.push_back(std::vector<std::string>{"i=0 (Head), specify v=","i=N (After Tail), specify v","specify both i in [1,N-1] and v:"});
+    suboption.push_back(std::vector<std::string>{"Specify v="});
+    suboption.push_back(std::vector<std::string>{"Specify i in [1,N] and v="});
+    suboption.push_back(std::vector<std::string>{"i=0 (Head)","i=N-1 (Tail)","specify i in [1,N-2]"});
+}
