@@ -44,7 +44,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                     {
                         curOption=i;
                         curSuboption=0;
-                        loadSubOption(curOption);
+                        loadSubOption();
                         command.push(i);
                         break;
                     }
@@ -73,16 +73,16 @@ int Control::getCommand()
     return cmd;
 }
 
-void Control::loadSubOption(int option)
+void Control::loadSubOption()
 {
     if(subOption) delete subOption;
     subOption=new RectText(
         mFont,
         &suboptionTexture,
-        suboption[option][curSuboption],
+        suboption[curOption][curSuboption],
         sf::Vector2f(
-            Config::Button::WIDTH+10,
-            Config::Window::HEIGHT-Config::Button::HEIGHT*options.size()
+            btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-suboptionTexture.getSize().x)/2,
+            Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
         )
     );
 }
