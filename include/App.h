@@ -14,6 +14,7 @@ public:
 
     // main loop
     void processInput();
+    void update();
     void draw();
     //
 

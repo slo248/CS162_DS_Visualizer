@@ -58,6 +58,10 @@ void App::processInput()
     }
 }
 
+void App::update()
+{
+}
+
 void App::draw()
 {
     window.clear();

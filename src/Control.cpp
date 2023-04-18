@@ -1,8 +1,8 @@
 #include "Control.h"
 
 Control::Control():
-    curOption(0),
-    curSuboption(0)
+    curOption(-1),
+    curSuboption(-1)
 {
     if (!btnSprite.loadFromFile("media/image/button.png"))
     {
@@ -39,4 +39,9 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
 {
     for(Button& btn: options)
         btn.isMouseOver(window);
+}
+
+int Control::getCurOption() const
+{
+    return curOption;
 }

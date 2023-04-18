@@ -9,8 +9,9 @@ class Control
 public: 
     Control();
 
-    void handleEvent(sf::Event& event, sf::RenderWindow* window);
-    void handleRealTimeInput(sf::RenderWindow* window);
+    void    handleEvent(sf::Event& event, sf::RenderWindow* window);
+    void    handleRealTimeInput(sf::RenderWindow* window);
+    int     getCurOption() const;
 
 protected:
     int curOption;
