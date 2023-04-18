@@ -50,6 +50,15 @@ void TextBox::update(float dt)
     else mText.setString(mStr);
 }
 
+void TextBox::setPosition(sf::Vector2f position)
+{
+    mRect.setPosition(position);
+    mText.setPosition(
+        position.x + 10.f,
+        position.y + HEIGHT / 2.0f
+    );
+}
+
 bool TextBox::changeFocus(sf::RenderWindow *window)
 {
     sf::Vector2f mousePos = window->mapPixelToCoords(

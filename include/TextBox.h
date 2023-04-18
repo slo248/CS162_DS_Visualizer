@@ -13,6 +13,7 @@ public:
     
     int  getValue();
     void update(float dt);
+    void setPosition(sf::Vector2f position);
     bool changeFocus(sf::RenderWindow* window);
     void handleKeyInput(sf::Keyboard::Key key);
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
