@@ -38,13 +38,7 @@ public:
     void deleteLast();
     void deleteMiddle(int pos);
 
-    // a frame
-    void processInput();
-    void update();
-    void render();
-
-    // run
-    void run();
+    void draw();
 
 private:
     bool isPause;
