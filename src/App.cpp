@@ -47,7 +47,7 @@ void App::processInput()
 
     sf::Event event;
     while (window.pollEvent(event)){
-        sll->handleEvent(event);
+        // sll->handleEvent(event);
         sllControl->handleEvent(event,&window);
         switch (event.type)
         {
@@ -60,6 +60,13 @@ void App::processInput()
 
 void App::update()
 {
+    switch (sllControl->getCurOption())
+    {
+        case 0:
+            sll->randomList(4);
+            sll->makeList();
+            break;
+    }
 }
 
 void App::draw()
@@ -78,6 +85,7 @@ void App::run()
     while (window.isOpen())
     {
         processInput();
+        update();
         draw();
     }
 }
