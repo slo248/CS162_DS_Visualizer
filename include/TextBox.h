@@ -11,6 +11,7 @@ public:
         sf::Vector2f position
     );
     
+    void update(float dt);
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     
@@ -20,6 +21,7 @@ private:
     std::string         mStr;
 
     bool                mIsFocus;
+    float               mTime;
 };
 
 #endif // TEXT_BOX_H

@@ -4,7 +4,7 @@
 using namespace Config::TextBox;
 
 TextBox::TextBox(sf::Font *font, sf::Vector2f position): 
-    mStr("1"), mIsFocus(false)
+    mStr("1"), mIsFocus(false), mTime(0)
 {
     mRect.setSize(sf::Vector2f(WIDTH, HEIGHT));
     mRect.setFillColor(BG_COLOR);
@@ -25,6 +25,23 @@ TextBox::TextBox(sf::Font *font, sf::Vector2f position):
         position.x + 10.f,
         position.y + HEIGHT / 2.0f
     );
+}
+
+void TextBox::update(float dt)
+{
+    if(mIsFocus){
+        mTime+=dt;
+        if(mTime>CURSOR_BLINK_TIME){
+            mTime=0;
+            std::string cur=mText.getString();
+            if(cur.empty()) mText.setString(cur+"_");
+            else{
+                if(cur.back()=='_') cur.pop_back();
+                else cur.push_back('_');
+                mText.setString(cur);
+            }
+        }
+    }
 }
 
 void TextBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
