@@ -1,7 +1,18 @@
 #include "App.h"
+#include "Config.h"
 
-App::App()
+using namespace Config::Window;
+
+App::App():
+    window(
+        sf::VideoMode(WIDTH, HEIGHT),
+        TITLE,
+        STYLE,
+        SETTINGS
+    )
 {
+    window.setFramerateLimit(FPS);
+
     if (!cons.loadFromFile("media/font/consola.ttf"))
     {
         std::cout << "Error loading consola.ttf" << std::endl;

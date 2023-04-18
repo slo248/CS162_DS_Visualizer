@@ -5,6 +5,16 @@
 
 namespace Config
 {
+    namespace Window
+    {
+        const int WIDTH = 1500;
+        const int HEIGHT = 800;
+        const int FPS = 60;
+        const sf::String TITLE = "Data Structure Visualizer";
+        const sf::Uint32 STYLE = sf::Style::Titlebar | sf::Style::Close;
+        const sf::ContextSettings SETTINGS = sf::ContextSettings(0, 0, 16);
+    }
+
     namespace Circle
     {
         const float RADIUS              = 20.f;

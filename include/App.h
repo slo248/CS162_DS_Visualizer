@@ -9,8 +9,9 @@ public:
     App();
 
 private:
-    sf::Font        cons, sanf;
-    sf::Texture     bgImage;
+    sf::RenderWindow    window;
+    sf::Font            cons, sanf;
+    sf::Texture         bgImage;
 };
 
 #endif // APP_H
