@@ -9,6 +9,8 @@ class Control
 public: 
     Control();
 
+    void handleRealTimeInput(sf::RenderWindow* window);
+
 protected:
     std::vector<Button> options;
     std::vector<std::vector<std::string>> suboption;
