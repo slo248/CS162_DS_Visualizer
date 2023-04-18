@@ -12,6 +12,7 @@ Control::Control():
     {
         std::cout << "Error loading bgSuboption.png" << std::endl;
     }
+    bgSuboptionSprite.setTexture(bgSuboptionTexture);
 }
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)

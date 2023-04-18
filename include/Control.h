@@ -23,6 +23,7 @@ protected:
     std::vector<std::vector<std::string>> suboption;
     sf::Texture  btnTexture;
     sf::Texture  bgSuboptionTexture;
+    sf::Sprite   bgSuboptionSprite;
 };
 
 #endif // CONTROL_H

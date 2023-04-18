@@ -6,12 +6,18 @@ SLL_Control::SLL_Control(sf::Font *font, sf::Vector2f windowSize):
 {
     genOptions(windowSize);
     genSuboptions(windowSize);
+    bgSuboptionSprite.setPosition(sf::Vector2f(
+        btnTexture.getSize().x+10.f, 
+        windowSize.y-5*btnTexture.getSize().y
+    ));
 }
 
 void SLL_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     for (auto &option : options)
         target.draw(option, states);
+    if(curSuboption!=-1)
+        target.draw(bgSuboptionSprite, states);
 }
 
 void SLL_Control::genOptions(sf::Vector2f windowSize)
