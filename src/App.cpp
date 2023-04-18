@@ -66,7 +66,20 @@ void App::update()
     switch (sllControl->getCommand())
     {
         case 0:
+            sll->randomList(getRand(0,10));
+            sll->makeList();
+            break;
+        case 1:
             sll->insertFront(getRand(0,99));
+            break;
+        case 2:
+            sll->search(getRand(0,99));
+            break;
+        case 3:
+            sll->update(getRand(0,10),getRand(0,99));
+            break;
+        case 4:
+            sll->deleteFirst();
             break;
     }
 }

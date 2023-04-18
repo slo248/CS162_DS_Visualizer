@@ -2,6 +2,8 @@
 
 void SLL::update(int pos, int newValue)
 {
+    if(pos<0 || pos>=listNode.size()) return;
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("media/code/update.txt");
