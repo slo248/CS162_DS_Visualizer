@@ -1,10 +1,17 @@
 #include "SLL_Control.h"
 #include "Config.h"
 
-SLL_Control::SLL_Control(sf::Font *font): mFont(font)
+SLL_Control::SLL_Control(sf::Font *font): 
+    mFont(font), curOption(-1), curSuboption(-1)
 {
     genOptions();
     genSuboptions();
+}
+
+void SLL_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    for (auto &option : options)
+        target.draw(option, states);
 }
 
 void SLL_Control::genOptions()

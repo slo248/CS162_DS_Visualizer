@@ -3,12 +3,19 @@
 
 #include "Control.h"
 
-class SLL_Control : public Control
+class SLL_Control : 
+    public Control,
+    public sf::Drawable
 {
 public:
     SLL_Control(sf::Font* font);
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
     sf::Font* mFont;
+
+    int curOption;
+    int curSuboption;
 
     void genOptions();
     void genSuboptions();
