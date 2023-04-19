@@ -4,6 +4,7 @@
 #include "Global.h"
 #include "Button.h"
 #include "InputBox.h"
+#include "Command.h"
 #include <queue>
 
 class Control: public sf::Drawable
