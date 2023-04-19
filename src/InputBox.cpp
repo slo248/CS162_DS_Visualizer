@@ -43,7 +43,7 @@ void InputBox::setPosition(sf::Vector2f position)
         position.y + HEIGHT / 2.0f
     );
     mTextBox.setPosition(sf::Vector2f(
-        position.x + WIDTH - (Config::TextBox::WIDTH + 10.f),
+        position.x + WIDTH - Config::TextBox::WIDTH - 10,
         position.y + HEIGHT / 2.0f
     ));
 }

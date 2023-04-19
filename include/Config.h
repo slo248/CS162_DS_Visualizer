@@ -42,9 +42,9 @@ namespace Config
 
     namespace TextBox
     {
-        const int   LIMIT               = 5;
+        const int   LIMIT               = 20;
         const float HEIGHT              = 40.f;
-        const float WIDTH               = 100.f;
+        const float WIDTH               = 320.f;
         const float CHAR_SIZE           = 23.f;
         const float CURSOR_BLINK_TIME   = 0.5f;
         const char  CURSOR              = '_';
@@ -55,7 +55,7 @@ namespace Config
     namespace InputBox
     {
         const float HEIGHT              = 60.f;
-        const float WIDTH               = 160.f;
+        const float WIDTH               = 400.f;
         const float CHAR_SIZE           = 23.f;
         const sf::Color BG_COLOR        = GREEN;
         const sf::Color TEXT_COLOR      = WHITE;
