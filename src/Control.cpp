@@ -90,7 +90,8 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                             curOption,
                             curSuboption,
                             (inputBox1)?inputBox1->getVal():-1,
-                            (inputBox2)?inputBox2->getVal():-1
+                            (inputBox2)?inputBox2->getVal():-1,
+                            (inputBox1)?inputBox1->getList():std::vector<int>(1,-1),
                         });
                 }              
             }

@@ -74,6 +74,10 @@ void App::update()
                         case 0: // Empty
                             sll->empty();
                             break;
+                        case 1: // Manual
+                            sll->manual(cmd.list);
+                            sll->makeList();
+                            break;
                         case 2: // Random
                             sll->randomList(cmd.input1);
                             sll->makeList();

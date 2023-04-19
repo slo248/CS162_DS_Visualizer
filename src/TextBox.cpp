@@ -47,6 +47,7 @@ std::vector<int> TextBox::getList()
         }
         else curNum=curNum*10+c-'0';
     res.push_back(curNum);
+    return res;
 }
 
 void TextBox::update(float dt)
