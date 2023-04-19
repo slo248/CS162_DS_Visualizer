@@ -9,6 +9,17 @@ void SLL::empty()
     graph.clear();
 }
 
+void SLL::manual(const std::vector<int> &list)
+{
+    empty();
+    assert(list.size()<=10);
+
+    for(int x: list){
+        assert(0<=x && x<=99);
+        listNode.pushBack(Node(x));
+    }
+}
+
 void SLL::loadFromFile(std::string path)
 {
     empty();
