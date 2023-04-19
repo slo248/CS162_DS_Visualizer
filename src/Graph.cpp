@@ -42,6 +42,7 @@ void Graph::addStep(int frames)
 
 bool Graph::isDoneAllSteps()
 {
+    if(nFrames.empty()) return true;
     return curStep==nFrames.size()-1 && curFrame==nFrames[curStep];
 }
 
