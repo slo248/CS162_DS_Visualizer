@@ -23,7 +23,7 @@ public:
 protected:
     int curOption;
     int curSuboption;
-    std::queue<int> command;
+    std::queue<int> commandQueue;
 
     std::vector<Button> options;
     std::vector<std::vector<std::vector<std::string>>> suboptions;

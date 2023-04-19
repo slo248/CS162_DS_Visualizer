@@ -69,7 +69,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                         curOption=i;
                         curSuboption=0;
                         loadSubOption();
-                        command.push(i);
+                        commandQueue.push(i);
                         break;
                     }
                 }
@@ -109,9 +109,9 @@ void Control::update(float dt)
 
 int Control::getCommand()
 {
-    if(command.empty()) return -1;
-    int cmd=command.front();
-    command.pop();
+    if(commandQueue.empty()) return -1;
+    int cmd=commandQueue.front();
+    commandQueue.pop();
     return cmd;
 }
 
