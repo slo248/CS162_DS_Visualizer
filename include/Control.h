@@ -16,7 +16,7 @@ public:
     void    handleEvent(sf::Event& event, sf::RenderWindow* window);
     void    handleRealTimeInput(sf::RenderWindow* window);
     void    update(float dt);
-    int     getCommand();
+    bool    getCommand(Command& command);
 
     void loadSubOption();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -24,7 +24,7 @@ public:
 protected:
     int curOption;
     int curSuboption;
-    std::queue<int> commandQueue;
+    std::queue<Command> commandQueue;
 
     std::vector<Button> options;
     std::vector<std::vector<std::vector<std::string>>> suboptions;

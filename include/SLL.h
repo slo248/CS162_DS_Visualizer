@@ -24,7 +24,7 @@ public:
     void insertWhenEmpty(int value);
     void insertFront(int value);
     void insertBack(int value);
-    void insertMiddle(int value, int after);
+    void insertMiddle(int pos, int value);
 
     // search
     int search(int value);

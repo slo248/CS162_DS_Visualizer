@@ -69,7 +69,6 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                         curOption=i;
                         curSuboption=0;
                         loadSubOption();
-                        commandQueue.push(i);
                         break;
                     }
                 }
@@ -86,6 +85,13 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                         if(curSuboption>=suboptions[curOption].size()) curSuboption=0;
                         loadSubOption();
                     }
+                    if(goBtn->isMouseOver(window))
+                        commandQueue.push({
+                            curOption,
+                            curSuboption,
+                            (inputBox1)?inputBox1->getVal():-1,
+                            (inputBox2)?inputBox2->getVal():-1
+                        });
                 }              
             }
             break;
@@ -107,12 +113,12 @@ void Control::update(float dt)
     if(inputBox2) inputBox2->update(dt);
 }
 
-int Control::getCommand()
+bool Control::getCommand(Command &command)
 {
-    if(commandQueue.empty()) return -1;
-    int cmd=commandQueue.front();
+    if(commandQueue.empty()) return false;
+    command=commandQueue.front();
     commandQueue.pop();
-    return cmd;
+    return true;
 }
 
 void Control::loadSubOption()

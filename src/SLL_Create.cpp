@@ -6,6 +6,7 @@ void SLL::empty()
 {
     listNode.clear();
     listArrow.clear();
+    graph.clear();
 }
 
 void SLL::loadFromFile(std::string path)

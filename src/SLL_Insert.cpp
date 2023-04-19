@@ -206,7 +206,7 @@ void SLL::insertBack(int value)
     //
 }
 
-void SLL::insertMiddle(int value, int pos)
+void SLL::insertMiddle(int pos, int value)
 {
     if(pos<0 || pos>listNode.size()){
         std::cout << "Invalid position!" << std::endl;
