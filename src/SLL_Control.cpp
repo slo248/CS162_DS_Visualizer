@@ -53,8 +53,8 @@ void SLL_Control::genSuboptions(sf::Vector2f windowSize)
     // insert
     suboptions.push_back(std::vector<std::vector<std::string>>{
         {"i=0 (Head), specify v=", "v =", ""},
-        {"i=N (After Tail), specify v =", "A =",""},
-        {"Specify i in [1,N-1] and v ="}
+        {"i=N (After Tail), specify v =", "v =",""},
+        {"Specify i in [1,N-1] and v =", "i =","v ="}
     });
 
     //search

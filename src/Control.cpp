@@ -62,8 +62,20 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
                         break;
                     }
                 }
-                if(leftBtn) leftBtn->isMouseOver(window);  
-                if(rightBtn) rightBtn->isMouseOver(window);              
+                if(curOption!=-1){
+                    if(leftBtn->isMouseOver(window))
+                    {
+                        curSuboption--;
+                        if(curSuboption<0) curSuboption=suboptions[curOption].size()-1;
+                        loadSubOption();
+                    }
+                    if(rightBtn->isMouseOver(window))
+                    {
+                        curSuboption++;
+                        if(curSuboption>=suboptions[curOption].size()) curSuboption=0;
+                        loadSubOption();
+                    }
+                }              
             }
             break;
     }
