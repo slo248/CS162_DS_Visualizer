@@ -37,6 +37,7 @@ protected:
 
     Button*         leftBtn;
     Button*         rightBtn;
+    Button*         goBtn;
     InputBox*       inputBox1;
     InputBox*       inputBox2;
     RectText*       subOption;

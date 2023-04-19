@@ -30,6 +30,16 @@ Control::Control(sf::Font* font):
     {
         std::cout << "Error loading suboption.png" << std::endl;
     }
+
+    goBtn=new Button(
+        font,
+        &suboptionTexture,
+        "Go",
+        sf::Vector2f(
+            btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-suboptionTexture.getSize().x)/2,
+            Config::Window::HEIGHT-btnTexture.getSize().y+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
+        )
+    );
 }
 
 Control::~Control()
@@ -39,6 +49,7 @@ Control::~Control()
     if(subOption) delete subOption;
     if(leftBtn) delete leftBtn;
     if(rightBtn) delete rightBtn;
+    if(goBtn) delete goBtn;
 }
 
 void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
@@ -87,6 +98,7 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
         btn.isMouseOver(window);
     if(leftBtn) leftBtn->isMouseOver(window);  
     if(rightBtn) rightBtn->isMouseOver(window);
+    if(goBtn) goBtn->isMouseOver(window);
 }
 
 void Control::update(float dt)
@@ -161,5 +173,7 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
             target.draw(*inputBox2, states);
         if(subOption)
             target.draw(*subOption, states);
+        if(goBtn)
+            target.draw(*goBtn, states);
     }
 }
