@@ -25,6 +25,11 @@ void InputBox::update(float dt)
     mTextBox.update(dt);
 }
 
+int InputBox::getVal()
+{
+    return mTextBox.getValue();
+}
+
 void InputBox::setPosition(sf::Vector2f position)
 {
     mRect.setPosition(position);
