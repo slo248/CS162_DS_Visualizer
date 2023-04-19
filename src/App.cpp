@@ -79,6 +79,10 @@ void App::update()
                             sll->makeList();
                             break;
                         case 2: // Random
+                            sll->randomList(getRand(1,10));
+                            sll->makeList();
+                            break;
+                        case 3: // Random fixed size
                             sll->randomList(cmd.input1);
                             sll->makeList();
                             break;

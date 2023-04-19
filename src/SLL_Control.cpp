@@ -47,7 +47,8 @@ void SLL_Control::genSuboptions(sf::Vector2f windowSize)
     suboptions.push_back(std::vector<std::vector<std::string>>{
         {"Empty", "", ""},
         {"User defined list", "A =",""},
-        {"Random","n =",""}
+        {"Random"},
+        {"Random fixed size","n =",""}
     });
 
     // insert
