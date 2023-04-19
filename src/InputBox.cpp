@@ -30,6 +30,11 @@ int InputBox::getVal()
     return mTextBox.getValue();
 }
 
+std::vector<int> InputBox::getList()
+{
+    return mTextBox.getList();
+}
+
 void InputBox::setPosition(sf::Vector2f position)
 {
     mRect.setPosition(position);

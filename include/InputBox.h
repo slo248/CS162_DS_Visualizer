@@ -14,6 +14,7 @@ public:
 
     void update(float dt);
     int  getVal();
+    std::vector<int> getList();
     void setPosition(sf::Vector2f position);
     void setPosition(float x, float y);
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
