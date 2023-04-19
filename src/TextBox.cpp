@@ -36,6 +36,19 @@ int TextBox::getValue()
     return std::stoi(mStr);
 }
 
+std::vector<int> TextBox::getList()
+{
+    std::vector<int> res;
+    int curNum=0;
+    for(char c: mStr)
+        if(c==','){
+            res.push_back(curNum);
+            curNum=0;
+        }
+        else curNum=curNum*10+c-'0';
+    res.push_back(curNum);
+}
+
 void TextBox::update(float dt)
 {
     if(mIsFocus){

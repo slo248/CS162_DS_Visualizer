@@ -12,6 +12,7 @@ public:
     );
     
     int  getValue();
+    std::vector<int> getList();
     void update(float dt);
     void setPosition(sf::Vector2f position);
     bool changeFocus(sf::RenderWindow* window);
