@@ -98,6 +98,8 @@ void TextBox::handleKeyInput(sf::Keyboard::Key key)
             mStr.push_back(key-sf::Keyboard::Num0+'0');
         else if(sf::Keyboard::Numpad0<=key && key<=sf::Keyboard::Numpad9)
             mStr.push_back(key-sf::Keyboard::Numpad0+'0');
+        else if(sf::Keyboard::Comma==key)
+            mStr.push_back(',');
     }
 
     mText.setString(mStr);
