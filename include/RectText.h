@@ -3,7 +3,10 @@
 
 #include "Global.h"
 
-class RectText : public sf::Drawable
+class RectText : 
+    public sf::Transformable,
+    public sf::Drawable,
+    public sf::NonCopyable
 {
 public:
     RectText(
