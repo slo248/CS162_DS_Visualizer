@@ -4,16 +4,22 @@
 #include "Global.h"
 #include "Button.h"
 
-class Graph_Control: public sf::Drawable
+class Graph_Control:
+    public sf::Transformable,
+    public sf::Drawable,
+    public sf::NonCopyable
 {
 public:
     Graph_Control(sf::Font* font);
     ~Graph_Control();
 
+    void handleEvent(sf::Event& event, sf::RenderWindow* window);
     void handleRealTimeInput(sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
+    sf::Font*       mFont;
+
     sf::Texture     bgTexture;
     sf::Texture     playBtnTexture;
     sf::Texture     pauseBtnTexture;

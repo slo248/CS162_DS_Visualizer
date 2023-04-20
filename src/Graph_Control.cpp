@@ -1,6 +1,6 @@
 #include "Graph_Control.h"
 
-Graph_Control::Graph_Control(sf::Font* font)
+Graph_Control::Graph_Control(sf::Font* font): mFont(font)
 {
     assert(bgTexture.loadFromFile("media/image/bgGraphControl.png"));
     assert(playBtnTexture.loadFromFile("media/image/playBtn.png"));
@@ -26,6 +26,13 @@ Graph_Control::~Graph_Control()
     if(pauseBtn) delete pauseBtn;
     if(nextBtn) delete nextBtn;
     if(prevBtn) delete prevBtn;
+}
+
+void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
+{
+    if(event.type!=sf::Event::MouseButtonReleased) return;
+
+    if(playBtn) playBtn->isMouseOver(window);
 }
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)

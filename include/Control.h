@@ -5,6 +5,7 @@
 #include "Button.h"
 #include "InputBox.h"
 #include "Command.h"
+#include "Graph_Control.h"
 #include <queue>
 
 class Control: public sf::Drawable
