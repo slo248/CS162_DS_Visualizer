@@ -8,6 +8,7 @@ class Graph_Control
 {
 public:
     Graph_Control(sf::Font* font);
+    ~Graph_Control();
 
 private:
     sf::Texture     bgTexture;

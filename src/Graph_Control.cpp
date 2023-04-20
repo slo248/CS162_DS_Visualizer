@@ -19,3 +19,11 @@ Graph_Control::Graph_Control(sf::Font* font)
         )
     );
 }
+
+Graph_Control::~Graph_Control()
+{
+    if(playBtn) delete playBtn;
+    if(pauseBtn) delete pauseBtn;
+    if(nextBtn) delete nextBtn;
+    if(prevBtn) delete prevBtn;
+}
