@@ -4,11 +4,13 @@
 #include "Global.h"
 #include "Button.h"
 
-class Graph_Control
+class Graph_Control: public sf::Drawable
 {
 public:
     Graph_Control(sf::Font* font);
     ~Graph_Control();
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     sf::Texture     bgTexture;

@@ -27,3 +27,9 @@ Graph_Control::~Graph_Control()
     if(nextBtn) delete nextBtn;
     if(prevBtn) delete prevBtn;
 }
+
+void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(bgSprite);
+    if(playBtn) target.draw(*playBtn);
+}
