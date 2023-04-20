@@ -28,6 +28,14 @@ Graph_Control::~Graph_Control()
     if(prevBtn) delete prevBtn;
 }
 
+void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
+{
+    if(playBtn) playBtn->isMouseOver(window);
+    if(pauseBtn) pauseBtn->isMouseOver(window);
+    if(nextBtn) nextBtn->isMouseOver(window);
+    if(prevBtn) prevBtn->isMouseOver(window);
+}
+
 void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(bgSprite);

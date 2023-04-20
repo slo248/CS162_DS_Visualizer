@@ -10,6 +10,7 @@ public:
     Graph_Control(sf::Font* font);
     ~Graph_Control();
 
+    void handleRealTimeInput(sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
