@@ -26,6 +26,7 @@ protected:
     int curOption;
     int curSuboption;
     std::queue<Command> commandQueue;
+    Graph_Control   graphControl;
 
     std::vector<Button> options;
     std::vector<std::vector<std::vector<std::string>>> suboptions;

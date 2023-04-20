@@ -7,7 +7,8 @@ Control::Control(sf::Font* font):
     mFont(font),
     inputBox1(nullptr),
     inputBox2(nullptr),
-    subOption(nullptr)
+    subOption(nullptr),
+    graphControl(font)
 {
     if (!btnTexture.loadFromFile("media/image/button.png"))
     {
@@ -40,6 +41,8 @@ Control::Control(sf::Font* font):
             Config::Window::HEIGHT-btnTexture.getSize().y+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
         )
     );
+
+    // graphControl.setPosition(300,100);
 }
 
 Control::~Control()
@@ -56,6 +59,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     if(inputBox1) inputBox1->handleEvent(event,window);
     if(inputBox2) inputBox2->handleEvent(event,window);
+    graphControl.handleEvent(event,window);
 
     switch (event.type)
     {
@@ -106,6 +110,7 @@ void Control::handleRealTimeInput(sf::RenderWindow *window)
     if(leftBtn) leftBtn->isMouseOver(window);  
     if(rightBtn) rightBtn->isMouseOver(window);
     if(goBtn) goBtn->isMouseOver(window);
+    graphControl.handleRealTimeInput(window);
 }
 
 void Control::update(float dt)
@@ -183,4 +188,5 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
         if(goBtn)
             target.draw(*goBtn, states);
     }
+    target.draw(graphControl, states);
 }
