@@ -314,8 +314,12 @@ void SLL::insertMiddle(int pos, int value)
     graph.draw(&tmpArrow,BLACK);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
     graph.drawGrow(&tmpArrow,ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",RED);
     graph.draw(&codeBox,3);
     //
@@ -331,8 +335,12 @@ void SLL::insertMiddle(int pos, int value)
     graph.draw(&listArrow,0,pos-2,ORANGE);
     graph.draw(&tmpArrow,ORANGE);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",RED);
 
@@ -351,8 +359,12 @@ void SLL::insertMiddle(int pos, int value)
     graph.draw(&tmpArrow,ORANGE);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
     graph.drawGrow(&listArrow,pos,GREEN);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",RED);
     graph.draw(&codeBox,5);
@@ -371,8 +383,12 @@ void SLL::insertMiddle(int pos, int value)
     graph.draw(&tmpArrow,ORANGE);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
     graph.draw(&listArrow,pos,GREEN);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",RED);
     graph.draw(&codeBox,6);
