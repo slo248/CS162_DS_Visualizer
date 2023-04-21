@@ -1,10 +1,11 @@
 #include "SLL.h"
+#include "Config.h"
 
 void SLL::insertWhenEmpty(int value)
 {
     if(!listNode.empty()) return;
 
-    assert(0<=value && value<100);
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
 
@@ -29,7 +30,7 @@ void SLL::insertFront(int value)
         return;
     }
 
-    assert(0<=value && value<100);
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
 
@@ -95,7 +96,7 @@ void SLL::insertBack(int value)
         return;
     }
 
-    assert(0<=value && value<100);
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
 
@@ -221,7 +222,7 @@ void SLL::insertMiddle(int pos, int value)
         return;
     }
 
-    assert(0<=value && value<100);
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
 

@@ -1,8 +1,9 @@
 #include "SLL.h"
+#include "Config.h"
 
 int SLL::search(int value)
 {
-    assert(0<=value && value<100);
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
 

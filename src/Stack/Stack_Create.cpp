@@ -2,6 +2,8 @@
 #include "Random.h"
 #include "Config.h"
 
+using namespace Config::Stack;
+
 void Stack::empty()
 {
     listNode.clear();
@@ -12,7 +14,7 @@ void Stack::empty()
 void Stack::manual(const std::vector<int> &list)
 {
     empty();
-    assert(list.size()<=MAX_NODE);
+    assert(MIN_NODE<=list.size() && list.size()<=MAX_NODE);
 
     for(int x: list){
         assert(0<=x && x<=99);

@@ -2,6 +2,8 @@
 #include "Random.h"
 #include "Config.h"
 
+using namespace Config::SLL;
+
 void SLL::empty()
 {
     listNode.clear();
@@ -12,10 +14,10 @@ void SLL::empty()
 void SLL::manual(const std::vector<int> &list)
 {
     empty();
-    assert(list.size()<=10);
+    assert(MIN_NODE<=list.size() && list.size()<=MAX_NODE);
 
     for(int x: list){
-        assert(0<=x && x<=99);
+        assert(Config::MIN_VALUE<=x && x<=Config::MAX_VALUE);
         listNode.pushBack(Node(x));
     }
 }
@@ -28,8 +30,8 @@ void SLL::loadFromFile(std::string path)
     if(!fi.is_open()) return;
     int val;
     while(fi>>val){
-        assert(0<=val && val<=99);
-        if(listNode.size()==10) break;
+        assert(Config::MIN_VALUE<=val && val<=Config::MAX_VALUE);
+        if(listNode.size()==MAX_NODE) break;
         listNode.pushBack(Node(val));
     }
     fi.close();
@@ -37,10 +39,10 @@ void SLL::loadFromFile(std::string path)
 
 void SLL::randomList(int n)
 {
-    assert(0<=n && n<=10);
+    assert(MIN_NODE<=n && n<=MAX_NODE);
     empty();
     while(n--)
-        listNode.pushBack(Node(getRand(0,99)));
+        listNode.pushBack(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
 }
 
 void SLL::makeList()

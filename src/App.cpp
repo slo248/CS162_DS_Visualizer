@@ -205,7 +205,7 @@ void App::Stack_Update()
                         stack->makeList();
                         break;
                     case 2: // Random
-                        stack->randomList(getRand(1,10));
+                        stack->randomList(getRand(1,7));
                         stack->makeList();
                         break;
                     case 3: // Random fixed size

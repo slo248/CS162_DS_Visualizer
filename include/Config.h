@@ -5,6 +5,9 @@
 
 namespace Config
 {
+    const int MIN_VALUE=0;
+    const int MAX_VALUE=99;
+
     namespace Window
     {
         const int WIDTH = 1500;
@@ -59,6 +62,18 @@ namespace Config
         const float CHAR_SIZE           = 23.f;
         const sf::Color BG_COLOR        = GREEN;
         const sf::Color TEXT_COLOR      = WHITE;
+    }
+
+    namespace SLL
+    {
+        const int MIN_NODE=0;
+        const int MAX_NODE=10;
+    }
+
+    namespace Stack
+    {
+        const int MIN_NODE=0;
+        const int MAX_NODE=7;
     }
 }
 
