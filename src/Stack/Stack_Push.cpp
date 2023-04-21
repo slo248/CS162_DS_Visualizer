@@ -7,6 +7,7 @@ void Stack::pushWhenEmpty(int value)
     codeBox.loadFromFile("code/Stack/push.txt");
 
     listNode.pushBack(value);
+    listNode.begin()->data.position=START_POSITION;
 
     // step 1: appear new node
     graph.addStep(0.5*FPS);
@@ -32,4 +33,14 @@ void Stack::pushWhenEmpty(int value)
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,2);
     //
+}
+
+void Stack::push(int value)
+{
+    if(listNode.empty()) pushWhenEmpty(value);
+
+    listNode.pushFront(value);
+    listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
+
+
 }

@@ -27,6 +27,7 @@ public:
 
     // push
     void pushWhenEmpty(int value);
+    void push(int value);
 
     // // insert
     // void insertWhenEmpty(int value);
