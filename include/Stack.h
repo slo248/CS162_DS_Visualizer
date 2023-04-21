@@ -21,23 +21,23 @@ public:
     void randomList(int n);
     void makeList();
 
-    // insert
-    void insertWhenEmpty(int value);
-    void insertFront(int value);
-    void insertBack(int value);
-    void insertMiddle(int pos, int value);
+    // // insert
+    // void insertWhenEmpty(int value);
+    // void insertFront(int value);
+    // void insertBack(int value);
+    // void insertMiddle(int pos, int value);
 
-    // search
-    int search(int value);
+    // // search
+    // int search(int value);
 
-    // update
-    void update(int pos, int newValue);
+    // // update
+    // void update(int pos, int newValue);
 
-    // delete
-    void deleteWhenSingle();
-    void deleteFirst();
-    void deleteLast();
-    void deleteMiddle(int pos);
+    // // delete
+    // void deleteWhenSingle();
+    // void deleteFirst();
+    // void deleteLast();
+    // void deleteMiddle(int pos);
 
     void handleEvent(sf::Event& event);
     void draw();
