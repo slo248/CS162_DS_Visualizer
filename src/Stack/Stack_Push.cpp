@@ -55,4 +55,16 @@ void Stack::push(int value)
     graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
     graph.draw(&codeBox,0);
     //
+
+    // step 2: appear new arrow
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listArrow.begin()->data,ORANGE);
+    graph.draw(&listArrow,1,m-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
+    graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
+    graph.draw(&codeBox,1);
+    //
 }
