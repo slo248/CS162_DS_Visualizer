@@ -8,7 +8,7 @@ class Stack
 {
 public:
     sf::Vector2f    START_POSITION  = sf::Vector2f(750, 50);
-    float           DISTANCE        = 90.f;
+    float           DISTANCE        = 70.f;
 
 public:
     Stack(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);

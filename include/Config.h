@@ -17,7 +17,7 @@ namespace Config
 
     namespace Circle
     {
-        const float RADIUS              = 25.f;
+        const float RADIUS              = 20.f;
         const float THICKNESS           = 3.f;
         const float HALF_WIDTH          = RADIUS+THICKNESS;
     }

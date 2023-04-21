@@ -12,7 +12,7 @@ void Node::draw(sf::RenderWindow *window, sf::CircleShape *circle, sf::Color inC
     circle->setOutlineColor(outColor);
 
     num->setString(std::to_string(value));
-    num->setCharacterSize(25);
+    num->setCharacterSize(23);
     {
         sf::FloatRect textRect = num->getLocalBounds();
         num->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
