@@ -14,7 +14,7 @@ public:
         bool            isCentered=false
     );
 
-    bool isMouseOver(sf::RenderWindow* window);
+    bool isMouseOver(sf::RenderWindow* window, sf::Vector2f offset=sf::Vector2f(0, 0));
 };
 
 #endif // BUTTON_H

@@ -41,8 +41,6 @@ Control::Control(sf::Font* font):
             Config::Window::HEIGHT-btnTexture.getSize().y+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
         )
     );
-
-    graphControl.setPosition(300,100);
 }
 
 Control::~Control()

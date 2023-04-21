@@ -79,7 +79,7 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
     if(event.type!=sf::Event::MouseButtonReleased) return;
 
     if(!isPause){
-        isPause=pauseBtn->isMouseOver(window);
+        isPause=pauseBtn->isMouseOver(window,getPosition());
         if(isPause) commandQueue.push(
             {
                 -2,
@@ -91,7 +91,7 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
         );
     }
     else{
-        isPause=!playBtn->isMouseOver(window);
+        isPause=!playBtn->isMouseOver(window,getPosition());
         if(!isPause) commandQueue.push(
             {
                 -3,
@@ -103,7 +103,7 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
         );
     }
 
-    if(prevBtn->isMouseOver(window)) commandQueue.push(
+    if(prevBtn->isMouseOver(window,getPosition())) commandQueue.push(
         {
             -4,
             -1,
@@ -113,7 +113,7 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
         }
     );
     
-    if(nextBtn->isMouseOver(window)) commandQueue.push(
+    if(nextBtn->isMouseOver(window,getPosition())) commandQueue.push(
         {
             -5,
             -1,
@@ -126,10 +126,10 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
 {
-    if(!isPause) pauseBtn->isMouseOver(window);
-    else playBtn->isMouseOver(window);
-    nextBtn->isMouseOver(window);
-    prevBtn->isMouseOver(window);
+    if(!isPause) pauseBtn->isMouseOver(window,getPosition());
+    else playBtn->isMouseOver(window,getPosition());
+    nextBtn->isMouseOver(window,getPosition());
+    prevBtn->isMouseOver(window,getPosition());
 }
 
 void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const

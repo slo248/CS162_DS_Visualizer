@@ -13,14 +13,14 @@ Button::Button(
 {
 }
 
-bool Button::isMouseOver(sf::RenderWindow *window)
+bool Button::isMouseOver(sf::RenderWindow *window, sf::Vector2f offset)
 {
     sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::Vector2f rectPos=getPosition();
     sf::Vector2f origin=getOrigin();
     sf::FloatRect bounds=getLocalBounds();
 
-    bool res=bounds.contains(mousePos.x-rectPos.x+origin.x, mousePos.y-rectPos.y+origin.y);
+    bool res=bounds.contains(mousePos.x-(rectPos.x+offset.x)+origin.x, mousePos.y-(rectPos.y+offset.y)+origin.y);
     if(res)
         mRect.setColor(BG_MOUSE_OVER);
     else

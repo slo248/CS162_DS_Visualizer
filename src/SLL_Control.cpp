@@ -30,6 +30,11 @@ SLL_Control::SLL_Control(sf::Font *font, sf::Vector2f windowSize):
             Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-RightTriBtnTexture.getSize().y)/2
         )
     );
+
+    graphControl.setPosition(
+        0,
+        windowSize.y-6*btnTexture.getSize().y
+    );
 }
 
 void SLL_Control::genOptions(sf::Vector2f windowSize)
