@@ -21,6 +21,9 @@ public:
     void randomList(int n);
     void makeList();
 
+    // peek
+    void peek();
+
     // // insert
     // void insertWhenEmpty(int value);
     // void insertFront(int value);
