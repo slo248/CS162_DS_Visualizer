@@ -80,6 +80,12 @@ void App::update()
         case -5: // next
             sll->nextStep();
             break;
+        case -6: // go to begin
+            sll->goToBegin();
+            break;
+        case -7: // go to end
+            sll->goToEnd();
+            break;
     }
 
     if(sll->isDoneAllSteps() && flag)

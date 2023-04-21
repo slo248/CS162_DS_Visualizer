@@ -39,6 +39,7 @@ void SLL::pause()
 void SLL::play()
 {
     graph.setVisualType(AUTO);
+    graph.setVisualDir(FORWARD);
 }
 
 void SLL::nextStep()

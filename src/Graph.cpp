@@ -44,15 +44,36 @@ void Graph::goToBegin()
 {
     if(nFrames.empty()) return;
 
-    curStep=curFrame=0;
+    while (curFrame > 0 || curStep > 0) {
+        for (auto draw : drawFunc[curStep]) 
+            draw(curFrame / (float)nFrames[curStep]);
+        if (curFrame == 0 && curStep > 0){
+            curStep--;
+            curFrame = nFrames[curStep];
+        }
+        if (curFrame > 0) curFrame--;
+    }
+
+    setVisualType(STEP_BY_STEP);
+    setVisualDir(BACKWARD);
 }
 
 void Graph::goToEnd()
 {
     if(nFrames.empty()) return;
 
-    curStep=nFrames.size()-1;
-    curFrame=nFrames[curStep];
+    while (curFrame < nFrames[curStep] || curStep < nFrames.size() - 1) {
+        for (auto draw : drawFunc[curStep]) 
+            draw(curFrame / (float)nFrames[curStep]);
+        if (curFrame == nFrames[curStep] && curStep + 1 < nFrames.size()){
+            curStep++;
+            curFrame = 0;
+        }
+        if (curFrame < nFrames[curStep]) curFrame++;
+    }
+
+    setVisualType(STEP_BY_STEP);
+    setVisualDir(FORWARD);
 }
 
 bool Graph::isDoneAllSteps()
