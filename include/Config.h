@@ -73,7 +73,7 @@ namespace Config
     namespace Stack
     {
         const int MIN_NODE=0;
-        const int MAX_NODE=6;
+        const int MAX_NODE=5;
     }
 }
 
