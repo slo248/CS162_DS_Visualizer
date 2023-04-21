@@ -4,6 +4,8 @@ void Stack::pushWhenEmpty(int value)
 {
     assert(listNode.empty());
 
+    graph.finishAllSteps();
+
     codeBox.loadFromFile("code/Stack/push.txt");
 
     listNode.pushBack(value);
@@ -41,6 +43,8 @@ void Stack::push(int value)
         pushWhenEmpty(value);
         return;
     }
+
+    graph.finishAllSteps();
     
     codeBox.loadFromFile("code/Stack/push.txt");
 
