@@ -6,7 +6,7 @@ Graph_Control::Graph_Control(sf::Font* font):
     pauseBtn(nullptr),
     nextBtn(nullptr),
     prevBtn(nullptr),
-    isPause(true)
+    isPause(false)
 {
     assert(bgTexture.loadFromFile("media/image/bgGraphControl.png"));
     assert(playBtnTexture.loadFromFile("media/image/playBtn.png"));
@@ -74,12 +74,10 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     if(event.type!=sf::Event::MouseButtonReleased) return;
 
-    if(isPause){
-        if(pauseBtn) pauseBtn->isMouseOver(window);
-    }
-    else if(playBtn) playBtn->isMouseOver(window);
-    if(nextBtn) nextBtn->isMouseOver(window);
-    if(prevBtn) prevBtn->isMouseOver(window);
+    if(isPause)
+        isPause=!pauseBtn->isMouseOver(window);
+    else
+        isPause=playBtn->isMouseOver(window);
 }
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)

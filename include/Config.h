@@ -8,7 +8,7 @@ namespace Config
     namespace Window
     {
         const int WIDTH = 1500;
-        const int HEIGHT = 800;
+        const int HEIGHT = 900;
         const int FPS = 60;
         const sf::String TITLE = "Data Structure Visualizer";
         const sf::Uint32 STYLE = sf::Style::Titlebar | sf::Style::Close;
