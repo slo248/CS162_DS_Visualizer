@@ -191,6 +191,28 @@ void App::Stack_Update()
     Command cmd;
     bool flag=stackControl->getCommand(cmd);
 
+    switch (cmd.option)
+    {
+        case -2: // pause
+            stack->pause();
+            break;
+        case -3: // play
+            stack->play();
+            break;
+        case -4: // prev
+            stack->prevStep();
+            break;
+        case -5: // next
+            stack->nextStep();
+            break;
+        case -6: // go to begin
+            stack->goToBegin();
+            break;
+        case -7: // go to end
+            stack->goToEnd();
+            break;
+    }
+
     if(stack->isDoneAllSteps() && flag)
         switch (cmd.option)
         {
