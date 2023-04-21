@@ -292,7 +292,8 @@ void SLL::insertMiddle(int pos, int value)
         graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
         graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
         graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,ORANGE,ORANGE,WHITE);
-        graph.draw(&listArrow,0,pos-2,BLACK);
+        graph.draw(&listArrow,0,i,ORANGE);
+        graph.draw(&listArrow,i+1,pos-2,BLACK);
         graph.draw(&tmpArrow,BLACK);
         graph.draw(&listArrow,pos+1,m-1,BLACK);
         graph.draw(&listArrow.begin()->getNext(i)->data,ORANGE);
