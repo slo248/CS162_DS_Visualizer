@@ -76,3 +76,13 @@ void SLL::handleEvent(sf::Event &event)
             }
     }
 }
+
+void SLL::goToBegin()
+{
+    graph.goToBegin();
+}
+
+void SLL::goToEnd()
+{
+    graph.goToEnd();
+}
