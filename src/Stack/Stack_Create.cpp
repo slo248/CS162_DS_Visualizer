@@ -51,11 +51,11 @@ void Stack::makeList()
 
     graph.finishAllSteps();
 
-    ListElement<Node>* node=listNode.begin();
+    ListElement<Node>* node=listNode.rbegin();
     node->data.position=START_POSITION;
-    for(node=node->next; node!=listNode.end(); node=node->next){
-        node->data.position=node->prev->data.position+sf::Vector2f(0, DISTANCE);
-        listArrow.pushBack(Arrow(&node->prev->data, &node->data));
+    for(node=node->prev; node!=listNode.end(); node=node->prev){
+        node->data.position=node->next->data.position-sf::Vector2f(0, DISTANCE);
+        listArrow.pushBack(Arrow(&node->data, &node->next->data));
     }
 
     // add new steps
