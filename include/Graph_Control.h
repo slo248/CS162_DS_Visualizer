@@ -31,6 +31,8 @@ private:
     Button*         pauseBtn;
     Button*         nextBtn;
     Button*         prevBtn;
+
+    bool            isPause;
 };
 
 #endif // GRAPH_CONTROL_H
