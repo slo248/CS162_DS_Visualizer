@@ -16,6 +16,7 @@ public:
     );
 
     void setString(std::string str);
+    void setCenter();
     virtual sf::FloatRect getLocalBounds() const;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

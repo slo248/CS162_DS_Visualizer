@@ -39,6 +39,14 @@ void RectText::setString(std::string str)
     );
 }
 
+void RectText::setCenter()
+{
+    setOrigin(
+        mRect.getLocalBounds().width/2.0f,
+        mRect.getLocalBounds().height/2.0f
+    );
+}
+
 sf::FloatRect RectText::getLocalBounds() const
 {
     return mRect.getLocalBounds();
