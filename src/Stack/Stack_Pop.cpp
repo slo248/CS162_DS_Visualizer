@@ -24,6 +24,16 @@ void Stack::popWhenSingle()
     graph.draw(&codeBox,1);
     //
 
+    // step 2: head=head.next
+    graph.addStep(0.5*FPS);
+
+    graph.addStep(0.5*FPS);
+
+    graph.draw(deletedN,ORANGE,ORANGE,WHITE);
+    graph.drawSubscript(deletedN,"tmp",RED);
+    graph.draw(&codeBox,2);
+    //
+
     deletedNode.push_back(deletedN);
 }
 
