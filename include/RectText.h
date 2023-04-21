@@ -5,8 +5,7 @@
 
 class RectText : 
     public sf::Transformable,
-    public sf::Drawable,
-    public sf::NonCopyable
+    public sf::Drawable
 {
 public:
     RectText(
@@ -17,6 +16,7 @@ public:
     );
 
     void setString(std::string str);
+    virtual sf::FloatRect getLocalBounds() const;
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 protected:
