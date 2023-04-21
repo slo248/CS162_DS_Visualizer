@@ -37,9 +37,15 @@ void Stack::pushWhenEmpty(int value)
 
 void Stack::push(int value)
 {
-    if(listNode.empty()) pushWhenEmpty(value);
+    if(listNode.empty()){
+        pushWhenEmpty(value);
+        return;
+    }
+    
+    codeBox.loadFromFile("code/Stack/push.txt");
 
     listNode.pushFront(value);
+    listNode.begin()->data.position=listNode.begin()->next->data.position-sf::Vector2f(0,DISTANCE);
     listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
 
     const int n=listNode.size();
@@ -66,5 +72,18 @@ void Stack::push(int value)
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
     graph.draw(&codeBox,1);
+    //
+
+    // step 3: head=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listArrow.begin()->data,ORANGE);
+    graph.drawFadeIn(&listArrow.begin()->data,BLACK);
+    graph.draw(&listArrow,1,m-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.draw(&codeBox,2);
     //
 }

@@ -217,6 +217,9 @@ void App::Stack_Update()
             case 1: // Peek
                 stack->peek();
                 break;
+            case 2: // Push
+                stack->push(cmd.input1);
+                break;
         }
 }
 
