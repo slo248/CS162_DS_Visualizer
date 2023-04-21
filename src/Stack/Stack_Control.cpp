@@ -40,7 +40,7 @@ Stack_Control::Stack_Control(sf::Font *font, sf::Vector2f windowSize):
 void Stack_Control::genOptions(sf::Vector2f windowSize)
 {
     options.push_back(Button(mFont, &btnTexture, "Create", sf::Vector2f(0, windowSize.y-5*btnTexture.getSize().y)));
-    options.push_back(Button(mFont, &btnTexture, "Top", sf::Vector2f(0, windowSize.y-4*btnTexture.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Peek", sf::Vector2f(0, windowSize.y-4*btnTexture.getSize().y)));
     options.push_back(Button(mFont, &btnTexture, "Push", sf::Vector2f(0, windowSize.y-3*btnTexture.getSize().y)));
     options.push_back(Button(mFont, &btnTexture, "Pop", sf::Vector2f(0, windowSize.y-2*btnTexture.getSize().y)));
 }

@@ -36,11 +36,11 @@ App::App():
         (float)HEIGHT/bgImage.getSize().y
     );
 
-    sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    sllControl=new SLL_Control(&sanf,window.getView().getSize());
+    // sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    // sllControl=new SLL_Control(&sanf,window.getView().getSize());
 
-    // stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    // stackControl=new Stack_Control(&sanf,window.getView().getSize());
+    stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    stackControl=new Stack_Control(&sanf,window.getView().getSize());
 }
 
 App::~App()

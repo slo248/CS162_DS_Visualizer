@@ -1,2 +1,2 @@
 if empty, return NOT_FOUND
-return head.item
+return head.value
