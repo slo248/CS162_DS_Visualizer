@@ -92,6 +92,7 @@ void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
 
 void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+    states.transform *= getTransform();
     target.draw(bgSprite, states);
     if(isPause){
         if(pauseBtn) target.draw(*pauseBtn, states);
