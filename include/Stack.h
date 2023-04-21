@@ -26,7 +26,7 @@ public:
     void peek();
 
     // push
-    void push(int value);
+    void pushWhenEmpty(int value);
 
     // // insert
     // void insertWhenEmpty(int value);
