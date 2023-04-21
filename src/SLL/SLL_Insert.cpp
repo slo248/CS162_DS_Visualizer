@@ -8,7 +8,7 @@ void SLL::insertWhenEmpty(int value)
 
     graph.finishAllSteps();
 
-    codeBox.loadFromFile("media/code/insertEmpty.txt");
+    codeBox.loadFromFile("code/SLL/insertEmpty.txt");
 
     listNode.pushBack(value);
     listNode.begin()->data.position=START_POSITION;
@@ -33,7 +33,7 @@ void SLL::insertFront(int value)
 
     graph.finishAllSteps();
 
-    codeBox.loadFromFile("media/code/insertFront.txt");
+    codeBox.loadFromFile("code/SLL/insertFront.txt");
 
     listNode.pushFront(value);
     listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
@@ -99,7 +99,7 @@ void SLL::insertBack(int value)
 
     graph.finishAllSteps();
 
-    codeBox.loadFromFile("media/code/insertBack.txt");
+    codeBox.loadFromFile("code/SLL/insertBack.txt");
 
     listNode.pushBack(value);
     listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data, &listNode.rbegin()->data));
@@ -225,7 +225,7 @@ void SLL::insertMiddle(int pos, int value)
 
     graph.finishAllSteps();
 
-    codeBox.loadFromFile("media/code/insertMiddle.txt");
+    codeBox.loadFromFile("code/SLL/insertMiddle.txt");
 
     listNode.insert(value,pos);
     listNode.begin()->getNext(pos)->data.position=START_POSITION+sf::Vector2f(DISTANCE*pos, DISTANCE);
