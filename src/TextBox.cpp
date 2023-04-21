@@ -6,6 +6,8 @@ using namespace Config::TextBox;
 TextBox::TextBox(sf::Font *font, sf::Vector2f position): 
     mStr("1"), mIsFocus(false), mTime(0)
 {
+    setPosition(position);
+
     mRect.setSize(sf::Vector2f(WIDTH, HEIGHT));
     mRect.setFillColor(BG_COLOR);
     {
@@ -26,9 +28,8 @@ TextBox::TextBox(sf::Font *font, sf::Vector2f position):
             rect.top + rect.height / 2.0f
         );
     }
-    mText.setFillColor(TEXT_COLOR);
-    
-    setPosition(position);
+    mText.setFillColor(TEXT_COLOR); 
+    mText.setPosition(10.f,0);   
 }
 
 int TextBox::getValue()
@@ -68,21 +69,13 @@ void TextBox::update(float dt)
     else mText.setString(mStr);
 }
 
-void TextBox::setPosition(sf::Vector2f position)
-{
-    mRect.setPosition(position);
-    mText.setPosition(
-        position.x + 10.f,
-        position.y
-    );
-}
-
 bool TextBox::changeFocus(sf::RenderWindow *window)
 {
     sf::Vector2f mousePos = window->mapPixelToCoords(
         sf::Mouse::getPosition(*window)
     );
-    mIsFocus=mRect.getGlobalBounds().contains(mousePos);
+
+    mIsFocus=mRect.getGlobalBounds().contains(mousePos-getPosition());
     return mIsFocus;
 }
 
@@ -122,6 +115,7 @@ void TextBox::handleEvent(sf::Event &event, sf::RenderWindow *window)
 
 void TextBox::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+    states.transform *= getTransform();
     target.draw(mRect, states);
     target.draw(mText, states);
 }
