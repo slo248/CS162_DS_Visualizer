@@ -2,10 +2,6 @@
 
 Graph_Control::Graph_Control(sf::Font* font): 
     mFont(font),
-    playBtn(nullptr),
-    pauseBtn(nullptr),
-    nextBtn(nullptr),
-    prevBtn(nullptr),
     isPause(false)
 {
     assert(bgTexture.loadFromFile("media/image/bgGraphControl.png"));
@@ -13,6 +9,8 @@ Graph_Control::Graph_Control(sf::Font* font):
     assert(pauseBtnTexture.loadFromFile("media/image/pauseBtn.png"));
     assert(nextBtnTexture.loadFromFile("media/image/nextBtn.png"));
     assert(prevBtnTexture.loadFromFile("media/image/prevBtn.png"));
+    assert(beginBtnTexture.loadFromFile("media/image/beginBtn.png"));
+    assert(endBtnTexture.loadFromFile("media/image/endBtn.png"));
 
     bgSprite.setTexture(bgTexture);
 
@@ -23,9 +21,8 @@ Graph_Control::Graph_Control(sf::Font* font):
         sf::Vector2f(0,0),
         true
     );
-    // playBtn->setCenter();
     playBtn->setPosition(
-        130,
+        bgTexture.getSize().x/2,
         bgTexture.getSize().y/2
     );
 
@@ -36,7 +33,6 @@ Graph_Control::Graph_Control(sf::Font* font):
         sf::Vector2f(0,0),
         true
     );
-    // pauseBtn->setCenter();
     pauseBtn->setPosition(playBtn->getPosition());
 
     prevBtn = new Button(
@@ -46,7 +42,6 @@ Graph_Control::Graph_Control(sf::Font* font):
         sf::Vector2f(0,0),
         true
     );
-    // prevBtn->setCenter();
     prevBtn->setPosition(
         playBtn->getPosition().x-80,
         bgTexture.getSize().y/2
@@ -59,9 +54,32 @@ Graph_Control::Graph_Control(sf::Font* font):
         sf::Vector2f(0,0),
         true
     );
-    // nextBtn->setCenter();
     nextBtn->setPosition(
         playBtn->getPosition().x+80,
+        bgTexture.getSize().y/2
+    );
+
+    beginBtn = new Button(
+        mFont,
+        &beginBtnTexture,
+        "",
+        sf::Vector2f(0,0),
+        true
+    );
+    beginBtn->setPosition(
+        prevBtn->getPosition().x-80,
+        bgTexture.getSize().y/2
+    );
+
+    endBtn = new Button(
+        mFont,
+        &endBtnTexture,
+        "",
+        sf::Vector2f(0,0),
+        true
+    );
+    endBtn->setPosition(
+        nextBtn->getPosition().x+80,
         bgTexture.getSize().y/2
     );
 }
@@ -72,6 +90,8 @@ Graph_Control::~Graph_Control()
     delete pauseBtn;
     delete nextBtn;
     delete prevBtn;
+    delete beginBtn;
+    delete endBtn;
 }
 
 void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std::queue<Command> &commandQueue)
@@ -122,6 +142,26 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
             std::vector<int>()
         }
     );
+
+    if(beginBtn->isMouseOver(window,getPosition())) commandQueue.push(
+        {
+            -6,
+            -1,
+            -1,
+            -1,
+            std::vector<int>()
+        }
+    );
+
+    if(endBtn->isMouseOver(window,getPosition())) commandQueue.push(
+        {
+            -7,
+            -1,
+            -1,
+            -1,
+            std::vector<int>()
+        }
+    );
 }
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
@@ -130,6 +170,8 @@ void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
     else playBtn->isMouseOver(window,getPosition());
     nextBtn->isMouseOver(window,getPosition());
     prevBtn->isMouseOver(window,getPosition());
+    beginBtn->isMouseOver(window,getPosition());
+    endBtn->isMouseOver(window,getPosition());
 }
 
 void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
@@ -140,4 +182,6 @@ void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) cons
     else target.draw(*playBtn, states);
     target.draw(*nextBtn, states);
     target.draw(*prevBtn, states);
+    target.draw(*beginBtn, states);
+    target.draw(*endBtn, states);
 }

@@ -50,3 +50,13 @@ void SLL::prevStep()
 {
     graph.prevStep();
 }
+
+void SLL::goToBegin()
+{
+    graph.goToBegin();
+}
+
+void SLL::goToEnd()
+{
+    graph.goToEnd();
+}
