@@ -16,8 +16,10 @@ bool Button::isMouseOver(sf::RenderWindow *window)
 {
     sf::Vector2f mousePos=window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::Vector2f rectPos=getPosition();
+    sf::Vector2f origin=getOrigin();
     sf::FloatRect bounds=getLocalBounds();
-    bool res=bounds.contains(mousePos.x-rectPos.x, mousePos.y-rectPos.y);
+
+    bool res=bounds.contains(mousePos.x-rectPos.x+origin.x, mousePos.y-rectPos.y+origin.y);
     if(res)
         mRect.setColor(BG_MOUSE_OVER);
     else

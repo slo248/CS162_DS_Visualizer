@@ -6,7 +6,7 @@ Graph_Control::Graph_Control(sf::Font* font):
     pauseBtn(nullptr),
     nextBtn(nullptr),
     prevBtn(nullptr),
-    isPause(false)
+    isPause(true)
 {
     assert(bgTexture.loadFromFile("media/image/bgGraphControl.png"));
     assert(playBtnTexture.loadFromFile("media/image/playBtn.png"));
@@ -16,44 +16,49 @@ Graph_Control::Graph_Control(sf::Font* font):
 
     bgSprite.setTexture(bgTexture);
 
-    prevBtn = new Button(
-        font,
-        &prevBtnTexture,
-        "",
-        sf::Vector2f(
-            bgSprite.getPosition().x + 20,
-            bgSprite.getPosition().y + 10
-        )
-    );
-
     playBtn = new Button(
-        font,
+        mFont,
         &playBtnTexture,
         "",
-        sf::Vector2f(
-            prevBtn->getPosition().x + prevBtnTexture.getSize().x + 20,
-            prevBtn->getPosition().y
-        )
+        sf::Vector2f(0,0)
+    );
+    playBtn->setCenter();
+    playBtn->setPosition(
+        130,
+        bgTexture.getSize().y/2
     );
 
     pauseBtn = new Button(
-        font,
+        mFont,
         &pauseBtnTexture,
         "",
-        sf::Vector2f(
-            playBtn->getPosition().x,
-            playBtn->getPosition().y
-        )
+        sf::Vector2f(0,0)
+    );
+    pauseBtn->setCenter();
+    pauseBtn->setPosition(playBtn->getPosition());
+
+    prevBtn = new Button(
+        mFont,
+        &prevBtnTexture,
+        "",
+        sf::Vector2f(0,0)
+    );
+    prevBtn->setCenter();
+    prevBtn->setPosition(
+        playBtn->getPosition().x-80,
+        bgTexture.getSize().y/2
     );
 
     nextBtn = new Button(
-        font,
+        mFont,
         &nextBtnTexture,
         "",
-        sf::Vector2f(
-            playBtn->getPosition().x + playBtnTexture.getSize().x + 20,
-            playBtn->getPosition().y
-        )
+        sf::Vector2f(0,0)
+    );
+    nextBtn->setCenter();
+    nextBtn->setPosition(
+        playBtn->getPosition().x+80,
+        bgTexture.getSize().y/2
     );
 }
 
