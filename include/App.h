@@ -18,6 +18,8 @@ public:
     void draw();
     //
 
+    void SLL_Update();
+
     void run();
 
 private:

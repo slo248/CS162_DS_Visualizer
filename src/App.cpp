@@ -61,6 +61,20 @@ void App::processInput()
 
 void App::update()
 {
+    if(sll) SLL_Update();
+}
+
+void App::draw()
+{
+    window.clear();
+    window.draw(bgSprite);
+    window.draw(*sllControl);
+    if(sll) sll->draw();
+    window.display();
+}
+
+void App::SLL_Update()
+{
     sllControl->update(1.0f/FPS);
 
     Command cmd;
@@ -140,15 +154,6 @@ void App::update()
                 }
                 break;
         }
-}
-
-void App::draw()
-{
-    window.clear();
-    window.draw(bgSprite);
-    window.draw(*sllControl);
-    sll->draw();
-    window.display();
 }
 
 void App::run()
