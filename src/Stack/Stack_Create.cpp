@@ -12,7 +12,7 @@ void Stack::empty()
 void Stack::manual(const std::vector<int> &list)
 {
     empty();
-    assert(list.size()<=10);
+    assert(list.size()<=MAX_NODE);
 
     for(int x: list){
         assert(0<=x && x<=99);
@@ -37,7 +37,7 @@ void Stack::loadFromFile(std::string path)
 
 void Stack::randomList(int n)
 {
-    assert(0<=n && n<=10);
+    assert(0<=n && n<=MAX_NODE);
     empty();
     while(n--)
         listNode.pushBack(Node(getRand(0,99)));

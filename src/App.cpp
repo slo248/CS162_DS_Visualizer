@@ -194,6 +194,26 @@ void App::Stack_Update()
     if(stack->isDoneAllSteps() && flag)
         switch (cmd.option)
         {
+            case 0:
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        stack->empty();
+                        break;
+                    case 1: // Manual
+                        stack->manual(cmd.list);
+                        stack->makeList();
+                        break;
+                    case 2: // Random
+                        stack->randomList(getRand(1,10));
+                        stack->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        stack->randomList(cmd.input1);
+                        stack->makeList();
+                        break;
+                }
+                break;
             case 1: // Peek
                 stack->peek();
                 break;
