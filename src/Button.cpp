@@ -7,8 +7,9 @@ Button::Button(
     sf::Font*       font,
     sf::Texture*    bgTexture,
     std::string     str,
-    sf::Vector2f    position
-): RectText(font, bgTexture, str, position)
+    sf::Vector2f    position,
+    bool            isCentered
+): RectText(font, bgTexture, str, position, isCentered)
 {
 }
 

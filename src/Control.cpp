@@ -42,7 +42,7 @@ Control::Control(sf::Font* font):
         )
     );
 
-    // graphControl.setPosition(300,100);
+    graphControl.setPosition(300,100);
 }
 
 Control::~Control()

@@ -20,9 +20,10 @@ Graph_Control::Graph_Control(sf::Font* font):
         mFont,
         &playBtnTexture,
         "",
-        sf::Vector2f(0,0)
+        sf::Vector2f(0,0),
+        true
     );
-    playBtn->setCenter();
+    // playBtn->setCenter();
     playBtn->setPosition(
         130,
         bgTexture.getSize().y/2
@@ -32,18 +33,20 @@ Graph_Control::Graph_Control(sf::Font* font):
         mFont,
         &pauseBtnTexture,
         "",
-        sf::Vector2f(0,0)
+        sf::Vector2f(0,0),
+        true
     );
-    pauseBtn->setCenter();
+    // pauseBtn->setCenter();
     pauseBtn->setPosition(playBtn->getPosition());
 
     prevBtn = new Button(
         mFont,
         &prevBtnTexture,
         "",
-        sf::Vector2f(0,0)
+        sf::Vector2f(0,0),
+        true
     );
-    prevBtn->setCenter();
+    // prevBtn->setCenter();
     prevBtn->setPosition(
         playBtn->getPosition().x-80,
         bgTexture.getSize().y/2
@@ -53,9 +56,10 @@ Graph_Control::Graph_Control(sf::Font* font):
         mFont,
         &nextBtnTexture,
         "",
-        sf::Vector2f(0,0)
+        sf::Vector2f(0,0),
+        true
     );
-    nextBtn->setCenter();
+    // nextBtn->setCenter();
     nextBtn->setPosition(
         playBtn->getPosition().x+80,
         bgTexture.getSize().y/2

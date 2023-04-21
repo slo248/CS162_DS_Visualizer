@@ -10,7 +10,8 @@ public:
         sf::Font*       font,
         sf::Texture*    bgTexture,
         std::string     str,
-        sf::Vector2f    position
+        sf::Vector2f    position,
+        bool            isCentered=false
     );
 
     bool isMouseOver(sf::RenderWindow* window);

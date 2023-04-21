@@ -3,10 +3,8 @@
 
 using namespace Config::Button;
 
-RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::Vector2f position)
+RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::Vector2f position, bool isCentered)
 {
-    setPosition(position);
-
     mRect.setTexture(*bgTexture);
     mRect.setColor(BG_COLOR);
     {
@@ -21,6 +19,9 @@ RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::
     mText.setCharacterSize(CHAR_SIZE);
     mText.setFillColor(TEXT_COLOR);
     setString(str);
+
+    if(isCentered) setCenter();
+    setPosition(position);
 }
 
 void RectText::setString(std::string str)
