@@ -2,14 +2,14 @@
 
 void Stack::peek()
 {
-    graph.finishAllSteps();
-
     codeBox.loadFromFile("code/Stack/peek.txt");
 
     graph.addStep(0.5*FPS);
     graph.draw(&codeBox,0);
 
     if(listNode.empty()) return;
+
+    graph.finishAllSteps();
 
     // step 1: return head.value
     graph.addStep(0.5*FPS);

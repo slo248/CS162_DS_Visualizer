@@ -186,6 +186,18 @@ void App::SLL_Update()
 
 void App::Stack_Update()
 {
+    stackControl->update(1.0f/FPS);
+
+    Command cmd;
+    bool flag=stackControl->getCommand(cmd);
+
+    if(stack->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {
+            case 1: // Peek
+                stack->peek();
+                break;
+        }
 }
 
 void App::run()
