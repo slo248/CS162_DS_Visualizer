@@ -15,6 +15,15 @@ void Stack::popWhenSingle()
 
     Node* deletedN=listNode.popFront();
 
+    // step 1: tmp=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(deletedN,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
+    graph.drawSubscript(deletedN,"head/tmp",RED);
+    graph.draw(&codeBox,1);
+    //
+
     deletedNode.push_back(deletedN);
 }
 
