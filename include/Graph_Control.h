@@ -27,12 +27,16 @@ private:
     sf::Texture     pauseBtnTexture;
     sf::Texture     nextBtnTexture;
     sf::Texture     prevBtnTexture;
+    sf::Texture     beginBtnTexture;
+    sf::Texture     endBtnTexture;
 
     sf::Sprite      bgSprite;
     Button*         playBtn;
     Button*         pauseBtn;
     Button*         nextBtn;
     Button*         prevBtn;
+    Button*         beginBtn;
+    Button*         endBtn;
 
     bool            isPause;
 };
