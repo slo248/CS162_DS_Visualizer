@@ -5,8 +5,9 @@ using namespace Config::Button;
 
 RectText::RectText(sf::Font *font, sf::Texture *bgTexture, std::string str, sf::Vector2f position)
 {
+    setPosition(position);
+
     mRect.setTexture(*bgTexture);
-    mRect.setPosition(position);
     mRect.setColor(BG_COLOR);
     {
         sf::FloatRect rectRect = mRect.getLocalBounds();
@@ -38,8 +39,14 @@ void RectText::setString(std::string str)
     );
 }
 
+sf::FloatRect RectText::getLocalBounds() const
+{
+    return mRect.getLocalBounds();
+}
+
 void RectText::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+    states.transform *= getTransform();
     target.draw(mRect, states);
     states.transform *= mRect.getTransform();
     target.draw(mText, states);
