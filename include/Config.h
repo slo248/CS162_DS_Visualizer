@@ -29,7 +29,7 @@ namespace Config
     {
         const float BAR_WIDTH           = 50.f;
         const float TRIANGLE_WIDTH      = 10.f;
-        const float HEIGHT_EACH         = 3.f;
+        const float HEIGHT_EACH         = 4.f;
         const float WIDTH               = BAR_WIDTH+TRIANGLE_WIDTH;
     }
 
