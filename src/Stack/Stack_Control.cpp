@@ -17,7 +17,7 @@ Stack_Control::Stack_Control(sf::Font *font, sf::Vector2f windowSize):
         "",
         sf::Vector2f(
             btnTexture.getSize().x+40.f, 
-            Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-LeftTriBtnTexture.getSize().y)/2
+            Config::Window::HEIGHT-btnTexture.getSize().y*5+(btnTexture.getSize().y-LeftTriBtnTexture.getSize().y)/2
         )
     );
 
@@ -27,13 +27,13 @@ Stack_Control::Stack_Control(sf::Font *font, sf::Vector2f windowSize):
         "",
         sf::Vector2f(
             btnTexture.getSize().x+10.f+bgSuboptionTexture.getSize().x-RightTriBtnTexture.getSize().x-35, 
-            Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-RightTriBtnTexture.getSize().y)/2
+            Config::Window::HEIGHT-btnTexture.getSize().y*5+(btnTexture.getSize().y-RightTriBtnTexture.getSize().y)/2
         )
     );
 
     graphControl.setPosition(
         0,
-        windowSize.y-options.size()*btnTexture.getSize().y
+        windowSize.y-6*btnTexture.getSize().y
     );
 }
 

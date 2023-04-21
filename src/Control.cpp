@@ -127,6 +127,8 @@ bool Control::getCommand(Command &command)
 
 void Control::loadSubOption()
 {
+    const int lines=5;
+
     if(subOption) delete subOption;
     subOption=new RectText(
         mFont,
@@ -134,7 +136,7 @@ void Control::loadSubOption()
         suboptions[curOption][curSuboption][0],
         sf::Vector2f(
             btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-suboptionTexture.getSize().x)/2,
-            Config::Window::HEIGHT-btnTexture.getSize().y*options.size()+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
+            Config::Window::HEIGHT-btnTexture.getSize().y*lines+(btnTexture.getSize().y-suboptionTexture.getSize().y)/2
         )
     );
 
@@ -146,7 +148,7 @@ void Control::loadSubOption()
             mFont,
             sf::Vector2f(
                 btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-Config::InputBox::WIDTH)/2,
-                Config::Window::HEIGHT-btnTexture.getSize().y*(options.size()-1)+(btnTexture.getSize().y-Config::InputBox::HEIGHT)/2
+                Config::Window::HEIGHT-btnTexture.getSize().y*(lines-1)+(btnTexture.getSize().y-Config::InputBox::HEIGHT)/2
             ),
             suboptions[curOption][curSuboption][1]
         );
@@ -160,7 +162,7 @@ void Control::loadSubOption()
             mFont,
             sf::Vector2f(
                 btnTexture.getSize().x+10+(bgSuboptionTexture.getSize().x-Config::InputBox::WIDTH)/2,
-                Config::Window::HEIGHT-btnTexture.getSize().y*(options.size()-2)+(btnTexture.getSize().y-Config::InputBox::HEIGHT)/2
+                Config::Window::HEIGHT-btnTexture.getSize().y*(lines-2)+(btnTexture.getSize().y-Config::InputBox::HEIGHT)/2
             ),
             suboptions[curOption][curSuboption][2]
         );

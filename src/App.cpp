@@ -39,22 +39,31 @@ App::App():
     // sllControl=new SLL_Control(&sanf,window.getView().getSize());
 
     stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    stackControl=new Stack_Control(&sanf,window.getView().getSize());
 }
 
 App::~App()
 {
-    if(sll) delete sll;
-    if(sllControl) delete sllControl;
-    if(stack) delete stack;
+    if(sll){ 
+        delete sll;
+        delete sllControl;
+    }
+
+    if(stack){
+        delete stack;
+        delete stackControl;
+    }
 }
 
 void App::processInput()
 {
     if(sllControl) sllControl->handleRealTimeInput(&window);
+    if(stackControl) stackControl->handleRealTimeInput(&window);
 
     sf::Event event;
     while (window.pollEvent(event)){
         if(sllControl) sllControl->handleEvent(event,&window);
+        if(stackControl) stackControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:
@@ -67,15 +76,21 @@ void App::processInput()
 void App::update()
 {
     if(sll) SLL_Update();
+    if(stack) Stack_Update();
 }
 
 void App::draw()
 {
     window.clear();
     window.draw(bgSprite);
-    if(sllControl) window.draw(*sllControl);
-    if(sll) sll->draw();
-    if(stack) stack->draw();
+    if(sll){ 
+        sll->draw();
+        window.draw(*sllControl);
+    }
+    if(stack){ 
+        stack->draw();
+        window.draw(*stackControl);
+    }
     window.display();
 }
 
@@ -160,6 +175,10 @@ void App::SLL_Update()
                 }
                 break;
         }
+}
+
+void App::Stack_Update()
+{
 }
 
 void App::run()
