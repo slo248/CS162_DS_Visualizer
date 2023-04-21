@@ -64,10 +64,10 @@ Graph_Control::Graph_Control(sf::Font* font):
 
 Graph_Control::~Graph_Control()
 {
-    if(playBtn) delete playBtn;
-    if(pauseBtn) delete pauseBtn;
-    if(nextBtn) delete nextBtn;
-    if(prevBtn) delete prevBtn;
+    delete playBtn;
+    delete pauseBtn;
+    delete nextBtn;
+    delete prevBtn;
 }
 
 void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
@@ -82,22 +82,18 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
 {
-    if(isPause){
-        if(pauseBtn) pauseBtn->isMouseOver(window);
-    }
-    else if(playBtn) playBtn->isMouseOver(window);
-    if(nextBtn) nextBtn->isMouseOver(window);
-    if(prevBtn) prevBtn->isMouseOver(window);
+    if(isPause) pauseBtn->isMouseOver(window);
+    else playBtn->isMouseOver(window);
+    nextBtn->isMouseOver(window);
+    prevBtn->isMouseOver(window);
 }
 
 void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
     target.draw(bgSprite, states);
-    if(isPause){
-        if(pauseBtn) target.draw(*pauseBtn, states);
-    }
-    else if(playBtn) target.draw(*playBtn, states);
-    if(nextBtn) target.draw(*nextBtn, states);
-    if(prevBtn) target.draw(*prevBtn, states);
+    if(isPause) target.draw(*pauseBtn, states);
+    else target.draw(*playBtn, states);
+    target.draw(*nextBtn, states);
+    target.draw(*prevBtn, states);
 }
