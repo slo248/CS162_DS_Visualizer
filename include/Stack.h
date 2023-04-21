@@ -30,6 +30,7 @@ public:
     void push(int value);
 
     // pop
+    void popWhenSingle();
     void pop();
 
     void draw();

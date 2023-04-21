@@ -1,6 +1,6 @@
 #include "Stack.h"
 
-void Stack::pop()
+void Stack::popWhenSingle()
 {
     graph.finishAllSteps();
     codeBox.loadFromFile("code/Stack/pop.txt");
@@ -10,6 +10,17 @@ void Stack::pop()
         graph.draw(&codeBox,0);
         return;
     }
+
+    assert(listNode.size()==1);
+
+    Node* deletedN=listNode.popFront();
+
+    deletedNode.push_back(deletedN);
+}
+
+void Stack::pop()
+{
+    if(listNode.size()<=1) popWhenSingle();
 
     Node* deletedN=listNode.popFront();
     Arrow* deletedA=listArrow.popFront();
