@@ -23,4 +23,13 @@ void Stack::pushWhenEmpty(int value)
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,10);
     //
+
+    // step 3: head=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.draw(&codeBox,2);
+    //
 }
