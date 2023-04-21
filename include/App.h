@@ -4,6 +4,7 @@
 #include "Global.h"
 #include "SLL_Control.h"
 #include "SLL.h"
+#include "Stack.h"
 #include "Figure.h"
 
 class App
@@ -31,6 +32,8 @@ private:
 
     SLL*                sll;
     SLL_Control*        sllControl;
+
+    Stack*              stack;
 };
 
 #endif // APP_H

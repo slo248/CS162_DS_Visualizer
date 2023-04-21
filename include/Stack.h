@@ -7,7 +7,7 @@
 class Stack
 {
 public:
-    sf::Vector2f    START_POSITION  = sf::Vector2f(500, 5);
+    sf::Vector2f    START_POSITION  = sf::Vector2f(750, 50);
     float           DISTANCE        = 90.f;
 
 public:

@@ -10,7 +10,10 @@ App::App():
         TITLE,
         STYLE,
         SETTINGS
-    )
+    ),
+    sll(nullptr),
+    sllControl(nullptr),
+    stack(nullptr)
 {
     window.setFramerateLimit(FPS);
 
@@ -32,24 +35,26 @@ App::App():
         (float)HEIGHT/bgImage.getSize().y
     );
 
-    sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    sllControl=new SLL_Control(&sanf,window.getView().getSize());
+    // sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    // sllControl=new SLL_Control(&sanf,window.getView().getSize());
+
+    stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
 }
 
 App::~App()
 {
     if(sll) delete sll;
     if(sllControl) delete sllControl;
+    if(stack) delete stack;
 }
 
 void App::processInput()
 {
-    sllControl->handleRealTimeInput(&window);
+    if(sllControl) sllControl->handleRealTimeInput(&window);
 
     sf::Event event;
     while (window.pollEvent(event)){
-        // sll->handleEvent(event);
-        sllControl->handleEvent(event,&window);
+        if(sllControl) sllControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:
@@ -68,8 +73,9 @@ void App::draw()
 {
     window.clear();
     window.draw(bgSprite);
-    window.draw(*sllControl);
+    if(sllControl) window.draw(*sllControl);
     if(sll) sll->draw();
+    if(stack) stack->draw();
     window.display();
 }
 
@@ -158,8 +164,16 @@ void App::SLL_Update()
 
 void App::run()
 {
-    sll->randomList(4);
-    sll->makeList();
+    if(sll){
+        sll->randomList(4);
+        sll->makeList();
+    }
+
+    if(stack){
+        stack->randomList(4);
+        stack->makeList();
+    }
+
     while (window.isOpen())
     {
         processInput();
