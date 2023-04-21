@@ -40,6 +40,14 @@ void Graph::addStep(int frames)
     drawFunc.push_back(std::vector<functor>());
 }
 
+void Graph::goToEnd()
+{
+    if(nFrames.empty()) return;
+
+    curStep=nFrames.size()-1;
+    curFrame=nFrames[curStep];
+}
+
 bool Graph::isDoneAllSteps()
 {
     if(nFrames.empty()) return true;

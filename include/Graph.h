@@ -15,6 +15,7 @@ public:
     void clear();
     void finishAllSteps();
     void addStep(int frames);
+    void goToEnd();
     bool isDoneAllSteps();
 
     void nextStep();
