@@ -42,6 +42,18 @@ void Stack::pop()
     graph.draw(&codeBox,2);
     //
 
+    // step 3: delete tmp
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    if(deletedA) graph.drawShrink(deletedA,GREEN);
+    graph.draw(&listArrow,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.draw(&codeBox,3);
+    //
+
     deletedNode.push_back(deletedN);
     if(deletedA) deletedArrow.push_back(deletedA);
 }

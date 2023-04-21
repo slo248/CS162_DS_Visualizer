@@ -242,6 +242,9 @@ void App::Stack_Update()
             case 2: // Push
                 stack->push(cmd.input1);
                 break;
+            case 3: // Pop
+                stack->pop();
+                break;
         }
 }
 
