@@ -14,6 +14,9 @@ void Stack::pop()
     Node* deletedN=listNode.popFront();
     Arrow* deletedA=listArrow.popFront();
 
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
     // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
@@ -30,8 +33,8 @@ void Stack::pop()
     graph.addStep(0.5*FPS);
 
     graph.draw(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
     if(deletedA){ 
         graph.draw(deletedA,BLACK);
         graph.drawGrow(deletedA,GREEN);

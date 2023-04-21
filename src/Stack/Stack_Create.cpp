@@ -18,7 +18,7 @@ void Stack::manual(const std::vector<int> &list)
 
     for(int x: list){
         assert(Config::MIN_VALUE<=x && x<=Config::MAX_VALUE);
-        listNode.pushBack(Node(x));
+        listNode.pushFront(Node(x));
     }
 }
 
@@ -32,7 +32,7 @@ void Stack::loadFromFile(std::string path)
     while(fi>>val){
         assert(Config::MIN_VALUE<=val && val<=Config::MAX_VALUE);
         if(listNode.size()==MAX_NODE) break;
-        listNode.pushBack(Node(val));
+        listNode.pushFront(Node(val));
     }
     fi.close();
 }
@@ -42,7 +42,7 @@ void Stack::randomList(int n)
     assert(MIN_NODE<=n && n<=MAX_NODE);
     empty();
     while(n--)
-        listNode.pushBack(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
+        listNode.pushFront(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
 }
 
 void Stack::makeList()
@@ -55,7 +55,7 @@ void Stack::makeList()
     node->data.position=START_POSITION;
     for(node=node->prev; node!=listNode.end(); node=node->prev){
         node->data.position=node->next->data.position-sf::Vector2f(0, DISTANCE);
-        listArrow.pushBack(Arrow(&node->data, &node->next->data));
+        listArrow.pushFront(Arrow(&node->data, &node->next->data));
     }
 
     // add new steps
