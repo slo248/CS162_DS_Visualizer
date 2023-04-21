@@ -53,6 +53,8 @@ public:
     void play();
     void nextStep();
     void prevStep();
+    void goToBegin();
+    void goToEnd();
 
 private:
     int FPS;

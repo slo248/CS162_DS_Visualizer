@@ -51,6 +51,16 @@ void Stack::prevStep()
     graph.prevStep();
 }
 
+void Stack::goToBegin()
+{
+    graph.goToBegin();
+}
+
+void Stack::goToEnd()
+{
+    graph.goToEnd();
+}
+
 void Stack::peek()
 {
     codeBox.loadFromFile("code/Stack/peek.txt");
