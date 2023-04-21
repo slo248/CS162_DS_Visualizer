@@ -70,19 +70,39 @@ Graph_Control::~Graph_Control()
     delete prevBtn;
 }
 
-void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
+void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std::queue<Command> &commandQueue)
 {
     if(event.type!=sf::Event::MouseButtonReleased) return;
 
-    if(isPause)
-        isPause=!pauseBtn->isMouseOver(window);
-    else
-        isPause=playBtn->isMouseOver(window);
+    if(!isPause){
+        isPause=pauseBtn->isMouseOver(window);
+        if(isPause) commandQueue.push(
+            {
+                -2,
+                -1,
+                -1,
+                -1,
+                std::vector<int>()
+            }
+        );
+    }
+    else{
+        isPause=!playBtn->isMouseOver(window);
+        if(!isPause) commandQueue.push(
+            {
+                -3,
+                -1,
+                -1,
+                -1,
+                std::vector<int>()
+            }
+        );
+    }
 }
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)
 {
-    if(isPause) pauseBtn->isMouseOver(window);
+    if(!isPause) pauseBtn->isMouseOver(window);
     else playBtn->isMouseOver(window);
     nextBtn->isMouseOver(window);
     prevBtn->isMouseOver(window);
@@ -92,7 +112,7 @@ void Graph_Control::draw(sf::RenderTarget &target, sf::RenderStates states) cons
 {
     states.transform *= getTransform();
     target.draw(bgSprite, states);
-    if(isPause) target.draw(*pauseBtn, states);
+    if(!isPause) target.draw(*pauseBtn, states);
     else target.draw(*playBtn, states);
     target.draw(*nextBtn, states);
     target.draw(*prevBtn, states);

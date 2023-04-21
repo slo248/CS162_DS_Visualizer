@@ -3,6 +3,8 @@
 
 #include "Global.h"
 #include "Button.h"
+#include "Command.h"
+#include <queue>
 
 class Graph_Control:
     public sf::Transformable,
@@ -13,7 +15,7 @@ public:
     Graph_Control(sf::Font* font);
     ~Graph_Control();
 
-    void handleEvent(sf::Event& event, sf::RenderWindow* window);
+    void handleEvent(sf::Event& event, sf::RenderWindow* window, std::queue<Command>& commandQueue);
     void handleRealTimeInput(sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

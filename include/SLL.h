@@ -42,10 +42,12 @@ public:
     void handleEvent(sf::Event& event);
     void draw();
     bool isDoneAllSteps();
+    void pause();
+    void play();
+    void nextStep();
+    void prevStep();
 
 private:
-    bool isPause;
-
     int FPS;
     sf::RenderWindow* window;
     sf::Font* sanf;

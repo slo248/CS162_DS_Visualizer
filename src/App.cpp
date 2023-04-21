@@ -63,68 +63,77 @@ void App::update()
 {
     sllControl->update(1.0f/FPS);
 
-    if(sll->isDoneAllSteps()){
-        Command cmd;
-        if(sllControl->getCommand(cmd)){
-            switch (cmd.option)
-            {
-                case 0: // Create
-                    switch (cmd.suboption)
-                    {
-                        case 0: // Empty
-                            sll->empty();
-                            break;
-                        case 1: // Manual
-                            sll->manual(cmd.list);
-                            sll->makeList();
-                            break;
-                        case 2: // Random
-                            sll->randomList(getRand(1,10));
-                            sll->makeList();
-                            break;
-                        case 3: // Random fixed size
-                            sll->randomList(cmd.input1);
-                            sll->makeList();
-                            break;
-                    }
-                    break;
-                case 1: // Insert
-                    switch (cmd.suboption)
-                    {
-                        case 0: // Front
-                            sll->insertFront(cmd.input1);
-                            break;
-                        case 1: // Back
-                            sll->insertBack(cmd.input1);
-                            break;
-                        case 2: // Middle
-                            sll->insertMiddle(cmd.input1,cmd.input2);
-                            break;
-                    }
-                    break;
-                case 2: // Search
-                    sll->search(cmd.input1);
-                    break;
-                case 3: // Update
-                    sll->update(cmd.input1,cmd.input2);
-                    break;
-                case 4: // Delete
-                    switch (cmd.suboption)
-                    {
-                        case 0: // First
-                            sll->deleteFirst();
-                            break;
-                        case 1: // Last
-                            sll->deleteLast();
-                            break;
-                        case 2: // Middle
-                            sll->deleteMiddle(cmd.input1);
-                            break;
-                    }
-                    break;
-            }
-        }
+    Command cmd;
+    bool flag=sllControl->getCommand(cmd);
+
+    switch (cmd.option)
+    {
+        case -2: // pause
+            sll->pause();
+            break;
+        case -3: // play
+            sll->play();
+            break;
     }
+
+    if(sll->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {                  
+            case 0: // Create
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        sll->empty();
+                        break;
+                    case 1: // Manual
+                        sll->manual(cmd.list);
+                        sll->makeList();
+                        break;
+                    case 2: // Random
+                        sll->randomList(getRand(1,10));
+                        sll->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        sll->randomList(cmd.input1);
+                        sll->makeList();
+                        break;
+                }
+                break;
+            case 1: // Insert
+                switch (cmd.suboption)
+                {
+                    case 0: // Front
+                        sll->insertFront(cmd.input1);
+                        break;
+                    case 1: // Back
+                        sll->insertBack(cmd.input1);
+                        break;
+                    case 2: // Middle
+                        sll->insertMiddle(cmd.input1,cmd.input2);
+                        break;
+                }
+                break;
+            case 2: // Search
+                sll->search(cmd.input1);
+                break;
+            case 3: // Update
+                sll->update(cmd.input1,cmd.input2);
+                break;
+            case 4: // Delete
+                switch (cmd.suboption)
+                {
+                    case 0: // First
+                        sll->deleteFirst();
+                        break;
+                    case 1: // Last
+                        sll->deleteLast();
+                        break;
+                    case 2: // Middle
+                        sll->deleteMiddle(cmd.input1);
+                        break;
+                }
+                break;
+        }
 }
 
 void App::draw()

@@ -59,7 +59,7 @@ void Control::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     if(inputBox1) inputBox1->handleEvent(event,window);
     if(inputBox2) inputBox2->handleEvent(event,window);
-    graphControl.handleEvent(event,window);
+    graphControl.handleEvent(event,window,commandQueue);
 
     switch (event.type)
     {

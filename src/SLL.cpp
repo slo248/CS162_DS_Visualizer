@@ -6,7 +6,6 @@
 SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
     FPS(FPS),
     window(window),
-    isPause(false),
     codeBox(cons),
     sanf(sanf),
     cons(cons),
@@ -30,6 +29,26 @@ void SLL::draw()
 bool SLL::isDoneAllSteps()
 {
     return graph.isDoneAllSteps();
+}
+
+void SLL::pause()
+{
+    graph.setVisualType(STEP_BY_STEP);
+}
+
+void SLL::play()
+{
+    graph.setVisualType(AUTO);
+}
+
+void SLL::nextStep()
+{
+    graph.nextStep();
+}
+
+void SLL::prevStep()
+{
+    graph.prevStep();
 }
 
 void SLL::handleEvent(sf::Event &event)
