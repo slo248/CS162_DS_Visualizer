@@ -98,6 +98,26 @@ void Graph_Control::handleEvent(sf::Event &event, sf::RenderWindow *window, std:
             }
         );
     }
+
+    if(prevBtn->isMouseOver(window)) commandQueue.push(
+        {
+            -4,
+            -1,
+            -1,
+            -1,
+            std::vector<int>()
+        }
+    );
+    
+    if(nextBtn->isMouseOver(window)) commandQueue.push(
+        {
+            -5,
+            -1,
+            -1,
+            -1,
+            std::vector<int>()
+        }
+    );
 }
 
 void Graph_Control::handleRealTimeInput(sf::RenderWindow *window)

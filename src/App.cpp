@@ -74,6 +74,12 @@ void App::update()
         case -3: // play
             sll->play();
             break;
+        case -4: // prev
+            sll->prevStep();
+            break;
+        case -5: // next
+            sll->nextStep();
+            break;
     }
 
     if(sll->isDoneAllSteps() && flag)
