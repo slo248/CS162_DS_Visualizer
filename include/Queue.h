@@ -29,6 +29,10 @@ public:
     void enqueueWhenEmpty(int value);
     void enqueue(int value);
 
+    // dequeue
+    void dequeueWhenSingle();
+    //
+
     void draw();
     bool isDoneAllSteps();
     void pause();
