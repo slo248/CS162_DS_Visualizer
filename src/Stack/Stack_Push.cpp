@@ -44,6 +44,8 @@ void Stack::push(int value)
         return;
     }
 
+    if(listNode.size()==MAX_NODE) return;
+
     graph.finishAllSteps();
     
     codeBox.loadFromFile("code/Stack/push.txt");
