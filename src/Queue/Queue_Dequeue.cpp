@@ -6,7 +6,7 @@ void Queue::dequeueWhenSingle()
     assert(listNode.size()<=1);
 
     graph.finishAllSteps();
-    codeBox.loadFromFile("code/Queue/dequeue.txt");
+    codeBox.loadFromFile("code/Queue/dequeueWhenSingle.txt");
     
     if(listNode.size()==1){
         graph.addStep(1);
@@ -32,5 +32,10 @@ void Queue::dequeueWhenSingle()
     graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(deletedN,"head/tail/tmp",RED);
     graph.draw(&codeBox,2);
+    //
+
+    // step 3: head=tail=null
+    graph.addStep(1);
+    graph.draw(&codeBox,3);
     //
 }
