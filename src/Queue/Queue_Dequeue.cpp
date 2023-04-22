@@ -25,4 +25,12 @@ void Queue::dequeueWhenSingle()
     graph.drawSubscript(deletedN,"head/tail/tmp",RED);
     graph.draw(&codeBox,1);
     //
+
+    // step 2: delete tmp
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.drawSubscript(deletedN,"head/tail/tmp",RED);
+    graph.draw(&codeBox,2);
+    //
 }
