@@ -6,7 +6,7 @@ void Queue::enqueueWhenEmpty(int value)
     assert(listNode.size()==0);
 
     graph.finishAllSteps();
-    codeBox.loadFromFile("code/Queue/enqueue.txt");
+    codeBox.loadFromFile("code/Queue/enqueueWhenEmpty.txt");
 
     listNode.pushBack(value);
     
@@ -18,7 +18,7 @@ void Queue::enqueueWhenEmpty(int value)
     graph.draw(&codeBox,0);
     //
 
-    // step 2: tail.next = vtx
+    // step 2: vtx.next=head
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,ORANGE,ORANGE,WHITE);
