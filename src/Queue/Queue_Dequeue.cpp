@@ -55,6 +55,9 @@ void Queue::dequeue()
     deletedNode.push_back(deletedN);
     deletedArrow.push_back(deletedA);
 
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
     // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
@@ -64,6 +67,7 @@ void Queue::dequeue()
     graph.draw(deletedA,BLACK);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"head/tmp",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.draw(&codeBox,1);
     //
 
@@ -78,6 +82,21 @@ void Queue::dequeue()
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"tmp",RED);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.draw(&codeBox,2);
+    //
+
+    // step 3: delete tmp
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawShrink(deletedA,GREEN);
+    graph.draw(&listArrow,BLACK);
+    graph.drawSubscript(deletedN,"tmp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,3);
     //
 }
