@@ -25,6 +25,9 @@ public:
     void peekFront();
     void peekBack();
 
+    // enqueue
+    void enqueueWhenEmpty(int value);
+
     void draw();
     bool isDoneAllSteps();
     void pause();
