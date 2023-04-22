@@ -1,3 +1,4 @@
 Node* vtx = new Node(v)
 vtx.next = head
-head = vtx, tail = head
+head = vtx
+tail = head
