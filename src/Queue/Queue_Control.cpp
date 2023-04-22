@@ -57,8 +57,8 @@ void Queue_Control::genSuboptions(sf::Vector2f windowSize)
 
     // peek
     suboptions.push_back(std::vector<std::vector<std::string>>{
-        {"Front","Return front value",""},
-        {"Back","","Return back value"}
+        {"Return front value","",""},
+        {"Return back value","",""}
     });
 
     // enqueue
