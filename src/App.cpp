@@ -321,6 +321,9 @@ void App::Queue_Update()
                     case 0: // Front
                         queue->peekFront();
                         break;
+                    case 1: // Back
+                        queue->peekBack();
+                        break;
                 }
                 break;
         }

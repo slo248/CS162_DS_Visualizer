@@ -23,6 +23,7 @@ public:
 
     // peek
     void peekFront();
+    void peekBack();
 
     void draw();
     bool isDoneAllSteps();
