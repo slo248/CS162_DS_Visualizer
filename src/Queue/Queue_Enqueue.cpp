@@ -9,6 +9,7 @@ void Queue::enqueueWhenEmpty(int value)
     codeBox.loadFromFile("code/Queue/enqueueWhenEmpty.txt");
 
     listNode.pushBack(value);
+    listNode.begin()->data.position = START_POSITION;
     
     // step 1: appear new node
     graph.addStep(0.5*FPS);
@@ -55,6 +56,7 @@ void Queue::enqueue(int value)
     codeBox.loadFromFile("code/Queue/enqueue.txt");
 
     listNode.pushBack(value);
+    listNode.rbegin()->data.position = listNode.rbegin()->prev->data.position + sf::Vector2f(DISTANCE,0);
     listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data,&listNode.rbegin()->data));
 
     const int n=listNode.size();
@@ -92,5 +94,21 @@ void Queue::enqueue(int value)
         graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
     graph.draw(&codeBox,1);
+    //
+
+    // step 3: tail=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,n-3,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listArrow,0,m-2,BLACK);
+    graph.draw(&listArrow.rbegin()->data,ORANGE);
+    graph.drawFadeIn(&listArrow.rbegin()->data,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,2);
     //
 }
