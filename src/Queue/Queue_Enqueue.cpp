@@ -56,4 +56,23 @@ void Queue::enqueue(int value)
 
     listNode.pushBack(value);
     listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data,&listNode.rbegin()->data));
+
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    // step 1: appear new node
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow,0,m-2,BLACK);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
+    graph.draw(&codeBox,0);
+    //
 }
