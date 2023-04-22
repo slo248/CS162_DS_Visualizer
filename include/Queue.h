@@ -21,16 +21,8 @@ public:
     void randomList(int n);
     void makeList();
 
-    // // peek
-    // void peek();
-
-    // // push
-    // void pushWhenEmpty(int value);
-    // void push(int value);
-
-    // // pop
-    // void popWhenSingle();
-    // void pop();
+    // peek
+    void peekFront();
 
     void draw();
     bool isDoneAllSteps();
