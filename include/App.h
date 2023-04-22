@@ -2,11 +2,13 @@
 #define APP_H
 
 #include "Global.h"
+#include "Figure.h"
+
 #include "SLL.h"
 #include "SLL_Control.h"
+
 #include "Stack.h"
 #include "Stack_Control.h"
-#include "Figure.h"
 
 class App
 {

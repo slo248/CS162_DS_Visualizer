@@ -14,12 +14,12 @@ public:
     Queue(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
     ~Queue();
 
-    // // create
-    // void empty();
-    // void manual(const std::vector<int>& list);
-    // void loadFromFile(std::string path);
-    // void randomList(int n);
-    // void makeList();
+    // create
+    void empty();
+    void manual(const std::vector<int>& list);
+    void loadFromFile(std::string path);
+    void randomList(int n);
+    void makeList();
 
     // // peek
     // void peek();
