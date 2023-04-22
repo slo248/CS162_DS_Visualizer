@@ -39,3 +39,19 @@ void Queue::dequeueWhenSingle()
     graph.draw(&codeBox,3);
     //
 }
+
+void Queue::dequeue()
+{
+    if(listNode.size()<=1){ 
+        dequeueWhenSingle();
+        return;
+    }
+
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/Queue/dequeue.txt");
+
+    Node* deletedN=listNode.popFront();
+    Arrow* deletedA=listArrow.popFront();
+    deletedNode.push_back(deletedN);
+    deletedArrow.push_back(deletedA);
+}

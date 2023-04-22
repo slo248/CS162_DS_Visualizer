@@ -31,6 +31,7 @@ public:
 
     // dequeue
     void dequeueWhenSingle();
+    void dequeue();
     //
 
     void draw();
