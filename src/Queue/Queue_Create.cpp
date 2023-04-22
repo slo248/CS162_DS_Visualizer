@@ -18,7 +18,7 @@ void Queue::manual(const std::vector<int> &list)
 
     for(int x: list){
         assert(Config::MIN_VALUE<=x && x<=Config::MAX_VALUE);
-        listNode.pushFront(Node(x));
+        listNode.pushBack(Node(x));
     }
 }
 
@@ -32,7 +32,7 @@ void Queue::loadFromFile(std::string path)
     while(fi>>val){
         assert(Config::MIN_VALUE<=val && val<=Config::MAX_VALUE);
         if(listNode.size()==MAX_NODE) break;
-        listNode.pushFront(Node(val));
+        listNode.pushBack(Node(val));
     }
     fi.close();
 }
@@ -42,7 +42,7 @@ void Queue::randomList(int n)
     assert(MIN_NODE<=n && n<=MAX_NODE);
     empty();
     while(n--)
-        listNode.pushFront(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
+        listNode.pushBack(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
 }
 
 void Queue::makeList()

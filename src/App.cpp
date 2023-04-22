@@ -88,6 +88,7 @@ void App::update()
 {
     if(sll) SLL_Update();
     if(stack) Stack_Update();
+    if(queue) Queue_Update();
 }
 
 void App::draw()
@@ -258,6 +259,61 @@ void App::Stack_Update()
                 break;
             case 3: // Pop
                 stack->pop();
+                break;
+        }
+}
+
+void App::Queue_Update()
+{
+    queueControl->update(1.0f/FPS);
+
+    Command cmd;
+    bool flag=queueControl->getCommand(cmd);
+
+    switch (cmd.option)
+    {
+        case -2: // pause
+            queue->pause();
+            break;
+        case -3: // play
+            queue->play();
+            break;
+        case -4: // prev
+            queue->prevStep();
+            break;
+        case -5: // next
+            queue->nextStep();
+            break;
+        case -6: // go to begin
+            queue->goToBegin();
+            break;
+        case -7: // go to end
+            queue->goToEnd();
+            break;
+    }
+
+    if(queue->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {
+            case 0:
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        queue->empty();
+                        break;
+                    case 1: // Manual
+                        queue->manual(cmd.list);
+                        queue->makeList();
+                        break;
+                    case 2: // Random
+                        queue->randomList(getRand(1,7));
+                        queue->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        queue->randomList(cmd.input1);
+                        queue->makeList();
+                        break;
+                }
                 break;
         }
 }

@@ -27,6 +27,7 @@ public:
 
     void SLL_Update();
     void Stack_Update();
+    void Queue_Update();
 
     void run();
 
