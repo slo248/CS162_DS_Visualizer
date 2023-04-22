@@ -75,6 +75,12 @@ namespace Config
         const int MIN_NODE=0;
         const int MAX_NODE=5;
     }
+
+    namespace Queue
+    {
+        const int MIN_NODE=0;
+        const int MAX_NODE=10;
+    }
 }
 
 #endif // CONFIG_H
