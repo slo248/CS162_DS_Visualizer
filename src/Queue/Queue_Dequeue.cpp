@@ -54,4 +54,16 @@ void Queue::dequeue()
     Arrow* deletedA=listArrow.popFront();
     deletedNode.push_back(deletedN);
     deletedArrow.push_back(deletedA);
+
+    // step 1: tmp=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(deletedN,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(deletedA,BLACK);
+    graph.draw(&listArrow,BLACK);
+    graph.drawSubscript(deletedN,"head/tmp",RED);
+    graph.draw(&codeBox,1);
+    //
 }
