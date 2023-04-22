@@ -10,6 +10,9 @@
 #include "Stack.h"
 #include "Stack_Control.h"
 
+#include "Queue.h"
+#include "Queue_Control.h"
+
 class App
 {
 public:
@@ -39,6 +42,9 @@ private:
 
     Stack*              stack;
     Stack_Control*      stackControl;
+
+    Queue*              queue;
+    Queue_Control*      queueControl;
 };
 
 #endif // APP_H

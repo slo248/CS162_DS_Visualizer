@@ -7,8 +7,8 @@
 class Queue
 {
 public:
-    const sf::Vector2f    START_POSITION  = sf::Vector2f(750, 450);
-    const float           DISTANCE        = 70.f;
+    const sf::Vector2f    START_POSITION  = sf::Vector2f(150, 250);
+    const float           DISTANCE        = 100.f;
 
 public:
     Queue(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);

@@ -51,7 +51,7 @@ void Queue::makeList()
 
     graph.finishAllSteps();
 
-    ListElement<Node>* node=listNode.rbegin();
+    ListElement<Node>* node=listNode.begin();
     node->data.position=START_POSITION;
     for(node=node->next; node!=listNode.end(); node=node->next){
         node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);

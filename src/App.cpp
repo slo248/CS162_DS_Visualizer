@@ -39,8 +39,11 @@ App::App():
     // sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
     // sllControl=new SLL_Control(&sanf,window.getView().getSize());
 
-    stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    stackControl=new Stack_Control(&sanf,window.getView().getSize());
+    // stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    // stackControl=new Stack_Control(&sanf,window.getView().getSize());
+
+    queue=new Queue(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    queueControl=new Queue_Control(&sanf,window.getView().getSize());
 }
 
 App::~App()
@@ -54,17 +57,24 @@ App::~App()
         delete stack;
         delete stackControl;
     }
+
+    if(queue){
+        delete queue;
+        delete queueControl;
+    }
 }
 
 void App::processInput()
 {
     if(sllControl) sllControl->handleRealTimeInput(&window);
     if(stackControl) stackControl->handleRealTimeInput(&window);
+    if(queueControl) queueControl->handleRealTimeInput(&window);
 
     sf::Event event;
     while (window.pollEvent(event)){
         if(sllControl) sllControl->handleEvent(event,&window);
         if(stackControl) stackControl->handleEvent(event,&window);
+        if(queueControl) queueControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:
@@ -91,6 +101,10 @@ void App::draw()
     if(stack){ 
         stack->draw();
         window.draw(*stackControl);
+    }
+    if(queue){ 
+        queue->draw();
+        window.draw(*queueControl);
     }
     window.display();
 }
@@ -258,6 +272,11 @@ void App::run()
     if(stack){
         stack->randomList(4);
         stack->makeList();
+    }
+
+    if(queue){
+        queue->randomList(4);
+        queue->makeList();
     }
 
     while (window.isOpen())
