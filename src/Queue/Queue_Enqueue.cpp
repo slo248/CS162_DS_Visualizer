@@ -75,4 +75,22 @@ void Queue::enqueue(int value)
     graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
     graph.draw(&codeBox,0);
     //
+
+    // step 2: tail.next=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow,0,m-2,BLACK);
+    graph.drawGrow(&listArrow.rbegin()->data,ORANGE);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
+    graph.draw(&codeBox,1);
+    //
 }
