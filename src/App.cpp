@@ -315,6 +315,14 @@ void App::Queue_Update()
                         break;
                 }
                 break;
+            case 1: // Peek
+                switch (cmd.suboption)
+                {
+                    case 0: // Front
+                        queue->peekFront();
+                        break;
+                }
+                break;
         }
 }
 
