@@ -329,6 +329,9 @@ void App::Queue_Update()
             case 2: // enqueue
                 queue->enqueue(cmd.input1);
                 break;
+            case 3: // dequeue
+                queue->dequeue();
+                break;
         }
 }
 

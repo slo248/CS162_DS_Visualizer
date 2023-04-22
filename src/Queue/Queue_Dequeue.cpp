@@ -8,7 +8,7 @@ void Queue::dequeueWhenSingle()
     graph.finishAllSteps();
     codeBox.loadFromFile("code/Queue/dequeueWhenSingle.txt");
     
-    if(listNode.size()==1){
+    if(listNode.empty()){
         graph.addStep(1);
         graph.draw(&codeBox,0);
         return;
@@ -81,8 +81,12 @@ void Queue::dequeue()
     graph.drawGrow(deletedA,GREEN);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"tmp",RED);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.draw(&codeBox,2);
     //
 
@@ -95,8 +99,27 @@ void Queue::dequeue()
     graph.drawShrink(deletedA,GREEN);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"tmp",RED);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.draw(&codeBox,3);
+    //
+
+    // step 4: move the queue to the left
+    graph.addStep(0.5*FPS);
+
+    graph.drawMove(&listNode.begin()->data,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode,1,n-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.draw(&listArrow,BLACK);
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.draw(&codeBox,3);
     //
 }
