@@ -1,6 +1,8 @@
 #include "Queue.h"
 #include "Config.h"
 
+using namespace Config::Queue;
+
 void Queue::enqueueWhenEmpty(int value)
 {
     assert(listNode.empty());
@@ -51,6 +53,8 @@ void Queue::enqueue(int value)
         enqueueWhenEmpty(value);
         return;
     }
+
+    if(listNode.size()==MAX_NODE) return;
 
     graph.finishAllSteps();
     codeBox.loadFromFile("code/Queue/enqueue.txt");
