@@ -9,4 +9,12 @@ void Queue::enqueueWhenEmpty(int value)
     codeBox.loadFromFile("code/Queue/enqueue.txt");
 
     listNode.pushBack(value);
+    
+    // step 1: appear new node
+    graph.addStep(0.5*FPS);
+
+    graph.drawGrow(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
+    graph.draw(&codeBox,0);
+    //
 }
