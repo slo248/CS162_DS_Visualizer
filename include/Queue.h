@@ -27,6 +27,7 @@ public:
 
     // enqueue
     void enqueueWhenEmpty(int value);
+    void enqueue(int value);
 
     void draw();
     bool isDoneAllSteps();

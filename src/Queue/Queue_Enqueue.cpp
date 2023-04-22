@@ -43,3 +43,17 @@ void Queue::enqueueWhenEmpty(int value)
     graph.draw(&codeBox,3);
     //
 }
+
+void Queue::enqueue(int value)
+{
+    if(listNode.empty()){
+        enqueueWhenEmpty(value);
+        return;
+    }
+
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/Queue/enqueue.txt");
+
+    listNode.pushBack(value);
+    listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data,&listNode.rbegin()->data));
+}
