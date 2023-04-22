@@ -63,7 +63,12 @@ void Queue::makeList()
 
     // draw nodes to graph
     graph.drawGrow(&listNode,WHITE,BLACK,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    if(listNode.size()>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     
     // draw arrows to graph
     graph.drawGrow(&listArrow,BLACK);
