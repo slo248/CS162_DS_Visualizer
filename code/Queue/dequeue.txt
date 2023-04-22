@@ -1,0 +1,4 @@
+if empty, do nothing
+tmp = head
+head = head.next
+delete tmp
