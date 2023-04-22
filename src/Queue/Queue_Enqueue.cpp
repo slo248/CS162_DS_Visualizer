@@ -3,7 +3,7 @@
 
 void Queue::enqueueWhenEmpty(int value)
 {
-    assert(listNode.size()==0);
+    assert(listNode.empty());
 
     graph.finishAllSteps();
     codeBox.loadFromFile("code/Queue/enqueueWhenEmpty.txt");
@@ -33,5 +33,13 @@ void Queue::enqueueWhenEmpty(int value)
     graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,2);
+    //
+
+    // step 4: tail=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.draw(&codeBox,3);
     //
 }
