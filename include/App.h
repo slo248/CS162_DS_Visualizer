@@ -7,6 +7,9 @@
 #include "SLL.h"
 #include "SLL_Control.h"
 
+#include "DLL.h"
+#include "DLL_Control.h"
+
 #include "Stack.h"
 #include "Stack_Control.h"
 
@@ -40,6 +43,9 @@ private:
 
     SLL*                sll;
     SLL_Control*        sllControl;
+
+    DLL*                dll;
+    DLL_Control*        dllControl;
 
     Stack*              stack;
     Stack_Control*      stackControl;

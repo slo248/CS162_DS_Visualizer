@@ -14,7 +14,11 @@ App::App():
     sll(nullptr),
     sllControl(nullptr),
     stack(nullptr),
-    stackControl(nullptr)
+    stackControl(nullptr),
+    queue(nullptr),
+    queueControl(nullptr),
+    dll(nullptr),
+    dllControl(nullptr)
 {
     window.setFramerateLimit(FPS);
 
@@ -42,8 +46,11 @@ App::App():
     // stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
     // stackControl=new Stack_Control(&sanf,window.getView().getSize());
 
-    queue=new Queue(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    queueControl=new Queue_Control(&sanf,window.getView().getSize());
+    // queue=new Queue(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    // queueControl=new Queue_Control(&sanf,window.getView().getSize());
+
+    dll=new DLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+    dllControl=new DLL_Control(&sanf,window.getView().getSize());
 }
 
 App::~App()
@@ -62,6 +69,11 @@ App::~App()
         delete queue;
         delete queueControl;
     }
+
+    if(dll){
+        delete dll;
+        delete dllControl;
+    }
 }
 
 void App::processInput()
@@ -69,12 +81,14 @@ void App::processInput()
     if(sllControl) sllControl->handleRealTimeInput(&window);
     if(stackControl) stackControl->handleRealTimeInput(&window);
     if(queueControl) queueControl->handleRealTimeInput(&window);
+    if(dllControl) dllControl->handleRealTimeInput(&window);
 
     sf::Event event;
     while (window.pollEvent(event)){
         if(sllControl) sllControl->handleEvent(event,&window);
         if(stackControl) stackControl->handleEvent(event,&window);
         if(queueControl) queueControl->handleEvent(event,&window);
+        if(dllControl) dllControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:
@@ -106,6 +120,10 @@ void App::draw()
     if(queue){ 
         queue->draw();
         window.draw(*queueControl);
+    }
+    if(dll){ 
+        dll->draw();
+        window.draw(*dllControl);
     }
     window.display();
 }
@@ -350,6 +368,11 @@ void App::run()
     if(queue){
         queue->randomList(4);
         queue->makeList();
+    }
+
+    if(dll){
+        dll->randomList(4);
+        dll->makeList();
     }
 
     while (window.isOpen())
