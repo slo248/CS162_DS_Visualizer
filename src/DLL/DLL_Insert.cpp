@@ -98,6 +98,23 @@ void DLL::insertFront(int value)
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,2);
     //
+
+    // step 4: head=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listArrowNext.begin()->data,ORANGE);
+    graph.drawFadeIn(&listArrowNext.begin()->data,BLACK);
+    graph.draw(&listArrowNext,1,mNext-1,BLACK);
+    graph.draw(&listArrowPrev.begin()->data,ORANGE);
+    graph.drawFadeIn(&listArrowPrev.begin()->data,BLACK);
+    graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,3);
+    //
 }
 /*
 void DLL::insertBack(int value)
