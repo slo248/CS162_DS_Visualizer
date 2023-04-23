@@ -70,6 +70,12 @@ namespace Config
         const int MAX_NODE=10;
     }
 
+    namespace DLL
+    {
+        const int MIN_NODE=0;
+        const int MAX_NODE=10;
+    }
+
     namespace Stack
     {
         const int MIN_NODE=0;
