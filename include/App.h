@@ -29,6 +29,7 @@ public:
     //
 
     void SLL_Update();
+    void DLL_Update();
     void Stack_Update();
     void Queue_Update();
 

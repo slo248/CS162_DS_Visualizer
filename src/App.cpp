@@ -101,6 +101,7 @@ void App::processInput()
 void App::update()
 {
     if(sll) SLL_Update();
+    if(dll) DLL_Update();
     if(stack) Stack_Update();
     if(queue) Queue_Update();
 }
@@ -211,6 +212,61 @@ void App::SLL_Update()
                         break;
                     case 2: // Middle
                         sll->deleteMiddle(cmd.input1);
+                        break;
+                }
+                break;
+        }
+}
+
+void App::DLL_Update()
+{
+    dllControl->update(1.0f/FPS);
+
+    Command cmd;
+    bool flag=dllControl->getCommand(cmd);
+
+    switch (cmd.option)
+    {
+        case -2: // pause
+            dll->pause();
+            break;
+        case -3: // play
+            dll->play();
+            break;
+        case -4: // prev
+            dll->prevStep();
+            break;
+        case -5: // next
+            dll->nextStep();
+            break;
+        case -6: // go to begin
+            dll->goToBegin();
+            break;
+        case -7: // go to end
+            dll->goToEnd();
+            break;
+    }
+
+    if(dll->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {                  
+            case 0: // Create
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        dll->empty();
+                        break;
+                    case 1: // Manual
+                        dll->manual(cmd.list);
+                        dll->makeList();
+                        break;
+                    case 2: // Random
+                        dll->randomList(getRand(1,10));
+                        dll->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        dll->randomList(cmd.input1);
+                        dll->makeList();
                         break;
                 }
                 break;
