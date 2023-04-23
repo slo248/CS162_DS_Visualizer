@@ -274,7 +274,7 @@ void App::DLL_Update()
                 switch (cmd.suboption)
                 {
                     case 0: // Front
-                        sll->insertFront(cmd.input1);
+                        dll->insertFront(cmd.input1);
                         break;
                     // case 1: // Back
                     //     sll->insertBack(cmd.input1);
