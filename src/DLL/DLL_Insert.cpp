@@ -53,11 +53,12 @@ void DLL::insertFront(int value)
     graph.draw(&listArrowNext,1,mNext-1,BLACK);
     graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
     if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     }
     else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,0);
     //
 
@@ -70,11 +71,12 @@ void DLL::insertFront(int value)
     graph.draw(&listArrowNext,1,mNext-1,BLACK);
     graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
     if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     }
     else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,1);
     //
 
@@ -88,11 +90,12 @@ void DLL::insertFront(int value)
     graph.drawGrow(&listArrowPrev.begin()->data,ORANGE);
     graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
     if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     }
     else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,2);
     //
 }
