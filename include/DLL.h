@@ -58,7 +58,7 @@ private:
     CodeBox codeBox;
 
     List<Node> listNode;
-    List<Arrow> listArrow;
+    List<Arrow> listArrowNext, listArrowPrev;
     Node tmpNode;
     Arrow tmpArrow;
 

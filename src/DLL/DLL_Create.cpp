@@ -7,7 +7,8 @@ using namespace Config::DLL;
 void DLL::empty()
 {
     listNode.clear();
-    listArrow.clear();
+    listArrowNext.clear();
+    listArrowPrev.clear();
     graph.clear();
 }
 
@@ -55,8 +56,8 @@ void DLL::makeList()
     node->data.position=START_POSITION;
     for(node=node->next; node!=listNode.end(); node=node->next){
         node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
-        listArrow.pushBack(Arrow(&node->prev->data, &node->data));
-        listArrow.pushBack(Arrow(&node->data, &node->prev->data));
+        listArrowNext.pushBack(Arrow(&node->prev->data, &node->data));
+        listArrowPrev.pushBack(Arrow(&node->data, &node->prev->data));
     }
 
     // add new steps
@@ -67,5 +68,6 @@ void DLL::makeList()
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     
     // draw arrows to graph
-    graph.drawGrow(&listArrow,BLACK);
+    graph.drawGrow(&listArrowNext,BLACK);
+    graph.drawGrow(&listArrowPrev,BLACK);
 }
