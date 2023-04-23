@@ -115,6 +115,18 @@ void DLL::insertFront(int value)
     graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.draw(&codeBox,3);
     //
+
+    // step 5: move the list to correct position
+    graph.addStep(0.5*FPS);
+
+    graph.drawMove(&listNode,1,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode.begin()->data,sf::Vector2f(0,-DISTANCE),GREEN,GREEN,WHITE);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,4);
+    //
 }
 /*
 void DLL::insertBack(int value)
