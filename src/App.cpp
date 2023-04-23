@@ -270,6 +270,20 @@ void App::DLL_Update()
                         break;
                 }
                 break;
+            case 1: // Insert
+                switch (cmd.suboption)
+                {
+                    case 0: // Front
+                        sll->insertFront(cmd.input1);
+                        break;
+                    // case 1: // Back
+                    //     sll->insertBack(cmd.input1);
+                    //     break;
+                    // case 2: // Middle
+                    //     sll->insertMiddle(cmd.input1,cmd.input2);
+                    //     break;
+                }
+                break;
         }
 }
 

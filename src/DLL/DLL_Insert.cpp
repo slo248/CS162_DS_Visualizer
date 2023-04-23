@@ -22,7 +22,7 @@ void DLL::insertWhenEmpty(int value)
     graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.draw(&codeBox,0);
 }
-/*
+
 void DLL::insertFront(int value)
 {
     if(listNode.empty()){ 
@@ -37,58 +37,15 @@ void DLL::insertFront(int value)
     codeBox.loadFromFile("code/DLL/insertFront.txt");
 
     listNode.pushFront(value);
-    listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
     listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
+    listArrowNext.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
+    listArrowPrev.pushFront(Arrow(&listNode.begin()->next->data, &listNode.begin()->data));
 
     const int n=listNode.size();
-    const int m=listArrow.size();
-
-    // step 1: draw new node
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.drawGrow(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listArrow,1,m-1,BLACK);
-    graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->data,"node",RED);
-    graph.draw(&codeBox,0);
-    //
-
-    // step 2: draw new arrow
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listArrow,1,m-1,BLACK);
-    graph.drawGrow(&listArrow.begin()->data,ORANGE);
-    graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->data,"node",RED);
-    graph.draw(&codeBox,1);
-    //
-
-    // step 3: assign head to new node
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,1,listNode.size()-1,WHITE,BLACK,BLACK);    
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,BLACK);
-    graph.drawFadeOut(&listArrow.begin()->data,ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head/node",RED);
-    graph.draw(&codeBox,2);
-    //
-
-    // step 4: move new node to correct position
-    graph.addStep(0.5*FPS);
-
-    graph.drawMove(&listNode,1,listNode.size()-1,sf::Vector2f(DISTANCE, 0),WHITE,BLACK,BLACK);
-    graph.drawMove(&listNode.begin()->data,START_POSITION-listNode.begin()->data.position,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head/node",RED);
-    graph.draw(&codeBox,3);
-    //
+    const int mNext=listArrowNext.size();
+    const int mPrev=listArrowPrev.size();
 }
-
+/*
 void DLL::insertBack(int value)
 {
     if(listNode.empty()){ 
