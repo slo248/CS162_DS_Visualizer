@@ -77,6 +77,24 @@ void DLL::insertFront(int value)
         graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.draw(&codeBox,1);
     //
+
+    // step 3: head.prev=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext.begin()->data,ORANGE);
+    graph.draw(&listArrowNext,1,mNext-1,BLACK);
+    graph.drawGrow(&listArrowPrev.begin()->data,ORANGE);
+    graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.draw(&codeBox,2);
+    //
 }
 /*
 void DLL::insertBack(int value)
