@@ -296,9 +296,9 @@ void App::DLL_Update()
                     case 0: // First
                         dll->deleteFirst();
                         break;
-                    // case 1: // Last
-                    //     dll->deleteLast();
-                    //     break;
+                    case 1: // Last
+                        dll->deleteLast();
+                        break;
                     // case 2: // Middle
                     //     dll->deleteMiddle(cmd.input1);
                     //     break;

@@ -135,6 +135,20 @@ void DLL::deleteLast()
     const int n=listNode.size();
     const int mNext=listArrowNext.size();
     const int mPrev=listArrowPrev.size();
+
+    // step 1: assign tmp=tail
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(deletedN,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(deletedANext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.draw(deletedAPrev,BLACK);
+    graph.drawSubscript(deletedN,"tail/tmp",RED);
+    graph.draw(&codeBox,1);
+    //
 }
 /*
 void DLL::deleteMiddle(int pos)
