@@ -91,6 +91,21 @@ void DLL::deleteFirst()
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,2);
     //
+
+    // step 3: delete temp
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.drawShrink(deletedANext,GREEN);
+    graph.draw(&listArrowNext,BLACK);
+    graph.drawShrink(deletedAPrev,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.drawSubscript(deletedN,"temp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.draw(&codeBox,3);
+    //
 }
 
 void DLL::deleteLast()
