@@ -149,6 +149,21 @@ void DLL::deleteLast()
     graph.drawSubscript(deletedN,"tail/tmp",RED);
     graph.draw(&codeBox,1);
     //
+
+    // step 2: assign tail to previous node
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
+    graph.draw(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(deletedANext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.draw(deletedAPrev,BLACK);
+    graph.drawGrow(deletedAPrev,GREEN);
+    graph.drawSubscript(deletedN,"tail/tmp",RED);
+    graph.draw(&codeBox,2);
+    //
 }
 /*
 void DLL::deleteMiddle(int pos)
