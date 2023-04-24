@@ -52,66 +52,15 @@ void DLL::deleteFirst()
     }
 
     graph.finishAllSteps();
-
     codeBox.loadFromFile("code/DLL/deleteFirst.txt");
 
-    int sz=listNode.size();
+    Node* deletedN=listNode.popFront();
+    Arrow* deletedANext=listArrowNext.popFront();
+    Arrow* deletedAPrev=listArrowPrev.popFront();
 
-    // step 1: assign temp=head
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.draw(&listArrowNext,BLACK);
-    graph.draw(&listArrowPrev,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawSubscript(&listNode.begin()->data,"head/temp",RED);
-    graph.draw(&codeBox,1);
-    //
-
-    // step 2: assign head to next node
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.draw(&listArrowNext,BLACK);
-    graph.draw(&listArrowPrev,BLACK);
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.begin()->getNext()->data,GREEN,GREEN,WHITE);
-    graph.drawFadeIn(&listArrowNext.begin()->data,GREEN);
-    graph.drawFadeIn(&listArrowPrev.begin()->data,GREEN);
-    graph.drawSubscript(&listNode.begin()->data,"temp",RED);
-    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
-    graph.draw(&codeBox,2);
-    //
-
-    // step 3: delete temp
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,1,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,2,listNode.size()-1,WHITE,BLACK,BLACK);
-    graph.draw(&listArrowNext,1,listArrowNext.size()-1,BLACK);
-    graph.draw(&listArrowPrev,1,listArrowPrev.size()-1,BLACK);
-    graph.drawShrink(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawShrink(&listArrowNext.begin()->data,GREEN);
-    graph.drawShrink(&listArrowPrev.begin()->data,GREEN);
-    graph.drawSubscript(&listNode.begin()->data,"temp",RED);
-    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
-    graph.draw(&codeBox,3);
-    //
-    
-    // step 4: move the rest of the list to the left
-    graph.addStep(0.5*FPS);
-
-    graph.drawMove(&listNode,1,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
-    graph.drawMove(&listNode,2,listNode.size()-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
-    graph.draw(&listArrowNext,1,listArrowNext.size()-1,BLACK);
-    graph.draw(&listArrowPrev,1,listArrowPrev.size()-1,BLACK);
-    graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
-    graph.draw(&codeBox,4);
-    //    
-
-    deletedNode.push_back(listNode.popFront());
-    deletedArrow.push_back(listArrowNext.popFront());
-    deletedArrow.push_back(listArrowPrev.popFront());
+    deletedNode.push_back(deletedN);
+    deletedArrow.push_back(deletedANext);
+    deletedArrow.push_back(deletedAPrev); 
 }
 
 void DLL::deleteLast()
@@ -146,7 +95,7 @@ void DLL::deleteLast()
     graph.draw(deletedANext,BLACK);
     graph.draw(&listArrowPrev,BLACK);
     graph.draw(deletedAPrev,BLACK);
-    graph.drawSubscript(deletedN,"tail/tmp",RED);
+    graph.drawSubscript(deletedN,"tail/temp",RED);
     graph.draw(&codeBox,1);
     //
 
@@ -161,7 +110,7 @@ void DLL::deleteLast()
     graph.draw(&listArrowPrev,BLACK);
     graph.draw(deletedAPrev,BLACK);
     graph.drawGrow(deletedAPrev,GREEN);
-    graph.drawSubscript(deletedN,"tail/tmp",RED);
+    graph.drawSubscript(deletedN,"tail/temp",RED);
     graph.draw(&codeBox,2);
     //
 
@@ -175,7 +124,7 @@ void DLL::deleteLast()
     graph.drawShrink(deletedANext,BLACK);
     graph.draw(&listArrowPrev,BLACK);
     graph.drawShrink(deletedAPrev,GREEN);
-    graph.drawSubscript(deletedN,"tmp",RED);
+    graph.drawSubscript(deletedN,"temp",RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.draw(&codeBox,3);
     //
