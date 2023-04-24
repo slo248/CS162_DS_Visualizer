@@ -106,6 +106,17 @@ void DLL::deleteFirst()
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,3);
     //
+
+    // step 4: move the list to the left
+    graph.addStep(0.5*FPS);
+
+    graph.drawMove(&listNode.begin()->data,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode,1,listNode.size()-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.draw(&codeBox,4);
+    //
 }
 
 void DLL::deleteLast()
