@@ -62,13 +62,14 @@ void DLL::insertFront(int value)
     graph.draw(&codeBox,0);
     //
 
-    // step 2: vtx.next=head
+    // step 2: vtx.next=head, head.prev=vtx
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
     graph.drawGrow(&listArrowNext.begin()->data,ORANGE);
     graph.draw(&listArrowNext,1,mNext-1,BLACK);
+    graph.drawGrow(&listArrowPrev.begin()->data,ORANGE);
     graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
     if(n>2){
         graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
@@ -80,26 +81,7 @@ void DLL::insertFront(int value)
     graph.draw(&codeBox,1);
     //
 
-    // step 3: head.prev=vtx
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listArrowNext.begin()->data,ORANGE);
-    graph.draw(&listArrowNext,1,mNext-1,BLACK);
-    graph.drawGrow(&listArrowPrev.begin()->data,ORANGE);
-    graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
-    if(n>2){
-        graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
-        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
-    }
-    else
-        graph.drawSubscript(&listNode.rbegin()->data,"head/tail",RED);
-    graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
-    graph.draw(&codeBox,2);
-    //
-
-    // step 4: head=vtx
+    // step 3: head=vtx
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
@@ -116,7 +98,7 @@ void DLL::insertFront(int value)
     graph.draw(&codeBox,3);
     //
 
-    // step 5: move the list to correct position
+    // step 4: move the list to correct position
     graph.addStep(0.5*FPS);
 
     graph.drawMove(&listNode,1,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
