@@ -1,6 +1,8 @@
 #include "DLL.h"
 #include "Config.h"
 
+using namespace Config::DLL;
+
 void DLL::insertWhenEmpty(int value)
 {
     if(!listNode.empty()) return;
@@ -31,6 +33,8 @@ void DLL::insertFront(int value)
     }
 
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
+
+    if(listNode.size()==MAX_NODE) return;
 
     graph.finishAllSteps();
 
@@ -120,6 +124,8 @@ void DLL::insertBack(int value)
 
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
+    if(listNode.size()==MAX_NODE) return;
+
     graph.finishAllSteps();
 
     codeBox.loadFromFile("code/DLL/insertBack.txt");
@@ -204,6 +210,8 @@ void DLL::insertMiddle(int pos, int value)
 
     assert(0<pos && pos<listNode.size());
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
+
+    if(listNode.size()==MAX_NODE) return;
 
     graph.finishAllSteps();
 
@@ -296,7 +304,7 @@ void DLL::insertMiddle(int pos, int value)
         graph.draw(&listArrowPrev,pos+1,mPrev-1,BLACK);
         if(i){
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"pre",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
         }
         else
             graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
