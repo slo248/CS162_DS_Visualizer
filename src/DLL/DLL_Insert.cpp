@@ -167,6 +167,25 @@ void DLL::insertBack(int value)
     graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
     graph.draw(&codeBox,0);
     //
+
+    // step 2: tail.next = vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,0,mNext-2,BLACK);
+    graph.drawGrow(&listArrowNext.rbegin()->data,ORANGE);
+    graph.draw(&listArrowPrev,0,mPrev-2,BLACK);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
+    graph.draw(&codeBox,1);
+    //
 }
 /*
 void DLL::insertMiddle(int pos, int value)
