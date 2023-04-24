@@ -246,13 +246,15 @@ void DLL::insertMiddle(int pos, int value)
     //
 
     // step 2: traverse to before pos
-    for(int i=0; i<pos-1; i++){
+    for(int i=0; i<pos; i++){
         // substep 1: fade in node[i]
         graph.addStep(0.5*FPS);
 
         graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
-        if(i)
+        if(i){
+            graph.draw(&listNode.begin()->getNext(i)->data,WHITE,BLACK,BLACK);
             graph.drawFadeIn(&listNode.begin()->getNext(i)->data,ORANGE,ORANGE,WHITE);
+        }
         else
             graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
         graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
@@ -264,7 +266,34 @@ void DLL::insertMiddle(int pos, int value)
         graph.draw(&listArrowPrev,0,pos-2,BLACK);
         graph.draw(&tmpArrowPrev,BLACK);
         graph.draw(&listArrowPrev,pos+1,mPrev-1,BLACK);
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
         graph.draw(&codeBox,1);
+        //
+
+        if(i==pos-1) break;
+        
+        // step 2: pre=pre->next
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode.begin()->getNext(i)->data,ORANGE,ORANGE,WHITE);
+        graph.drawFadeIn(&listNode.begin()->getNext(i)->data,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(&listArrowNext,0,i-1,ORANGE);
+        graph.draw(&listArrowNext,i,pos-2,BLACK);
+        graph.drawGrow(&listArrowNext,i,ORANGE);
+        graph.draw(&tmpArrowNext,BLACK);
+        graph.draw(&listArrowNext,pos+1,mNext-1,BLACK);
+        graph.draw(&listArrowPrev,0,pos-2,BLACK);
+        graph.draw(&tmpArrowPrev,BLACK);
+        graph.draw(&listArrowPrev,pos+1,mPrev-1,BLACK);
         if(i){
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
             graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"pre",RED);
@@ -272,9 +301,8 @@ void DLL::insertMiddle(int pos, int value)
         else
             graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+        graph.draw(&codeBox,2);
         //
-
-        if(i==pos-1) break;
     }
     //
 }
