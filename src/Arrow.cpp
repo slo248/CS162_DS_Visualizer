@@ -5,6 +5,8 @@
 
 void Arrow::update(ArrowFigure *arrowFig)
 {
+    const float Pi=acos(-1);
+
     // set position at the center of the source node
     arrowFig->setPosition(src->position);
 
@@ -15,12 +17,15 @@ void Arrow::update(ArrowFigure *arrowFig)
 
     // rotate
     float angle=atan2(dest->position.y-src->position.y,dest->position.x-src->position.x);
-    arrowFig->setRotation(angle*180/acos(-1));
+    arrowFig->setRotation(angle*180/Pi);
+
+    float tmp=0;
+    if(flag) tmp=Pi/6;
 
     // move arrow to just outside the node
     arrowFig->move(
-        Config::Circle::HALF_WIDTH*cos(angle),
-        Config::Circle::HALF_WIDTH*sin(angle)
+        Config::Circle::HALF_WIDTH*cos(angle+tmp),
+        Config::Circle::HALF_WIDTH*sin(angle+tmp)
     );
 }
 
