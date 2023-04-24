@@ -28,8 +28,8 @@ void Arrow::update(ArrowFigure *arrowFig)
 
     // move arrow to just outside the node
     arrowFig->move(
-        Config::Circle::HALF_WIDTH*cos(angle+tmp1),
-        Config::Circle::HALF_WIDTH*sin(angle+tmp1)
+        Config::Circle::HALF_WIDTH*cos(angle-tmp1),
+        Config::Circle::HALF_WIDTH*sin(angle-tmp1)
     );
 }
 
