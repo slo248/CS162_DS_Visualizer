@@ -276,11 +276,11 @@ void App::DLL_Update()
                     case 0: // Front
                         dll->insertFront(cmd.input1);
                         break;
-                    // case 1: // Back
-                    //     sll->insertBack(cmd.input1);
-                    //     break;
+                    case 1: // Back
+                        dll->insertBack(cmd.input1);
+                        break;
                     // case 2: // Middle
-                    //     sll->insertMiddle(cmd.input1,cmd.input2);
+                    //     dll->insertMiddle(cmd.input1,cmd.input2);
                     //     break;
                 }
                 break;

@@ -143,8 +143,30 @@ void DLL::insertBack(int value)
     codeBox.loadFromFile("code/DLL/insertBack.txt");
 
     listNode.pushBack(value);
+    listNode.rbegin()->data.position=listNode.rbegin()->prev->data.position+sf::Vector2f(DISTANCE,0);
     listArrowNext.pushBack(Arrow(&listNode.rbegin()->prev->data, &listNode.rbegin()->data, true));
     listArrowPrev.pushBack(Arrow(&listNode.rbegin()->data, &listNode.rbegin()->prev->data, true));
+
+    const int n=listNode.size();
+    const int mNext=listArrowNext.size();
+    const int mPrev=listArrowPrev.size();
+
+    // step 1: create new node
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,0,mNext-2,BLACK);
+    graph.draw(&listArrowPrev,0,mPrev-2,BLACK);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"vtx",RED);
+    graph.draw(&codeBox,0);
+    //
 }
 /*
 void DLL::insertMiddle(int pos, int value)
