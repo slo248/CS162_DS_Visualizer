@@ -164,6 +164,21 @@ void DLL::deleteLast()
     graph.drawSubscript(deletedN,"tail/tmp",RED);
     graph.draw(&codeBox,2);
     //
+
+    // step 3: delete tmp
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
+    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,BLACK);
+    graph.drawShrink(deletedANext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.drawShrink(deletedAPrev,GREEN);
+    graph.drawSubscript(deletedN,"tmp",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,3);
+    //
 }
 /*
 void DLL::deleteMiddle(int pos)
