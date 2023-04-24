@@ -1,4 +1,4 @@
 Node* vtx = new Node(v)
-vtx.next = head
-head.prev = vtx
+vtx->next = head
+head->prev = vtx
 head = vtx
