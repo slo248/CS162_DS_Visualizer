@@ -1,0 +1,4 @@
+if empty, do nothing
+Node *temp = head
+head = head->next
+delete temp

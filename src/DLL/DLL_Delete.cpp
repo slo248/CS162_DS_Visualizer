@@ -43,7 +43,7 @@ void DLL::deleteWhenSingle()
 
     deletedNode.push_back(listNode.popFront());
 }
-/*
+
 void DLL::deleteFirst()
 {
     if(listNode.size()<=1){
@@ -61,7 +61,8 @@ void DLL::deleteFirst()
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
     graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"head/temp",RED);
     graph.draw(&codeBox,1);
@@ -71,10 +72,12 @@ void DLL::deleteFirst()
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
     graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
     graph.drawFadeIn(&listNode.begin()->getNext()->data,GREEN,GREEN,WHITE);
-    graph.drawFadeIn(&listArrow.begin()->data,GREEN);
+    graph.drawFadeIn(&listArrowNext.begin()->data,GREEN);
+    graph.drawFadeIn(&listArrowPrev.begin()->data,GREEN);
     graph.drawSubscript(&listNode.begin()->data,"temp",RED);
     graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
     graph.draw(&codeBox,2);
@@ -85,9 +88,11 @@ void DLL::deleteFirst()
 
     graph.draw(&listNode,1,GREEN,GREEN,WHITE);
     graph.draw(&listNode,2,listNode.size()-1,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,1,listArrow.size()-1,BLACK);
+    graph.draw(&listArrowNext,1,listArrowNext.size()-1,BLACK);
+    graph.draw(&listArrowPrev,1,listArrowPrev.size()-1,BLACK);
     graph.drawShrink(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawShrink(&listArrow.begin()->data,GREEN);
+    graph.drawShrink(&listArrowNext.begin()->data,GREEN);
+    graph.drawShrink(&listArrowPrev.begin()->data,GREEN);
     graph.drawSubscript(&listNode.begin()->data,"temp",RED);
     graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
     graph.draw(&codeBox,3);
@@ -98,15 +103,17 @@ void DLL::deleteFirst()
 
     graph.drawMove(&listNode,1,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
     graph.drawMove(&listNode,2,listNode.size()-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,1,listArrow.size()-1,BLACK);
+    graph.draw(&listArrowNext,1,listArrowNext.size()-1,BLACK);
+    graph.draw(&listArrowPrev,1,listArrowPrev.size()-1,BLACK);
     graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
     graph.draw(&codeBox,4);
     //    
 
     deletedNode.push_back(listNode.popFront());
-    deletedArrow.push_back(listArrow.popFront());
+    deletedArrow.push_back(listArrowNext.popFront());
+    deletedArrow.push_back(listArrowPrev.popFront());
 }
-
+/*
 void DLL::deleteLast()
 {
     if(listNode.size()<=1){

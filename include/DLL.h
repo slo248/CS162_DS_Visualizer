@@ -35,7 +35,7 @@ public:
 
     // delete
     void deleteWhenSingle();
-    // void deleteFirst();
+    void deleteFirst();
     // void deleteLast();
     // void deleteMiddle(int pos);
 
