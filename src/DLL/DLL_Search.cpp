@@ -1,13 +1,13 @@
-#include "SLL.h"
+#include "DLL.h"
 #include "Config.h"
 
-int SLL::search(int value)
+int DLL::search(int value)
 {
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
 
-    codeBox.loadFromFile("code/SLL/search.txt");
+    codeBox.loadFromFile("code/DLL/search.txt");
 
     int n=listNode.size();
     if(n==0){ 
@@ -21,7 +21,8 @@ int SLL::search(int value)
 
     graph.draw(&listNode,WHITE,BLACK,BLACK);
     graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listArrow,BLACK);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
     graph.draw(&codeBox,1);
     //
@@ -42,8 +43,9 @@ int SLL::search(int value)
         graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
         graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
         graph.drawFadeOut(&temp->data,ORANGE,ORANGE,WHITE);
-        graph.draw(&listArrow,0,i-1,ORANGE);
-        graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
+        graph.draw(&listArrowNext,0,i-1,ORANGE);
+        graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
+        graph.draw(&listArrowPrev,BLACK);
         graph.draw(&codeBox,2);
         //
 
@@ -56,9 +58,10 @@ int SLL::search(int value)
             graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
             graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
             graph.drawFadeIn(&temp->next->data,ORANGE,ORANGE,WHITE);
-            graph.draw(&listArrow,0,i-1,ORANGE);
-            graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
-            graph.drawGrow(&listArrow.begin()->getNext(i)->data,ORANGE);
+            graph.draw(&listArrowNext,0,i-1,ORANGE);
+            graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
+            graph.drawGrow(&listArrowNext.begin()->getNext(i)->data,ORANGE);
+            graph.draw(&listArrowPrev,BLACK);
             graph.draw(&codeBox,34);
             //
         }
@@ -67,7 +70,8 @@ int SLL::search(int value)
             graph.addStep(0.5*FPS);
 
             graph.draw(&listNode,WHITE,ORANGE,ORANGE);
-            graph.draw(&listArrow,ORANGE);
+            graph.draw(&listArrowNext,ORANGE);
+            graph.draw(&listArrowPrev,BLACK);
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
             graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
             graph.draw(&codeBox,45);
@@ -89,8 +93,9 @@ int SLL::search(int value)
     graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
     graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&temp->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listArrow,0,i-1,ORANGE);
-    graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
+    graph.draw(&listArrowNext,0,i-1,ORANGE);
+    graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
     graph.draw(&codeBox,6);
 
     return i;

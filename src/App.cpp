@@ -284,6 +284,26 @@ void App::DLL_Update()
                         break;
                 }
                 break;
+            case 2: // Search
+                dll->search(cmd.input1);
+                break;
+            // case 3: // Update
+            //     dll->update(cmd.input1,cmd.input2);
+            //     break;
+            // case 4: // Delete
+            //     switch (cmd.suboption)
+            //     {
+            //         case 0: // First
+            //             dll->deleteFirst();
+            //             break;
+            //         case 1: // Last
+            //             dll->deleteLast();
+            //             break;
+            //         case 2: // Middle
+            //             dll->deleteMiddle(cmd.input1);
+            //             break;
+            //     }
+            //     break;
         }
 }
 
