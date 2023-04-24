@@ -212,7 +212,7 @@ void DLL::insertMiddle(int pos, int value)
     listNode.insert(value,pos);
     listNode.begin()->getNext(pos)->data.position=listNode.begin()->getNext(pos+1)->data.position+sf::Vector2f(0,DISTANCE);
     listArrowNext.insert(Arrow(&listNode.begin()->getNext(pos)->data, &listNode.begin()->getNext(pos+1)->data, true),pos);
-    listArrowPrev.insert(Arrow(&listNode.begin()->getNext(pos+1)->data, &listNode.begin()->getNext(pos)->data, true),pos);
+    listArrowPrev.insert(Arrow(&listNode.begin()->getNext(pos)->data, &listNode.begin()->getNext(pos-1)->data, true),pos-1);
 
     listArrowNext.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
     listArrowPrev.begin()->getNext(pos)->data.dest=&listNode.begin()->getNext(pos)->data;
@@ -412,5 +412,30 @@ void DLL::insertMiddle(int pos, int value)
     else
         graph.drawSubscript(&listNode.rbegin()->data,std::to_string(pos+1)+"/tail/aft",RED);
     graph.draw(&codeBox,6);
+    //
+
+    // step 7: move the new node to correct position
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.drawFadeIn(&listNode,0,pos-2,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode,pos-1,pos-1,WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode,pos,sf::Vector2f(0,-DISTANCE),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode,pos+1,sf::Vector2f(DISTANCE,0),BLUE,BLUE,WHITE);
+    graph.drawFadeIn(&listNode,pos+1,pos+1,WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode,pos+2,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.draw(&listArrowNext,0,pos-1,ORANGE);
+    graph.drawFadeIn(&listArrowNext,0,pos-1,BLACK);
+    graph.draw(&listArrowNext,pos,GREEN);
+    graph.drawFadeIn(&listArrowNext,pos,pos,BLACK);
+    graph.draw(&listArrowNext,pos+1,mNext-1,BLACK);
+    graph.draw(&listArrowPrev,0,pos-1,BLACK);
+    graph.draw(&listArrowPrev,pos,BLACK);
+    graph.draw(&listArrowPrev,pos+1,mPrev-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,7);
     //
 }
