@@ -38,8 +38,8 @@ void DLL::insertFront(int value)
 
     listNode.pushFront(value);
     listNode.begin()->data.position=START_POSITION+sf::Vector2f(0, DISTANCE);
-    listArrowNext.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
-    listArrowPrev.pushFront(Arrow(&listNode.begin()->next->data, &listNode.begin()->data));
+    listArrowNext.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data, true));
+    listArrowPrev.pushFront(Arrow(&listNode.begin()->next->data, &listNode.begin()->data, true));
 
     const int n=listNode.size();
     const int mNext=listArrowNext.size();

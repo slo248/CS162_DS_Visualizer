@@ -56,8 +56,8 @@ void DLL::makeList()
     node->data.position=START_POSITION;
     for(node=node->next; node!=listNode.end(); node=node->next){
         node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
-        listArrowNext.pushBack(Arrow(&node->prev->data, &node->data));
-        listArrowPrev.pushBack(Arrow(&node->data, &node->prev->data));
+        listArrowNext.pushBack(Arrow(&node->prev->data, &node->data, true));
+        listArrowPrev.pushBack(Arrow(&node->data, &node->prev->data, true));
     }
 
     // add new steps
