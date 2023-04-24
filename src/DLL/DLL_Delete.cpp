@@ -61,6 +61,20 @@ void DLL::deleteFirst()
     deletedNode.push_back(deletedN);
     deletedArrow.push_back(deletedANext);
     deletedArrow.push_back(deletedAPrev); 
+
+    // step 1: temp=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(deletedN,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,BLACK);
+    graph.draw(deletedANext,BLACK);
+    graph.draw(&listArrowPrev,BLACK);
+    graph.draw(deletedAPrev,BLACK);
+    graph.drawSubscript(deletedN,"head/temp",RED);
+    graph.draw(&codeBox,1);
+    //
 }
 
 void DLL::deleteLast()
