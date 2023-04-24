@@ -202,6 +202,7 @@ void DLL::insertMiddle(int pos, int value)
         return;
     }
 
+    assert(0<pos && pos<listNode.size());
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     graph.finishAllSteps();
@@ -217,6 +218,7 @@ void DLL::insertMiddle(int pos, int value)
     listArrowPrev.begin()->getNext(pos)->data.dest=&listNode.begin()->getNext(pos)->data;
     //
     tmpNode.position=listNode.begin()->getNext(pos+1)->data.position;
+    tmpArrowNext.flag=tmpArrowPrev.flag=true;
     tmpArrowNext.src=&listNode.begin()->getNext(pos-1)->data;
     tmpArrowNext.dest=&tmpNode;
     tmpArrowPrev.src=&tmpNode;
@@ -225,4 +227,21 @@ void DLL::insertMiddle(int pos, int value)
     const int n=listNode.size();
     const int mNext=listArrowNext.size();
     const int mPrev=listArrowPrev.size();
+
+    // step 1: pre=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listArrowNext,0,pos-2,BLACK);
+    graph.draw(&tmpArrowNext,BLACK);
+    graph.draw(&listArrowNext,pos+1,mNext-1,BLACK);
+    graph.draw(&listArrowPrev,0,pos-2,BLACK);
+    graph.draw(&tmpArrowPrev,BLACK);
+    graph.draw(&listArrowPrev,pos+1,mPrev-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,0);
+    //
 }
