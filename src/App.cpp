@@ -287,9 +287,9 @@ void App::DLL_Update()
             case 2: // Search
                 dll->search(cmd.input1);
                 break;
-            // case 3: // Update
-            //     dll->update(cmd.input1,cmd.input2);
-            //     break;
+            case 3: // Update
+                dll->update(cmd.input1,cmd.input2);
+                break;
             // case 4: // Delete
             //     switch (cmd.suboption)
             //     {
