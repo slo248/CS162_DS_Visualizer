@@ -207,4 +207,22 @@ void DLL::insertMiddle(int pos, int value)
     graph.finishAllSteps();
 
     codeBox.loadFromFile("code/DLL/insertMiddle.txt");
+    // actual
+    listNode.insert(value,pos);
+    listNode.begin()->getNext(pos)->data.position=listNode.begin()->getNext(pos+1)->data.position-sf::Vector2f(0,DISTANCE);
+    listArrowNext.insert(Arrow(&listNode.begin()->getNext(pos)->data, &listNode.begin()->getNext(pos+1)->data, true),pos);
+    listArrowPrev.insert(Arrow(&listNode.begin()->getNext(pos+1)->data, &listNode.begin()->getNext(pos)->data, true),pos);
+
+    listArrowNext.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
+    listArrowPrev.begin()->getNext(pos)->data.dest=&listNode.begin()->getNext(pos)->data;
+    //
+    tmpNode.position=listNode.begin()->getNext(pos+1)->data.position;
+    tmpArrowNext.src=&listNode.begin()->getNext(pos-1)->data;
+    tmpArrowNext.dest=&tmpNode;
+    tmpArrowPrev.src=&tmpNode;
+    tmpArrowPrev.dest=&listNode.begin()->getNext(pos-1)->data;
+
+    const int n=listNode.size();
+    const int mNext=listArrowNext.size();
+    const int mPrev=listArrowPrev.size();
 }

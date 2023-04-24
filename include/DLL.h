@@ -60,7 +60,7 @@ private:
     List<Node> listNode;
     List<Arrow> listArrowNext, listArrowPrev;
     Node tmpNode;
-    Arrow tmpArrow;
+    Arrow tmpArrowNext, tmpArrowPrev;
 
     std::vector<Node*> deletedNode;
     std::vector<Arrow*> deletedArrow;
