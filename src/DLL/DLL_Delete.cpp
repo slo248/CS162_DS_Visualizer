@@ -113,7 +113,7 @@ void DLL::deleteFirst()
     deletedArrow.push_back(listArrowNext.popFront());
     deletedArrow.push_back(listArrowPrev.popFront());
 }
-/*
+
 void DLL::deleteLast()
 {
     if(listNode.size()<=1){
@@ -122,121 +122,21 @@ void DLL::deleteLast()
     }
 
     graph.finishAllSteps();
-
     codeBox.loadFromFile("code/DLL/deleteLast.txt");
 
+    Node* deletedN=listNode.popBack();
+    Arrow* deletedANext=listArrowNext.popBack();
+    Arrow* deletedAPrev=listArrowPrev.popBack();
+
+    deletedNode.push_back(deletedN);
+    deletedArrow.push_back(deletedANext);
+    deletedArrow.push_back(deletedAPrev);
+
     const int n=listNode.size();
-    const int m=listArrow.size();
-
-    // step 1: assign pre=head
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-    graph.draw(&codeBox,1);
-    //
-
-    // step 2: temp=head->next
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
-    graph.drawFadeIn(&listNode.begin()->next->data,GREEN,GREEN,WHITE);
-    graph.drawGrow(&listArrow.begin()->data,ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-    graph.drawSubscript(&listNode.begin()->next->data,"temp",RED);
-    graph.draw(&codeBox,2);
-    //
-
-    // step 3: traverse tail
-    int i;
-    for(i=1; i<n; i++){
-        // substep 1
-        graph.addStep(0.5*FPS);
-
-        graph.draw(&listNode,0,i-2,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i-1,ORANGE,ORANGE,WHITE);
-        graph.draw(&listNode,i,GREEN,GREEN,WHITE);
-        graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
-        graph.draw(&listArrow,0,i-2,ORANGE);
-        graph.draw(&listArrow.begin()->getNext(i-1)->data,GREEN);
-        graph.drawFadeIn(&listArrow.begin()->getNext(i-1)->data,BLACK);
-        graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
-        if(i==1)
-            graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-        else{
-            graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"pre",RED);
-        }
-        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"temp",RED);
-        graph.draw(&codeBox,3);
-        //
-
-        if(i==n-1) break;
-
-        // substep 2
-        graph.addStep(0.5*FPS);
-
-        graph.draw(&listNode,0,i-2,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i-1,ORANGE,ORANGE,WHITE);
-        graph.drawFadeIn(&listNode.begin()->getNext(i-1)->data,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i,GREEN,GREEN,WHITE);
-        graph.drawFadeIn(&listNode.begin()->getNext(i)->data,ORANGE,ORANGE,WHITE);
-        graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
-        graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,GREEN,GREEN,WHITE);
-        graph.draw(&listArrow,0,i-2,ORANGE);
-        graph.draw(&listArrow,i-1,listArrow.size()-1,BLACK);
-        graph.drawGrow(&listArrow.begin()->getNext(i-1)->data,ORANGE);
-        graph.drawGrow(&listArrow.begin()->getNext(i)->data,GREEN);
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"temp",RED);
-        graph.draw(&codeBox,4);
-        //
-    }
-
-    // step 4: shrink the last arrow
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,0,n-3,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,n-2,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,n-1,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,0,m-2,ORANGE);
-    graph.drawShrink(&listArrow.begin()->getNext(m-1)->data,BLACK);
-    if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"pre",RED);
-    }
-    else
-        graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(n-1)->data,"temp",RED);
-    graph.draw(&codeBox,5);
-    //
-
-    // step 5: delete temp
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,0,n-3,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,n-2,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode,n-2,n-2,GREEN,GREEN,WHITE);
-    graph.drawShrink(&listNode.begin()->getNext(n-1)->data,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,0,m-2,ORANGE);
-    if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"tail",RED);
-    }
-    else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
-    graph.draw(&codeBox,6);
-    //
-
-    deletedNode.push_back(listNode.popBack());
-    deletedArrow.push_back(listArrow.popBack());
+    const int mNext=listArrowNext.size();
+    const int mPrev=listArrowPrev.size();
 }
-
+/*
 void DLL::deleteMiddle(int pos)
 {
     if(listNode.size()<=1){
