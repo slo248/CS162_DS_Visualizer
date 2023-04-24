@@ -384,4 +384,33 @@ void DLL::insertMiddle(int pos, int value)
         graph.drawSubscript(&listNode.rbegin()->data,std::to_string(pos)+"/tail/aft",RED);
     graph.draw(&codeBox,5);
     //
+
+    // step 6: pre.next = vtx, vtx.prev = pre
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,pos+1,BLUE,BLUE,WHITE);
+    graph.draw(&listNode,pos+2,n-1,WHITE,BLACK,BLACK);
+    graph.drawMove(&tmpNode,sf::Vector2f(0,DISTANCE),BLANK,BLANK,BLANK);
+    graph.draw(&listArrowNext,0,pos-2,ORANGE);
+    graph.draw(&tmpArrowNext,ORANGE);
+    graph.draw(&listArrowNext,pos,GREEN);
+    graph.draw(&listArrowNext,pos+1,mNext-1,BLACK);
+    graph.draw(&listArrowPrev,0,pos-2,BLACK);
+    graph.draw(&tmpArrowPrev,BLACK);
+    graph.draw(&listArrowPrev,pos,BLACK);
+    graph.draw(&listArrowPrev,pos+1,mPrev-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",RED);
+    if(pos+1<n-1){
+        graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.rbegin()->data,std::to_string(pos+1)+"/tail/aft",RED);
+    graph.draw(&codeBox,6);
+    //
 }
