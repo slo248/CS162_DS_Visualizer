@@ -8,7 +8,9 @@ struct Arrow
 {
     Node* src;
     Node* dest;
-    Arrow(Node* src=nullptr, Node* dest=nullptr) : src(src), dest(dest) {}
+    bool flag;
+    Arrow(Node* src=nullptr, Node* dest=nullptr, bool flag=false) : 
+        src(src), dest(dest), flag(flag) {}
 
     void update(ArrowFigure* arrowFig);
 
