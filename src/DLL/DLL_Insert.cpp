@@ -128,7 +128,7 @@ void DLL::insertFront(int value)
     graph.draw(&codeBox,4);
     //
 }
-/*
+
 void DLL::insertBack(int value)
 {
     if(listNode.empty()){ 
@@ -143,110 +143,10 @@ void DLL::insertBack(int value)
     codeBox.loadFromFile("code/DLL/insertBack.txt");
 
     listNode.pushBack(value);
-    listArrow.pushBack(Arrow(&listNode.rbegin()->prev->data, &listNode.rbegin()->data));
-    listNode.rbegin()->data.position=START_POSITION+sf::Vector2f(DISTANCE*(listNode.size()-1), 0);
-
-    const int n=listNode.size();
-    const int m=listArrow.size();
-
-    // step 1: assign tail=head
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,0,n-3,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
-    graph.draw(&codeBox,0);
-
-    //
-
-    // step 2: traverse from head to tail
-    for(int i=0; i<n-1; i++){
-        // substep 1
-        graph.addStep(0.5*FPS);
-
-        graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i,ORANGE,ORANGE,WHITE);
-        graph.drawFadeIn(&listNode.begin()->getNext(i)->data,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i+1,n-2,WHITE,BLACK,BLACK);
-        graph.draw(&listArrow,0,i-1,ORANGE);
-        graph.draw(&listArrow,i,m-2,BLACK);   
-        if(i){
-            graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",RED);
-        }
-        else
-            graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
-     
-        graph.draw(&codeBox,1);
-        //
-
-        if(i==n-2) break;
-
-        // substep 2
-        graph.addStep(0.5*FPS);
-
-        graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i+1,n-2,WHITE,BLACK,BLACK);
-        graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,ORANGE,ORANGE,WHITE);
-        graph.draw(&listArrow,0,i-1,ORANGE);
-        graph.draw(&listArrow,i,m-2,BLACK);
-        graph.drawFadeIn(&listArrow.begin()->getNext(i)->data,ORANGE);
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"tail",RED);
-        graph.draw(&codeBox,2);
-        //
-    }
-    //
-
-    // step 3: new node
-    graph.addStep(0.5*FPS);
-
-    graph.drawSubscript(&listNode.rbegin()->data,"node",RED);
-    graph.draw(&listNode,0,n-2,WHITE,ORANGE,ORANGE);
-    graph.drawGrow(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,0,m-2,ORANGE);
-    if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"tail",RED);
-    }
-    else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
-    graph.draw(&codeBox,3);
-    //
-
-    // step 4: assign tail->next=node
-    graph.addStep(0.5*FPS);
-
-    graph.drawSubscript(&listNode.rbegin()->data,"node",RED);
-    graph.draw(&listNode,0,n-2,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,0,m-2,ORANGE);
-    graph.drawGrow(&listArrow.rbegin()->data,ORANGE);
-    if(n>2){
-        graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"tail",RED);
-    }
-    else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
-    graph.draw(&codeBox,4);
-    //
-
-    // step 4: move tail to node
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNode,0,n-2,WHITE,ORANGE,ORANGE);
-    graph.drawFadeIn(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listArrow,ORANGE);
-    graph.drawFadeIn(&listArrow,0,m-1,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"node/tail",RED);
-    graph.draw(&codeBox,5);
-    //
+    listArrowNext.pushBack(Arrow(&listNode.rbegin()->prev->data, &listNode.rbegin()->data, true));
+    listArrowPrev.pushBack(Arrow(&listNode.rbegin()->data, &listNode.rbegin()->prev->data, true));
 }
-
+/*
 void DLL::insertMiddle(int pos, int value)
 {
     if(pos<0 || pos>listNode.size()){
