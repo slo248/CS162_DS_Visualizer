@@ -1,0 +1,4 @@
+if empty, do nothing
+Node* tmp=tail
+tail=tail->prev
+delete tmp
