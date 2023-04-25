@@ -267,7 +267,7 @@ void DLL::deleteMiddle(int pos)
 
         if(i==pos-1) break;
 
-        // step 2: go next node
+        // substep 2: go next node
         graph.addStep(0.5*FPS);
 
         graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
@@ -330,6 +330,40 @@ void DLL::deleteMiddle(int pos)
 
         // codebox
         graph.draw(&codeBox,4);
+    //
+    
+    // step 4: pre->next = aft, aft->prev = pre
+    graph.addStep(0.5*FPS);
 
+        // node
+        graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
+        graph.drawMove(deletedN,sf::Vector2f(0,-DISTANCE),RED,RED,WHITE);
+        graph.draw(&listNode,pos,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNode,pos,pos,GREEN,GREEN,WHITE);
+        
+        // arrow
+        graph.draw(&listArrowNext,0,pos-2,ORANGE);
+        graph.drawGrow(&listArrowNext,pos-1,pos-1,ORANGE);
+        graph.draw(deletedANext,ORANGE);
+        graph.draw(&listArrowNext,pos,mNext-1,BLACK);
+        
+        graph.draw(&listArrowPrev,0,pos-2,BLACK);
+        graph.drawGrow(&listArrowPrev,pos-1,pos-1,ORANGE);
+        graph.draw(&tmpArrowPrev,ORANGE);
+        graph.draw(&listArrowPrev,pos,mPrev-1,BLACK);
+
+        // subscript
+        if(pos>1){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(deletedN,"del",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
+
+        // codebox
+        graph.draw(&codeBox,5);
     //
 }
