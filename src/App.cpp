@@ -87,6 +87,7 @@ void App::processInput()
 
     sf::Event event;
     while (window.pollEvent(event)){
+        menu->handleEvent(event,&window);
         if(sllControl) sllControl->handleEvent(event,&window);
         if(stackControl) stackControl->handleEvent(event,&window);
         if(queueControl) queueControl->handleEvent(event,&window);

@@ -1,6 +1,19 @@
 #include "Global.h"
 #include "Button.h"
 
+namespace DS
+{
+    enum Type
+    {
+        SLL,
+        DLL,
+        CLL,
+        STACK,
+        QUEUE,
+        ARRAY
+    };
+}
+
 class Menu: public sf::Drawable
 {
 public:
