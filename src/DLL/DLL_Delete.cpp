@@ -366,4 +366,39 @@ void DLL::deleteMiddle(int pos)
         // codebox
         graph.draw(&codeBox,5);
     //
+
+    // step 5: delete del
+    graph.addStep(0.5*FPS);
+
+        // node
+        graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
+        graph.drawShrink(deletedN,RED,RED,WHITE);
+        graph.draw(&listNode,pos,GREEN,GREEN,WHITE);
+        graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+        
+        // arrow
+        graph.draw(&listArrowNext,0,pos-2,ORANGE);
+        graph.draw(&listArrowNext,pos-1,pos-1,ORANGE);
+        graph.drawShrink(deletedANext,ORANGE);
+        graph.draw(&listArrowNext,pos,mNext-1,BLACK);
+        
+        graph.draw(&listArrowPrev,0,pos-2,BLACK);
+        graph.draw(&listArrowPrev,pos-1,pos-1,ORANGE);
+        graph.drawShrink(&tmpArrowPrev,ORANGE);
+        graph.draw(&listArrowPrev,pos,mPrev-1,BLACK);
+
+        // subscript
+        if(pos>1){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(deletedN,"del",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
+
+        // codebox
+        graph.draw(&codeBox,6);
+    //
 }
