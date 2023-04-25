@@ -401,4 +401,31 @@ void DLL::deleteMiddle(int pos)
         // codebox
         graph.draw(&codeBox,6);
     //
+
+    // step 6: normal the list
+    graph.addStep(0.5*FPS);
+
+        // node
+        graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
+        graph.drawFadeIn(&listNode,0,pos-2,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
+        graph.drawMove(&listNode,pos,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
+        graph.drawMove(&listNode,pos+1,n-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
+        
+        // arrow
+        graph.draw(&listArrowNext,0,pos-1,ORANGE);
+        graph.drawFadeIn(&listArrowNext,0,pos-1,BLACK);
+        graph.draw(&listArrowNext,pos,mNext-1,BLACK);
+        
+        graph.draw(&listArrowPrev,0,pos-2,BLACK);
+        graph.draw(&listArrowPrev,pos-1,pos-1,ORANGE);
+        graph.drawFadeIn(&listArrowPrev,pos-1,pos-1,BLACK);
+        graph.draw(&listArrowPrev,pos,mPrev-1,BLACK);
+
+        // subscript
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+
+        // codebox
+        graph.draw(&codeBox,7);
+    //
 }
