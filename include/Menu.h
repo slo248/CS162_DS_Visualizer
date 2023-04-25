@@ -20,6 +20,7 @@ class Menu: public sf::Drawable
 {
 public:
     Menu(sf::Font* sanf, sf::Vector2f windowSize);
+    int getCommand();
     void handleEvent(sf::Event& event, sf::RenderWindow* window);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:

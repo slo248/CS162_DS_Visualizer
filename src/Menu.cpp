@@ -25,6 +25,14 @@ Menu::Menu(sf::Font *sanf, sf::Vector2f windowSize)
     DS.push_back(Button(sanf, &btnTexture, "Array", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2 + 300, 450)));
 }
 
+int Menu::getCommand()
+{
+    if (cmdQueue.empty()) return -1;
+    int cmd = cmdQueue.front();
+    cmdQueue.pop();
+    return cmd;
+}
+
 void Menu::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
     for (int i=0; i<NUM_DS; i++)
