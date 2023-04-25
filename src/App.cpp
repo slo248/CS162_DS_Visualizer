@@ -40,6 +40,8 @@ App::App():
         (float)HEIGHT/bgImage.getSize().y
     );
 
+    menu=new Menu(&sanf,window.getView().getSize());
+
     // sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
     // sllControl=new SLL_Control(&sanf,window.getView().getSize());
 
@@ -110,22 +112,23 @@ void App::draw()
 {
     window.clear();
     window.draw(bgSprite);
-    if(sll){ 
-        sll->draw();
-        window.draw(*sllControl);
-    }
-    if(stack){ 
-        stack->draw();
-        window.draw(*stackControl);
-    }
-    if(queue){ 
-        queue->draw();
-        window.draw(*queueControl);
-    }
-    if(dll){ 
-        dll->draw();
-        window.draw(*dllControl);
-    }
+    // if(sll){ 
+    //     sll->draw();
+    //     window.draw(*sllControl);
+    // }
+    // if(stack){ 
+    //     stack->draw();
+    //     window.draw(*stackControl);
+    // }
+    // if(queue){ 
+    //     queue->draw();
+    //     window.draw(*queueControl);
+    // }
+    // if(dll){ 
+    //     dll->draw();
+    //     window.draw(*dllControl);
+    // }
+    window.draw(*menu);
     window.display();
 }
 

@@ -3,6 +3,7 @@
 
 #include "Global.h"
 #include "Figure.h"
+#include "Menu.h"
 
 #include "SLL.h"
 #include "SLL_Control.h"
@@ -41,6 +42,8 @@ private:
     sf::Texture         bgImage;
     sf::Sprite          bgSprite;
     Figure              figure;
+
+    Menu*               menu;
 
     SLL*                sll;
     SLL_Control*        sllControl;
