@@ -179,6 +179,10 @@ void App::SLL_Update()
                         sll->randomList(cmd.input1);
                         sll->makeList();
                         break;
+                    case 4: // Load from file
+                        sll->loadFromFile();
+                        sll->makeList();
+                        break;
                 }
                 break;
             case 1: // Insert

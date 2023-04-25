@@ -53,7 +53,8 @@ void SLL_Control::genSuboptions(sf::Vector2f windowSize)
         {"Empty", "", ""},
         {"User defined list", "A =",""},
         {"Random"},
-        {"Random fixed size","n =",""}
+        {"Random fixed size","n =",""},
+        {"Load from file", "",""}
     });
 
     // insert
