@@ -1,6 +1,7 @@
 #include "DLL.h"
 #include "Random.h"
 #include "Config.h"
+#include "FileIO.h"
 
 using namespace Config::DLL;
 
@@ -23,19 +24,9 @@ void DLL::manual(const std::vector<int> &list)
     }
 }
 
-void DLL::loadFromFile(std::string path)
+void DLL::loadFromFile()
 {
-    empty();
-
-    std::ifstream fi(path);
-    if(!fi.is_open()) return;
-    int val;
-    while(fi>>val){
-        assert(Config::MIN_VALUE<=val && val<=Config::MAX_VALUE);
-        if(listNode.size()==MAX_NODE) break;
-        listNode.pushBack(Node(val));
-    }
-    fi.close();
+    manual(openWindowExplorer());
 }
 
 void DLL::randomList(int n)
