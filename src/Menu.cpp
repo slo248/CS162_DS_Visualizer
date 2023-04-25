@@ -23,6 +23,12 @@ Menu::Menu(sf::Font *sanf, sf::Vector2f windowSize)
     DS.push_back(Button(sanf, &btnTexture, "Array", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2 + 300, 450)));
 }
 
+void Menu::handleEvent(sf::Event &event, sf::RenderWindow *window)
+{
+    for (auto &btn : DS)
+        if(btn.isMouseOver(window));
+}
+
 void Menu::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(title);
