@@ -256,11 +256,39 @@ void DLL::deleteMiddle(int pos)
         graph.draw(&tmpArrowPrev,BLACK);
         graph.draw(deletedAPrev,BLACK);
         graph.draw(&listArrowPrev,pos,mNext-1,BLACK);
-        graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",RED);
+        }
+        else
+            graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
         graph.draw(&codeBox,2);
         //
 
         if(i==pos-1) break;
+
+        // step 2: go next node
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
+        graph.drawFadeOut(&listNode,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNode,i+1,i+1,ORANGE,ORANGE,WHITE);
+        graph.draw(deletedN,WHITE,BLACK,BLACK);
+        graph.draw(&listArrowNext,0,i-1,ORANGE);
+        graph.draw(&listArrowNext,i,pos-2,BLACK);
+        graph.drawGrow(&listArrowNext,i,pos-2,ORANGE);
+        graph.draw(&tmpArrowNext,BLACK);
+        graph.draw(deletedANext,BLACK);
+        graph.draw(&listArrowNext,pos,mNext-1,BLACK);
+        graph.draw(&listArrowPrev,0,pos-2,BLACK);
+        graph.draw(&tmpArrowPrev,BLACK);
+        graph.draw(deletedAPrev,BLACK);
+        graph.draw(&listArrowPrev,pos,mNext-1,BLACK);
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"pre",RED);
+        graph.draw(&codeBox,3);
+        //
     }
     //
 }
