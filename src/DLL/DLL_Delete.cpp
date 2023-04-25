@@ -196,9 +196,17 @@ void DLL::deleteMiddle(int pos)
 
     assert(0<pos && pos<listNode.size()-1);
 
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/DLL/deleteMiddle.txt");
+
     Node* deletedN=listNode.pop(pos);
     Arrow* deletedANext=listArrowNext.pop(pos);
     Arrow* deletedAPrev=listArrowPrev.pop(pos-1);
+    tmpArrowNext.flag=tmpArrowPrev.flag=deletedANext->flag;
+    tmpArrowNext.src=&listNode.begin()->getNext(pos-1)->data;
+    tmpArrowNext.dest=deletedN;
+    tmpArrowPrev.src=&listNode.begin()->getNext(pos)->data;
+    tmpArrowPrev.dest=deletedN;
 
     deletedNode.push_back(deletedN);
     deletedArrow.push_back(deletedANext);
@@ -211,9 +219,21 @@ void DLL::deleteMiddle(int pos)
     const int mNext=listArrowNext.size();
     const int mPrev=listArrowPrev.size();
 
+    // step 1: pre=head
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.draw(&listArrowNext,BLACK);
-    graph.draw(&listArrowPrev,BLACK);
+    graph.draw(deletedN,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrowNext,0,pos-2,BLACK);
+    graph.draw(&tmpArrowNext,BLACK);
+    graph.draw(deletedANext,BLACK);
+    graph.draw(&listArrowNext,pos,mNext-1,BLACK);
+    graph.draw(&listArrowPrev,0,pos-2,BLACK);
+    graph.draw(&tmpArrowPrev,BLACK);
+    graph.draw(deletedAPrev,BLACK);
+    graph.draw(&listArrowPrev,pos,mNext-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+    graph.draw(&codeBox,1);
+    //
 }
