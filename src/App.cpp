@@ -268,6 +268,10 @@ void App::DLL_Update()
                         dll->randomList(cmd.input1);
                         dll->makeList();
                         break;
+                    case 4:
+                        dll->loadFromFile();
+                        dll->makeList();
+                        break;
                 }
                 break;
             case 1: // Insert
