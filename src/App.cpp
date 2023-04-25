@@ -11,6 +11,7 @@ App::App():
         STYLE,
         SETTINGS
     ),
+    state(State::MENU),
     sll(nullptr),
     sllControl(nullptr),
     stack(nullptr),
@@ -41,18 +42,6 @@ App::App():
     );
 
     menu=new Menu(&sanf,window.getView().getSize());
-
-    // sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    // sllControl=new SLL_Control(&sanf,window.getView().getSize());
-
-    // stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    // stackControl=new Stack_Control(&sanf,window.getView().getSize());
-
-    // queue=new Queue(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    // queueControl=new Queue_Control(&sanf,window.getView().getSize());
-
-    dll=new DLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
-    dllControl=new DLL_Control(&sanf,window.getView().getSize());
 }
 
 App::~App()
@@ -76,6 +65,8 @@ App::~App()
         delete dll;
         delete dllControl;
     }
+
+    delete menu;
 }
 
 void App::processInput()
@@ -103,6 +94,34 @@ void App::processInput()
 
 void App::update()
 {
+    if(state==State::MENU){
+        int cmd=menu->getCommand();
+        switch (cmd)
+        {
+            case DS::SLL:
+                state=State::DS;
+                sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                sllControl=new SLL_Control(&sanf,window.getView().getSize());
+                break;
+            case DS::DLL:
+                state=State::DS;
+                dll=new DLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                dllControl=new DLL_Control(&sanf,window.getView().getSize());
+                break;
+            case DS::STACK:
+                state=State::DS;
+                stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                stackControl=new Stack_Control(&sanf,window.getView().getSize());
+                break;
+            case DS::QUEUE:
+                state=State::DS;
+                queue=new Queue(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                queueControl=new Queue_Control(&sanf,window.getView().getSize());
+                break;
+        }
+        return;
+    }
+
     if(sll) SLL_Update();
     if(dll) DLL_Update();
     if(stack) Stack_Update();
@@ -113,22 +132,6 @@ void App::draw()
 {
     window.clear();
     window.draw(bgSprite);
-    // if(sll){ 
-    //     sll->draw();
-    //     window.draw(*sllControl);
-    // }
-    // if(stack){ 
-    //     stack->draw();
-    //     window.draw(*stackControl);
-    // }
-    // if(queue){ 
-    //     queue->draw();
-    //     window.draw(*queueControl);
-    // }
-    // if(dll){ 
-    //     dll->draw();
-    //     window.draw(*dllControl);
-    // }
     window.draw(*menu);
     window.display();
 }
@@ -465,26 +468,6 @@ void App::Queue_Update()
 
 void App::run()
 {
-    if(sll){
-        sll->randomList(4);
-        sll->makeList();
-    }
-
-    if(stack){
-        stack->randomList(4);
-        stack->makeList();
-    }
-
-    if(queue){
-        queue->randomList(4);
-        queue->makeList();
-    }
-
-    if(dll){
-        dll->randomList(4);
-        dll->makeList();
-    }
-
     while (window.isOpen())
     {
         processInput();

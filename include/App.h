@@ -53,6 +53,8 @@ private:
     sf::Sprite          bgSprite;
     Figure              figure;
 
+    State::Type         state;
+
     Menu*               menu;
 
     SLL*                sll;
