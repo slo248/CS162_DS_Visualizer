@@ -236,4 +236,31 @@ void DLL::deleteMiddle(int pos)
     graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
     graph.draw(&codeBox,1);
     //
+
+    // step 2: traverse to node before deleted node
+    for(int i=0; i<pos; i++)
+    {
+        // substep 1: highlight current node
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,i,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(deletedN,WHITE,BLACK,BLACK);
+        graph.draw(&listArrowNext,0,i-1,ORANGE);
+        graph.draw(&listArrowNext,i,pos-2,BLACK);
+        graph.draw(&tmpArrowNext,BLACK);
+        graph.draw(deletedANext,BLACK);
+        graph.draw(&listArrowNext,pos,mNext-1,BLACK);
+        graph.draw(&listArrowPrev,0,pos-2,BLACK);
+        graph.draw(&tmpArrowPrev,BLACK);
+        graph.draw(deletedAPrev,BLACK);
+        graph.draw(&listArrowPrev,pos,mNext-1,BLACK);
+        graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+        graph.draw(&codeBox,2);
+        //
+
+        if(i==pos-1) break;
+    }
+    //
 }
