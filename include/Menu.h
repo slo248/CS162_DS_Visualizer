@@ -1,5 +1,6 @@
 #include "Global.h"
 #include "Button.h"
+#include <queue>
 
 namespace DS
 {
@@ -10,7 +11,8 @@ namespace DS
         CLL,
         STACK,
         QUEUE,
-        ARRAY
+        ARRAY,
+        NUM_DS
     };
 }
 
@@ -24,4 +26,5 @@ private:
     sf::Texture btnTexture;
     sf::Text    title, subtitle;
     std::vector<Button> DS;
+    std::queue<int>    cmdQueue;
 };

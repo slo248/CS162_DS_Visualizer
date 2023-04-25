@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+using namespace DS;
+
 Menu::Menu(sf::Font *sanf, sf::Vector2f windowSize)
 {
     title.setFont(*sanf);
@@ -25,8 +27,9 @@ Menu::Menu(sf::Font *sanf, sf::Vector2f windowSize)
 
 void Menu::handleEvent(sf::Event &event, sf::RenderWindow *window)
 {
-    for (auto &btn : DS)
-        if(btn.isMouseOver(window));
+    for (int i=0; i<NUM_DS; i++)
+        if(DS[i].isMouseOver(window) && event.type == sf::Event::MouseButtonPressed)
+            cmdQueue.push(i);
 }
 
 void Menu::draw(sf::RenderTarget &target, sf::RenderStates states) const
