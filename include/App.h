@@ -17,6 +17,16 @@
 #include "Queue.h"
 #include "Queue_Control.h"
 
+namespace State
+{
+    enum Type
+    {
+        MENU,
+        DS,
+        ALL,
+    };
+}
+
 class App
 {
 public:
