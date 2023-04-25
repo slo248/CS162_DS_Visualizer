@@ -307,9 +307,9 @@ void App::DLL_Update()
                     case 1: // Last
                         dll->deleteLast();
                         break;
-                    // case 2: // Middle
-                    //     dll->deleteMiddle(cmd.input1);
-                    //     break;
+                    case 2: // Middle
+                        dll->deleteMiddle(cmd.input1);
+                        break;
                 }
                 break;
         }
