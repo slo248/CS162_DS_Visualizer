@@ -365,6 +365,10 @@ void App::Stack_Update()
                         stack->randomList(cmd.input1);
                         stack->makeList();
                         break;
+                    case 4: // Load from file
+                        stack->loadFromFile();
+                        stack->makeList();
+                        break;
                 }
                 break;
             case 1: // Peek

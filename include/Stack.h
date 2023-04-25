@@ -18,7 +18,7 @@ public:
     // create
     void empty();
     void manual(const std::vector<int>& list);
-    void loadFromFile(std::string path);
+    void loadFromFile();
     void randomList(int n);
     void makeList();
 

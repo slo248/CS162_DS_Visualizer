@@ -1,6 +1,7 @@
 #include "Stack.h"
 #include "Random.h"
 #include "Config.h"
+#include "FileIO.h"
 
 using namespace Config::Stack;
 
@@ -22,19 +23,9 @@ void Stack::manual(const std::vector<int> &list)
     }
 }
 
-void Stack::loadFromFile(std::string path)
+void Stack::loadFromFile()
 {
-    empty();
-
-    std::ifstream fi(path);
-    if(!fi.is_open()) return;
-    int val;
-    while(fi>>val){
-        assert(Config::MIN_VALUE<=val && val<=Config::MAX_VALUE);
-        if(listNode.size()==MAX_NODE) break;
-        listNode.pushFront(Node(val));
-    }
-    fi.close();
+    manual(openWindowExplorer());
 }
 
 void Stack::randomList(int n)
