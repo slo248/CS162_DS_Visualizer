@@ -233,7 +233,7 @@ void DLL::deleteMiddle(int pos)
     graph.draw(&tmpArrowPrev,BLACK);
     graph.draw(deletedAPrev,BLACK);
     graph.draw(&listArrowPrev,pos,mPrev-1,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+    graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.draw(&codeBox,1);
     //
 
@@ -258,10 +258,10 @@ void DLL::deleteMiddle(int pos)
         graph.draw(&listArrowPrev,pos,mPrev-1,BLACK);
         if(i){
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
         }
         else
-            graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
         graph.draw(&codeBox,2);
         //
 
@@ -286,7 +286,7 @@ void DLL::deleteMiddle(int pos)
         graph.draw(deletedAPrev,BLACK);
         graph.draw(&listArrowPrev,pos,mPrev-1,BLACK);
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"pre",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/pre",RED);
         graph.draw(&codeBox,3);
         //
     }
@@ -321,12 +321,12 @@ void DLL::deleteMiddle(int pos)
         // subscript
         if(pos>1){
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,"pre",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
         }
         else
-            graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-        graph.drawSubscript(deletedN,"del",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"aft",RED);
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(deletedN,std::to_string(pos)+"/del",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",RED);
 
         // codebox
         graph.draw(&codeBox,4);
