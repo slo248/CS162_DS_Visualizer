@@ -1,6 +1,7 @@
 #include "Queue.h"
 #include "Random.h"
 #include "Config.h"
+#include "FileIO.h"
 
 using namespace Config::Queue;
 
@@ -22,19 +23,9 @@ void Queue::manual(const std::vector<int> &list)
     }
 }
 
-void Queue::loadFromFile(std::string path)
+void Queue::loadFromFile()
 {
-    empty();
-
-    std::ifstream fi(path);
-    if(!fi.is_open()) return;
-    int val;
-    while(fi>>val){
-        assert(Config::MIN_VALUE<=val && val<=Config::MAX_VALUE);
-        if(listNode.size()==MAX_NODE) break;
-        listNode.pushBack(Node(val));
-    }
-    fi.close();
+    manual(openWindowExplorer());
 }
 
 void Queue::randomList(int n)

@@ -425,6 +425,10 @@ void App::Queue_Update()
                         queue->randomList(cmd.input1);
                         queue->makeList();
                         break;
+                    case 4: // Load from file
+                        queue->loadFromFile();
+                        queue->makeList();
+                        break;
                 }
                 break;
             case 1: // Peek
