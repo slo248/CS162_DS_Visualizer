@@ -13,6 +13,9 @@ Stack::Stack(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, 
 {
     graph.clear();
     graph.setVisualType(AUTO);
+
+    randomList(4);
+    makeList();
 }
 
 Stack::~Stack()

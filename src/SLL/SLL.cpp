@@ -13,6 +13,9 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, sf::
 {
     graph.clear();
     graph.setVisualType(AUTO);
+
+    randomList(4);
+    makeList();
 }
 
 SLL::~SLL()

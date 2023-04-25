@@ -88,6 +88,35 @@ void App::processInput()
             case sf::Event::Closed:
                 window.close();
                 break;
+            case sf::Event::KeyPressed:
+                if(event.key.code==sf::Keyboard::Escape && state==State::DS){
+                    state=State::MENU;
+                    if(sll){
+                        delete sll;
+                        delete sllControl;
+                        sll=nullptr;
+                        sllControl=nullptr;
+                    }
+                    if(stack){
+                        delete stack;
+                        delete stackControl;
+                        stack=nullptr;
+                        stackControl=nullptr;
+                    }
+                    if(queue){
+                        delete queue;
+                        delete queueControl;
+                        queue=nullptr;
+                        queueControl=nullptr;
+                    }
+                    if(dll){
+                        delete dll;
+                        delete dllControl;
+                        dll=nullptr;
+                        dllControl=nullptr;
+                    }
+                }
+                break;
         }
     }
 }
@@ -132,7 +161,30 @@ void App::draw()
 {
     window.clear();
     window.draw(bgSprite);
-    window.draw(*menu);
+    switch (state)
+    {
+        case State::MENU:
+            window.draw(*menu);
+            break;
+        case State::DS:
+            if(sll){
+                sll->draw();
+                window.draw(*sllControl);
+            }
+            if(dll){
+                dll->draw();
+                window.draw(*dllControl);
+            }
+            if(stack){
+                stack->draw();
+                window.draw(*stackControl);
+            }
+            if(queue){
+                queue->draw();
+                window.draw(*queueControl);
+            }
+            break;
+    }
     window.display();
 }
 
