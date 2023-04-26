@@ -19,8 +19,8 @@ int DLL::search(int value)
     // step 1: index=0, temp=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrowNext,BLACK);
     graph.draw(&listArrowPrev,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
@@ -40,9 +40,9 @@ int DLL::search(int value)
         }
         else
             graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
-        graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
-        graph.drawFadeOut(&temp->data,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeOut(&temp->data,CIRCLE,ORANGE,ORANGE,WHITE);
         graph.draw(&listArrowNext,0,i-1,ORANGE);
         graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
         graph.draw(&listArrowPrev,BLACK);
@@ -55,9 +55,9 @@ int DLL::search(int value)
 
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
             graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/temp",RED);
-            graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
-            graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
-            graph.drawFadeIn(&temp->next->data,ORANGE,ORANGE,WHITE);
+            graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
+            graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
+            graph.drawFadeIn(&temp->next->data,CIRCLE,ORANGE,ORANGE,WHITE);
             graph.draw(&listArrowNext,0,i-1,ORANGE);
             graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
             graph.drawGrow(&listArrowNext.begin()->getNext(i)->data,ORANGE);
@@ -69,7 +69,7 @@ int DLL::search(int value)
             // substep 3: return -1
             graph.addStep(0.5*FPS);
 
-            graph.draw(&listNode,WHITE,ORANGE,ORANGE);
+            graph.draw(&listNode,CIRCLE,WHITE,ORANGE,ORANGE);
             graph.draw(&listArrowNext,ORANGE);
             graph.draw(&listArrowPrev,BLACK);
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
@@ -90,9 +90,9 @@ int DLL::search(int value)
     }
     else
         graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
-    graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,i+1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&temp->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&temp->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrowNext,0,i-1,ORANGE);
     graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
     graph.draw(&listArrowPrev,BLACK);

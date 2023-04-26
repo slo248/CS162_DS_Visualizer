@@ -20,7 +20,7 @@ void DLL::insertWhenEmpty(int value)
     graph.addStep(0.5*FPS);
 
     // draw nodes to graph
-    graph.drawGrow(&listNode,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.draw(&codeBox,0);
 }
@@ -52,8 +52,8 @@ void DLL::insertFront(int value)
     // step 1: appear new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.drawGrow(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrowNext,1,mNext-1,BLACK);
     graph.draw(&listArrowPrev,1,mPrev-1,BLACK);
     if(n>2){
@@ -69,8 +69,8 @@ void DLL::insertFront(int value)
     // step 2: vtx.next=head, head.prev=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawGrow(&listArrowNext.begin()->data,ORANGE);
     graph.draw(&listArrowNext,1,mNext-1,BLACK);
     graph.drawGrow(&listArrowPrev.begin()->data,ORANGE);
@@ -88,9 +88,9 @@ void DLL::insertFront(int value)
     // step 3: head=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listArrowNext.begin()->data,ORANGE);
     graph.drawFadeIn(&listArrowNext.begin()->data,BLACK);
     graph.draw(&listArrowNext,1,mNext-1,BLACK);
@@ -105,8 +105,8 @@ void DLL::insertFront(int value)
     // step 4: move the list to correct position
     graph.addStep(0.5*FPS);
 
-    graph.drawMove(&listNode,1,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
-    graph.drawMove(&listNode.begin()->data,sf::Vector2f(0,-DISTANCE),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode,CIRCLE,1,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode.begin()->data,CIRCLE,sf::Vector2f(0,-DISTANCE),GREEN,GREEN,WHITE);
     graph.draw(&listArrowNext,BLACK);
     graph.draw(&listArrowPrev,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
@@ -142,8 +142,8 @@ void DLL::insertBack(int value)
     // step 1: create new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.drawGrow(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrowNext,0,mNext-2,BLACK);
     graph.draw(&listArrowPrev,0,mPrev-2,BLACK);
     if(n>2){
@@ -159,9 +159,9 @@ void DLL::insertBack(int value)
     // step 2: tail.next = vtx, vtx.prev = tail
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
-    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrowNext,0,mNext-2,BLACK);
     graph.drawGrow(&listArrowNext.rbegin()->data,ORANGE);
     graph.draw(&listArrowPrev,0,mPrev-2,BLACK);
@@ -179,10 +179,10 @@ void DLL::insertBack(int value)
     // step 3: vtx = tail
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.drawFadeOut(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
-    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawFadeOut(&listNode.rbegin()->prev->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.rbegin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listArrowNext,BLACK);
     graph.drawFadeOut(&listArrowNext.rbegin()->data,ORANGE);
     graph.draw(&listArrowPrev,BLACK);
@@ -239,9 +239,9 @@ void DLL::insertMiddle(int pos, int value)
     // step 1: pre=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-1,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,0,pos-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listArrowNext,0,pos-2,BLACK);
     graph.draw(&tmpArrowNext,BLACK);
     graph.draw(&listArrowNext,pos+1,mNext-1,BLACK);
@@ -258,15 +258,15 @@ void DLL::insertMiddle(int pos, int value)
         // substep 1: fade in node[i]
         graph.addStep(0.5*FPS);
 
-        graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
         if(i){
-            graph.draw(&listNode.begin()->getNext(i)->data,WHITE,BLACK,BLACK);
-            graph.drawFadeIn(&listNode.begin()->getNext(i)->data,ORANGE,ORANGE,WHITE);
+            graph.draw(&listNode.begin()->getNext(i)->data,CIRCLE,WHITE,BLACK,BLACK);
+            graph.drawFadeIn(&listNode.begin()->getNext(i)->data,CIRCLE,ORANGE,ORANGE,WHITE);
         }
         else
-            graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-        graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
-        graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+            graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
         graph.draw(&listArrowNext,0,i-1,ORANGE);
         graph.draw(&listArrowNext,i,pos-2,BLACK);
         graph.draw(&tmpArrowNext,BLACK);
@@ -289,11 +289,11 @@ void DLL::insertMiddle(int pos, int value)
         // step 2: pre=pre->next
         graph.addStep(0.5*FPS);
 
-        graph.draw(&listNode,0,i-1,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode.begin()->getNext(i)->data,ORANGE,ORANGE,WHITE);
-        graph.drawFadeIn(&listNode.begin()->getNext(i)->data,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
-        graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode.begin()->getNext(i)->data,CIRCLE,ORANGE,ORANGE,WHITE);
+        graph.drawFadeIn(&listNode.begin()->getNext(i)->data,CIRCLE,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
         graph.draw(&listArrowNext,0,i-1,ORANGE);
         graph.draw(&listArrowNext,i,pos-2,BLACK);
         graph.drawGrow(&listArrowNext,i,ORANGE);
@@ -317,10 +317,10 @@ void DLL::insertMiddle(int pos, int value)
     // step 3: aft=pre->next
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode,pos+1,pos+1,BLUE,BLUE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode,CIRCLE,pos+1,pos+1,BLUE,BLUE,WHITE);
     graph.draw(&listArrowNext,0,pos-2,ORANGE);
     graph.draw(&tmpArrowNext,BLACK);
     graph.drawGrow(&tmpArrowNext,ORANGE);
@@ -342,11 +342,11 @@ void DLL::insertMiddle(int pos, int value)
     // step 4: create new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
-    graph.drawGrow(&listNode,pos,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,pos+1,BLUE,BLUE,WHITE);
-    graph.draw(&listNode,pos+2,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.drawGrow(&listNode,CIRCLE,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,BLUE,BLUE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+2,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listArrowNext,0,pos-2,ORANGE);
     graph.draw(&tmpArrowNext,ORANGE);
     graph.draw(&listArrowNext,pos+1,mNext-1,BLACK);
@@ -368,11 +368,11 @@ void DLL::insertMiddle(int pos, int value)
     // step 5: vtx.next = aft, aft.prev = vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,pos,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,pos+1,BLUE,BLUE,WHITE);
-    graph.draw(&listNode,pos+2,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,BLUE,BLUE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+2,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listArrowNext,0,pos-2,ORANGE);
     graph.draw(&tmpArrowNext,ORANGE);
     graph.drawGrow(&listArrowNext,pos,GREEN);
@@ -396,12 +396,12 @@ void DLL::insertMiddle(int pos, int value)
     // step 6: pre.next = vtx, vtx.prev = pre
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
-    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,pos,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,pos+1,BLUE,BLUE,WHITE);
-    graph.draw(&listNode,pos+2,n-1,WHITE,BLACK,BLACK);
-    graph.drawMove(&tmpNode,sf::Vector2f(0,DISTANCE),BLANK,BLANK,BLANK);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,BLUE,BLUE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+2,n-1,WHITE,BLACK,BLACK);
+    graph.drawMove(&tmpNode,CIRCLE,sf::Vector2f(0,DISTANCE),BLANK,BLANK,BLANK);
     graph.draw(&listArrowNext,0,pos-2,ORANGE);
     graph.draw(&tmpArrowNext,ORANGE);
     graph.draw(&listArrowNext,pos,GREEN);
@@ -425,14 +425,14 @@ void DLL::insertMiddle(int pos, int value)
     // step 7: move the new node to correct position
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-2,WHITE,ORANGE,ORANGE);
-    graph.drawFadeIn(&listNode,0,pos-2,WHITE,BLACK,BLACK);
-    graph.draw(&listNode,pos-1,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode,pos-1,pos-1,WHITE,BLACK,BLACK);
-    graph.drawMove(&listNode,pos,sf::Vector2f(0,-DISTANCE),GREEN,GREEN,WHITE);
-    graph.drawMove(&listNode,pos+1,sf::Vector2f(DISTANCE,0),BLUE,BLUE,WHITE);
-    graph.drawFadeIn(&listNode,pos+1,pos+1,WHITE,BLACK,BLACK);
-    graph.drawMove(&listNode,pos+2,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.drawFadeIn(&listNode,CIRCLE,0,pos-2,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode,CIRCLE,pos-1,pos-1,WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode,CIRCLE,pos,sf::Vector2f(0,-DISTANCE),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode,CIRCLE,pos+1,sf::Vector2f(DISTANCE,0),BLUE,BLUE,WHITE);
+    graph.drawFadeIn(&listNode,CIRCLE,pos+1,pos+1,WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode,CIRCLE,pos+2,n-1,sf::Vector2f(DISTANCE,0),WHITE,BLACK,BLACK);
     graph.draw(&listArrowNext,0,pos-1,ORANGE);
     graph.drawFadeIn(&listArrowNext,0,pos-1,BLACK);
     graph.draw(&listArrowNext,pos,GREEN);

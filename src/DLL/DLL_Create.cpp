@@ -55,7 +55,7 @@ void DLL::makeList()
     graph.addStep(0.5*FPS);
 
     // draw nodes to graph
-    graph.drawGrow(&listNode,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     if(listNode.size()>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
         graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
