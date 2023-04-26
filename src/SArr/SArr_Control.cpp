@@ -41,7 +41,7 @@ void SArr_Control::genOptions(sf::Vector2f windowSize)
 {
     options.push_back(Button(mFont, &btnTexture, "Create", sf::Vector2f(0, windowSize.y-5*btnTexture.getSize().y)));
     options.push_back(Button(mFont, &btnTexture, "Insert", sf::Vector2f(0, windowSize.y-4*btnTexture.getSize().y)));
-    options.push_back(Button(mFont, &btnTexture, "Search", sf::Vector2f(0, windowSize.y-3*btnTexture.getSize().y)));
+    options.push_back(Button(mFont, &btnTexture, "Search/Access", sf::Vector2f(0, windowSize.y-3*btnTexture.getSize().y)));
     options.push_back(Button(mFont, &btnTexture, "Update", sf::Vector2f(0, windowSize.y-2*btnTexture.getSize().y)));
     options.push_back(Button(mFont, &btnTexture, "Delete", sf::Vector2f(0, windowSize.y-1*btnTexture.getSize().y)));
 }
@@ -66,7 +66,8 @@ void SArr_Control::genSuboptions(sf::Vector2f windowSize)
 
     //search
     suboptions.push_back(std::vector<std::vector<std::string>>{
-        {"Specify v = ","v =",""}
+        {"Search","v =",""},
+        {"Access i in [0,N-1]","i =",""}
     });
 
     //update
