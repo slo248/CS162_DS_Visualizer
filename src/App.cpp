@@ -619,9 +619,9 @@ void App::SArr_Update()
             case 2: // Search or Accses
                 switch (cmd.suboption)
                 {
-                    // case 0: // Search
-                    //     sarr->search(cmd.input1);
-                    //     break;
+                    case 0: // Search
+                        sarr->search(cmd.input1);
+                        break;
                     case 1: // Accses
                         sarr->access(cmd.input1);
                         break;
