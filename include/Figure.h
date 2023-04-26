@@ -7,10 +7,12 @@
 struct Figure
 {
     sf::CircleShape* circle;
+    sf::RectangleShape* square;
     ArrowFigure* arrow; // arrow
     Figure();
     ~Figure();
     void genCircle();
+    void genSquare();
     void genArrow();
 };
 

@@ -5,6 +5,7 @@ using namespace Config;
 Figure::Figure()
 {
     genCircle();
+    genSquare();
     genArrow();
 }
 
@@ -23,6 +24,20 @@ void Figure::genCircle()
     {
         sf::FloatRect bounds = circle->getLocalBounds();
         circle->setOrigin(
+            bounds.left + bounds.width / 2.f,
+            bounds.top + bounds.height / 2.f
+        );
+    }
+}
+
+void Figure::genSquare()
+{
+    square = new sf::RectangleShape;
+    square->setSize(sf::Vector2f(Square::WIDTH, Square::HEIGHT));
+    square->setOutlineThickness(Square::THICKNESS);
+    {
+        sf::FloatRect bounds = square->getLocalBounds();
+        square->setOrigin(
             bounds.left + bounds.width / 2.f,
             bounds.top + bounds.height / 2.f
         );
