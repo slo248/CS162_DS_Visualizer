@@ -63,7 +63,7 @@ void SArr::makeList()
         node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
 
     // draw nodes to graph
-    graph.drawGrow(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
+    graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
 
     // draw num node
