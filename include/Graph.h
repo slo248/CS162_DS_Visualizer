@@ -27,28 +27,28 @@ public:
     void setVisualType(VisualType t);
 
     // Node
-    void draw(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawShrink(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawFadeIn(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawFadeOut(Node* node, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawMove(Node* node, sf::Vector2f src, sf::Vector2f dest,sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawMove(Node* node, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(Node* node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(Node* node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawShrink(Node* node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawFadeIn(Node* node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawFadeOut(Node* node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(Node* node, NodeType type, sf::Vector2f src, sf::Vector2f dest,sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(Node* node, NodeType type, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawSubscript(Node* node, std::string str, sf::Color textColor);
     //
 
     // List of nodes
-    void draw(List<Node>* list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void draw(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void draw(List<Node>* list, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(List<Node>* list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawGrow(List<Node>* list, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawMove(List<Node>* list, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawMove(List<Node>* list, int from, int to, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawMove(List<Node>* list, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawFadeIn(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
-    void drawFadeOut(List<Node>* list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void draw(List<Node>* list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(List<Node>* list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(List<Node>* list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawGrow(List<Node>* list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(List<Node>* list, NodeType type, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(List<Node>* list, NodeType type, int from, int to, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(List<Node>* list, NodeType type, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawFadeIn(List<Node>* list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawFadeOut(List<Node>* list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
 
     // Arrow
     void draw(Arrow* arrow, sf::Color color);

@@ -120,39 +120,60 @@ void Graph::setVisualType(VisualType t)
     type=t;
 }
 
-void Graph::draw(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(Node *node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::draw, node, window, figure.circle, inColor, outColor, text, numColor));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircle, node, window, figure.circle, inColor, outColor, text, numColor));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquare, node, window, figure.square, inColor, outColor, text, numColor));
 }
 
-void Graph::drawGrow(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(Node *node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawGrow, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircleGrow, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquareGrow, node, window, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawShrink(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawShrink(Node *node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircleShrink, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquareShrink, node, window, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawFadeIn(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawFadeIn(Node *node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawFadeIn, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircleFadeIn, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquareFadeIn, node, window, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawFadeOut(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawFadeOut(Node *node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawFadeOut, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircleFadeOut, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquareFadeOut, node, window, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawMove(Node *node, NodeType type, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircleMove, node, window, src, dest, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquareMove, node, window, src, dest, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawMove(Node *node, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawMove(Node *node, NodeType type, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, node->position, node->position + delta, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    if(type==NodeType::CIRCLE)
+        drawFunc.back().push_back(std::bind(&Node::drawCircleMove, node, window, node->position, delta, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    else
+        drawFunc.back().push_back(std::bind(&Node::drawSquareMove, node, window, node->position, delta, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
@@ -160,64 +181,64 @@ void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
     drawFunc.back().push_back(std::bind(&Node::drawSubscript, node, window, text, str, textColor));
 }
 
-void Graph::draw(List<Node> *list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(List<Node> *list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    draw(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
+    draw(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
 }
 
-void Graph::draw(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(List<Node> *list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     for(int i=from; i<=to; i++)
-        draw(list, i, inColor, outColor, numColor);
+        draw(list, type, i, inColor, outColor, numColor);
 }
 
-void Graph::draw(List<Node> *list, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::draw(List<Node> *list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    draw(list, 0, list->size()-1, inColor, outColor, numColor);
+    draw(list, type, 0, list->size()-1, inColor, outColor, numColor);
 }
 
-void Graph::drawGrow(List<Node> *list, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(List<Node> *list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawGrow(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
+    drawGrow(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
 }
 
-void Graph::drawGrow(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    for(int i=from; i<=to; i++)
-        drawGrow(list, i, inColor, outColor, numColor);
-}
-
-void Graph::drawGrow(List<Node> *list, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawGrow(list, 0, list->size()-1, inColor, outColor, numColor);
-}
-
-void Graph::drawMove(List<Node> *list, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
-{
-    drawMove(&list->begin()->getNext(i)->data, delta, inColor, outColor, numColor);
-}
-
-void Graph::drawMove(List<Node> *list, int from, int to, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(List<Node> *list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     for(int i=from; i<=to; i++)
-        drawMove(list, i, delta, inColor, outColor, numColor);
+        drawGrow(list, type, i, inColor, outColor, numColor);
 }
 
-void Graph::drawMove(List<Node> *list, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawGrow(List<Node> *list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawMove(list, 0, list->size()-1, delta, inColor, outColor, numColor);
+    drawGrow(list, type, 0, list->size()-1, inColor, outColor, numColor);
 }
 
-void Graph::drawFadeIn(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawMove(List<Node> *list, NodeType type, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawMove(&list->begin()->getNext(i)->data, type, delta, inColor, outColor, numColor);
+}
+
+void Graph::drawMove(List<Node> *list, NodeType type, int from, int to, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     for(int i=from; i<=to; i++)
-        drawFadeIn(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
+        drawMove(list, type, i, delta, inColor, outColor, numColor);
 }
 
-void Graph::drawFadeOut(List<Node> *list, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+void Graph::drawMove(List<Node> *list, NodeType type, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawMove(list, type, 0, list->size()-1, delta, inColor, outColor, numColor);
+}
+
+void Graph::drawFadeIn(List<Node> *list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     for(int i=from; i<=to; i++)
-        drawFadeOut(&list->begin()->getNext(i)->data, inColor, outColor, numColor);
+        drawFadeIn(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
+}
+
+void Graph::drawFadeOut(List<Node> *list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    for(int i=from; i<=to; i++)
+        drawFadeOut(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
 }
 
 void Graph::draw(Arrow *arrow, sf::Color color)
