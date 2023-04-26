@@ -3,7 +3,7 @@
 #include "Config.h"
 #include "Button.h"
 
-DLL::DLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
+DLL::DLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     FPS(FPS),
     window(window),
     codeBox(cons),

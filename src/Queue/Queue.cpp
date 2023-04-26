@@ -3,7 +3,7 @@
 #include "Config.h"
 #include "Button.h"
 
-Queue::Queue(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure *arrowFig):
+Queue::Queue(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     FPS(FPS),
     window(window),
     codeBox(cons),

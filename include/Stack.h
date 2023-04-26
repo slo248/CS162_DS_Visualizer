@@ -12,7 +12,7 @@ public:
     const int             MAX_NODE        = 7;
 
 public:
-    Stack(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
+    Stack(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~Stack();
 
     // create

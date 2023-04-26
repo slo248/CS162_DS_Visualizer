@@ -11,7 +11,7 @@ public:
     const float           DISTANCE        = 100.f;
 
 public:
-    Queue(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
+    Queue(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~Queue();
 
     // create

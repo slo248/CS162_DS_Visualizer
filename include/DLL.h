@@ -11,7 +11,7 @@ public:
     float           DISTANCE        = 120.f;
 
 public:
-    DLL(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS, sf::CircleShape* circle, ArrowFigure* arrowFigure);
+    DLL(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~DLL();
 
     // create
