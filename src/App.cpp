@@ -12,6 +12,8 @@ App::App():
         SETTINGS
     ),
     state(State::MENU),
+    sarr(nullptr),
+    sarrControl(nullptr),
     sll(nullptr),
     sllControl(nullptr),
     stack(nullptr),
@@ -46,6 +48,11 @@ App::App():
 
 App::~App()
 {
+    if(sarr){
+        delete sarr;
+        delete sarrControl;
+    }
+
     if(sll){ 
         delete sll;
         delete sllControl;
@@ -71,6 +78,7 @@ App::~App()
 
 void App::processInput()
 {
+    if(sarrControl) sarrControl->handleRealTimeInput(&window);
     if(sllControl) sllControl->handleRealTimeInput(&window);
     if(stackControl) stackControl->handleRealTimeInput(&window);
     if(queueControl) queueControl->handleRealTimeInput(&window);
@@ -79,6 +87,7 @@ void App::processInput()
     sf::Event event;
     while (window.pollEvent(event)){
         menu->handleEvent(event,&window);
+        if(sarrControl) sarrControl->handleEvent(event,&window);
         if(sllControl) sllControl->handleEvent(event,&window);
         if(stackControl) stackControl->handleEvent(event,&window);
         if(queueControl) queueControl->handleEvent(event,&window);
@@ -147,6 +156,13 @@ void App::update()
                 queue=new Queue(&window,&sanf,&cons,FPS);
                 queueControl=new Queue_Control(&sanf,window.getView().getSize());
                 break;
+            case DS::SARR:
+                state=State::DS;
+                sarr=new SArr(&window,&sanf,&cons,FPS);
+                sarrControl=new SArr_Control(&sanf,window.getView().getSize());
+                break;
+            case DS::DARR:
+                break;
         }
         return;
     }
@@ -155,6 +171,7 @@ void App::update()
     if(dll) DLL_Update();
     if(stack) Stack_Update();
     if(queue) Queue_Update();
+    if(sarr) SArr_Update();
 }
 
 void App::draw()
@@ -182,6 +199,10 @@ void App::draw()
             if(queue){
                 queue->draw();
                 window.draw(*queueControl);
+            }
+            if(sarr){
+                sarr->draw();
+                window.draw(*sarrControl);
             }
             break;
     }
@@ -516,6 +537,99 @@ void App::Queue_Update()
                 queue->dequeue();
                 break;
         }
+}
+
+void App::SArr_Update()
+{
+    sarrControl->update(1.0f/FPS);
+
+    Command cmd;
+    bool flag=sarrControl->getCommand(cmd);
+
+    switch (cmd.option)
+    {
+        case -2: // pause
+            sarr->pause();
+            break;
+        case -3: // play
+            sarr->play();
+            break;
+        case -4: // prev
+            sarr->prevStep();
+            break;
+        case -5: // next
+            sarr->nextStep();
+            break;
+        case -6: // go to begin
+            sarr->goToBegin();
+            break;
+        case -7: // go to end
+            sarr->goToEnd();
+            break;
+    }
+
+    // if(sarr->isDoneAllSteps() && flag)
+    //     switch (cmd.option)
+    //     {                  
+    //         case 0: // Create
+    //             switch (cmd.suboption)
+    //             {
+    //                 case 0: // Empty
+    //                     sarr->empty();
+    //                     break;
+    //                 case 1: // Manual
+    //                     sarr->manual(cmd.list);
+    //                     sarr->makeList();
+    //                     break;
+    //                 case 2: // Random
+    //                     sarr->randomList(getRand(1,10));
+    //                     sarr->makeList();
+    //                     break;
+    //                 case 3: // Random fixed size
+    //                     sarr->randomList(cmd.input1);
+    //                     sarr->makeList();
+    //                     break;
+    //                 case 4: // Load from file
+    //                     sarr->loadFromFile();
+    //                     sarr->makeList();
+    //                     break;
+    //             }
+    //             break;
+    //         case 1: // Insert
+    //             switch (cmd.suboption)
+    //             {
+    //                 case 0: // Front
+    //                     sarr->insertFront(cmd.input1);
+    //                     break;
+    //                 case 1: // Back
+    //                     sarr->insertBack(cmd.input1);
+    //                     break;
+    //                 case 2: // Middle
+    //                     sarr->insertMiddle(cmd.input1,cmd.input2);
+    //                     break;
+    //             }
+    //             break;
+    //         case 2: // Search
+    //             sarr->search(cmd.input1);
+    //             break;
+    //         case 3: // Update
+    //             sarr->update(cmd.input1,cmd.input2);
+    //             break;
+    //         case 4: // Delete
+    //             switch (cmd.suboption)
+    //             {
+    //                 case 0: // First
+    //                     sarr->deleteFirst();
+    //                     break;
+    //                 case 1: // Last
+    //                     sarr->deleteLast();
+    //                     break;
+    //                 case 2: // Middle
+    //                     sarr->deleteMiddle(cmd.input1);
+    //                     break;
+    //             }
+    //             break;
+    //    }
 }
 
 void App::run()

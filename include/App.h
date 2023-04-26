@@ -16,6 +16,9 @@
 #include "Queue.h"
 #include "Queue_Control.h"
 
+#include "SArr.h"
+#include "SArr_Control.h"
+
 namespace State
 {
     enum Type
@@ -42,6 +45,7 @@ public:
     void DLL_Update();
     void Stack_Update();
     void Queue_Update();
+    void SArr_Update();
 
     void run();
 
@@ -54,6 +58,9 @@ private:
     State::Type         state;
 
     Menu*               menu;
+
+    SArr*               sarr;
+    SArr_Control*       sarrControl;
 
     SLL*                sll;
     SLL_Control*        sllControl;
