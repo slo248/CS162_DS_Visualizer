@@ -129,22 +129,22 @@ void App::update()
         {
             case DS::SLL:
                 state=State::DS;
-                sll=new SLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                sll=new SLL(&window,&sanf,&cons,FPS);
                 sllControl=new SLL_Control(&sanf,window.getView().getSize());
                 break;
             case DS::DLL:
                 state=State::DS;
-                dll=new DLL(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                dll=new DLL(&window,&sanf,&cons,FPS);
                 dllControl=new DLL_Control(&sanf,window.getView().getSize());
                 break;
             case DS::STACK:
                 state=State::DS;
-                stack=new Stack(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                stack=new Stack(&window,&sanf,&cons,FPS);
                 stackControl=new Stack_Control(&sanf,window.getView().getSize());
                 break;
             case DS::QUEUE:
                 state=State::DS;
-                queue=new Queue(&window,&sanf,&cons,FPS,figure.circle,figure.arrow);
+                queue=new Queue(&window,&sanf,&cons,FPS);
                 queueControl=new Queue_Control(&sanf,window.getView().getSize());
                 break;
         }

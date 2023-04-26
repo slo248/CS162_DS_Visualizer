@@ -2,7 +2,6 @@
 #define APP_H
 
 #include "Global.h"
-#include "Figure.h"
 #include "Menu.h"
 
 #include "SLL.h"
@@ -51,7 +50,6 @@ private:
     sf::Font            cons, sanf;
     sf::Texture         bgImage;
     sf::Sprite          bgSprite;
-    Figure              figure;
 
     State::Type         state;
 
