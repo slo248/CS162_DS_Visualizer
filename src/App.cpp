@@ -602,20 +602,20 @@ void App::SArr_Update()
                         break;
                 }
                 break;
-            // case 1: // Insert
-            //     switch (cmd.suboption)
-            //     {
-            //         case 0: // Front
-            //             sarr->insertFront(cmd.input1);
-            //             break;
-            //         case 1: // Back
-            //             sarr->insertBack(cmd.input1);
-            //             break;
-            //         case 2: // Middle
-            //             sarr->insertMiddle(cmd.input1,cmd.input2);
-            //             break;
-            //     }
-            //     break;
+            case 1: // Insert
+                switch (cmd.suboption)
+                {
+                    case 0: // Front
+                        sarr->insertFront(cmd.input1);
+                        break;
+                    // case 1: // Back
+                    //     sarr->insertBack(cmd.input1);
+                    //     break;
+                    // case 2: // Middle
+                    //     sarr->insertMiddle(cmd.input1,cmd.input2);
+                    //     break;
+                }
+                break;
             case 2: // Search or Accses
                 switch (cmd.suboption)
                 {

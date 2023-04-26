@@ -24,6 +24,9 @@ public:
     void randomList(int n);
     void makeList();
 
+    // insert
+    void insertFront(int value);
+
     // search
     int search(int value);
 
