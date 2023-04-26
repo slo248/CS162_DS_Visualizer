@@ -29,7 +29,7 @@ App::App():
     {
         std::cout << "Error loading consola.ttf" << std::endl;
     }
-    if (!sanf.loadFromFile("media/font/SFProDisplay.ttf"))
+    if (!sanf.loadFromFile("media/font/SFProDisplay-Bold.ttf"))
     {
         std::cout << "Error loading SFProDisplay.ttf" << std::endl;
     }
