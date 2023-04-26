@@ -176,9 +176,9 @@ void Graph::drawMove(Node *node, NodeType type, sf::Vector2f delta, sf::Color in
         drawFunc.back().push_back(std::bind(&Node::drawSquareMove, node, window, node->position, node->position+delta, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
-void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
+void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor, SubscriptDir dir)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawSubscript, node, window, text, str, textColor));
+    drawFunc.back().push_back(std::bind(&Node::drawSubscript, node, window, text, str, textColor, dir));
 }
 
 void Graph::draw(List<Node> *list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
