@@ -7,7 +7,8 @@ using namespace Config::SArr;
 
 void SArr::empty()
 {
-    listNode.clear();
+    listNodeIndex.clear();
+    listNodeA.clear();
     graph.clear();
 }
 
@@ -18,7 +19,7 @@ void SArr::manual(const std::vector<int> &list)
 
     for(int x: list){
         assert(Config::MIN_VALUE<=x && x<=Config::MAX_VALUE);
-        listNode.pushBack(Node(x));
+        listNodeA.pushBack(x);
     }
 }
 
@@ -32,23 +33,33 @@ void SArr::randomList(int n)
     assert(MIN_NODE<=n && n<=MAX_NODE);
     empty();
     while(n--)
-        listNode.pushBack(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
+        listNodeA.pushBack(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
 }
 
 void SArr::makeList()
 {
-    if(listNode.empty()) return;
-
     graph.finishAllSteps();
 
-    ListElement<Node>* node=listNode.begin();
-    node->data.position=START_POSITION;
-    for(node=node->next; node!=listNode.end(); node=node->next)
-        node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
-
-    // add new steps
     graph.addStep(0.5*FPS);
 
+    for(int i=0; i<MAX_NODE; i++)
+        listNodeIndex.pushBack(i);
+    
+    listNodeIndex.begin()->data.position=START_POSITION_INDEX;
+    for(int i=1; i<MAX_NODE; i++)
+        listNodeIndex.begin()->getNext(i)->data.position=listNodeIndex.begin()->data.position+sf::Vector2f(i*DISTANCE, 0);
+
+    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
+    graph.drawSubscript(&listNodeIndex.begin()->data, "index", RED, LEFT);
+
+    if(listNodeA.empty()) return;
+
+    ListElement<Node>* node=listNodeA.begin();
+    node->data.position=START_POSITION_A;
+    for(node=node->next; node!=listNodeA.end(); node=node->next)
+        node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
+
     // draw nodes to graph
-    graph.drawGrow(&listNode,SQUARE,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
+    graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
 }
