@@ -24,6 +24,9 @@ public:
     void randomList(int n);
     void makeList();
 
+    // access
+    int access(int pos);
+
     void draw();
     bool isDoneAllSteps();
     void pause();
