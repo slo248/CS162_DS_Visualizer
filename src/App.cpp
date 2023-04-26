@@ -574,68 +574,68 @@ void App::SArr_Update()
             break;
     }
 
-    // if(sarr->isDoneAllSteps() && flag)
-    //     switch (cmd.option)
-    //     {                  
-    //         case 0: // Create
-    //             switch (cmd.suboption)
-    //             {
-    //                 case 0: // Empty
-    //                     sarr->empty();
-    //                     break;
-    //                 case 1: // Manual
-    //                     sarr->manual(cmd.list);
-    //                     sarr->makeList();
-    //                     break;
-    //                 case 2: // Random
-    //                     sarr->randomList(getRand(1,10));
-    //                     sarr->makeList();
-    //                     break;
-    //                 case 3: // Random fixed size
-    //                     sarr->randomList(cmd.input1);
-    //                     sarr->makeList();
-    //                     break;
-    //                 case 4: // Load from file
-    //                     sarr->loadFromFile();
-    //                     sarr->makeList();
-    //                     break;
-    //             }
-    //             break;
-    //         case 1: // Insert
-    //             switch (cmd.suboption)
-    //             {
-    //                 case 0: // Front
-    //                     sarr->insertFront(cmd.input1);
-    //                     break;
-    //                 case 1: // Back
-    //                     sarr->insertBack(cmd.input1);
-    //                     break;
-    //                 case 2: // Middle
-    //                     sarr->insertMiddle(cmd.input1,cmd.input2);
-    //                     break;
-    //             }
-    //             break;
-    //         case 2: // Search
-    //             sarr->search(cmd.input1);
-    //             break;
-    //         case 3: // Update
-    //             sarr->update(cmd.input1,cmd.input2);
-    //             break;
-    //         case 4: // Delete
-    //             switch (cmd.suboption)
-    //             {
-    //                 case 0: // First
-    //                     sarr->deleteFirst();
-    //                     break;
-    //                 case 1: // Last
-    //                     sarr->deleteLast();
-    //                     break;
-    //                 case 2: // Middle
-    //                     sarr->deleteMiddle(cmd.input1);
-    //                     break;
-    //             }
-    //             break;
-    //    }
+    if(sarr->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {                  
+            case 0: // Create
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        sarr->empty();
+                        break;
+                    case 1: // Manual
+                        sarr->manual(cmd.list);
+                        sarr->makeList();
+                        break;
+                    case 2: // Random
+                        sarr->randomList(getRand(1,10));
+                        sarr->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        sarr->randomList(cmd.input1);
+                        sarr->makeList();
+                        break;
+                    case 4: // Load from file
+                        sarr->loadFromFile();
+                        sarr->makeList();
+                        break;
+                }
+                break;
+            // case 1: // Insert
+            //     switch (cmd.suboption)
+            //     {
+            //         case 0: // Front
+            //             sarr->insertFront(cmd.input1);
+            //             break;
+            //         case 1: // Back
+            //             sarr->insertBack(cmd.input1);
+            //             break;
+            //         case 2: // Middle
+            //             sarr->insertMiddle(cmd.input1,cmd.input2);
+            //             break;
+            //     }
+            //     break;
+            // case 2: // Search
+            //     sarr->search(cmd.input1);
+            //     break;
+            // case 3: // Update
+            //     sarr->update(cmd.input1,cmd.input2);
+            //     break;
+            // case 4: // Delete
+            //     switch (cmd.suboption)
+            //     {
+            //         case 0: // First
+            //             sarr->deleteFirst();
+            //             break;
+            //         case 1: // Last
+            //             sarr->deleteLast();
+            //             break;
+            //         case 2: // Middle
+            //             sarr->deleteMiddle(cmd.input1);
+            //             break;
+            //     }
+            //     break;
+       }
 }
 
 void App::run()
