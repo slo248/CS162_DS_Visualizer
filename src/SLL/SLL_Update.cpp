@@ -26,13 +26,13 @@ void SLL::update(int pos, int newValue)
     // step 1: assign cur=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-1,WHITE,BLACK,BLACK);
-    graph.draw(&tmpNode,WHITE,BLACK,BLACK);
-    graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,0,pos-1,WHITE,BLACK,BLACK);
+    graph.draw(&tmpNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
     if(pos)
-        graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+        graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     else
-        graph.drawFadeIn(&tmpNode,ORANGE,ORANGE,WHITE);
+        graph.drawFadeIn(&tmpNode,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"0/head/cur",RED);
     graph.draw(&codeBox,1);
@@ -43,11 +43,11 @@ void SLL::update(int pos, int newValue)
         // substep 1: change color of cur
         graph.addStep(0.5*FPS);
 
-        graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
-        graph.draw(&tmpNode,WHITE,BLACK,BLACK);
-        graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
-        graph.drawFadeOut(&listNode.begin()->getNext(i)->data,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&tmpNode,CIRCLE,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeOut(&listNode.begin()->getNext(i)->data,CIRCLE,ORANGE,ORANGE,WHITE);
         graph.draw(&listArrow,0,i-1,ORANGE);
         graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
         if(i){
@@ -62,14 +62,14 @@ void SLL::update(int pos, int newValue)
         // substep 2: cur=cur->next, index++
         graph.addStep(0.5*FPS);
 
-        graph.draw(&listNode,0,i,WHITE,ORANGE,ORANGE);
-        graph.draw(&listNode,i+1,pos-1,WHITE,BLACK,BLACK);
-        graph.draw(&tmpNode,WHITE,BLACK,BLACK);
-        graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&tmpNode,CIRCLE,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
         if(i<pos-1)
-            graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,ORANGE,ORANGE,WHITE);
+            graph.drawFadeIn(&listNode.begin()->getNext(i+1)->data,CIRCLE,ORANGE,ORANGE,WHITE);
         else
-            graph.drawFadeIn(&tmpNode,ORANGE,ORANGE,WHITE);
+            graph.drawFadeIn(&tmpNode,CIRCLE,ORANGE,ORANGE,WHITE);
         graph.draw(&listArrow,0,i-1,ORANGE);
         graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
         graph.drawGrow(&listArrow.begin()->getNext(i)->data,ORANGE);
@@ -83,11 +83,11 @@ void SLL::update(int pos, int newValue)
     // step 3: cur->value=newValue
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,pos-1,WHITE,ORANGE,ORANGE);
-    graph.draw(&tmpNode,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,pos+1,n-1,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->getNext(pos)->data,GREEN,GREEN,WHITE);
-    graph.drawFadeIn(&listNode,0,pos-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode,CIRCLE,0,pos-1,WHITE,ORANGE,ORANGE);
+    graph.draw(&tmpNode,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->getNext(pos)->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.drawFadeIn(&listNode,CIRCLE,0,pos-1,WHITE,BLACK,BLACK);
     graph.draw(&listArrow,0,pos-1,ORANGE);
     graph.drawFadeIn(&listArrow,0,pos-1,BLACK);
     graph.draw(&listArrow,pos,listArrow.size()-1,BLACK);
