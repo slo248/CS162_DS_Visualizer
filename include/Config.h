@@ -25,6 +25,14 @@ namespace Config
         const float HALF_WIDTH          = RADIUS+THICKNESS;
     }
 
+    namespace Square
+    {
+        const float WIDTH               = 40.f;
+        const float HEIGHT              = WIDTH;
+        const float THICKNESS           = 3.f;
+        const float HALF_WIDTH          = WIDTH/2.f+THICKNESS;
+    }
+
     namespace Arrow
     {
         const float BAR_WIDTH           = 50.f;
