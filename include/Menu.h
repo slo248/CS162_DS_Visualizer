@@ -11,7 +11,8 @@ namespace DS
         CLL,
         STACK,
         QUEUE,
-        ARRAY,
+        SARR,
+        DARR,
         NUM_DS
     };
 }

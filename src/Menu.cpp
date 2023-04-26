@@ -22,7 +22,8 @@ Menu::Menu(sf::Font *sanf, sf::Vector2f windowSize)
     DS.push_back(Button(sanf, &btnTexture, "Circular Linked List", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2 + 300, 250)));
     DS.push_back(Button(sanf, &btnTexture, "Stack", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2 - 300, 450)));
     DS.push_back(Button(sanf, &btnTexture, "Queue", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2, 450)));
-    DS.push_back(Button(sanf, &btnTexture, "Array", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2 + 300, 450)));
+    DS.push_back(Button(sanf, &btnTexture, "Static Array", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2 + 300, 450)));
+    DS.push_back(Button(sanf, &btnTexture, "Dynamic Array", sf::Vector2f(windowSize.x/2 - btnTexture.getSize().x/2, 650)));
 }
 
 int Menu::getCommand()
