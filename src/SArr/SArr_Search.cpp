@@ -47,5 +47,31 @@ int SArr::search(int value)
 
         graph.draw(&codeBox,12);
         //
+
+        // step 2: found
+        if(listNodeA.begin()->getNext(i)->data.value==value)
+        {
+            graph.addStep(0.5*FPS);
+
+            graph.draw(&listNodeIndex, SQUARE, 0, i-1, WHITE, BLUE, BLUE);
+            graph.draw(&listNodeIndex, SQUARE, i+1, MAX_NODE-1, WHITE, BLACK, BLACK);
+            graph.draw(&listNodeIndex, SQUARE, i, i, BLUE, BLUE, WHITE);
+
+            graph.draw(&listNodeA, SQUARE, 0, i-1, WHITE, ORANGE, ORANGE);
+            graph.draw(&listNodeA, SQUARE, i+1, MAX_NODE-1, WHITE, BLACK, BLACK);
+            graph.draw(&listNodeA, SQUARE, i, i, ORANGE, ORANGE, WHITE);
+            graph.drawFadeIn(&listNodeA, SQUARE, i, i, GREEN, GREEN, WHITE);
+
+            graph.draw(&num, SQUARE, WHITE, BLACK, BLACK);
+
+            graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
+            graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
+            graph.drawSubscript(&num,"n", RED, LEFT);
+
+            graph.draw(&codeBox,3);
+            return i;
+        }
     }
+
+    return -1;
 }
