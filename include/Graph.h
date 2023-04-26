@@ -6,11 +6,12 @@
 #include "List.h"
 #include "Arrow.h"
 #include "CodeBox.h"
+#include "Figure.h"
 
 class Graph
 {
 public:
-    Graph(sf::RenderWindow* window, sf::Font* sanf, sf::CircleShape* circle, ArrowFigure* arrowFig);
+    Graph(sf::RenderWindow* window, sf::Font* sanf);
 
     void clear();
     void finishAllSteps();
@@ -74,8 +75,8 @@ public:
 private:
     sf::RenderWindow* window;
     sf::Text* text;
-    sf::CircleShape* circle;
-    ArrowFigure* arrowFig;
+    
+    Figure figure;
 
     VisualDir dir;
     VisualType type;

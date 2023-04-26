@@ -9,7 +9,7 @@ SLL::SLL(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS, sf::
     codeBox(cons),
     sanf(sanf),
     cons(cons),
-    graph(window, sanf, circle, arrowFig)
+    graph(window, sanf)
 {
     graph.clear();
     graph.setVisualType(AUTO);

@@ -1,7 +1,7 @@
 #include "Graph.h"
 
-Graph::Graph(sf::RenderWindow *window, sf::Font *sanf, sf::CircleShape *circle, ArrowFigure* arrowFig):
-    window(window), circle(circle), arrowFig(arrowFig)
+Graph::Graph(sf::RenderWindow *window, sf::Font *sanf):
+    window(window)
 {
     text=new sf::Text("", *sanf, 23);
     clear();
@@ -122,37 +122,37 @@ void Graph::setVisualType(VisualType t)
 
 void Graph::draw(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::draw, node, window, circle, inColor, outColor, text, numColor));
+    drawFunc.back().push_back(std::bind(&Node::draw, node, window, figure.circle, inColor, outColor, text, numColor));
 }
 
 void Graph::drawGrow(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawGrow, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawGrow, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawShrink(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawShrink, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawFadeIn(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawFadeIn, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawFadeIn, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawFadeOut(Node *node, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawFadeOut, node, window, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawFadeOut, node, window, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawMove(Node *node, sf::Vector2f src, sf::Vector2f dest, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, src, dest, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawMove(Node *node, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
-    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, node->position, node->position + delta, circle, inColor, outColor, text, numColor, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Node::drawMove, node, window, node->position, node->position + delta, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor)
@@ -222,27 +222,27 @@ void Graph::drawFadeOut(List<Node> *list, int from, int to, sf::Color inColor, s
 
 void Graph::draw(Arrow *arrow, sf::Color color)
 {
-    drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, arrowFig, color));
+    drawFunc.back().push_back(std::bind(&Arrow::draw, arrow, window, figure.arrow, color));
 }
 
 void Graph::drawGrow(Arrow *arrow, sf::Color color)
 {
-    drawFunc.back().push_back(std::bind(&Arrow::drawGrow, arrow, window, arrowFig, color, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Arrow::drawGrow, arrow, window, figure.arrow, color, std::placeholders::_1));
 }
 
 void Graph::drawShrink(Arrow *arrow, sf::Color color)
 {
-    drawFunc.back().push_back(std::bind(&Arrow::drawShrink, arrow, window, arrowFig, color, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Arrow::drawShrink, arrow, window, figure.arrow, color, std::placeholders::_1));
 }
 
 void Graph::drawFadeIn(Arrow *arrow, sf::Color color)
 {
-    drawFunc.back().push_back(std::bind(&Arrow::drawFadeIn, arrow, window, arrowFig, color, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Arrow::drawFadeIn, arrow, window, figure.arrow, color, std::placeholders::_1));
 }
 
 void Graph::drawFadeOut(Arrow *arrow, sf::Color color)
 {
-    drawFunc.back().push_back(std::bind(&Arrow::drawFadeOut, arrow, window, arrowFig, color, std::placeholders::_1));
+    drawFunc.back().push_back(std::bind(&Arrow::drawFadeOut, arrow, window, figure.arrow, color, std::placeholders::_1));
 }
 
 void Graph::draw(List<Arrow> *list, int i, sf::Color color)
@@ -300,8 +300,8 @@ void Graph::draw()
 
     for(functor f : drawFunc[curStep]){
         text->setScale(1,1);
-        circle->setScale(1,1);
-        arrowFig->setScale(1,1);
+        figure.circle->setScale(1,1);
+        figure.arrow->setScale(1,1);
         f(1.f*curFrame/nFrames[curStep]);
     }
 
