@@ -209,5 +209,21 @@ void SArr::insertBack(int value)
 
     graph.draw(&codeBox,1);
     //
+    // substep 2: n++
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
+
+    graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
+
+    graph.draw(&tmpNode, SQUARE, ORANGE, ORANGE, WHITE);
+    graph.drawFadeIn(&num, SQUARE, GREEN, GREEN, WHITE);
+
+    graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
+    graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
+    graph.drawSubscript(&num,"n", RED, LEFT);
+
+    graph.draw(&codeBox,1);
+    //
     //
 }
