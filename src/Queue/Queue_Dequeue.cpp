@@ -20,8 +20,8 @@ void Queue::dequeueWhenSingle()
     // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(deletedN,"head/tail/tmp",RED);
     graph.draw(&codeBox,1);
     //
@@ -29,7 +29,7 @@ void Queue::dequeueWhenSingle()
     // step 2: delete tmp
     graph.addStep(0.5*FPS);
 
-    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.drawShrink(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(deletedN,"head/tail/tmp",RED);
     graph.draw(&codeBox,2);
     //
@@ -61,9 +61,9 @@ void Queue::dequeue()
     // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     graph.draw(deletedA,BLACK);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"head/tmp",RED);
@@ -74,9 +74,9 @@ void Queue::dequeue()
     // step 2: head=head.next
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(deletedA,BLACK);
     graph.drawGrow(deletedA,GREEN);
     graph.draw(&listArrow,BLACK);
@@ -93,9 +93,9 @@ void Queue::dequeue()
     // step 3: delete tmp
     graph.addStep(0.5*FPS);
 
-    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawShrink(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.drawShrink(deletedA,GREEN);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"tmp",RED);
@@ -111,8 +111,8 @@ void Queue::dequeue()
     // step 4: move the queue to the left
     graph.addStep(0.5*FPS);
 
-    graph.drawMove(&listNode.begin()->data,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
-    graph.drawMove(&listNode,1,n-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
+    graph.drawMove(&listNode.begin()->data,CIRCLE,sf::Vector2f(-DISTANCE,0),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode,CIRCLE,1,n-1,sf::Vector2f(-DISTANCE,0),WHITE,BLACK,BLACK);
     graph.draw(&listArrow,BLACK);
     if(n>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);

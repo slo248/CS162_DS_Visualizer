@@ -16,7 +16,7 @@ void Queue::enqueueWhenEmpty(int value)
     // step 1: appear new node
     graph.addStep(0.5*FPS);
 
-    graph.drawGrow(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.drawGrow(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,0);
     //
@@ -24,7 +24,7 @@ void Queue::enqueueWhenEmpty(int value)
     // step 2: vtx.next=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,1);
     //
@@ -32,8 +32,8 @@ void Queue::enqueueWhenEmpty(int value)
     // step 3: head=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,2);
     //
@@ -41,7 +41,7 @@ void Queue::enqueueWhenEmpty(int value)
     // step 4: tail=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
     graph.draw(&codeBox,3);
     //
@@ -69,8 +69,8 @@ void Queue::enqueue(int value)
     // step 1: appear new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.drawGrow(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrow,0,m-2,BLACK);
     if(n>2){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
@@ -85,9 +85,9 @@ void Queue::enqueue(int value)
     // step 2: tail.next=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,n-2,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
-    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrow,0,m-2,BLACK);
     graph.drawGrow(&listArrow.rbegin()->data,ORANGE);
     if(n>2){
@@ -103,11 +103,11 @@ void Queue::enqueue(int value)
     // step 3: tail=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,0,n-3,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.rbegin()->prev->data,GREEN,GREEN,WHITE);
-    graph.drawFadeIn(&listNode.rbegin()->prev->data,WHITE,BLACK,BLACK);
-    graph.draw(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.rbegin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,0,n-3,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->prev->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.drawFadeIn(&listNode.rbegin()->prev->data,CIRCLE,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.rbegin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listArrow,0,m-2,BLACK);
     graph.draw(&listArrow.rbegin()->data,ORANGE);
     graph.drawFadeIn(&listArrow.rbegin()->data,BLACK);

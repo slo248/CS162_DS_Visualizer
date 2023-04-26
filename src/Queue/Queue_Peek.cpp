@@ -15,8 +15,8 @@ void Queue::peekFront()
     // step 1: return head.value
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrow,BLACK);
     if(listNode.size()>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
@@ -43,8 +43,8 @@ void Queue::peekBack()
     // step 1: return head.value
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.rbegin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrow,BLACK);
     if(listNode.size()>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
