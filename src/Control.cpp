@@ -175,10 +175,12 @@ void Control::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(option, states);
     if(curSuboption!=-1){
         target.draw(bgSuboptionSprite, states);
-        if(leftBtn) 
-            target.draw(*leftBtn, states);
-        if(rightBtn) 
-            target.draw(*rightBtn, states);
+        if(suboptions[curOption].size()>1){
+            if(leftBtn) 
+                target.draw(*leftBtn, states);
+            if(rightBtn) 
+                target.draw(*rightBtn, states);
+        }
         if(inputBox1)
             target.draw(*inputBox1, states);
         if(inputBox2)
