@@ -29,6 +29,11 @@ void DLL::loadFromFile()
     manual(openWindowExplorer());
 }
 
+void DLL::randomList()
+{
+    randomList(getRand(MIN_NODE,MAX_NODE));
+}
+
 void DLL::randomList(int n)
 {
     assert(MIN_NODE<=n && n<=MAX_NODE);

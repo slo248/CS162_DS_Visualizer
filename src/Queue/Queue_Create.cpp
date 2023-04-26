@@ -28,6 +28,11 @@ void Queue::loadFromFile()
     manual(openWindowExplorer());
 }
 
+void Queue::randomList()
+{
+    randomList(getRand(MIN_NODE,MAX_NODE));
+}
+
 void Queue::randomList(int n)
 {
     assert(MIN_NODE<=n && n<=MAX_NODE);

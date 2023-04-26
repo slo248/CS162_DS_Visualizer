@@ -258,7 +258,7 @@ void App::SLL_Update()
                         sll->makeList();
                         break;
                     case 2: // Random
-                        sll->randomList(getRand(1,10));
+                        sll->randomList();
                         sll->makeList();
                         break;
                     case 3: // Random fixed size

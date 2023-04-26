@@ -28,6 +28,11 @@ void SLL::loadFromFile()
     manual(openWindowExplorer());
 }
 
+void SLL::randomList()
+{
+    randomList(getRand(MIN_NODE,MAX_NODE));
+}
+
 void SLL::randomList(int n)
 {
     assert(MIN_NODE<=n && n<=MAX_NODE);
