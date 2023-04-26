@@ -60,21 +60,15 @@ void SArr::makeList()
     graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
     graph.drawSubscript(&listNodeIndex.begin()->data, "index", RED, LEFT);
 
-    if(!listNodeA.empty()){
-        ListElement<Node>* node=listNodeA.begin();
-        node->data.position=START_POSITION_A;
-        for(node=node->next; node!=listNodeA.end(); node=node->next)
-            node->data.position=node->prev->data.position+sf::Vector2f(DISTANCE, 0);
+    for(int curSize=listNodeA.size(), i=curSize; i<MAX_NODE; i++)
+        listNodeA.pushBack(Node(-1));
 
-        // draw nodes to graph
-        graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
-        graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
-    }
-    else{
-        tmpNode.position=START_POSITION_A;
-        graph.draw(&tmpNode,SQUARE,BLANK,BLANK,BLANK);
-        graph.drawSubscript(&tmpNode,"arr",RED,LEFT);
-    }
+    for(int i=0; i<MAX_NODE; i++)
+        listNodeA.begin()->getNext(i)->data.position=START_POSITION_A+sf::Vector2f(i*DISTANCE, 0);
+
+    // draw nodes to graph
+    graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
+    graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
 
     // draw num node
     graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);
