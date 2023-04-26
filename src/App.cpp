@@ -608,9 +608,9 @@ void App::SArr_Update()
                     case 0: // Front
                         sarr->insertFront(cmd.input1);
                         break;
-                    // case 1: // Back
-                    //     sarr->insertBack(cmd.input1);
-                    //     break;
+                    case 1: // Back
+                        sarr->insertBack(cmd.input1);
+                        break;
                     // case 2: // Middle
                     //     sarr->insertMiddle(cmd.input1,cmd.input2);
                     //     break;

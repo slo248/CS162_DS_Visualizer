@@ -26,6 +26,7 @@ public:
 
     // insert
     void insertFront(int value);
+    void insertBack(int value);
 
     // search
     int search(int value);
