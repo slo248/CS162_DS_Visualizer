@@ -616,9 +616,17 @@ void App::SArr_Update()
             //             break;
             //     }
             //     break;
-            // case 2: // Search
-            //     sarr->search(cmd.input1);
-            //     break;
+            case 2: // Search or Accses
+                switch (cmd.suboption)
+                {
+                    // case 0: // Search
+                    //     sarr->search(cmd.input1);
+                    //     break;
+                    case 1: // Accses
+                        sarr->access(cmd.input1);
+                        break;
+                }
+                break;
             // case 3: // Update
             //     sarr->update(cmd.input1,cmd.input2);
             //     break;
