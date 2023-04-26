@@ -11,6 +11,17 @@ void SArr::insertFront(int value)
     graph.finishAllSteps();
     codeBox.loadFromFile("code/SArr/insertFront.txt");
 
+    // remember old list
+    for(int i=0; i<MAX_NODE; i++)
+        tmpListNode.begin()->getNext(i)->data = listNodeA.begin()->getNext(i)->data;
+
+    // actually insert
+    for(int i=num.value-1; i>=0; i--)
+        listNodeA.begin()->getNext(i+1)->data.value = listNodeA.begin()->getNext(i)->data.value;
+    listNodeA.begin()->data.value = value;
+    num.value++;
+    //
+
     // step 1: move the list to the right
     for(int i=num.value-1; i>0; i--)
     {
