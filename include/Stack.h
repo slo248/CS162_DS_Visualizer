@@ -7,8 +7,8 @@
 class Stack
 {
 public:
-    const sf::Vector2f    START_POSITION  = sf::Vector2f(750, 450);
-    const float           DISTANCE        = 70.f;
+    const sf::Vector2f    START_POSITION  = sf::Vector2f(750, 500);
+    const float           DISTANCE        = 80.f;
     const int             MAX_NODE        = 7;
 
 public:
