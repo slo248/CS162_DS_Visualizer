@@ -12,7 +12,7 @@ void Node::drawSquare(sf::RenderWindow *window, sf::RectangleShape* square, sf::
     square->setOutlineColor(outColor);
 
     num->setString(std::to_string(value));
-    num->setCharacterSize(23);
+    num->setCharacterSize(Config::Square::CHAR_SIZE);
     {
         sf::FloatRect textRect = num->getLocalBounds();
         num->setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);

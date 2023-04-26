@@ -20,14 +20,16 @@ namespace Config
 
     namespace Circle
     {
-        const float RADIUS              = 20.f;
+        const float CHAR_SIZE           = 24.f;
+        const float RADIUS              = 22.f;
         const float THICKNESS           = 3.f;
         const float HALF_WIDTH          = RADIUS+THICKNESS;
     }
 
     namespace Square
     {
-        const float WIDTH               = 40.f;
+        const float CHAR_SIZE           = 24.f;
+        const float WIDTH               = 50.f;
         const float HEIGHT              = WIDTH;
         const float THICKNESS           = 3.f;
         const float HALF_WIDTH          = WIDTH/2.f+THICKNESS;
