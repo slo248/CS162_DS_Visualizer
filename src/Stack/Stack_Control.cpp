@@ -58,7 +58,7 @@ void Stack_Control::genSuboptions(sf::Vector2f windowSize)
 
     // top
     suboptions.push_back(std::vector<std::vector<std::string>>{
-        {"","",""}
+        {"Return top value","",""}
     });
 
     // push
