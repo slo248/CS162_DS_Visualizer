@@ -30,6 +30,11 @@ void SArr::loadFromFile()
     manual(openWindowExplorer());
 }
 
+void SArr::randomList()
+{
+    randomList(getRand(MIN_NODE,MAX_NODE));
+}
+
 void SArr::randomList(int n)
 {
     assert(MIN_NODE<=n && n<=MAX_NODE);

@@ -20,6 +20,7 @@ public:
     void empty();
     void manual(const std::vector<int>& list);
     void loadFromFile();
+    void randomList();
     void randomList(int n);
     void makeList();
 

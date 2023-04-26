@@ -77,7 +77,7 @@ namespace Config
     namespace SArr
     {
         const int MIN_NODE=0;
-        const int MAX_NODE=10;
+        const int MAX_NODE=20;
     }
 
     namespace SLL

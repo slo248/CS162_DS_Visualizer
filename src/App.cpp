@@ -588,7 +588,7 @@ void App::SArr_Update()
                         sarr->makeList();
                         break;
                     case 2: // Random
-                        sarr->randomList(getRand(1,10));
+                        sarr->randomList();
                         sarr->makeList();
                         break;
                     case 3: // Random fixed size
