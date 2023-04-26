@@ -72,6 +72,12 @@ namespace Config
         const sf::Color TEXT_COLOR      = WHITE;
     }
 
+    namespace SArr
+    {
+        const int MIN_NODE=0;
+        const int MAX_NODE=10;
+    }
+
     namespace SLL
     {
         const int MIN_NODE=0;

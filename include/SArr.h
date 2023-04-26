@@ -14,12 +14,12 @@ public:
     SArr(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~SArr();
 
-    // // create
-    // void empty();
-    // void manual(const std::vector<int>& list);
-    // void loadFromFile();
-    // void randomList(int n);
-    // void makeList();
+    // create
+    void empty();
+    void manual(const std::vector<int>& list);
+    void loadFromFile();
+    void randomList(int n);
+    void makeList();
 
     void draw();
     bool isDoneAllSteps();
