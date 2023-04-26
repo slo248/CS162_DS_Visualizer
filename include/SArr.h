@@ -24,6 +24,9 @@ public:
     void randomList(int n);
     void makeList();
 
+    // search
+    int search(int value);
+
     // access
     int access(int pos);
 
