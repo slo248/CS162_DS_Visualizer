@@ -124,6 +124,12 @@ void App::processInput()
                         dll=nullptr;
                         dllControl=nullptr;
                     }
+                    if(sarr){
+                        delete sarr;
+                        delete sarrControl;
+                        sarr=nullptr;
+                        sarrControl=nullptr;
+                    }
                 }
                 break;
         }
