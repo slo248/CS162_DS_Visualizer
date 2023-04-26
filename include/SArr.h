@@ -57,6 +57,7 @@ private:
     Node num;
     List<Node> listNodeA;
     List<Node> listNodeIndex;
+    List<Node> tmpListNode;
     Node tmpNode;
 
     std::vector<Node*> deletedNode;

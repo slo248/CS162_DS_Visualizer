@@ -2,6 +2,9 @@
 #include "Random.h"
 #include "Config.h"
 #include "Button.h"
+#include "Config.h"
+
+using namespace Config::SArr;
 
 SArr::SArr(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     FPS(FPS),
@@ -18,6 +21,9 @@ SArr::SArr(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
 
     randomList(4);
     makeList();
+
+    for(int i=0; i<MAX_NODE; i++)
+        tmpListNode.pushBack(0);
 }
 
 SArr::~SArr()
