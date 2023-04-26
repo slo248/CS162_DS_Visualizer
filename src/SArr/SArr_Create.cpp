@@ -60,7 +60,7 @@ void SArr::makeList()
     graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
     graph.drawSubscript(&listNodeIndex.begin()->data, "index", RED, LEFT);
 
-    for(int curSize=listNodeA.size(), i=curSize; i<MAX_NODE; i++)
+    for(int i=num.value; i<MAX_NODE; i++)
         listNodeA.pushBack(Node(-1));
 
     for(int i=0; i<MAX_NODE; i++)
@@ -68,7 +68,7 @@ void SArr::makeList()
 
     // draw nodes to graph
     graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
-    graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
+    graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
 
     // draw num node
     graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);

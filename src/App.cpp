@@ -627,9 +627,9 @@ void App::SArr_Update()
                         break;
                 }
                 break;
-            // case 3: // Update
-            //     sarr->update(cmd.input1,cmd.input2);
-            //     break;
+            case 3: // Update
+                sarr->update(cmd.input1,cmd.input2);
+                break;
             // case 4: // Delete
             //     switch (cmd.suboption)
             //     {
