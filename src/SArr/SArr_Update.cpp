@@ -35,4 +35,24 @@ void SArr::update(int pos, int value)
 
     graph.draw(&codeBox,0);
     //
+
+    // step 2: a[i]=v
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
+    graph.draw(&listNodeIndex, SQUARE, pos, pos, BLUE, BLUE, WHITE);
+
+    graph.draw(&listNodeA,SQUARE,0,pos-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNodeA,SQUARE,pos+1,MAX_NODE-1,WHITE,BLACK,BLACK);
+    graph.draw(&tmpNode,SQUARE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNodeA, SQUARE, pos, pos, GREEN, GREEN, WHITE);
+
+    graph.draw(&num, SQUARE, WHITE, BLACK, BLACK);
+
+    graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
+    graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
+    graph.drawSubscript(&num,"n", RED, LEFT);
+
+    graph.draw(&codeBox,0);
+    //
 }
