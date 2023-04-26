@@ -17,5 +17,6 @@ typedef std::function<void(float)> functor;
 enum VisualDir {FORWARD, BACKWARD};
 enum VisualType {AUTO, STEP_BY_STEP};
 enum NodeType {CIRCLE, SQUARE};
+enum SubscriptDir {UP, DOWN, LEFT, RIGHT};
 
 #endif // HNEED_H
