@@ -14,6 +14,8 @@ SArr::SArr(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     graph.clear();
     graph.setVisualType(AUTO);
 
+    num.position = START_POSITION_N;
+
     randomList(4);
     makeList();
 }

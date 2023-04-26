@@ -7,6 +7,7 @@ using namespace Config::SArr;
 
 void SArr::empty()
 {
+    num.value=0;
     listNodeIndex.clear();
     listNodeA.clear();
     graph.clear();
@@ -18,6 +19,7 @@ void SArr::manual(const std::vector<int> &list)
     assert(MIN_NODE<=list.size() && list.size()<=MAX_NODE);
 
     for(int x: list){
+        num.value++;
         assert(Config::MIN_VALUE<=x && x<=Config::MAX_VALUE);
         listNodeA.pushBack(x);
     }
@@ -32,6 +34,7 @@ void SArr::randomList(int n)
 {
     assert(MIN_NODE<=n && n<=MAX_NODE);
     empty();
+    num.value=n;
     while(n--)
         listNodeA.pushBack(Node(getRand(Config::MIN_VALUE,Config::MAX_VALUE)));
 }
@@ -62,4 +65,9 @@ void SArr::makeList()
     // draw nodes to graph
     graph.drawGrow(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
+
+    // draw num node
+    graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);
+    graph.drawSubscript(&num,"n",RED,LEFT);
+    //
 }

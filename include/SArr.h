@@ -7,8 +7,9 @@
 class SArr
 {
 public:
-    sf::Vector2f    START_POSITION_INDEX    = sf::Vector2f(150, 200);
-    sf::Vector2f    START_POSITION_A        = sf::Vector2f(150, 300);
+    sf::Vector2f    START_POSITION_INDEX    = sf::Vector2f(150, 100);
+    sf::Vector2f    START_POSITION_A        = sf::Vector2f(150, 200);
+    sf::Vector2f    START_POSITION_N        = sf::Vector2f(150, 300);
     float           DISTANCE                = Config::Square::WIDTH+Config::Square::THICKNESS;
 
 public:
@@ -40,6 +41,7 @@ private:
     Graph graph;
     CodeBox codeBox;
 
+    Node num;
     List<Node> listNodeA;
     List<Node> listNodeIndex;
     Node tmpNode;
