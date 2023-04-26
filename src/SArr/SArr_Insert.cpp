@@ -24,7 +24,7 @@ void SArr::insertFront(int value)
     //
 
     // step 1: move the list to the right
-    for(int i=tmpNode.value; i>0; i--)
+    for(int i=tmpNode.value; i>=0; i--)
     {
         // substep 1: highlight a[i]
         graph.addStep(0.5*FPS);
@@ -45,6 +45,8 @@ void SArr::insertFront(int value)
         graph.draw(&codeBox,0);
         //
 
+        if(i==0) break;
+
         // substep 2: a[i+1]=a[i]
         graph.addStep(0.5*FPS);
 
@@ -63,6 +65,25 @@ void SArr::insertFront(int value)
         graph.drawSubscript(&tmpNode,"n", RED, LEFT);
 
         graph.draw(&codeBox,1);
+        //
+
+        // substep 3: fade out a[i]
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
+        graph.drawFadeOut(&listNodeIndex, SQUARE, i, i, BLUE, BLUE, WHITE);
+
+        graph.draw(&tmpListNode, SQUARE, 0, i, WHITE, BLACK, BLACK);
+        graph.draw(&listNodeA, SQUARE, i, MAX_NODE-1, WHITE, BLACK, BLACK);
+        graph.drawFadeOut(&listNodeA, SQUARE, i, i, GREEN, GREEN, WHITE);
+
+        graph.draw(&tmpNode, SQUARE, WHITE, BLACK, BLACK);
+
+        graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
+        graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
+        graph.drawSubscript(&tmpNode,"n", RED, LEFT);
+
+        graph.draw(&codeBox,0);
         //
     }
     //
