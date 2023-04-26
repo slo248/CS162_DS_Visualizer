@@ -18,8 +18,8 @@ void Stack::popWhenSingle()
     // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(deletedN,"head/tmp",RED);
     graph.draw(&codeBox,1);
     //
@@ -27,7 +27,7 @@ void Stack::popWhenSingle()
     // step 2: head=head.next
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,ORANGE,ORANGE,WHITE);
+    graph.draw(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(deletedN,"tmp",RED);
     graph.draw(&codeBox,2);
     //
@@ -35,7 +35,7 @@ void Stack::popWhenSingle()
     // step 3: delete tmp
     graph.addStep(0.5*FPS);
 
-    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
+    graph.drawShrink(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(deletedN,"tmp",RED);
     graph.draw(&codeBox,3);
     //
@@ -62,9 +62,9 @@ void Stack::pop()
     // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
+    graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     if(deletedA) graph.draw(deletedA,BLACK);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"head/tmp",RED);
@@ -74,9 +74,9 @@ void Stack::pop()
     // step 2: head=head.next
     graph.addStep(0.5*FPS);
 
-    graph.draw(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode.begin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     if(deletedA){ 
         graph.draw(deletedA,BLACK);
         graph.drawGrow(deletedA,GREEN);
@@ -90,9 +90,9 @@ void Stack::pop()
     // step 3: delete tmp
     graph.addStep(0.5*FPS);
 
-    graph.drawShrink(deletedN,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.drawShrink(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     if(deletedA) graph.drawShrink(deletedA,GREEN);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(deletedN,"tmp",RED);

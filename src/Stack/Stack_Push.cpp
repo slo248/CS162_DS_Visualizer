@@ -14,7 +14,7 @@ void Stack::pushWhenEmpty(int value)
     // step 1: appear new node
     graph.addStep(0.5*FPS);
 
-    graph.drawGrow(&listNode,ORANGE,ORANGE,WHITE);
+    graph.drawGrow(&listNode,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,0);
     //
@@ -22,7 +22,7 @@ void Stack::pushWhenEmpty(int value)
     // step 2: vtx.next=head
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.draw(&codeBox,10);
     //
@@ -30,8 +30,8 @@ void Stack::pushWhenEmpty(int value)
     // step 3: head=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,2);
     //
@@ -52,7 +52,7 @@ void Stack::push(int value)
 
     listNode.pushFront(value);
     listNode.begin()->data.position=listNode.begin()->next->data.position-sf::Vector2f(0,DISTANCE);
-    listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->next->data));
+    listArrow.pushFront(Arrow(&listNode.begin()->data,&listNode.begin()->next->data));
 
     const int n=listNode.size();
     const int m=listArrow.size();
@@ -60,8 +60,8 @@ void Stack::push(int value)
     // step 1: appear new node
     graph.addStep(0.5*FPS);
 
-    graph.drawGrow(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listArrow,1,m-1,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
     graph.drawSubscript(&listNode.begin()->next->data,"head",RED);
@@ -71,8 +71,8 @@ void Stack::push(int value)
     // step 2: appear new arrow
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.drawGrow(&listArrow.begin()->data,ORANGE);
     graph.draw(&listArrow,1,m-1,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
@@ -83,9 +83,9 @@ void Stack::push(int value)
     // step 3: head=vtx
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
-    graph.drawFadeIn(&listNode.begin()->data,GREEN,GREEN,WHITE);
-    graph.draw(&listNode,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listArrow.begin()->data,ORANGE);
     graph.drawFadeIn(&listArrow.begin()->data,BLACK);
     graph.draw(&listArrow,1,m-1,BLACK);

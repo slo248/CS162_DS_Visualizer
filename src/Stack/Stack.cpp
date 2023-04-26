@@ -77,8 +77,8 @@ void Stack::peek()
 
     // step 1: return head.value
     graph.addStep(0.5*FPS);
-    graph.draw(&listNode,WHITE,BLACK,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrow,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     graph.draw(&codeBox,1);

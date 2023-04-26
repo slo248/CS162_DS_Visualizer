@@ -53,7 +53,7 @@ void Stack::makeList()
     graph.addStep(0.5*FPS);
 
     // draw nodes to graph
-    graph.drawGrow(&listNode,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     
     // draw arrows to graph
