@@ -70,6 +70,11 @@ void SArr::makeList()
         graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
         graph.drawSubscript(&listNodeA.begin()->data,"arr",RED,LEFT);
     }
+    else{
+        tmpNode.position=START_POSITION_A;
+        graph.draw(&tmpNode,SQUARE,BLANK,BLANK,BLANK);
+        graph.drawSubscript(&tmpNode,"arr",RED,LEFT);
+    }
 
     // draw num node
     graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);

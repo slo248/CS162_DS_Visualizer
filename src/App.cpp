@@ -582,6 +582,7 @@ void App::SArr_Update()
                 {
                     case 0: // Empty
                         sarr->empty();
+                        sarr->makeList();
                         break;
                     case 1: // Manual
                         sarr->manual(cmd.list);
