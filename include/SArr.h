@@ -27,6 +27,9 @@ public:
     // access
     int access(int pos);
 
+    // update
+    void update(int pos, int value);
+
     void draw();
     bool isDoneAllSteps();
     void pause();
