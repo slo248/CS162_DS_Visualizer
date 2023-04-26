@@ -1,7 +1,7 @@
 #include "Node.h"
 #include "Config.h"
 
-void Node::drawSubscript(sf::RenderWindow *window, sf::Text *text, std::string str, sf::Color textColor)
+void Node::drawSubscript(sf::RenderWindow *window, sf::Text *text, std::string str, sf::Color textColor, SubscriptDir dir)
 {
     text->setString(str);
     {
@@ -12,7 +12,35 @@ void Node::drawSubscript(sf::RenderWindow *window, sf::Text *text, std::string s
         );
     }
     text->setFillColor(textColor);
-    text->setPosition(position.x, position.y+Config::Circle::RADIUS*3.f/2.f);
+
+    switch (dir)
+    {
+        case UP:
+            text->setPosition(
+                position.x, 
+                position.y-Config::Circle::RADIUS*3.f/2.f
+            );
+            break;
+        case DOWN:
+            text->setPosition(
+                position.x, 
+                position.y+Config::Circle::RADIUS*3.f/2.f
+            );
+            break;
+        case LEFT:
+            text->setPosition(
+                position.x-Config::Circle::RADIUS*3.f/2.f, 
+                position.y
+            );
+            break;
+        case RIGHT:
+            text->setPosition(
+                position.x+Config::Circle::RADIUS*3.f/2.f, 
+                position.y
+            );
+            break;
+    }
+
     text->setScale(scaleFactor);
     window->draw(*text);
 }
