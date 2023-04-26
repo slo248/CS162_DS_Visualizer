@@ -12,6 +12,7 @@ void SArr::insertFront(int value)
     codeBox.loadFromFile("code/SArr/insertFront.txt");
 
     // remember old list
+    tmpNode=num;
     for(int i=0; i<MAX_NODE; i++)
         tmpListNode.begin()->getNext(i)->data = listNodeA.begin()->getNext(i)->data;
 
@@ -23,22 +24,23 @@ void SArr::insertFront(int value)
     //
 
     // step 1: move the list to the right
-    for(int i=num.value-1; i>0; i--)
+    for(int i=tmpNode.value; i>0; i--)
     {
         // substep 1: highlight a[i]
         graph.addStep(0.5*FPS);
 
         graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
-        graph.drawFadeIn(&listNodeIndex, SQUARE, i+1, i+1, BLUE, BLUE, WHITE);
+        graph.drawFadeIn(&listNodeIndex, SQUARE, i, i, BLUE, BLUE, WHITE);
 
-        graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
-        graph.drawFadeIn(&listNodeA, SQUARE, i+1, i+1, ORANGE, ORANGE, WHITE);
+        graph.draw(&tmpListNode, SQUARE, 0, i, WHITE, BLACK, BLACK);
+        graph.draw(&listNodeA, SQUARE, i+1, MAX_NODE-1, WHITE, BLACK, BLACK);
+        graph.drawFadeIn(&tmpListNode, SQUARE, i, i, ORANGE, ORANGE, WHITE);
 
-        graph.draw(&num, SQUARE, WHITE, BLACK, BLACK);
+        graph.draw(&tmpNode, SQUARE, WHITE, BLACK, BLACK);
 
         graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
         graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
-        graph.drawSubscript(&num,"n", RED, LEFT);
+        graph.drawSubscript(&tmpNode,"n", RED, LEFT);
 
         graph.draw(&codeBox,0);
         //

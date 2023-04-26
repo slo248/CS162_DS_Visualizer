@@ -23,7 +23,7 @@ SArr::SArr(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     makeList();
 
     for(int i=0; i<MAX_NODE; i++)
-        tmpListNode.pushBack(0);
+        tmpListNode.pushBack(-1);
 }
 
 SArr::~SArr()
