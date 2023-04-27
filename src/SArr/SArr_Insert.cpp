@@ -183,14 +183,17 @@ void SArr::insertBack(int value)
     graph.drawFadeIn(&listNodeA, SQUARE, tmpNode.value, tmpNode.value, GREEN, GREEN, WHITE);
 
     graph.draw(&tmpNode, SQUARE, WHITE, BLACK, BLACK);
+    graph.drawFadeIn(&tmpNode, SQUARE, ORANGE, ORANGE, WHITE);
 
     graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
     graph.drawSubscript(&tmpListNode.begin()->data,"a", RED, LEFT);
     graph.drawSubscript(&tmpNode,"n", RED, LEFT);
 
-    graph.draw(&codeBox,0);
+    graph.draw(&codeBox,1);
     //
-    // substep 3: fade out a[n+1]
+    //
+
+    // step 2: n++
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
@@ -199,58 +202,8 @@ void SArr::insertBack(int value)
     graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
     graph.drawFadeOut(&listNodeA, SQUARE, tmpNode.value, tmpNode.value, GREEN, GREEN, WHITE);
 
-    graph.draw(&tmpNode, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
-    graph.drawSubscript(&tmpListNode.begin()->data,"a", RED, LEFT);
-    graph.drawSubscript(&tmpNode,"n", RED, LEFT);
-
-    graph.draw(&codeBox,0);
-    //
-
-    // step 2: n++
-    // substep 1: highlight n+1
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&tmpNode, SQUARE, WHITE, BLACK, BLACK);
-    graph.drawFadeIn(&tmpNode, SQUARE, ORANGE, ORANGE, WHITE);
-
-    graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
-    graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
-    graph.drawSubscript(&tmpNode,"n", RED, LEFT);
-
-    graph.draw(&codeBox,1);
-    //
-    // substep 2: n++
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
-
     graph.draw(&tmpNode, SQUARE, ORANGE, ORANGE, WHITE);
     graph.drawFadeIn(&num, SQUARE, GREEN, GREEN, WHITE);
-
-    graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
-    graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
-    graph.drawSubscript(&num,"n", RED, LEFT);
-
-    graph.draw(&codeBox,1);
-    //
-    // substep 3: fade out n
-    //
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&num, SQUARE, GREEN, GREEN, WHITE);
-    graph.drawFadeIn(&num, SQUARE, WHITE, BLACK, BLACK);
 
     graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
     graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
