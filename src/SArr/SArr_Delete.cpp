@@ -160,9 +160,31 @@ void SArr::deleteLast()
 
     // actual delete
     tmpNode=num;
-    tmpListNode.rbegin()->data=listNodeA.rbegin()->data;
+    for(int i=0; i<MAX_NODE; i++)
+        tmpListNode.begin()->getNext(i)->data=listNodeA.begin()->getNext(i)->data;
 
     listNodeA.rbegin()->data.value=-1;
     num.value--;
     //
+
+    // update graph
+
+    // step 1: fade in a[n-1]
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNodeIndex,SQUARE,num.value,num.value,BLUE,BLUE,WHITE);
+
+    graph.draw(&listNodeA,SQUARE,0,num.value-1,WHITE,BLACK,BLACK);
+    graph.draw(&tmpListNode,SQUARE,num.value,MAX_NODE-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&tmpListNode,SQUARE,num.value,num.value,ORANGE,ORANGE,WHITE);
+
+    graph.draw(&tmpNode,SQUARE,WHITE,BLACK,BLACK);
+
+    graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+    graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
+    graph.drawSubscript(&num,"n",RED,LEFT);
+
+    graph.draw(&codeBox,1);
+    //    
 }
