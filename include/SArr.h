@@ -31,6 +31,7 @@ public:
 
     // delete
     void deleteFirst();
+    void deleteLast();
 
     // search
     int search(int value);

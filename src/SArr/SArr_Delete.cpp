@@ -136,3 +136,33 @@ void SArr::deleteFirst()
     graph.draw(&codeBox,5);
     //
 }
+
+void SArr::deleteLast()
+{
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/SArr/deleteLast.txt"); 
+
+    if(!num.value)
+    {
+        graph.addStep(1);
+
+        graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+        graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
+        graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);
+
+        graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+        graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
+        graph.drawSubscript(&num,"n",RED,LEFT);
+
+        graph.draw(&codeBox,0);
+        return;
+    }
+
+    // actual delete
+    tmpNode=num;
+    tmpListNode.rbegin()->data=listNodeA.rbegin()->data;
+
+    listNodeA.rbegin()->data.value=-1;
+    num.value--;
+    //
+}
