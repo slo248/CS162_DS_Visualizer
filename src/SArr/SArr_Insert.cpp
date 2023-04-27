@@ -219,8 +219,17 @@ void SArr::insertBack(int value)
 void SArr::insertMiddle(int pos, int value)
 {
     assert(MIN_NODE<=num.value && num.value<MAX_NODE);
-    assert(0<pos && pos<num.value-1);
+    assert(0<=pos && pos<=num.value);
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
+
+    if(pos==0){
+        insertFront(value);
+        return;
+    }
+    if(pos==num.value){
+        insertBack(value);
+        return;
+    }
 
     graph.finishAllSteps();
     codeBox.loadFromFile("code/SArr/insertMiddle.txt");
