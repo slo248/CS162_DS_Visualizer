@@ -227,4 +227,24 @@ void SArr::deleteLast()
 
     graph.draw(&codeBox,2);
     //
+
+    // step 4: n--
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+    graph.draw(&listNodeIndex,SQUARE,num.value,num.value,BLUE,BLUE,WHITE);
+
+    graph.draw(&listNodeA,SQUARE,0,num.value-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNodeA,SQUARE,num.value+1,MAX_NODE-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNodeA,SQUARE,num.value,num.value,GREEN,GREEN,WHITE);
+
+    graph.draw(&tmpNode,SQUARE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&num,SQUARE,GREEN,GREEN,WHITE);
+
+    graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+    graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
+    graph.drawSubscript(&num,"n",RED,LEFT);
+
+    graph.draw(&codeBox,2);
+    //
 }
