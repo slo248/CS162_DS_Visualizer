@@ -18,7 +18,7 @@ void SArr::deleteFirst()
     // actual delete
     for(int i=0; i<num.value-1; i++)
         listNodeA.begin()->getNext(i)->data.value=listNodeA.begin()->getNext(i+1)->data.value;
-    listNodeA.begin()->getNext(num.value-1)->data=-1;
+    listNodeA.begin()->getNext(num.value-1)->data.value=-1;
     num.value--;
 
     // update graph
@@ -54,7 +54,7 @@ void SArr::deleteFirst()
         
         graph.draw(&listNodeA,SQUARE,0,i-1,WHITE,BLACK,BLACK);
         graph.draw(&tmpListNode,SQUARE,i,MAX_NODE-1,WHITE,BLACK,BLACK);
-        graph.drawFadeIn(&tmpListNode,SQUARE,i,i,GREEN,GREEN,WHITE);
+        graph.drawFadeIn(&tmpListNode,SQUARE,i,i,ORANGE,ORANGE,WHITE);
 
         graph.draw(&tmpNode,SQUARE,WHITE,BLACK,BLACK);
 
@@ -62,7 +62,29 @@ void SArr::deleteFirst()
         graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
 
-        graph.draw(&codeBox,1);
+        if(i<tmpNode.value-1) graph.draw(&codeBox,1);
+        else graph.draw(&codeBox,2);
+        //
+
+        // substep 3: a[i]=a[i+1]
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+        graph.draw(&listNodeIndex,SQUARE,i,i,BLUE,BLUE,WHITE);
+        
+        graph.draw(&listNodeA,SQUARE,0,i-1,WHITE,BLACK,BLACK);
+        graph.draw(&tmpListNode,SQUARE,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(&tmpListNode,SQUARE,i+1,MAX_NODE-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNodeA,SQUARE,i,i,GREEN,GREEN,WHITE);
+
+        graph.draw(&tmpNode,SQUARE,WHITE,BLACK,BLACK);
+
+        graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+        graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
+        graph.drawSubscript(&num,"n",RED,LEFT);
+
+        if(i<tmpNode.value-1) graph.draw(&codeBox,0);
+        else graph.draw(&codeBox,2);
         //
     }
 }
