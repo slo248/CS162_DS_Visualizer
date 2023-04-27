@@ -80,6 +80,12 @@ namespace Config
         const int MAX_NODE=20;
     }
 
+    namespace DArr
+    {
+        const int MIN_NODE=0;
+        const int MAX_NODE=20;
+    }
+
     namespace SLL
     {
         const int MIN_NODE=0;
