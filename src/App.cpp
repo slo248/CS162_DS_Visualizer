@@ -611,9 +611,9 @@ void App::SArr_Update()
                     case 1: // Back
                         sarr->insertBack(cmd.input1);
                         break;
-                    // case 2: // Middle
-                    //     sarr->insertMiddle(cmd.input1,cmd.input2);
-                    //     break;
+                    case 2: // Middle
+                        sarr->insertMiddle(cmd.input1,cmd.input2);
+                        break;
                 }
                 break;
             case 2: // Search or Accses
