@@ -215,3 +215,25 @@ void SArr::insertBack(int value)
     graph.draw(&codeBox,2);
     //
 }
+
+void SArr::insertMiddle(int pos, int value)
+{
+    assert(MIN_NODE<=num.value && num.value<MAX_NODE);
+    assert(0<pos && pos<num.value-1);
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
+
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/SArr/insertFront.txt");
+
+    // remember old list
+    tmpNode=num;
+    for(int i=0; i<MAX_NODE; i++)
+        tmpListNode.begin()->getNext(i)->data=listNodeA.begin()->getNext(i)->data;
+
+    // actually insert
+    for(int i=num.value-1; i>=pos; i--)
+        listNodeA.begin()->getNext(i+1)->data.value = listNodeA.begin()->getNext(i)->data.value;
+    listNodeA.begin()->getNext(pos)->data.value = value;
+    num.value++;
+    //
+}
