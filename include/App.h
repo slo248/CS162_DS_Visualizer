@@ -19,6 +19,9 @@
 #include "SArr.h"
 #include "SArr_Control.h"
 
+#include "DArr.h"
+#include "DArr_Control.h"
+
 namespace State
 {
     enum Type
@@ -46,6 +49,7 @@ public:
     void Stack_Update();
     void Queue_Update();
     void SArr_Update();
+    void DArr_Update();
 
     void run();
 
@@ -61,6 +65,9 @@ private:
 
     SArr*               sarr;
     SArr_Control*       sarrControl;
+
+    DArr*               darr;
+    DArr_Control*       darrControl;
 
     SLL*                sll;
     SLL_Control*        sllControl;

@@ -58,7 +58,7 @@ void DArr::makeList()
     for(int i=1; i<MAX_NODE; i++)
         listNodeIndex.begin()->getNext(i)->data.position=listNodeIndex.begin()->data.position+sf::Vector2f(i*DISTANCE, 0);
 
-    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
+    graph.draw(&listNodeIndex, SQUARE, 0, num.value-1, WHITE, BLACK, BLACK);
     graph.drawSubscript(&listNodeIndex.begin()->data, "index", RED, LEFT);
 
     for(int i=num.value; i<MAX_NODE; i++)
@@ -68,7 +68,7 @@ void DArr::makeList()
         listNodeA.begin()->getNext(i)->data.position=START_POSITION_A+sf::Vector2f(i*DISTANCE, 0);
 
     // draw nodes to graph
-    graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
+    graph.draw(&listNodeA,SQUARE, 0, num.value-1, WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
 
     // draw num node

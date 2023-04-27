@@ -21,7 +21,9 @@ App::App():
     queue(nullptr),
     queueControl(nullptr),
     dll(nullptr),
-    dllControl(nullptr)
+    dllControl(nullptr),
+    darr(nullptr),
+    darrControl(nullptr)
 {
     window.setFramerateLimit(FPS);
 
@@ -83,6 +85,7 @@ void App::processInput()
     if(stackControl) stackControl->handleRealTimeInput(&window);
     if(queueControl) queueControl->handleRealTimeInput(&window);
     if(dllControl) dllControl->handleRealTimeInput(&window);
+    if(darrControl) darrControl->handleRealTimeInput(&window);
 
     sf::Event event;
     while (window.pollEvent(event)){
@@ -92,6 +95,7 @@ void App::processInput()
         if(stackControl) stackControl->handleEvent(event,&window);
         if(queueControl) queueControl->handleEvent(event,&window);
         if(dllControl) dllControl->handleEvent(event,&window);
+        if(darrControl) darrControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:
@@ -129,6 +133,12 @@ void App::processInput()
                         delete sarrControl;
                         sarr=nullptr;
                         sarrControl=nullptr;
+                    }
+                    if(darr){
+                        delete darr;
+                        delete darrControl;
+                        darr=nullptr;
+                        darrControl=nullptr;
                     }
                 }
                 break;
@@ -168,6 +178,9 @@ void App::update()
                 sarrControl=new SArr_Control(&sanf,window.getView().getSize());
                 break;
             case DS::DARR:
+                state=State::DS;
+                darr=new DArr(&window,&sanf,&cons,FPS);
+                darrControl=new DArr_Control(&sanf,window.getView().getSize());
                 break;
         }
         return;
@@ -178,6 +191,7 @@ void App::update()
     if(stack) Stack_Update();
     if(queue) Queue_Update();
     if(sarr) SArr_Update();
+    if(darr) DArr_Update();
 }
 
 void App::draw()
@@ -209,6 +223,10 @@ void App::draw()
             if(sarr){
                 sarr->draw();
                 window.draw(*sarrControl);
+            }
+            if(darr){
+                darr->draw();
+                window.draw(*darrControl);
             }
             break;
     }
@@ -644,6 +662,108 @@ void App::SArr_Update()
                         break;
                 }
                 break;
+       }
+}
+
+void App::DArr_Update()
+{
+    darrControl->update(1.0f/FPS);
+
+    Command cmd;
+    bool flag=darrControl->getCommand(cmd);
+
+    switch (cmd.option)
+    {
+        case -2: // pause
+            darr->pause();
+            break;
+        case -3: // play
+            darr->play();
+            break;
+        case -4: // prev
+            darr->prevStep();
+            break;
+        case -5: // next
+            darr->nextStep();
+            break;
+        case -6: // go to begin
+            darr->goToBegin();
+            break;
+        case -7: // go to end
+            darr->goToEnd();
+            break;
+    }
+
+    if(darr->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {                  
+            case 0: // Create
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        darr->empty();
+                        darr->makeList();
+                        break;
+                    case 1: // Manual
+                        darr->manual(cmd.list);
+                        darr->makeList();
+                        break;
+                    case 2: // Random
+                        darr->randomList();
+                        darr->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        darr->randomList(cmd.input1);
+                        darr->makeList();
+                        break;
+                    case 4: // Load from file
+                        darr->loadFromFile();
+                        darr->makeList();
+                        break;
+                }
+                break;
+            // case 1: // Insert
+            //     switch (cmd.suboption)
+            //     {
+            //         case 0: // Front
+            //             darr->insertFront(cmd.input1);
+            //             break;
+            //         case 1: // Back
+            //             darr->insertBack(cmd.input1);
+            //             break;
+            //         case 2: // Middle
+            //             darr->insertMiddle(cmd.input1,cmd.input2);
+            //             break;
+            //     }
+            //     break;
+            // case 2: // Search or Accses
+            //     switch (cmd.suboption)
+            //     {
+            //         case 0: // Search
+            //             darr->search(cmd.input1);
+            //             break;
+            //         case 1: // Accses
+            //             darr->access(cmd.input1);
+            //             break;
+            //     }
+            //     break;
+            // case 3: // Update
+            //     darr->update(cmd.input1,cmd.input2);
+            //     break;
+            // case 4: // Delete
+            //     switch (cmd.suboption)
+            //     {
+            //         case 0: // First
+            //             darr->deleteFirst();
+            //             break;
+            //         case 1: // Last
+            //             darr->deleteLast();
+            //             break;
+            //         case 2: // Middle
+            //             darr->deleteMiddle(cmd.input1);
+            //             break;
+            //     }
+            //     break;
        }
 }
 
