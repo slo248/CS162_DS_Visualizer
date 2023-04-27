@@ -630,20 +630,20 @@ void App::SArr_Update()
             case 3: // Update
                 sarr->update(cmd.input1,cmd.input2);
                 break;
-            // case 4: // Delete
-            //     switch (cmd.suboption)
-            //     {
-            //         case 0: // First
-            //             sarr->deleteFirst();
-            //             break;
-            //         case 1: // Last
-            //             sarr->deleteLast();
-            //             break;
-            //         case 2: // Middle
-            //             sarr->deleteMiddle(cmd.input1);
-            //             break;
-            //     }
-            //     break;
+            case 4: // Delete
+                switch (cmd.suboption)
+                {
+                    case 0: // First
+                        sarr->deleteFirst();
+                        break;
+                    // case 1: // Last
+                    //     sarr->deleteLast();
+                    //     break;
+                    // case 2: // Middle
+                    //     sarr->deleteMiddle(cmd.input1);
+                    //     break;
+                }
+                break;
        }
 }
 
