@@ -5,10 +5,24 @@ using namespace Config::SArr;
 
 void SArr::deleteFirst()
 {
-    assert(!listNodeA.empty());
-
     graph.finishAllSteps();
-    codeBox.loadFromFile("code/SArr/deleteFirst.txt");    
+    codeBox.loadFromFile("code/SArr/deleteFirst.txt"); 
+
+    if(!num.value)
+    {
+        graph.addStep(1);
+
+        graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+        graph.draw(&listNodeA,SQUARE,WHITE,BLACK,BLACK);
+        graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);
+
+        graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+        graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
+        graph.drawSubscript(&num,"n",RED,LEFT);
+
+        graph.draw(&codeBox,0);
+        return;
+    }
 
     // remember old list
     tmpNode=num;
@@ -43,7 +57,7 @@ void SArr::deleteFirst()
         graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
 
-        graph.draw(&codeBox,0);
+        graph.draw(&codeBox,1);
         //
 
         // substep 2: fade in a[i]
@@ -62,8 +76,8 @@ void SArr::deleteFirst()
         graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
 
-        if(i<tmpNode.value-1) graph.draw(&codeBox,1);
-        else graph.draw(&codeBox,2);
+        if(i<tmpNode.value-1) graph.draw(&codeBox,2);
+        else graph.draw(&codeBox,3);
         //
 
         // substep 3: a[i]=a[i+1]
@@ -83,8 +97,8 @@ void SArr::deleteFirst()
         graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
 
-        if(i<tmpNode.value-1) graph.draw(&codeBox,0);
-        else graph.draw(&codeBox,2);
+        if(i<tmpNode.value-1) graph.draw(&codeBox,1);
+        else graph.draw(&codeBox,3);
         //
     }
 
@@ -103,7 +117,7 @@ void SArr::deleteFirst()
     graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
     graph.drawSubscript(&num,"n",RED,LEFT);
 
-    graph.draw(&codeBox,3);
+    graph.draw(&codeBox,4);
     //
     // substep 2: n--;
     graph.addStep(0.5*FPS);
@@ -119,6 +133,6 @@ void SArr::deleteFirst()
     graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
     graph.drawSubscript(&num,"n",RED,LEFT);
 
-    graph.draw(&codeBox,4);
+    graph.draw(&codeBox,5);
     //
 }

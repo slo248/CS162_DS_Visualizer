@@ -1,3 +1,4 @@
+if empty, do nothing
 for(int i=0; i<n-1; i++)
     a[i]=a[i+1]
 a[n]=-1
