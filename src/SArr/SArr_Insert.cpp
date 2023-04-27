@@ -121,22 +121,6 @@ void SArr::insertFront(int value)
     graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
     graph.drawSubscript(&tmpNode,"n", RED, LEFT);
 
-    graph.draw(&codeBox,3);
-    //
-    // substep 3: fade out n
-    graph.addStep(0.5*FPS);
-
-    graph.draw(&listNodeIndex, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&listNodeA, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.draw(&num, SQUARE, GREEN, GREEN, WHITE);
-    graph.drawFadeIn(&num, SQUARE, WHITE, BLACK, BLACK);
-
-    graph.drawSubscript(&listNodeIndex.begin()->data,"index", RED, LEFT);
-    graph.drawSubscript(&listNodeA.begin()->data,"a", RED, LEFT);
-    graph.drawSubscript(&num,"n", RED, LEFT);
-
     graph.draw(&codeBox,4);
     //
     //
