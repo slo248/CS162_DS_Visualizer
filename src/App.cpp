@@ -639,9 +639,9 @@ void App::SArr_Update()
                     case 1: // Last
                         sarr->deleteLast();
                         break;
-                    // case 2: // Middle
-                    //     sarr->deleteMiddle(cmd.input1);
-                    //     break;
+                    case 2: // Middle
+                        sarr->deleteMiddle(cmd.input1);
+                        break;
                 }
                 break;
        }

@@ -248,3 +248,34 @@ void SArr::deleteLast()
     graph.draw(&codeBox,2);
     //
 }
+
+void SArr::deleteMiddle(int pos)
+{
+    assert(0<=pos && pos<num.value);
+
+    if(pos==0){
+        deleteFirst();
+        return;
+    }
+    if(pos==num.value-1)
+    {
+        deleteLast();
+        return;
+    }
+
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/SArr/deleteMiddle.txt");
+
+    // remember old list
+    tmpNode=num;
+    for(int i=0; i<MAX_NODE; i++)
+        tmpListNode.begin()->getNext(i)->data=listNodeA.begin()->getNext(i)->data;
+    //
+
+    // actual delete
+    for(int i=pos; i<num.value-1; i++)
+        listNodeA.begin()->getNext(i)->data.value=listNodeA.begin()->getNext(i+1)->data.value;
+    listNodeA.begin()->getNext(num.value-1)->data.value=-1;
+    num.value--;
+    //
+}
