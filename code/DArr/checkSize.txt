@@ -1,0 +1,8 @@
+if(n==MAXN){
+    MAXN*=2;
+    int *newArr = new int[MAXN];
+    for(int i=0;i<n;i++)
+        newArr[i]=arr[i];
+    delete[] arr;
+    arr=newArr;
+}

@@ -33,6 +33,7 @@ void DArr::checkSize()
 
     // update graph
     graph.finishAllSteps();
+    codeBox.loadFromFile("code/DArr/checkSize.txt");
     
     // step 1: create new Arr
     graph.addStep(0.5*FPS);
@@ -51,6 +52,8 @@ void DArr::checkSize()
     graph.drawSubscript(&tmpListNode2.begin()->data,"a",RED,LEFT);
     graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
     graph.drawSubscript(&num,"n",RED,LEFT);
+
+    graph.draw(&codeBox,12);
     //
 
     // step 2: copy old Arr to new Arr
@@ -82,6 +85,8 @@ void DArr::checkSize()
         graph.drawSubscript(&tmpListNode2.begin()->data,"a",RED,LEFT);
         graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
+
+        graph.draw(&codeBox,4);
         //
 
         if(i==num.value) break;
@@ -106,6 +111,8 @@ void DArr::checkSize()
         graph.drawSubscript(&tmpListNode2.begin()->data,"a",RED,LEFT);
         graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
+
+        graph.draw(&codeBox,3);
         //
     }
     //
@@ -125,5 +132,17 @@ void DArr::checkSize()
     graph.drawSubscript(&tmpListNode2.begin()->data,"a",RED,LEFT);
     graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
     graph.drawSubscript(&num,"n",RED,LEFT);
+
+    graph.draw(&codeBox,56);
     //
+}
+
+void DArr::insertFront(int value)
+{
+    assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
+
+    checkSize();
+
+    // graph.finishAllSteps();
+    // codeBox.loadFromFile("code/DArr/insertFront.txt");
 }

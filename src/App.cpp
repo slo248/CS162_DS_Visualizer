@@ -726,8 +726,7 @@ void App::DArr_Update()
                 switch (cmd.suboption)
                 {
                     case 0: // Front
-                        // darr->insertFront(cmd.input1);
-                        darr->checkSize();
+                        darr->insertFront(cmd.input1);
                         break;
                     // case 1: // Back
                     //     darr->insertBack(cmd.input1);

@@ -28,7 +28,7 @@ public:
 
     // insert
     void checkSize();
-    // void insertFront(int value);
+    void insertFront(int value);
     // void insertBack(int value);
     // void insertMiddle(int pos, int value);
 
