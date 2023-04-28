@@ -54,19 +54,27 @@ void DArr::checkSize()
     //
 
     // step 2: copy old Arr to new Arr
-    for(int i=0; i<num.value; i++)
+    for(int i=0; i<=num.value; i++)
     {
         // substep 1: highlight newA[i]
         graph.addStep(0.5*FPS);
 
         graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
-        graph.drawFadeIn(&listNodeIndex,SQUARE,i,i,BLUE,BLUE,WHITE);
+        if(i)
+            graph.drawFadeOut(&listNodeIndex,SQUARE,i-1,i-1,BLUE,BLUE,WHITE);
+        if(i<num.value)
+            graph.drawFadeIn(&listNodeIndex,SQUARE,i,i,BLUE,BLUE,WHITE);
 
         graph.draw(&tmpListNode2,SQUARE,0,(curMaxNode>>1)-1,WHITE,BLACK,BLACK);
+        if(i)
+            graph.drawFadeOut(&tmpListNode2,SQUARE,i-1,i-1,GREEN,GREEN,WHITE);
 
         graph.draw(&listNodeA,SQUARE,0,i-1,WHITE,BLACK,BLACK);
         graph.draw(&tmpListNode,SQUARE,i,curMaxNode-1,WHITE,BLACK,BLACK);
-        graph.drawFadeIn(&tmpListNode,SQUARE,i,i,ORANGE,ORANGE,WHITE);
+        if(i)
+            graph.drawFadeOut(&listNodeA,SQUARE,i-1,i-1,GREEN,GREEN,WHITE);
+        if(i<num.value)
+            graph.drawFadeIn(&tmpListNode,SQUARE,i,i,ORANGE,ORANGE,WHITE);
 
         graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);
 
@@ -75,6 +83,8 @@ void DArr::checkSize()
         graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
         //
+
+        if(i==num.value) break;
 
         // substep 2: newA[i]=a[i]
         graph.addStep(0.5*FPS);
@@ -98,6 +108,5 @@ void DArr::checkSize()
         graph.drawSubscript(&num,"n",RED,LEFT);
         //
     }
-    //
     //
 }
