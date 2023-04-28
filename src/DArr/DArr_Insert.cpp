@@ -75,6 +75,28 @@ void DArr::checkSize()
         graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
         graph.drawSubscript(&num,"n",RED,LEFT);
         //
+
+        // substep 2: newA[i]=a[i]
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+        graph.draw(&listNodeIndex,SQUARE,i,i,BLUE,BLUE,WHITE);
+
+        graph.draw(&tmpListNode2,SQUARE,0,(curMaxNode>>1)-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&tmpListNode2,SQUARE,i,i,GREEN,GREEN,WHITE);
+
+        graph.draw(&listNodeA,SQUARE,0,i-1,WHITE,BLACK,BLACK);
+        graph.draw(&tmpListNode,SQUARE,i,curMaxNode-1,WHITE,BLACK,BLACK);
+        graph.draw(&tmpListNode,SQUARE,i,i,ORANGE,ORANGE,WHITE);
+        graph.drawFadeIn(&listNodeA,SQUARE,i,i,GREEN,GREEN,WHITE);
+
+        graph.draw(&num,SQUARE,WHITE,BLACK,BLACK);
+
+        graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+        graph.drawSubscript(&tmpListNode2.begin()->data,"a",RED,LEFT);
+        graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
+        graph.drawSubscript(&num,"n",RED,LEFT);
+        //
     }
     //
     //
