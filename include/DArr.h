@@ -16,6 +16,8 @@ public:
     DArr(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~DArr();
 
+    void saveOldMem();
+
     // create
     void empty();
     void manual(const std::vector<int>& list);
@@ -24,7 +26,8 @@ public:
     void randomList(int n);
     void makeList();
 
-    // // insert
+    // insert
+    void checkSize();
     // void insertFront(int value);
     // void insertBack(int value);
     // void insertMiddle(int pos, int value);

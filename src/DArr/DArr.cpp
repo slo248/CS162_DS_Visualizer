@@ -72,3 +72,10 @@ void DArr::goToEnd()
 {
     graph.goToEnd();
 }
+
+void DArr::saveOldMem()
+{
+    tmpNode=num;
+    for(int i=0; i<curMaxNode; i++)
+        tmpListNode.begin()->getNext(i)->data.value=listNodeA.begin()->getNext(i)->data.value;
+}
