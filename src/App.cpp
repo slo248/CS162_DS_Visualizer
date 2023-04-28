@@ -722,20 +722,21 @@ void App::DArr_Update()
                         break;
                 }
                 break;
-            // case 1: // Insert
-            //     switch (cmd.suboption)
-            //     {
-            //         case 0: // Front
-            //             darr->insertFront(cmd.input1);
-            //             break;
-            //         case 1: // Back
-            //             darr->insertBack(cmd.input1);
-            //             break;
-            //         case 2: // Middle
-            //             darr->insertMiddle(cmd.input1,cmd.input2);
-            //             break;
-            //     }
-            //     break;
+            case 1: // Insert
+                switch (cmd.suboption)
+                {
+                    case 0: // Front
+                        // darr->insertFront(cmd.input1);
+                        darr->checkSize();
+                        break;
+                    // case 1: // Back
+                    //     darr->insertBack(cmd.input1);
+                    //     break;
+                    // case 2: // Middle
+                    //     darr->insertMiddle(cmd.input1,cmd.input2);
+                    //     break;
+                }
+                break;
             // case 2: // Search or Accses
             //     switch (cmd.suboption)
             //     {

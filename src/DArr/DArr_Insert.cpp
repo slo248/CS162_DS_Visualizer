@@ -43,6 +43,7 @@ void DArr::checkSize()
     graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
     graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
     graph.drawSubscript(&tmpListNode.begin()->data,"newA",RED,LEFT);
+    graph.drawSubscript(&num,"n",RED,LEFT);
     //
     //
 }
