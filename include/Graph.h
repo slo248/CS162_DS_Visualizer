@@ -44,6 +44,9 @@ public:
     void drawGrow(List<Node>* list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawGrow(List<Node>* list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawGrow(List<Node>* list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawShrink(List<Node>* list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawShrink(List<Node>* list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawShrink(List<Node>* list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(List<Node>* list, NodeType type, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(List<Node>* list, NodeType type, int from, int to, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(List<Node>* list, NodeType type, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);

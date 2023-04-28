@@ -213,6 +213,22 @@ void Graph::drawGrow(List<Node> *list, NodeType type, sf::Color inColor, sf::Col
     drawGrow(list, type, 0, list->size()-1, inColor, outColor, numColor);
 }
 
+void Graph::drawShrink(List<Node> *list, NodeType type, int i, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawShrink(&list->begin()->getNext(i)->data, type, inColor, outColor, numColor);
+}
+
+void Graph::drawShrink(List<Node> *list, NodeType type, int from, int to, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    for(int i=from; i<=to; i++)
+        drawShrink(list, type, i, inColor, outColor, numColor);
+}
+
+void Graph::drawShrink(List<Node> *list, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor)
+{
+    drawShrink(list, type, 0, list->size()-1, inColor, outColor, numColor);
+}
+
 void Graph::drawMove(List<Node> *list, NodeType type, int i, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     drawMove(&list->begin()->getNext(i)->data, type, delta, inColor, outColor, numColor);
