@@ -739,9 +739,9 @@ void App::DArr_Update()
             case 2: // Search or Accses
                 switch (cmd.suboption)
                 {
-                    // case 0: // Search
-                    //     darr->search(cmd.input1);
-                    //     break;
+                    case 0: // Search
+                        darr->search(cmd.input1);
+                        break;
                     case 1: // Accses
                         darr->access(cmd.input1);
                         break;

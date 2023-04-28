@@ -47,8 +47,8 @@ public:
     // void deleteLast();
     // void deleteMiddle(int pos);
 
-    // // search
-    // int search(int value);
+    // search
+    int search(int value);
 
     // access
     int access(int pos);
