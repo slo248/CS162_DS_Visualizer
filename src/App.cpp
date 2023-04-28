@@ -750,20 +750,20 @@ void App::DArr_Update()
             case 3: // Update
                 darr->update(cmd.input1,cmd.input2);
                 break;
-            // case 4: // Delete
-            //     switch (cmd.suboption)
-            //     {
-            //         case 0: // First
-            //             darr->deleteFirst();
-            //             break;
-            //         case 1: // Last
-            //             darr->deleteLast();
-            //             break;
-            //         case 2: // Middle
-            //             darr->deleteMiddle(cmd.input1);
-            //             break;
-            //     }
-            //     break;
+            case 4: // Delete
+                switch (cmd.suboption)
+                {
+                    case 0: // First
+                        darr->deleteFirst();
+                        break;
+                    // case 1: // Last
+                    //     darr->deleteLast();
+                    //     break;
+                    // case 2: // Middle
+                    //     darr->deleteMiddle(cmd.input1);
+                    //     break;
+                }
+                break;
        }
 }
 
