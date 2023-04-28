@@ -756,9 +756,9 @@ void App::DArr_Update()
                     case 0: // First
                         darr->deleteFirst();
                         break;
-                    // case 1: // Last
-                    //     darr->deleteLast();
-                    //     break;
+                    case 1: // Last
+                        darr->deleteLast();
+                        break;
                     // case 2: // Middle
                     //     darr->deleteMiddle(cmd.input1);
                     //     break;
