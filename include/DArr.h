@@ -40,7 +40,7 @@ public:
     bool checkSize();
     void insertFront(int value);
     void insertBack(int value);
-    // void insertMiddle(int pos, int value);
+    void insertMiddle(int pos, int value);
 
     // // delete
     // void deleteFirst();
@@ -75,7 +75,7 @@ private:
     CodeBox codeBox;
 
     int curMaxNode;
-    std::queue<std::pair<Command,int> > commandQueue;
+    std::queue<std::pair<Command,std::pair<int,int> > > commandQueue;
 
     Node num;
     List<Node> listNodeA;

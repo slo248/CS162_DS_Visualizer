@@ -41,10 +41,13 @@ void DArr::draw()
         switch (p.first)
         {
             case INSERT_FRONT:
-                insertFront(p.second);
+                insertFront(p.second.first);
                 break;
             case INSERT_BACK:
-                insertBack(p.second);
+                insertBack(p.second.first);
+                break;
+            case INSERT_MIDDLE:
+                insertMiddle(p.second.first, p.second.second);
                 break;
         }
     }

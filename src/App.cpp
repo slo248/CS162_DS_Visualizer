@@ -731,9 +731,9 @@ void App::DArr_Update()
                     case 1: // Back
                         darr->insertBack(cmd.input1);
                         break;
-                    // case 2: // Middle
-                    //     darr->insertMiddle(cmd.input1,cmd.input2);
-                    //     break;
+                    case 2: // Middle
+                        darr->insertMiddle(cmd.input1,cmd.input2);
+                        break;
                 }
                 break;
             // case 2: // Search or Accses
