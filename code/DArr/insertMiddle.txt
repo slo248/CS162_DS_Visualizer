@@ -1,0 +1,4 @@
+for(int i=n; i>pos; i--)
+    a[i]=a[i-1]
+a[pos]=v
+n++

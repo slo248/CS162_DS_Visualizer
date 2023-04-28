@@ -50,8 +50,8 @@ public:
     // // search
     // int search(int value);
 
-    // // access
-    // int access(int pos);
+    // access
+    int access(int pos);
 
     // // update
     // void update(int pos, int value);

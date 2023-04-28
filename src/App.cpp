@@ -736,17 +736,17 @@ void App::DArr_Update()
                         break;
                 }
                 break;
-            // case 2: // Search or Accses
-            //     switch (cmd.suboption)
-            //     {
-            //         case 0: // Search
-            //             darr->search(cmd.input1);
-            //             break;
-            //         case 1: // Accses
-            //             darr->access(cmd.input1);
-            //             break;
-            //     }
-            //     break;
+            case 2: // Search or Accses
+                switch (cmd.suboption)
+                {
+                    // case 0: // Search
+                    //     darr->search(cmd.input1);
+                    //     break;
+                    case 1: // Accses
+                        darr->access(cmd.input1);
+                        break;
+                }
+                break;
             // case 3: // Update
             //     darr->update(cmd.input1,cmd.input2);
             //     break;
