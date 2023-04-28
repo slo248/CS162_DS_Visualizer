@@ -4,14 +4,7 @@
 #include "Graph.h"
 #include "Global.h"
 #include <queue>
-
-enum Command
-{
-    InsertFront,
-    InsertBack,
-    InsertMiddle,
-    ALL
-};
+#include <utility>
 
 class DArr
 {
@@ -21,6 +14,14 @@ public:
     sf::Vector2f    START_POSITION_N        = sf::Vector2f(150, 300);
     float           DISTANCE                = Config::Square::WIDTH+Config::Square::THICKNESS;
 
+    enum Command
+    {
+        INSERT_FRONT,
+        INSERT_BACK,
+        INSERT_MIDDLE,
+        ALL
+    };
+    
 public:
     DArr(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~DArr();
@@ -36,7 +37,7 @@ public:
     void makeList();
 
     // insert
-    void checkSize();
+    bool checkSize();
     void insertFront(int value);
     // void insertBack(int value);
     // void insertMiddle(int pos, int value);
@@ -74,7 +75,7 @@ private:
     CodeBox codeBox;
 
     int curMaxNode;
-    std::queue<Command> commandQueue;
+    std::queue<std::pair<Command,int> > commandQueue;
 
     Node num;
     List<Node> listNodeA;

@@ -35,6 +35,16 @@ DArr::~DArr()
 void DArr::draw()
 {
     graph.draw();
+    if(graph.isDoneAllSteps() && !commandQueue.empty()){
+        auto p = commandQueue.front();
+        commandQueue.pop();
+        switch (p.first)
+        {
+            case INSERT_FRONT:
+                insertFront(p.second);
+                break;
+        }
+    }
 }
 
 bool DArr::isDoneAllSteps()

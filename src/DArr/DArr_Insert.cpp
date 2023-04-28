@@ -3,11 +3,11 @@
 
 using namespace Config::DArr;
 
-void DArr::checkSize()
+bool DArr::checkSize()
 {
     graph.finishAllSteps();
 
-    if(num.value<curMaxNode) return;
+    if(num.value<curMaxNode) return false;
 
     // actually allocate new array with size double of current size
 
@@ -136,11 +136,16 @@ void DArr::checkSize()
 
     graph.draw(&codeBox,56);
     //
+
+    return true;
 }
 
 void DArr::insertFront(int value)
 {
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
-    checkSize();
+    if(checkSize()){
+        commandQueue.push({INSERT_FRONT, value});
+        return;
+    }
 }
