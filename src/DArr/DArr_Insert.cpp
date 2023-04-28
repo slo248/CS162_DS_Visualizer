@@ -5,6 +5,8 @@ using namespace Config::DArr;
 
 void DArr::checkSize()
 {
+    graph.finishAllSteps();
+
     if(num.value<curMaxNode) return;
 
     // actually allocate new array with size double of current size
@@ -32,7 +34,6 @@ void DArr::checkSize()
     //
 
     // update graph
-    graph.finishAllSteps();
     codeBox.loadFromFile("code/DArr/checkSize.txt");
     
     // step 1: create new Arr
@@ -142,7 +143,4 @@ void DArr::insertFront(int value)
     assert(Config::MIN_VALUE<=value && value<=Config::MAX_VALUE);
 
     checkSize();
-
-    // graph.finishAllSteps();
-    // codeBox.loadFromFile("code/DArr/insertFront.txt");
 }

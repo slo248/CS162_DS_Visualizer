@@ -3,6 +3,15 @@
 
 #include "Graph.h"
 #include "Global.h"
+#include <queue>
+
+enum Command
+{
+    InsertFront,
+    InsertBack,
+    InsertMiddle,
+    ALL
+};
 
 class DArr
 {
@@ -65,6 +74,7 @@ private:
     CodeBox codeBox;
 
     int curMaxNode;
+    std::queue<Command> commandQueue;
 
     Node num;
     List<Node> listNodeA;
