@@ -69,7 +69,7 @@ private:
     Node num;
     List<Node> listNodeA;
     List<Node> listNodeIndex;
-    List<Node> tmpListNode;
+    List<Node> tmpListNode, tmpListNode2;
     Node tmpNode;
 
     std::vector<Node*> deletedNode;
