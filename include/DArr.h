@@ -21,7 +21,7 @@ public:
         INSERT_MIDDLE,
         ALL
     };
-    
+
 public:
     DArr(sf::RenderWindow* window, sf::Font* sanf, sf::Font* cons, int FPS);
     ~DArr();
@@ -39,7 +39,7 @@ public:
     // insert
     bool checkSize();
     void insertFront(int value);
-    // void insertBack(int value);
+    void insertBack(int value);
     // void insertMiddle(int pos, int value);
 
     // // delete

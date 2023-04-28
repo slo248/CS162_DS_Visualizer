@@ -43,6 +43,9 @@ void DArr::draw()
             case INSERT_FRONT:
                 insertFront(p.second);
                 break;
+            case INSERT_BACK:
+                insertBack(p.second);
+                break;
         }
     }
 }
@@ -86,6 +89,7 @@ void DArr::goToEnd()
 void DArr::saveOldMem()
 {
     tmpNode=num;
+    tmpListNode.clear();
     for(int i=0; i<curMaxNode; i++)
-        tmpListNode.begin()->getNext(i)->data.value=listNodeA.begin()->getNext(i)->data.value;
+        tmpListNode.pushBack(listNodeA.begin()->getNext(i)->data);
 }

@@ -728,9 +728,9 @@ void App::DArr_Update()
                     case 0: // Front
                         darr->insertFront(cmd.input1);
                         break;
-                    // case 1: // Back
-                    //     darr->insertBack(cmd.input1);
-                    //     break;
+                    case 1: // Back
+                        darr->insertBack(cmd.input1);
+                        break;
                     // case 2: // Middle
                     //     darr->insertMiddle(cmd.input1,cmd.input2);
                     //     break;
