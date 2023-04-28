@@ -109,4 +109,21 @@ void DArr::checkSize()
         //
     }
     //
+
+    // step 3: delete old Arr
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNodeIndex,SQUARE,WHITE,BLACK,BLACK);
+
+    graph.drawShrink(&tmpListNode2,SQUARE,0,(curMaxNode>>1)-1,WHITE,BLACK,BLACK);
+
+    graph.drawMove(&listNodeA,SQUARE,sf::Vector2f(0,-100),WHITE,BLACK,BLACK);
+
+    graph.drawMove(&num,SQUARE,sf::Vector2f(0,-100),WHITE,BLACK,BLACK);
+
+    graph.drawSubscript(&listNodeIndex.begin()->data,"index",RED,LEFT);
+    graph.drawSubscript(&tmpListNode2.begin()->data,"a",RED,LEFT);
+    graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
+    graph.drawSubscript(&num,"n",RED,LEFT);
+    //
 }
