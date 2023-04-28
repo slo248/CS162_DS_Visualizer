@@ -322,6 +322,7 @@ void Graph::draw()
     for(functor f : drawFunc[curStep]){
         text->setScale(1,1);
         figure.circle->setScale(1,1);
+        figure.square->setScale(1,1);
         figure.arrow->setScale(1,1);
         f(1.f*curFrame/nFrames[curStep]);
     }
