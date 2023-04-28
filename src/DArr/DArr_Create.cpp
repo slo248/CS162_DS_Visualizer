@@ -16,7 +16,7 @@ void DArr::empty()
 void DArr::manual(const std::vector<int> &list)
 {
     empty();
-    assert(MIN_NODE<=list.size() && list.size()<=MAX_NODE);
+    assert(MIN_NODE<=list.size() && list.size()<=curMaxNode);
 
     num.value=list.size();
 
@@ -33,12 +33,12 @@ void DArr::loadFromFile()
 
 void DArr::randomList()
 {
-    randomList(getRand(MIN_NODE,MAX_NODE));
+    randomList(getRand(MIN_NODE,curMaxNode));
 }
 
 void DArr::randomList(int n)
 {
-    assert(MIN_NODE<=n && n<=MAX_NODE);
+    assert(MIN_NODE<=n && n<=curMaxNode);
     empty();
     num.value=n;
     while(n--)
@@ -51,24 +51,24 @@ void DArr::makeList()
 
     graph.addStep(0.5*FPS);
 
-    for(int i=0; i<MAX_NODE; i++)
+    for(int i=0; i<curMaxNode; i++)
         listNodeIndex.pushBack(i);
     
     listNodeIndex.begin()->data.position=START_POSITION_INDEX;
-    for(int i=1; i<MAX_NODE; i++)
+    for(int i=1; i<curMaxNode; i++)
         listNodeIndex.begin()->getNext(i)->data.position=listNodeIndex.begin()->data.position+sf::Vector2f(i*DISTANCE, 0);
 
-    graph.draw(&listNodeIndex, SQUARE, 0, num.value-1, WHITE, BLACK, BLACK);
+    graph.draw(&listNodeIndex, SQUARE, 0, curMaxNode-1, WHITE, BLACK, BLACK);
     graph.drawSubscript(&listNodeIndex.begin()->data, "index", RED, LEFT);
 
-    for(int i=num.value; i<MAX_NODE; i++)
+    for(int i=num.value; i<curMaxNode; i++)
         listNodeA.pushBack(Node(-1));
 
-    for(int i=0; i<MAX_NODE; i++)
+    for(int i=0; i<curMaxNode; i++)
         listNodeA.begin()->getNext(i)->data.position=START_POSITION_A+sf::Vector2f(i*DISTANCE, 0);
 
     // draw nodes to graph
-    graph.draw(&listNodeA,SQUARE, 0, num.value-1, WHITE,BLACK,BLACK);
+    graph.draw(&listNodeA,SQUARE, 0, curMaxNode-1, WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNodeA.begin()->data,"a",RED,LEFT);
 
     // draw num node

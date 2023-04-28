@@ -61,6 +61,8 @@ private:
     Graph graph;
     CodeBox codeBox;
 
+    int curMaxNode;
+
     Node num;
     List<Node> listNodeA;
     List<Node> listNodeIndex;

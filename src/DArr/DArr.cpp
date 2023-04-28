@@ -12,6 +12,7 @@ DArr::DArr(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     codeBox(cons),
     sanf(sanf),
     cons(cons),
+    curMaxNode(4),
     graph(window, sanf)
 {
     graph.clear();
@@ -22,7 +23,7 @@ DArr::DArr(sf::RenderWindow *window, sf::Font *sanf, sf::Font* cons, int FPS):
     randomList(4);
     makeList();
 
-    for(int i=0; i<MAX_NODE; i++)
+    for(int i=0; i<curMaxNode; i++)
         tmpListNode.pushBack(-1);
 }
 
