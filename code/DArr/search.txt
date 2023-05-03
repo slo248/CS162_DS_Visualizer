@@ -1,5 +1,5 @@
-if empty, return NOT_FOUND
+if (n==0), return NOT_FOUND;
 for(int i=0; i<n; i++)
     if(a[i] == v)
-        return i
-return NOT_FOUND
+        return i;
+return NOT_FOUND;
