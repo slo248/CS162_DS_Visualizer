@@ -1,2 +1,2 @@
-if empty, return NOT_FOUND
-return head->value
+if (head==nullptr) return NOT_FOUND;
+return head->value;
