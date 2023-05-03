@@ -1,7 +1,7 @@
-if empty, return NOT_FOUND
-index = 0, temp = head
+if (head == nullptr) return;
+int index = 0; Node* temp = head;
 while (temp->value != v)
-  index++, temp = temp->next
+  index++, temp = temp->next;
   if temp == null
-    return NOT_FOUND
-return index
+    return NOT_FOUND;
+return index;

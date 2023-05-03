@@ -1,1 +1,1 @@
-head = tail = new Node(v)
+head=tail=new Node(v);
