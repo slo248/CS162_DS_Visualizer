@@ -1,2 +1,2 @@
-if (queue.empty()) return NOT_FOUND;
+if (tail==nullptr) return NOT_FOUND;
 return tail->value;
