@@ -1,5 +1,5 @@
-if empty, do nothing
+if (n==0) return;
 for(int i=pos; i<n-1; i++)
-    a[i]=a[i+1]
-a[n-1]=-1
-n--
+    a[i]=a[i+1];
+a[n-1]=-1;
+n--;
