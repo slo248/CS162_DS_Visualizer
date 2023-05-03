@@ -4,7 +4,7 @@ if (head->next==nullptr){
   head=nullptr;
 } 
 Node* pre = head, *tail = head->next;
-while (tail->next != null)
-  pre = pre->next;
+while (tail->next != nullptr)
+  pre = tail, tail=tail->next;
 pre->next = nullptr;
 delete tail;

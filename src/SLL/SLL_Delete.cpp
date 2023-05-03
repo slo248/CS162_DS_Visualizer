@@ -242,7 +242,7 @@ void SLL::deleteMiddle(int pos)
         return;
     }
 
-    assert(1<pos && pos<listNode.size()-1);
+    assert(0<pos && pos<listNode.size()-1);
 
     graph.finishAllSteps();
 
@@ -336,8 +336,12 @@ void SLL::deleteMiddle(int pos)
     graph.draw(&listArrow,pos,m-1,BLACK);
     graph.drawGrow(&tmpArrow,ORANGE);
     graph.drawGrow(deletedA,ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(deletedN,std::to_string(pos)+"/del",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",RED);
     graph.draw(&codeBox,4);
@@ -355,8 +359,12 @@ void SLL::deleteMiddle(int pos)
     graph.draw(deletedA,ORANGE);
     graph.draw(&listArrow,pos,m-1,BLACK);
     graph.drawGrow(&listArrow,pos-1,ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(deletedN,"del",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
     graph.draw(&codeBox,5);
