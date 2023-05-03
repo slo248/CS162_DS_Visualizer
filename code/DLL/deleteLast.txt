@@ -1,4 +1,4 @@
 if (head == nullptr) return;
-Node* temp = tail;
+Node* tmp = tail;
 tail = tail->prev;
-delete temp;
+delete tmp;

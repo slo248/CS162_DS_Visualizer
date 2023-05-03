@@ -16,48 +16,48 @@ int DLL::search(int value)
         return -1;
     }
 
-    // step 1: index=0, temp=head
+    // step 1: index=0, tmp=head
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.draw(&listArrowNext,BLACK);
     graph.draw(&listArrowPrev,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"0/head/tmp",RED);
     graph.draw(&codeBox,1);
     //
 
-    // step 2: while temp->value!=value
+    // step 2: while tmp->value!=value
     int i=0;
-    ListElement<Node>* temp=listNode.begin();
-    for(;temp && temp->data.value!=value; i++, temp=temp->next){        
-        // substep 1: change color of temp
+    ListElement<Node>* tmp=listNode.begin();
+    for(;tmp && tmp->data.value!=value; i++, tmp=tmp->next){        
+        // substep 1: change color of tmp
         graph.addStep(0.5*FPS);
 
         if(i){
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
+            graph.drawSubscript(&tmp->data,std::to_string(i)+"/tmp",RED);
         }
         else
-            graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
+            graph.drawSubscript(&listNode.begin()->data,"0/head/tmp",RED);
         graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
         graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
-        graph.drawFadeOut(&temp->data,CIRCLE,ORANGE,ORANGE,WHITE);
+        graph.drawFadeOut(&tmp->data,CIRCLE,ORANGE,ORANGE,WHITE);
         graph.draw(&listArrowNext,0,i-1,ORANGE);
         graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
         graph.draw(&listArrowPrev,BLACK);
         graph.draw(&codeBox,2);
         //
 
-        if(temp->next){
-            // substep 2: temp=temp->next, index++
+        if(tmp->next){
+            // substep 2: tmp=tmp->next, index++
             graph.addStep(0.5*FPS);
 
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/temp",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,std::to_string(i+1)+"/tmp",RED);
             graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
             graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
-            graph.drawFadeIn(&temp->next->data,CIRCLE,ORANGE,ORANGE,WHITE);
+            graph.drawFadeIn(&tmp->next->data,CIRCLE,ORANGE,ORANGE,WHITE);
             graph.draw(&listArrowNext,0,i-1,ORANGE);
             graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
             graph.drawGrow(&listArrowNext.begin()->getNext(i)->data,ORANGE);
@@ -73,7 +73,7 @@ int DLL::search(int value)
             graph.draw(&listArrowNext,ORANGE);
             graph.draw(&listArrowPrev,BLACK);
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
+            graph.drawSubscript(&tmp->data,std::to_string(i)+"/tmp",RED);
             graph.draw(&codeBox,45);
             //
 
@@ -86,13 +86,14 @@ int DLL::search(int value)
 
     if(i){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&temp->data,std::to_string(i)+"/temp",RED);
+        graph.drawSubscript(&tmp->data,std::to_string(i)+"/tmp",RED);
     }
     else
-        graph.drawSubscript(&listNode.begin()->data,"0/head/temp",RED);
+        graph.drawSubscript(&listNode.begin()->data,"0/head/tmp",RED);
     graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
     graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&temp->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&tmp->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&tmp->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listArrowNext,0,i-1,ORANGE);
     graph.draw(&listArrowNext,i,listArrowNext.size()-1,BLACK);
     graph.draw(&listArrowPrev,BLACK);
