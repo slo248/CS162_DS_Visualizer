@@ -89,6 +89,7 @@ int SLL::search(int value)
     graph.draw(&listNode,CIRCLE,0,i,WHITE,ORANGE,ORANGE);
     graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&tmp->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&tmp->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listArrow,0,i-1,ORANGE);
     graph.draw(&listArrow,i,listArrow.size()-1,BLACK);
     graph.draw(&codeBox,7);
