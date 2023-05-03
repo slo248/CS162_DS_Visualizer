@@ -2,12 +2,6 @@
 
 void SLL::deleteWhenSingle()
 {
-    if(listNode.empty()) return;
-
-    graph.finishAllSteps();
-
-    codeBox.loadFromFile("code/SLL/deleteFirst.txt");
-
     graph.addStep(0.5*FPS);
     graph.draw(&codeBox,0);
 
@@ -16,7 +10,7 @@ void SLL::deleteWhenSingle()
     graph.draw(&listNode.begin()->data,CIRCLE,WHITE,BLACK,BLACK);
     graph.drawSubscript(&listNode.begin()->data,"head",RED);
     
-    // step 1: temp=head
+    // step 1: tmp=head
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode.begin()->data,CIRCLE,WHITE,BLACK,BLACK);
@@ -33,7 +27,7 @@ void SLL::deleteWhenSingle()
     graph.draw(&codeBox,2);
     //
 
-    // step 3: delete temp
+    // step 3: delete tmp
     graph.addStep(0.5*FPS);
 
     graph.drawShrink(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
@@ -46,24 +40,25 @@ void SLL::deleteWhenSingle()
 
 void SLL::deleteFirst()
 {
-    if(listNode.size()<=1){
-        deleteWhenSingle();
-        return;
-    }
-
     graph.finishAllSteps();
 
     codeBox.loadFromFile("code/SLL/deleteFirst.txt");
 
     int sz=listNode.size();
 
-    // step 1: assign temp=head
+    if(sz==0){
+        graph.addStep(1);
+        graph.draw(&codeBox,0);
+        return;
+    }
+
+    // step 1: assign tmp=head
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
     graph.draw(&listArrow,BLACK);
     graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    graph.drawSubscript(&listNode.begin()->data,"head/temp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"head/tmp",RED);
     graph.draw(&codeBox,1);
     //
 
@@ -75,12 +70,12 @@ void SLL::deleteFirst()
     graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawFadeIn(&listNode.begin()->getNext()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.drawFadeIn(&listArrow.begin()->data,GREEN);
-    graph.drawSubscript(&listNode.begin()->data,"temp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"tmp",RED);
     graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
     graph.draw(&codeBox,2);
     //
 
-    // step 3: delete temp
+    // step 3: delete tmp
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,1,GREEN,GREEN,WHITE);
@@ -88,7 +83,7 @@ void SLL::deleteFirst()
     graph.draw(&listArrow,1,listArrow.size()-1,BLACK);
     graph.drawShrink(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
     graph.drawShrink(&listArrow.begin()->data,GREEN);
-    graph.drawSubscript(&listNode.begin()->data,"temp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"tmp",RED);
     graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
     graph.draw(&codeBox,3);
     //
@@ -109,11 +104,6 @@ void SLL::deleteFirst()
 
 void SLL::deleteLast()
 {
-    if(listNode.size()<=1){
-        deleteWhenSingle();
-        return;
-    }
-
     graph.finishAllSteps();
 
     codeBox.loadFromFile("code/SLL/deleteLast.txt");
@@ -121,27 +111,42 @@ void SLL::deleteLast()
     const int n=listNode.size();
     const int m=listArrow.size();
 
-    // step 1: assign pre=head
+    if(n==0){
+        graph.addStep(1);
+        graph.draw(&codeBox,0);
+        return;
+    }
+    else if(n==1)
+    {
+        // step 1: if(head->next==nullptr)
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.draw(&codeBox,1);
+
+        // step 2:
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.draw(&codeBox,12);
+    }
+
+    // step 1: Node* pre = head, *tail = head->next;
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
-    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-    graph.draw(&codeBox,1);
-    //
-
-    // step 2: temp=head->next
-    graph.addStep(0.5*FPS);
-
     graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
     graph.drawFadeIn(&listNode.begin()->next->data,CIRCLE,GREEN,GREEN,WHITE);
+
+    graph.draw(&listArrow,BLACK);
     graph.drawGrow(&listArrow.begin()->data,ORANGE);
+
     graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-    graph.drawSubscript(&listNode.begin()->next->data,"temp",RED);
-    graph.draw(&codeBox,2);
+    graph.drawSubscript(&listNode.begin()->next->data,"tail",RED);
+    graph.draw(&codeBox,5);
     //
 
     // step 3: traverse tail
@@ -164,8 +169,8 @@ void SLL::deleteLast()
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
             graph.drawSubscript(&listNode.begin()->getNext(i-1)->data,"pre",RED);
         }
-        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"temp",RED);
-        graph.draw(&codeBox,3);
+        graph.drawSubscript(&listNode.begin()->getNext(i)->data,"tail",RED);
+        graph.draw(&codeBox,6);
         //
 
         if(i==n-1) break;
@@ -186,8 +191,8 @@ void SLL::deleteLast()
         graph.drawGrow(&listArrow.begin()->getNext(i)->data,GREEN);
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
         graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"temp",RED);
-        graph.draw(&codeBox,4);
+        graph.drawSubscript(&listNode.begin()->getNext(i+1)->data,"tail",RED);
+        graph.draw(&codeBox,7);
         //
     }
 
@@ -205,11 +210,11 @@ void SLL::deleteLast()
     }
     else
         graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(n-1)->data,"temp",RED);
-    graph.draw(&codeBox,5);
+    graph.drawSubscript(&listNode.begin()->getNext(n-1)->data,"tail",RED);
+    graph.draw(&codeBox,8);
     //
 
-    // step 5: delete temp
+    // step 5: delete tail
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,0,n-3,WHITE,ORANGE,ORANGE);
@@ -219,11 +224,11 @@ void SLL::deleteLast()
     graph.draw(&listArrow,0,m-2,ORANGE);
     if(n>2){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"tail",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(n-2)->data,"pre",RED);
     }
     else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
-    graph.draw(&codeBox,6);
+        graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+    graph.draw(&codeBox,9);
     //
 
     deletedNode.push_back(listNode.popBack());

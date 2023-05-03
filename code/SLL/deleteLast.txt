@@ -1,8 +1,10 @@
 if (head==nullptr) return;
-Node* pre = head;
-tmp = head->next;
-while (tmp->next != null)
+if (head->next==nullptr){
+  delete head;
+  head=nullptr;
+} 
+Node* pre = head, *tail = head->next;
+while (tail->next != null)
   pre = pre->next;
 pre->next = nullptr;
-tail = pre;
-delete tmp;
+delete tail;

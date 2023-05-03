@@ -9,7 +9,7 @@ public:
     const float         WIDTH = 600;
     const float         HEIGHT = 43.75;
     const float         CHAR_SIZE=23;
-    const int           MAX_LINE = 8;
+    const int           MAX_LINE = 11;
     const sf::Color     BG_COLOR = sf::Color(192, 192, 192, 160);
     const sf::Color     CUR_LINE = sf::Color(255, 217, 61);
     const sf::Color     TEXT_COLOR = BLACK;
