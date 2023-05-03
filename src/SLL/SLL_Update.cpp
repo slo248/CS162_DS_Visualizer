@@ -3,21 +3,19 @@
 
 void SLL::update(int pos, int newValue)
 {
-    if(pos<0 || pos>=listNode.size()) return;
-
-    assert(0<=pos && pos<listNode.size());
-    assert(Config::MIN_VALUE<=newValue && newValue<=Config::MAX_VALUE);
-
     graph.finishAllSteps();
 
     codeBox.loadFromFile("code/SLL/update.txt");
 
     int n=listNode.size();
-    if(n==0 || pos<0 || pos>=n){ 
+    if(n==0){ 
         graph.addStep(1);
         graph.draw(&codeBox,0);
         return;
     }
+
+    assert(0<=pos && pos<listNode.size());
+    assert(Config::MIN_VALUE<=newValue && newValue<=Config::MAX_VALUE);
 
     tmpNode.value=listNode.begin()->getNext(pos)->data.value;
     tmpNode.position=listNode.begin()->getNext(pos)->data.position;

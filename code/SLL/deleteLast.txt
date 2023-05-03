@@ -1,7 +1,8 @@
-if empty, do nothing
-Node* pre = head
-temp = head->next
-while (temp->next != null)
-  pre = pre->next
-pre->next = null
-delete temp, tail = pre
+if (head==nullptr) return;
+Node* pre = head;
+tmp = head->next;
+while (tmp->next != null)
+  pre = pre->next;
+pre->next = nullptr;
+tail = pre;
+delete tmp;

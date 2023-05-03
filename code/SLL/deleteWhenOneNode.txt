@@ -1,2 +1,2 @@
-delete head
-head=null
+delete head;
+head=nullptr;

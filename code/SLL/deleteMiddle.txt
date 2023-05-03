@@ -1,7 +1,7 @@
-if empty, do nothing
-Node *pre = head
+if (head==nullptr) return;
+Node *pre = head;
 for (k = 0; k < i-1; k++)
-  pre = pre->next
-Node *del = pre->next, *aft = del->next
-pre->next = aft // bypass del
-delete del
+  pre = pre->next;
+Node *del = pre->next, *aft = del->next;
+pre->next = aft;
+delete del;

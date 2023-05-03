@@ -1,1 +1,1 @@
-head=new Node(value)
+head=new Node(v);
