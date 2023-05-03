@@ -1,4 +1,4 @@
-if empty, do nothing
-tmp = head
-delete tmp
-head = tail = null
+if (queue.empty()) return;
+Node* tmp = head;
+delete tmp;
+head = tail = null;
