@@ -101,11 +101,11 @@ namespace Config
     namespace CLL
     {
         const int MIN_NODE=0;
-        const int MAX_NODE=10;
-        const int RADIUS=250;
+        const int MAX_NODE=7;
+        const int RADIUS=180;
         const sf::Vector2f CENTER= sf::Vector2f(
             Window::WIDTH/2.f,
-            Window::HEIGHT/2.f
+            Window::HEIGHT/4.f+50
         );
     }
 

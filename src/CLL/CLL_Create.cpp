@@ -49,10 +49,10 @@ void CLL::makeList()
     float startAngle=acos(-1)/2;
     float angleBtwNode=2*acos(-1)/listNode.size();
     for(int i=0; i<listNode.size(); i++){
-        sf::Vector2f pos=CENTER+sf::Vector2f(RADIUS,0);
+        sf::Vector2f pos=sf::Vector2f(0,-RADIUS);
         listNode.begin()->getNext(i)->data.position=sf::Vector2f(
-            pos.x*cos(startAngle-i*angleBtwNode)-pos.y*sin(startAngle-i*angleBtwNode),
-            pos.x*sin(startAngle-i*angleBtwNode)+pos.y*cos(startAngle-i*angleBtwNode)
+            CENTER.x+pos.x*cos(i*angleBtwNode)-pos.y*sin(i*angleBtwNode),
+            CENTER.y+pos.x*sin(i*angleBtwNode)+pos.y*cos(i*angleBtwNode)
         );
     }
 
