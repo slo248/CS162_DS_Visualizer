@@ -517,9 +517,9 @@ void App::CLL_Update()
             case 2: // Search
                 cll->search(cmd.input1);
                 break;
-    //         case 3: // Update
-    //             cll->update(cmd.input1,cmd.input2);
-    //             break;
+            case 3: // Update
+                cll->update(cmd.input1,cmd.input2);
+                break;
     //         case 4: // Delete
     //             switch (cmd.suboption)
     //             {
