@@ -36,4 +36,23 @@ void CLL::deleteFirst()
 
     tmpArrow.src=&listNode.rbegin()->data;
     tmpArrow.dest=deletedN;
+
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    // step 1: tmp=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+
+    graph.draw(deletedA,BLACK);
+    graph.draw(&listArrow,0,m-2,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+
+    graph.drawSubscript(deletedN,"head/tmp",RED);
+
+    graph.draw(&codeBox,3);
+    //
 }
