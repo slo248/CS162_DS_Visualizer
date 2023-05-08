@@ -454,4 +454,33 @@ void CLL::deleteMiddle(int pos)
 
     graph.draw(&codeBox,56);
     //
+
+    // step 4: organize list
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,0,WHITE,BLACK,BLACK);
+
+    float curAngle=2*acos(-1)/n;
+    float preAngle=2*acos(-1)/(n+1);
+    for(int i=1; i<pos; i++){
+        Node& node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*(curAngle-preAngle),WHITE,BLACK,BLACK);
+    }
+    for(int i=pos; i<n; i++){
+        Node& node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*curAngle-(i+1)*preAngle,WHITE,BLACK,BLACK);
+    }
+
+    graph.draw(&listArrow,BLACK);
+
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
+    
+    graph.draw(&codeBox,7);
+    //
 }
