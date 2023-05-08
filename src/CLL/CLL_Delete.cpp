@@ -400,4 +400,33 @@ void CLL::deleteMiddle(int pos)
         //
     }
     //
+    
+    // step 2: del=pre->next, aft=del->next
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(deletedN,CIRCLE,RED,RED,WHITE);
+    graph.draw(&listNode,CIRCLE,pos,n-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
+
+    graph.draw(&listArrow,0,pos-2,ORANGE);
+    graph.draw(&tmpArrow,BLACK);
+    graph.drawGrow(&tmpArrow,ORANGE);
+    graph.draw(deletedA,BLACK);
+    graph.drawGrow(deletedA,ORANGE);
+    graph.draw(&listArrow,pos,m-1,BLACK);
+
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(deletedN,std::to_string(pos)+"/del",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos+1)+"/aft",RED);
+
+    graph.draw(&codeBox,4);
+    //
 }
