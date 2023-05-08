@@ -34,6 +34,7 @@ public:
     void drawFadeOut(Node* node, NodeType type, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(Node* node, NodeType type, sf::Vector2f src, sf::Vector2f dest,sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawMove(Node* node, NodeType type, sf::Vector2f delta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
+    void drawMove(Node* node, NodeType type, sf::Vector2f origin, float alpha, float beta, sf::Color inColor, sf::Color outColor, sf::Color numColor);
     void drawSubscript(Node* node, std::string str, sf::Color textColor, SubscriptDir dir=DOWN);
     //
 
