@@ -179,9 +179,9 @@ void Graph::drawMove(Node *node, NodeType type, sf::Vector2f delta, sf::Color in
 void Graph::drawMove(Node *node, NodeType type, sf::Vector2f origin, float alpha, float beta, sf::Color inColor, sf::Color outColor, sf::Color numColor)
 {
     if(type==NodeType::CIRCLE)
-        drawFunc.back().push_back(std::bind(&Node::drawCircleMoveAngle, node, window, origin, alpha, beta, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
+        drawFunc.back().push_back(std::bind(&Node::drawCircleMoveAngle, node, window, node->position, origin, alpha, beta, figure.circle, inColor, outColor, text, numColor, std::placeholders::_1));
     else
-        drawFunc.back().push_back(std::bind(&Node::drawSquareMoveAngle, node, window, origin, alpha, beta, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
+        drawFunc.back().push_back(std::bind(&Node::drawSquareMoveAngle, node, window, node->position, origin, alpha, beta, figure.square, inColor, outColor, text, numColor, std::placeholders::_1));
 }
 
 void Graph::drawSubscript(Node *node, std::string str, sf::Color textColor, SubscriptDir dir)

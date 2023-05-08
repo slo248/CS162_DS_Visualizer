@@ -113,4 +113,14 @@ void CLL::insertFront(int val)
     graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.draw(&codeBox,6);
     //
+
+    // step 5: move to correct position
+
+    graph.addStep(0.5*FPS);
+
+    float preAngle=2*acos(-1)/(n-1);
+    float curAngle=2*acos(-1)/n;
+    graph.drawMove(&listNode.begin()->getNext()->data,CIRCLE,CENTER,0,curAngle,WHITE,BLACK,BLACK);
+
+    //
 }
