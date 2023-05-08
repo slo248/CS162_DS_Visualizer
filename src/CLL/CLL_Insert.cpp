@@ -338,6 +338,36 @@ void CLL::insertMiddle(int pos, int value)
     tmpArrow.src=&listNode.begin()->getNext(pos-1)->data;
     tmpArrow.dest=&tmpNode;
 
+    // step 1: traverse to before pos
+    for(int i=0; i<pos; i++)
+    {
+        // substep 1: highlight current node and lowlight previous node
+        graph.addStep(0.5*FPS);
+        
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.drawFadeOut(&listNode,CIRCLE,i-1,i-1,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,pos-2,BLACK);
+        graph.draw(&tmpArrow,BLACK);
+        graph.draw(&listArrow,pos+1,m-1,BLACK);
+
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        }
+        else 
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+
+        if(i) graph.draw(&codeBox,2); else graph.draw(&codeBox,12);
+        //
+    }
+    //
+
     // step 2: appear new node
     graph.addStep(0.5*FPS);
 
@@ -347,14 +377,14 @@ void CLL::insertMiddle(int pos, int value)
     graph.draw(&listArrow,0,pos-2,BLACK);
     graph.draw(&tmpArrow,BLACK);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
-    if(n>2)
-    {
+    if(pos>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"pre",RED);
     }
-    else
-        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",RED);
-    graph.draw(&codeBox,1);
+    graph.draw(&codeBox,4);
     //
 }
