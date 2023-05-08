@@ -1,0 +1,9 @@
+if(head==nullptr) return;
+if(head->next==tail)
+    delete head, head=tail=nullptr, return;
+Node* pre=head;
+while(pre->next!=tail)
+    pre=pre->next;
+pre->next=head;
+delete tail;
+tail=pre;
