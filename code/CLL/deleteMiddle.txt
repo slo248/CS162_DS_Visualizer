@@ -1,0 +1,7 @@
+if(!(0<pos && pos<size-1)) return;
+Node* pre=head;
+for(int i=0; i<pos-1; i++)
+    pre=pre->next;
+Node* del=pre->next, *aft=del->next;
+pre->next=aft;
+delete del;
