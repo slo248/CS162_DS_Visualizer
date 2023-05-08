@@ -10,8 +10,12 @@ void CLL::insertFront(int val)
     graph.finishAllSteps();
     codeBox.loadFromFile("code/CLL/insertFront.txt");
 
+    sf::Vector2f insPos;
+    if(listNode.size()<=2) insPos=INSF_POS_LESS;
+    else insPos=CENTER;
+
     listNode.pushFront(val);
-    listNode.begin()->data.position=CENTER;
+    listNode.begin()->data.position=insPos;
 
     if(listNode.size()==1)
     {
@@ -28,7 +32,7 @@ void CLL::insertFront(int val)
         // step 2: head=tail=vtx
         graph.addStep(0.5*FPS);
 
-        graph.drawMove(&listNode.begin()->data,CIRCLE,sf::Vector2f(0,-RADIUS),ORANGE,ORANGE,WHITE);
+        graph.drawMove(&listNode.begin()->data,CIRCLE,CENTER-sf::Vector2f(0,RADIUS)-insPos,ORANGE,ORANGE,WHITE);
         graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
         graph.drawSubscript(&listNode.begin()->data,"head/tail/vtx",RED);
         graph.draw(&codeBox,12);
@@ -88,7 +92,7 @@ void CLL::insertFront(int val)
 
     graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    graph.drawMove(&tmpNode,CIRCLE,sf::Vector2f(0,RADIUS),BLANK,BLANK,BLANK);
+    graph.drawMove(&tmpNode,CIRCLE,insPos-CENTER+sf::Vector2f(0,RADIUS),BLANK,BLANK,BLANK);
     graph.draw(&listArrow.begin()->data,ORANGE);
     graph.draw(&listArrow,1,m-2,BLACK);
     graph.draw(&tmpArrow,BLACK);
@@ -126,7 +130,7 @@ void CLL::insertFront(int val)
         Node &node=listNode.begin()->getNext(i)->data;
         graph.drawMove(&node,CIRCLE,CENTER,0,i*curAngle-(i-1)*preAngle,WHITE,BLACK,BLACK);
     }
-    graph.drawMove(&listNode.begin()->data,CIRCLE,sf::Vector2f(0,-RADIUS),GREEN,GREEN,WHITE);
+    graph.drawMove(&listNode.begin()->data,CIRCLE,CENTER-sf::Vector2f(0,RADIUS)-insPos,GREEN,GREEN,WHITE);
 
     graph.draw(&listArrow.begin()->data,ORANGE);
     graph.drawFadeIn(&listArrow.begin()->data,BLACK);

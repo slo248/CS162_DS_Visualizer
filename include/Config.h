@@ -107,6 +107,10 @@ namespace Config
             Window::WIDTH/2.f,
             Window::HEIGHT/4.f+50
         );
+        const sf::Vector2f INSF_POS_LESS= sf::Vector2f(
+            CENTER.x-RADIUS*3.f/2.f,
+            CENTER.y-RADIUS
+        );
     }
 
     namespace Stack
