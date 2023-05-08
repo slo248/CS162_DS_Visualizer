@@ -275,4 +275,21 @@ void CLL::deleteLast()
 
     graph.draw(&codeBox,6);
     //
+
+    // step 3: delete tail, tail=pre
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,WHITE,ORANGE,ORANGE);
+    graph.drawFadeIn(&listNode,CIRCLE,0,n-1,WHITE,BLACK,BLACK);
+    graph.drawShrink(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    
+    graph.draw(&listArrow,ORANGE);
+    graph.drawFadeIn(&listArrow,0,m-1,BLACK);
+    graph.drawShrink(deletedA,BLACK);
+
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+
+    graph.draw(&codeBox,7);
+    //
 }
