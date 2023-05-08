@@ -395,15 +395,16 @@ void CLL::insertMiddle(int pos, int value)
     }
     //
 
-    // step 2: appear new node
+    // step 2: aft=pre->next
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
     graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
-    graph.drawGrow(&listNode.begin()->getNext(pos)->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode,CIRCLE,pos+1,pos+1,BLUE,BLUE,WHITE);
     graph.draw(&listArrow,0,pos-2,ORANGE);
     graph.draw(&tmpArrow,BLACK);
+    graph.drawGrow(&tmpArrow,ORANGE);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
     if(pos>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
@@ -412,7 +413,7 @@ void CLL::insertMiddle(int pos, int value)
     else 
         graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
-    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",RED);
     graph.draw(&codeBox,4);
     //
 }
