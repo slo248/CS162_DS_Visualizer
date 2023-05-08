@@ -1,8 +1,8 @@
-Node *tmp=new Node(v);
+Node *vtx=new Node(v);
 if(head == nullptr)
-    head=tail=tmp;
+    head=tail=vtx;
 else{
-    tmp->next=head;
-    tail->next=tmp;
-    head=tmp;
+    vtx->next=head;
+    tail->next=vtx;
+    head=vtx;
 }

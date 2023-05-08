@@ -13,6 +13,28 @@ void CLL::insertFront(int val)
     listNode.pushFront(val);
     listNode.begin()->data.position=CENTER;
 
+    if(listNode.size()==1)
+    {
+        // step 1: appear new node
+        graph.addStep(0.5*FPS);
+
+        graph.drawGrow(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+        graph.drawSubscript(&listNode.begin()->data,"vtx",RED);
+        graph.draw(&codeBox,0);
+        //
+
+        // step 2: head=tail=vtx
+        graph.addStep(0.5*FPS);
+
+        graph.drawMove(&listNode.begin()->data,CIRCLE,sf::Vector2f(0,-RADIUS),ORANGE,ORANGE,WHITE);
+        graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+        graph.drawSubscript(&listNode.begin()->data,"head/tail/vtx",RED);
+        graph.draw(&codeBox,12);
+        //
+
+        return;
+    }
+
     listArrow.rbegin()->data.dest=&listNode.begin()->data;
     listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->getNext()->data));
 
