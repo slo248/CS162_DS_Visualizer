@@ -15,14 +15,26 @@ void CLL::insertFront(int val)
 
     listArrow.rbegin()->data.dest=&listNode.begin()->data;
     listArrow.pushFront(Arrow(&listNode.begin()->data, &listNode.begin()->getNext()->data));
-    listArrow.pushBack(Arrow(&listNode.rbegin()->data, &listNode.begin()->data));
 
     tmpArrow.src=&listNode.rbegin()->data;
     tmpArrow.dest=&listNode.begin()->getNext()->data;
 
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    // step 1: appear new node
     graph.addStep(0.5*FPS);
-    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
-    graph.draw(&codeBox,9);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow,1,m-2,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->getNext()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.begin()->data,"tmp",RED);
+    //
 }
