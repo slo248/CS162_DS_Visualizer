@@ -55,4 +55,22 @@ void CLL::deleteFirst()
 
     graph.draw(&codeBox,3);
     //
+
+    // step 2: head=head->next
+    graph.addStep(0.5*FPS);
+
+    graph.draw(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+
+    graph.draw(deletedA,BLACK);
+    graph.drawGrow(deletedA,ORANGE);
+    graph.draw(&listArrow,0,m-2,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+
+    graph.drawSubscript(deletedN,"tmp",RED);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+
+    graph.draw(&codeBox,4);
+    //
 }
