@@ -1,0 +1,8 @@
+if(!(0<pos && pos<size-1)) return;
+Node* vtx=new Node(v);
+Node* pre=head;
+for(int i=0; i<pos-1; i++)
+    pre=pre->next;
+Node* cur=pre->next;
+vtx->next=cur;
+pre->next=vtx;
