@@ -7,6 +7,9 @@ void CLL::insertFront(int value)
 {
     if(listNode.size()==MAX_NODE) return;
 
+    if(value<Config::MIN_VALUE && value>Config::MAX_VALUE)
+        throw std::out_of_range("CLL::insertMiddle() : value out of range");
+
     graph.finishAllSteps();
     codeBox.loadFromFile("code/CLL/insertFront.txt");
 
@@ -147,6 +150,9 @@ void CLL::insertFront(int value)
 void CLL::insertBack(int value)
 {
     if(listNode.size()==MAX_NODE) return;
+
+    if(value<Config::MIN_VALUE && value>Config::MAX_VALUE)
+        throw std::out_of_range("CLL::insertMiddle() : value out of range");
 
     graph.finishAllSteps();
     codeBox.loadFromFile("code/CLL/insertBack.txt");
@@ -294,4 +300,33 @@ void CLL::insertBack(int value)
 
     graph.draw(&codeBox,9);
     //
+}
+
+void CLL::insertMiddle(int pos, int value)
+{
+    if(!(0<pos && pos<listNode.size()))
+        throw std::out_of_range("CLL::insertMiddle() : pos out of range");
+
+    if(value<Config::MIN_VALUE && value>Config::MAX_VALUE)
+        throw std::out_of_range("CLL::insertMiddle() : value out of range");
+
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/CLL/insertMiddle.txt");
+
+    sf::Vector2f insPos;
+    if(listNode.size()<=2) insPos=INSM_POS_LESS;
+    else insPos=CENTER;
+
+    listNode.insert(pos,value);
+    listNode.begin()->getNext(pos)->data.position=insPos;
+
+    listArrow.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
+    listArrow.insert(Arrow(&listNode.begin()->getNext(pos)->data,&listNode.begin()->getNext(pos+1)->data),pos);
+
+    graph.addStep(0.5*FPS);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.draw(&listArrow,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,0);
 }

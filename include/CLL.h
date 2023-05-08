@@ -21,7 +21,7 @@ public:
     // insert
     void insertFront(int value);
     void insertBack(int value);
-    // void insertMiddle(int pos, int value);
+    void insertMiddle(int pos, int value);
 
     // // search
     // int search(int value);

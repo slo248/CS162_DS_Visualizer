@@ -509,9 +509,9 @@ void App::CLL_Update()
                     case 1: // Back
                         cll->insertBack(cmd.input1);
                         break;
-                    // case 2: // Middle
-                    //     cll->insertMiddle(cmd.input1,cmd.input2);
-                    //     break;
+                    case 2: // Middle
+                        cll->insertMiddle(cmd.input1,cmd.input2);
+                        break;
                 }
                 break;
     //         case 2: // Search

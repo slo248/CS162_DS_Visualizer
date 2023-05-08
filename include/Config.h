@@ -115,6 +115,10 @@ namespace Config
             CENTER.x-RADIUS*3.f/2.f,
             CENTER.y-RADIUS
         );
+        const sf::Vector2f INSM_POS_LESS= sf::Vector2f(
+            CENTER.x-RADIUS*3.f/2.f,
+            CENTER.y-RADIUS
+        );
     }
 
     namespace Stack
