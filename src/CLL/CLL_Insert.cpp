@@ -248,19 +248,20 @@ void CLL::insertBack(int value)
     graph.draw(&codeBox,5);
     //
 
-    // // step 4: head=vtx
-    // graph.addStep(0.5*FPS);
+    // step 4: tail=vtx
+    graph.addStep(0.5*FPS);
 
-    // graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
-    // graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    // graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
-    // graph.draw(&listArrow.begin()->data,ORANGE);
-    // graph.draw(&listArrow,1,m-2,BLACK);
-    // graph.draw(&tmpArrow,ORANGE);
-    // graph.drawSubscript(&listNode.begin()->data,"head/tmp",RED);
-    // graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
-    // graph.draw(&codeBox,6);
-    // //
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.rbegin()->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listArrow,0,m-3,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+    graph.draw(&tmpArrow,ORANGE);
+    graph.draw(&listArrow.rbegin()->data,ORANGE);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail/tmp",RED);
+    graph.draw(&codeBox,6);
+    //
 
     // // step 5: move to correct position
     // graph.addStep(0.5*FPS);
