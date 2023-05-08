@@ -323,10 +323,38 @@ void CLL::insertMiddle(int pos, int value)
     listArrow.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
     listArrow.insert(Arrow(&listNode.begin()->getNext(pos)->data,&listNode.begin()->getNext(pos+1)->data),pos);
 
+    // graph.addStep(0.5*FPS);
+    // graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    // graph.draw(&listArrow,BLACK);
+    // graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    // graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    // graph.draw(&codeBox,0);
+
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    tmpNode.position=listNode.begin()->getNext(pos+1)->data.position;
+
+    tmpArrow.src=&listNode.begin()->getNext(pos-1)->data;
+    tmpArrow.dest=&tmpNode;
+
+    // step 2: appear new node
     graph.addStep(0.5*FPS);
-    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
-    graph.draw(&codeBox,0);
+
+    graph.draw(&listNode,CIRCLE,0,pos-1,WHITE,BLACK,BLACK);
+    graph.drawGrow(&listNode.begin()->getNext(pos)->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listArrow,0,pos-2,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+    graph.draw(&listArrow,pos+1,m-1,BLACK);
+    if(n>2)
+    {
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,"vtx",RED);
+    graph.draw(&codeBox,1);
+    //
 }
