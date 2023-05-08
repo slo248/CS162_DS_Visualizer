@@ -429,4 +429,29 @@ void CLL::deleteMiddle(int pos)
 
     graph.draw(&codeBox,4);
     //
+
+    // step 3: pre->next=aft
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.drawFadeOut(&listNode,CIRCLE,pos-1,pos-1,ORANGE,ORANGE,WHITE);
+    graph.drawFadeOut(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
+    graph.drawShrink(deletedN,CIRCLE,RED,RED,WHITE);
+
+    graph.draw(&listArrow,0,pos-2,ORANGE);
+    graph.drawGrow(&listArrow,pos-1,ORANGE);
+    graph.drawShrink(deletedA,ORANGE);
+    graph.draw(&listArrow,pos,m-1,BLACK);
+
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(deletedN,"del",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
+
+    graph.draw(&codeBox,56);
+    //
 }
