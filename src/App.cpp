@@ -514,9 +514,9 @@ void App::CLL_Update()
                         break;
                 }
                 break;
-    //         case 2: // Search
-    //             cll->search(cmd.input1);
-    //             break;
+            case 2: // Search
+                cll->search(cmd.input1);
+                break;
     //         case 3: // Update
     //             cll->update(cmd.input1,cmd.input2);
     //             break;

@@ -23,8 +23,8 @@ public:
     void insertBack(int value);
     void insertMiddle(int pos, int value);
 
-    // // search
-    // int search(int value);
+    // search
+    int search(int value);
 
     // // update
     // void update(int pos, int newValue);
