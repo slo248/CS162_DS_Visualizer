@@ -317,7 +317,7 @@ void CLL::insertMiddle(int pos, int value)
     if(listNode.size()<=2) insPos=INSM_POS_LESS;
     else insPos=CENTER;
 
-    listNode.insert(pos,value);
+    listNode.insert(value,pos);
     listNode.begin()->getNext(pos)->data.position=insPos;
 
     listArrow.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
@@ -365,21 +365,49 @@ void CLL::insertMiddle(int pos, int value)
 
         if(i) graph.draw(&codeBox,2); else graph.draw(&codeBox,12);
         //
+
+        if(i==pos-1) break;
+
+        // step 2: move to next node
+        graph.addStep(0.5*FPS);
+        
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,pos-2,BLACK);
+        graph.drawGrow(&listArrow,i,ORANGE);
+        graph.draw(&tmpArrow,BLACK);
+        graph.draw(&listArrow,pos+1,m-1,BLACK);
+
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        }
+        else 
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+
+        graph.draw(&codeBox,3);
+        //
     }
     //
 
     // step 2: appear new node
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,CIRCLE,0,pos-1,WHITE,BLACK,BLACK);
-    graph.drawGrow(&listNode.begin()->getNext(pos)->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.drawGrow(&listNode.begin()->getNext(pos)->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,0,pos-2,BLACK);
+    graph.draw(&listArrow,0,pos-2,ORANGE);
     graph.draw(&tmpArrow,BLACK);
     graph.draw(&listArrow,pos+1,m-1,BLACK);
     if(pos>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"pre",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
     }
     else 
         graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
