@@ -149,7 +149,7 @@ void CLL::insertBack(int value)
     if(listNode.size()==MAX_NODE) return;
 
     graph.finishAllSteps();
-    codeBox.loadFromFile("code/CLL/insertFront.txt");
+    codeBox.loadFromFile("code/CLL/insertBack.txt");
 
     sf::Vector2f insPos;
     if(listNode.size()<=2) insPos=INSB_POS_LESS;
@@ -263,25 +263,35 @@ void CLL::insertBack(int value)
     graph.draw(&codeBox,6);
     //
 
-    // // step 5: move to correct position
-    // graph.addStep(0.5*FPS);
+    // step 5: move to correct position
+    graph.addStep(0.5*FPS);
 
-    // float preAngle=2*acos(-1)/(n-1);
-    // float curAngle=2*acos(-1)/n;
-    // for(int i=1; i<n; i++){
-    //     Node &node=listNode.begin()->getNext(i)->data;
-    //     graph.drawMove(&node,CIRCLE,CENTER,0,i*curAngle-(i-1)*preAngle,WHITE,BLACK,BLACK);
-    // }
-    // graph.drawMove(&listNode.begin()->data,CIRCLE,CENTER-sf::Vector2f(0,RADIUS)-insPos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode.begin()->data,CIRCLE,WHITE,BLACK,BLACK);
 
-    // graph.draw(&listArrow.begin()->data,ORANGE);
-    // graph.drawFadeIn(&listArrow.begin()->data,BLACK);
-    // graph.draw(&listArrow,1,m-2,BLACK);
-    // graph.draw(&listArrow,m-1,ORANGE);
-    // graph.drawFadeIn(&listArrow,m-1,m-1,BLACK);
-    // graph.drawSubscript(&listNode.begin()->data,"head",RED);
-    // graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    float preAngle=2*acos(-1)/(n-1);
+    float curAngle=2*acos(-1)/n;
+    for(int i=1; i<n-1; i++){
+        Node &node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*(curAngle-preAngle),WHITE,BLACK,BLACK);
+    }
 
-    // graph.draw(&codeBox,9);
-    // //
+    sf::Vector2f dest;
+    {
+        sf::Vector2f pos=sf::Vector2f(0,-RADIUS);
+        dest=sf::Vector2f(
+            CENTER.x+pos.x*cos((n-1)*curAngle)-pos.y*sin((n-1)*curAngle),
+            CENTER.y+pos.x*sin((n-1)*curAngle)+pos.y*cos((n-1)*curAngle)
+        );
+    }
+
+    graph.drawMove(&listNode.rbegin()->data,CIRCLE,dest-insPos,GREEN,GREEN,WHITE);
+
+    graph.draw(&listArrow,BLACK);
+    graph.drawFadeOut(&listArrow.rbegin()->prev->data,ORANGE);
+    graph.drawFadeOut(&listArrow.rbegin()->data,ORANGE);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+
+    graph.draw(&codeBox,9);
+    //
 }
