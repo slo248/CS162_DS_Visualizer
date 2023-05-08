@@ -500,20 +500,20 @@ void App::CLL_Update()
                         break;
                 }
                 break;
-    //         case 1: // Insert
-    //             switch (cmd.suboption)
-    //             {
-    //                 case 0: // Front
-    //                     cll->insertFront(cmd.input1);
-    //                     break;
-    //                 case 1: // Back
-    //                     cll->insertBack(cmd.input1);
-    //                     break;
-    //                 case 2: // Middle
-    //                     cll->insertMiddle(cmd.input1,cmd.input2);
-    //                     break;
-    //             }
-    //             break;
+            case 1: // Insert
+                switch (cmd.suboption)
+                {
+                    case 0: // Front
+                        cll->insertFront(cmd.input1);
+                        break;
+                    // case 1: // Back
+                    //     cll->insertBack(cmd.input1);
+                    //     break;
+                    // case 2: // Middle
+                    //     cll->insertMiddle(cmd.input1,cmd.input2);
+                    //     break;
+                }
+                break;
     //         case 2: // Search
     //             cll->search(cmd.input1);
     //             break;

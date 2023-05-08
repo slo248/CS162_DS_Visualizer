@@ -18,9 +18,8 @@ public:
     void randomList(int n);
     void makeList();
 
-    // // insert
-    // void insertWhenEmpty(int value);
-    // void insertFront(int value);
+    // insert
+    void insertFront(int value);
     // void insertBack(int value);
     // void insertMiddle(int pos, int value);
 
