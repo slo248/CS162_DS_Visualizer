@@ -10,6 +10,9 @@
 #include "DLL.h"
 #include "DLL_Control.h"
 
+#include "CLL.h"
+#include "CLL_Control.h"
+
 #include "Stack.h"
 #include "Stack_Control.h"
 
@@ -46,6 +49,7 @@ public:
 
     void SLL_Update();
     void DLL_Update();
+    void CLL_Update();
     void Stack_Update();
     void Queue_Update();
     void SArr_Update();
@@ -74,6 +78,9 @@ private:
 
     DLL*                dll;
     DLL_Control*        dllControl;
+
+    CLL*                cll;
+    CLL_Control*        cllControl;
 
     Stack*              stack;
     Stack_Control*      stackControl;

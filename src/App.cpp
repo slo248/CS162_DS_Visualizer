@@ -23,7 +23,9 @@ App::App():
     dll(nullptr),
     dllControl(nullptr),
     darr(nullptr),
-    darrControl(nullptr)
+    darrControl(nullptr),
+    cll(nullptr),
+    cllControl(nullptr)
 {
     window.setFramerateLimit(FPS);
 
@@ -75,6 +77,11 @@ App::~App()
         delete dllControl;
     }
 
+    if(darr){
+        delete darr;
+        delete darrControl;
+    }
+
     delete menu;
 }
 
@@ -86,6 +93,7 @@ void App::processInput()
     if(queueControl) queueControl->handleRealTimeInput(&window);
     if(dllControl) dllControl->handleRealTimeInput(&window);
     if(darrControl) darrControl->handleRealTimeInput(&window);
+    if(cllControl) cllControl->handleRealTimeInput(&window);
 
     sf::Event event;
     while (window.pollEvent(event)){
@@ -96,6 +104,7 @@ void App::processInput()
         if(queueControl) queueControl->handleEvent(event,&window);
         if(dllControl) dllControl->handleEvent(event,&window);
         if(darrControl) darrControl->handleEvent(event,&window);
+        if(cllControl) cllControl->handleEvent(event,&window);
         switch (event.type)
         {
             case sf::Event::Closed:
@@ -140,6 +149,12 @@ void App::processInput()
                         darr=nullptr;
                         darrControl=nullptr;
                     }
+                    if(cll){
+                        delete cll;
+                        delete cllControl;
+                        cll=nullptr;
+                        cllControl=nullptr;
+                    }
                 }
                 break;
         }
@@ -161,6 +176,11 @@ void App::update()
                 state=State::DS;
                 dll=new DLL(&window,&sanf,&cons,FPS);
                 dllControl=new DLL_Control(&sanf,window.getView().getSize());
+                break;
+            case DS::CLL:
+                state=State::DS;
+                cll=new CLL(&window,&sanf,&cons,FPS);
+                cllControl=new CLL_Control(&sanf,window.getView().getSize());
                 break;
             case DS::STACK:
                 state=State::DS;
@@ -192,6 +212,7 @@ void App::update()
     if(queue) Queue_Update();
     if(sarr) SArr_Update();
     if(darr) DArr_Update();
+    if(cll) CLL_Update();
 }
 
 void App::draw()
@@ -211,6 +232,10 @@ void App::draw()
             if(dll){
                 dll->draw();
                 window.draw(*dllControl);
+            }
+            if(cll){
+                cll->draw();
+                window.draw(*cllControl);
             }
             if(stack){
                 stack->draw();
@@ -417,6 +442,11 @@ void App::DLL_Update()
                 }
                 break;
         }
+}
+
+void App::CLL_Update()
+{
+    
 }
 
 void App::Stack_Update()
