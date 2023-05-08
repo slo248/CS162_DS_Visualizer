@@ -373,6 +373,31 @@ void CLL::deleteMiddle(int pos)
         //
 
         if(i==pos-1) break;
+
+        // substep 2: move to next node
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,pos-2,BLACK);
+        graph.drawGrow(&listArrow,i,i,ORANGE);
+        graph.draw(&tmpArrow,BLACK);
+        graph.draw(deletedA,BLACK);
+        graph.draw(&listArrow,pos,m-1,BLACK);
+
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        }
+        else 
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+
+        graph.draw(&codeBox,3);
+        //
     }
     //
 }
