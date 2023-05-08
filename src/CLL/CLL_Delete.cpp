@@ -34,8 +34,10 @@ void CLL::deleteFirst()
 
     listArrow.rbegin()->data.dest=&listNode.begin()->data;
 
+    tmpNode.position=deletedN->position;
+
     tmpArrow.src=&listNode.rbegin()->data;
-    tmpArrow.dest=deletedN;
+    tmpArrow.dest=&tmpNode;
 
     const int n=listNode.size();
     const int m=listArrow.size();
@@ -52,6 +54,7 @@ void CLL::deleteFirst()
     graph.draw(&tmpArrow,BLACK);
 
     graph.drawSubscript(deletedN,"head/tmp",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
 
     graph.draw(&codeBox,3);
     //
@@ -69,8 +72,37 @@ void CLL::deleteFirst()
     graph.draw(&tmpArrow,BLACK);
 
     graph.drawSubscript(deletedN,"tmp",RED);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
 
     graph.draw(&codeBox,4);
+    //
+
+    // step 3: tail->next=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+    graph.drawMove(&tmpNode,CIRCLE,deletedN->position,listNode.begin()->data.position,BLANK,BLANK,BLANK);
+
+    graph.draw(deletedA,ORANGE);
+    graph.draw(&listArrow,0,m-2,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+    graph.drawFadeIn(&tmpArrow,ORANGE);
+
+    graph.drawSubscript(deletedN,"tmp",RED);
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+
+    graph.draw(&codeBox,5);
     //
 }
