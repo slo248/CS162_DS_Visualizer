@@ -150,3 +150,38 @@ void CLL::deleteFirst()
     graph.draw(&codeBox,7);
     //
 }
+
+void CLL::deleteLast()
+{
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/CLL/deleteLast.txt");
+
+    if(listNode.empty())
+    {
+        graph.addStep(1);
+        graph.draw(&codeBox,0);
+        return;
+    }
+    
+    if(listNode.size()==1)
+    {
+        graph.addStep(0.5*FPS);
+
+        graph.drawShrink(&listNode.begin()->data,CIRCLE,WHITE,BLACK,BLACK);
+        graph.draw(&codeBox,12);
+
+        deletedNode.push_back(listNode.popFront());
+        return;
+    }
+
+    Node* deletedN=listNode.popBack();
+    Arrow* deletedA=listArrow.popBack();
+
+    deletedNode.push_back(deletedN);
+    deletedArrow.push_back(deletedA);
+
+    tmpNode.position=deletedN->position;
+
+    tmpArrow.src=&listNode.rbegin()->data;
+    tmpArrow.dest=&tmpNode;
+}

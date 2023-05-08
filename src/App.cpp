@@ -526,9 +526,9 @@ void App::CLL_Update()
                     case 0: // First
                         cll->deleteFirst();
                         break;
-                    // case 1: // Last
-                    //     cll->deleteLast();
-                    //     break;
+                    case 1: // Last
+                        cll->deleteLast();
+                        break;
                     // case 2: // Middle
                     //     cll->deleteMiddle(cmd.input1);
                     //     break;
