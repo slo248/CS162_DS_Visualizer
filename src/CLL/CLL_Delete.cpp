@@ -292,4 +292,26 @@ void CLL::deleteLast()
 
     graph.draw(&codeBox,7);
     //
+
+    // step 4: organinze list
+    graph.addStep(0.5*FPS);
+
+    float preAngle=2*acos(-1)/(n+1);
+    float curAngle=2*acos(-1)/n;
+    for(int i=0; i<n; i++){
+        Node &node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*(curAngle-preAngle),WHITE,BLACK,BLACK);
+    }
+
+    graph.draw(&listArrow,BLACK);
+
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+
+    graph.draw(&codeBox,8);
+    //
 }
