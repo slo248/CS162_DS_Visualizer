@@ -106,6 +106,7 @@ void CLL::insertFront(int val)
 
     graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawFadeIn(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
     graph.draw(&listArrow.begin()->data,ORANGE);
     graph.draw(&listArrow,1,m-2,BLACK);
     graph.draw(&tmpArrow,ORANGE);
@@ -115,12 +116,24 @@ void CLL::insertFront(int val)
     //
 
     // step 5: move to correct position
-
     graph.addStep(0.5*FPS);
 
     float preAngle=2*acos(-1)/(n-1);
     float curAngle=2*acos(-1)/n;
-    graph.drawMove(&listNode.begin()->getNext()->data,CIRCLE,CENTER,0,curAngle,WHITE,BLACK,BLACK);
+    for(int i=1; i<n; i++){
+        Node &node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*curAngle-(i-1)*preAngle,WHITE,BLACK,BLACK);
+    }
+    graph.drawMove(&listNode.begin()->data,CIRCLE,sf::Vector2f(0,-RADIUS),GREEN,GREEN,WHITE);
 
+    graph.draw(&listArrow.begin()->data,ORANGE);
+    graph.drawFadeIn(&listArrow.begin()->data,BLACK);
+    graph.draw(&listArrow,1,m-2,BLACK);
+    graph.draw(&listArrow,m-1,ORANGE);
+    graph.drawFadeIn(&listArrow,m-1,m-1,BLACK);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+
+    graph.draw(&codeBox,9);
     //
 }
