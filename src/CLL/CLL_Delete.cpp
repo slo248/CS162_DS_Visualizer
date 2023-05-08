@@ -184,4 +184,63 @@ void CLL::deleteLast()
 
     tmpArrow.src=&listNode.rbegin()->data;
     tmpArrow.dest=&tmpNode;
+
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    // step 1: traverse to the node before the last node
+    for(int i=0; i<=n; i++)
+    {
+        // substep 1: highlight current node and lowlight previous node
+        graph.addStep(0.5*FPS);
+        
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.drawFadeOut(&listNode,CIRCLE,i-1,i-1,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,m-1,BLACK);
+        graph.draw(&tmpArrow,BLACK);
+
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        }
+        else 
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        graph.drawSubscript(deletedN,"tail",RED);
+
+        if(i) graph.draw(&codeBox,5); else graph.draw(&codeBox,34);
+        //
+
+        if(i==n) break;
+
+        // // step 2: move to next node
+        // graph.addStep(0.5*FPS);
+        
+        // graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        // graph.draw(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        // graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
+        // graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+
+        // graph.draw(&listArrow,0,i-1,ORANGE);
+        // graph.draw(&listArrow,i,pos-2,BLACK);
+        // graph.drawGrow(&listArrow,i,ORANGE);
+        // graph.draw(&tmpArrow,BLACK);
+        // graph.draw(&listArrow,pos+1,m-1,BLACK);
+
+        // if(i){
+        //     graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        //     graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        // }
+        // else 
+        //     graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+        // graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+
+        // graph.draw(&codeBox,3);
+        // //
+    }
+    //
 }
