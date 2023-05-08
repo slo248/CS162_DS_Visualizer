@@ -5,5 +5,4 @@ Node* pre=head;
 while(pre->next!=tail)
     pre=pre->next;
 pre->next=head;
-delete tail;
-tail=pre;
+delete tail, tail=pre;

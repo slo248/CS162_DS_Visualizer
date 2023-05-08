@@ -257,4 +257,22 @@ void CLL::deleteLast()
         //
     }
     //
+
+    // step 2: pre->next=head
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,WHITE,ORANGE,ORANGE);
+    graph.draw(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.drawMove(&tmpNode,CIRCLE,deletedN->position,listNode.begin()->data.position,BLANK,BLANK,BLANK);
+    
+    graph.draw(&listArrow,0,m-2,ORANGE);
+    graph.draw(&tmpArrow,ORANGE);
+    graph.draw(deletedA,BLACK);
+
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"pre",RED);
+    graph.drawSubscript(deletedN,"tail",RED);
+
+    graph.draw(&codeBox,6);
+    //
 }
