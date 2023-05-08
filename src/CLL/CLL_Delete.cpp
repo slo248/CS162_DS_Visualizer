@@ -315,3 +315,31 @@ void CLL::deleteLast()
     graph.draw(&codeBox,8);
     //
 }
+
+void CLL::deleteMiddle(int pos)
+{
+    if(!(0<pos && pos<listNode.size()))
+        throw std::out_of_range("CLL::insertMiddle() : pos out of range");
+    
+    graph.finishAllSteps();
+    codeBox.loadFromFile("code/CLL/deleteMiddle.txt");
+
+    Node* deletedN=listNode.pop(pos);
+    Arrow* deletedA=listArrow.pop(pos);
+    deletedNode.push_back(deletedN);
+    deletedArrow.push_back(deletedA);
+
+    listArrow.begin()->getNext(pos-1)->data.dest=&listNode.begin()->getNext(pos)->data;
+
+    tmpNode.position=deletedN->position;
+
+    tmpArrow.src=&listNode.begin()->getNext(pos-1)->data;
+    tmpArrow.dest=&tmpNode;
+
+    const int n=listNode.size();
+    const int m=listArrow.size();
+
+    graph.addStep(1);
+    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    graph.draw(&listArrow,BLACK);
+}
