@@ -61,3 +61,14 @@ void Node::drawCircleMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector
     position=src+(dest-src)*Motion::Bezier(percent);
     drawCircle(window, circle, inColor, outColor, num, numColor);
 }
+
+void Node::drawCircleMove(sf::RenderWindow *window, sf::Vector2f src, float alpha, float beta, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
+{
+    float angle=alpha+(beta-alpha)*percent;
+    {
+        sf::Vector2f pos=position-src;
+        pos.x=pos.x*cos(angle)-pos.y*sin(angle);
+        pos.y=pos.x*sin(angle)+pos.y*cos(angle);
+    }
+    drawCircle(window, circle, inColor, outColor, num, numColor);
+}

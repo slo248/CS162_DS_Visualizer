@@ -61,3 +61,14 @@ void Node::drawSquareMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector
     position=src+(dest-src)*Motion::Bezier(percent);
     drawSquare(window, square, inColor, outColor, num, numColor);
 }
+
+void Node::drawSquareMove(sf::RenderWindow *window, sf::Vector2f src, float alpha, float beta, sf::RectangleShape *square, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
+{
+    float angle=alpha+(beta-alpha)*percent;
+    {
+        sf::Vector2f pos=position-src;
+        pos.x=pos.x*cos(angle)-pos.y*sin(angle);
+        pos.y=pos.x*sin(angle)+pos.y*cos(angle);
+    }
+    drawSquare(window, square, inColor, outColor, num, numColor);
+}
