@@ -15,6 +15,8 @@ void CLL::insertFront(int val)
 
     if(listNode.size()==1)
     {
+        listArrow.pushBack(Arrow(&listNode.begin()->data, &listNode.begin()->data));
+
         // step 1: appear new node
         graph.addStep(0.5*FPS);
 
