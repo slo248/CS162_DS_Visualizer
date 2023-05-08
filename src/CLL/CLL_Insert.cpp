@@ -109,7 +109,7 @@ void CLL::insertFront(int val)
     graph.draw(&listArrow.begin()->data,ORANGE);
     graph.draw(&listArrow,1,m-2,BLACK);
     graph.draw(&tmpArrow,ORANGE);
-    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.begin()->data,"head/tmp",RED);
     graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
     graph.draw(&codeBox,6);
     //

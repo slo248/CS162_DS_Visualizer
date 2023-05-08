@@ -64,7 +64,7 @@ void Node::drawSquareMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector
 
 void Node::drawSquareMoveAngle(sf::RenderWindow *window, sf::Vector2f src, float alpha, float beta, sf::RectangleShape *square, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
 {
-    float angle=alpha+(beta-alpha)*percent;
+    angle=alpha+(beta-alpha)*percent;
     {
         sf::Vector2f pos=position-src;
         pos.x=pos.x*cos(angle)-pos.y*sin(angle);

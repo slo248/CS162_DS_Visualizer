@@ -6,6 +6,7 @@
 struct Node
 {
     int value;
+    float angle;
     sf::Vector2f position, scaleFactor;
     Node(int value=0, sf::Vector2f position=sf::Vector2f(0, 0)) : 
         value(value), position(position) {}
