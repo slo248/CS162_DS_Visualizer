@@ -29,9 +29,8 @@ public:
     // update
     void update(int pos, int newValue);
 
-    // // delete
-    // void deleteWhenSingle();
-    // void deleteFirst();
+    // delete
+    void deleteFirst();
     // void deleteLast();
     // void deleteMiddle(int pos);
 

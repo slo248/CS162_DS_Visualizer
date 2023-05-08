@@ -520,20 +520,20 @@ void App::CLL_Update()
             case 3: // Update
                 cll->update(cmd.input1,cmd.input2);
                 break;
-    //         case 4: // Delete
-    //             switch (cmd.suboption)
-    //             {
-    //                 case 0: // First
-    //                     cll->deleteFirst();
-    //                     break;
-    //                 case 1: // Last
-    //                     cll->deleteLast();
-    //                     break;
-    //                 case 2: // Middle
-    //                     cll->deleteMiddle(cmd.input1);
-    //                     break;
-    //             }
-    //             break;
+            case 4: // Delete
+                switch (cmd.suboption)
+                {
+                    case 0: // First
+                        cll->deleteFirst();
+                        break;
+                    // case 1: // Last
+                    //     cll->deleteLast();
+                    //     break;
+                    // case 2: // Middle
+                    //     cll->deleteMiddle(cmd.input1);
+                    //     break;
+                }
+                break;
         }
 }
 
