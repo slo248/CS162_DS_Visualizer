@@ -463,4 +463,32 @@ void CLL::insertMiddle(int pos, int value)
     graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos)+"/aft",RED);
     graph.draw(&codeBox,6);
     //
+
+    // step 5: connect pre to new node
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,pos+1,BLUE,BLUE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+2,n-1,WHITE,BLACK,BLACK);
+    graph.drawMove(&tmpNode,CIRCLE,tmpNode.position,insPos,BLANK,BLANK,BLANK);
+
+    graph.draw(&listArrow,0,pos-2,ORANGE);
+    graph.draw(&tmpArrow,ORANGE);
+    graph.draw(&listArrow,pos,pos,GREEN);
+    graph.draw(&listArrow,pos+1,m-1,BLACK);
+
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",RED);
+
+    graph.draw(&codeBox,7);
+    //
 }
