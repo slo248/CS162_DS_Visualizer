@@ -105,4 +105,26 @@ void CLL::deleteFirst()
 
     graph.draw(&codeBox,5);
     //
+
+    // step 4: delete tmp
+    graph.addStep(0.5*FPS);
+
+    graph.drawShrink(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode.begin()->data,CIRCLE,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+
+    graph.drawShrink(deletedA,ORANGE);
+    graph.draw(&listArrow,BLACK);
+    graph.drawFadeOut(&listArrow,m-1,m-1,ORANGE);
+
+    graph.drawSubscript(deletedN,"tmp",RED);
+    if(n>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+
+    graph.draw(&codeBox,6);
+    //
 }
