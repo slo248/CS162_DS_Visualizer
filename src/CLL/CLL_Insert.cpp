@@ -3,7 +3,7 @@
 
 using namespace Config::CLL;
 
-void CLL::insertFront(int val)
+void CLL::insertFront(int value)
 {
     if(listNode.size()==MAX_NODE) return;
 
@@ -14,7 +14,7 @@ void CLL::insertFront(int val)
     if(listNode.size()<=2) insPos=INSF_POS_LESS;
     else insPos=CENTER;
 
-    listNode.pushFront(val);
+    listNode.pushFront(value);
     listNode.begin()->data.position=insPos;
 
     if(listNode.size()==1)
@@ -92,7 +92,7 @@ void CLL::insertFront(int val)
 
     graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
     graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    graph.drawMove(&tmpNode,CIRCLE,insPos-CENTER+sf::Vector2f(0,RADIUS),BLANK,BLANK,BLANK);
+    graph.drawMove(&tmpNode,CIRCLE,insPos-(CENTER-sf::Vector2f(0,RADIUS)),BLANK,BLANK,BLANK);
     graph.draw(&listArrow.begin()->data,ORANGE);
     graph.draw(&listArrow,1,m-2,BLACK);
     graph.draw(&tmpArrow,BLACK);
