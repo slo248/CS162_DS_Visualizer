@@ -180,6 +180,8 @@ void CLL::deleteLast()
     deletedNode.push_back(deletedN);
     deletedArrow.push_back(deletedA);
 
+    listArrow.rbegin()->data.dest=&listNode.begin()->data;
+
     tmpNode.position=deletedN->position;
 
     tmpArrow.src=&listNode.rbegin()->data;
@@ -197,50 +199,62 @@ void CLL::deleteLast()
         graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
         graph.drawFadeOut(&listNode,CIRCLE,i-1,i-1,ORANGE,ORANGE,WHITE);
         graph.draw(&listNode,CIRCLE,i,n-1,WHITE,BLACK,BLACK);
-        graph.drawFadeIn(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
         graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+        if(i<n)
+            graph.drawFadeIn(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        else
+            graph.drawFadeIn(deletedN,CIRCLE,ORANGE,ORANGE,WHITE);
 
-        graph.draw(&listArrow,0,i-1,ORANGE);
-        graph.draw(&listArrow,i,m-1,BLACK);
-        graph.draw(&tmpArrow,BLACK);
+        if(i<n){
+            graph.draw(&listArrow,0,i-1,ORANGE);
+            graph.draw(&listArrow,i,m-2,BLACK);
+            graph.draw(&tmpArrow,BLACK);
+            graph.draw(deletedA,BLACK);
+        }
+        else{
+            graph.draw(&listArrow,0,m-2,ORANGE);
+            graph.draw(&tmpArrow,ORANGE);
+            graph.draw(deletedA,BLACK);
+        }
 
         if(i){
             graph.drawSubscript(&listNode.begin()->data,"head",RED);
-            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",RED);
         }
         else 
-            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+            graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
         graph.drawSubscript(deletedN,"tail",RED);
 
-        if(i) graph.draw(&codeBox,5); else graph.draw(&codeBox,34);
+        if(i) graph.draw(&codeBox,4); else graph.draw(&codeBox,34);
         //
 
         if(i==n) break;
 
-        // // step 2: move to next node
-        // graph.addStep(0.5*FPS);
+        // substep 2: move to next node
+        graph.addStep(0.5*FPS);
         
-        // graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
-        // graph.draw(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
-        // graph.draw(&listNode,CIRCLE,i+1,pos-1,WHITE,BLACK,BLACK);
-        // graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.draw(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i+1,n-1,WHITE,BLACK,BLACK);
+        graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
 
-        // graph.draw(&listArrow,0,i-1,ORANGE);
-        // graph.draw(&listArrow,i,pos-2,BLACK);
-        // graph.drawGrow(&listArrow,i,ORANGE);
-        // graph.draw(&tmpArrow,BLACK);
-        // graph.draw(&listArrow,pos+1,m-1,BLACK);
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,m-2,BLACK);
+        graph.draw(&tmpArrow,BLACK);
+        graph.draw(deletedA,BLACK);
+        if(i==n-1) graph.drawGrow(&tmpArrow,ORANGE);
+        else graph.drawGrow(&listArrow,i,i,ORANGE);
 
-        // if(i){
-        //     graph.drawSubscript(&listNode.begin()->data,"head",RED);
-        //     graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
-        // }
-        // else 
-        //     graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
-        // graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,"pre",RED);
+        }
+        else 
+            graph.drawSubscript(&listNode.begin()->data,"head/pre",RED);
+        graph.drawSubscript(deletedN,"tail",RED);
 
-        // graph.draw(&codeBox,3);
-        // //
+        graph.draw(&codeBox,5);
+        //
     }
     //
 }
