@@ -491,4 +491,53 @@ void CLL::insertMiddle(int pos, int value)
 
     graph.draw(&codeBox,7);
     //
+
+    // step 6: move new node to its position
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode.begin()->data,CIRCLE,WHITE,BLACK,BLACK);
+
+    float preAngle=2*acos(-1)/(n-1);
+    float curAngle=2*acos(-1)/n;
+    for(int i=1; i<pos; i++)
+    {
+        Node &node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*(curAngle-preAngle),WHITE,BLACK,BLACK);
+    }
+
+    for(int i=pos+1; i<n; i++)
+    {
+        Node &node=listNode.begin()->getNext(i)->data;
+        graph.drawMove(&node,CIRCLE,CENTER,0,i*curAngle-(i-1)*preAngle,WHITE,BLACK,BLACK);
+    }
+
+    sf::Vector2f dest;
+    {
+        sf::Vector2f posi=sf::Vector2f(0,-RADIUS);
+        dest=sf::Vector2f(
+            CENTER.x+posi.x*cos(pos*curAngle)-posi.y*sin(pos*curAngle),
+            CENTER.y+posi.x*sin(pos*curAngle)+posi.y*cos(pos*curAngle)
+        );
+    }
+
+    graph.drawMove(&listNode.begin()->getNext(pos)->data,CIRCLE,dest-insPos,GREEN,GREEN,WHITE);
+
+    graph.drawFadeOut(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+
+    graph.draw(&listArrow,BLACK);
+    graph.drawFadeOut(&listArrow,0,pos-1,ORANGE);
+    graph.drawFadeOut(&listArrow,pos,pos,GREEN);    
+
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/vtx",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos+1)->data,std::to_string(pos+1)+"/aft",RED);
+
+    graph.draw(&codeBox,8);
+    //
 }
