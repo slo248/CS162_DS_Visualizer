@@ -210,23 +210,23 @@ void CLL::insertBack(int value)
     graph.draw(&codeBox,0);
     //
 
-    // // step 2: vtx->next=head
-    // graph.addStep(0.5*FPS);
+    // step 2: vtx->next=head
+    graph.addStep(0.5*FPS);
 
-    // graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
-    // graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
-    // graph.drawGrow(&listArrow.begin()->data,ORANGE);
-    // graph.draw(&listArrow,1,m-2,BLACK);
-    // graph.draw(&tmpArrow,BLACK);
-    // if(n>2){
-    //     graph.drawSubscript(&listNode.begin()->getNext()->data,"head",RED);
-    //     graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
-    // }
-    // else
-    //     graph.drawSubscript(&listNode.begin()->getNext()->data,"head/tail",RED);
-    // graph.drawSubscript(&listNode.begin()->data,"tmp",RED);
-    // graph.draw(&codeBox,4);
-    // //
+    graph.draw(&listNode,CIRCLE,0,n-2,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.rbegin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow,0,m-3,BLACK);
+    graph.draw(&tmpArrow,BLACK);
+    graph.drawGrow(&listArrow.rbegin()->data,ORANGE);
+    if(n>2){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.rbegin()->prev->data,"tail",RED);
+    }
+    else
+        graph.drawSubscript(&listNode.begin()->data,"head/tail",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tmp",RED);
+    graph.draw(&codeBox,4);
+    //
 
     // // step 3: tail->next=vtx
     // graph.addStep(0.5*FPS);
