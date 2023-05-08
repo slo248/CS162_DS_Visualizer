@@ -339,7 +339,40 @@ void CLL::deleteMiddle(int pos)
     const int n=listNode.size();
     const int m=listArrow.size();
 
-    graph.addStep(1);
-    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
-    graph.draw(&listArrow,BLACK);
+    // graph.addStep(1);
+    // graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
+    // graph.draw(&listArrow,BLACK);
+    // graph.draw(&tmpArrow,BLACK);
+
+    // step 1: traverse to node before deleted node
+    for(int i=0; i<pos; i++)
+    {
+        // substep 1: highlight cur node and lowlight pre node
+        graph.addStep(0.5*FPS);
+
+        graph.draw(&listNode,CIRCLE,0,i-1,WHITE,ORANGE,ORANGE);
+        graph.drawFadeOut(&listNode,CIRCLE,i-1,i-1,ORANGE,ORANGE,WHITE);
+        graph.draw(&listNode,CIRCLE,i,n-1,WHITE,BLACK,BLACK);
+        graph.drawFadeIn(&listNode,CIRCLE,i,i,ORANGE,ORANGE,WHITE);
+        graph.draw(deletedN,CIRCLE,WHITE,BLACK,BLACK);
+
+        graph.draw(&listArrow,0,i-1,ORANGE);
+        graph.draw(&listArrow,i,pos-2,BLACK);
+        graph.draw(&tmpArrow,BLACK);
+        graph.draw(deletedA,BLACK);
+        graph.draw(&listArrow,pos,m-1,BLACK);
+
+        if(i){
+            graph.drawSubscript(&listNode.begin()->data,"head",RED);
+            graph.drawSubscript(&listNode.begin()->getNext(i)->data,std::to_string(i)+"/pre",RED);
+        }
+        else 
+            graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+
+        if(i) graph.draw(&codeBox,2); else graph.draw(&codeBox,12);
+        //
+
+        if(i==pos-1) break;
+    }
+    //
 }
