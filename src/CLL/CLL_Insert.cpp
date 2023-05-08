@@ -100,4 +100,17 @@ void CLL::insertFront(int val)
     graph.drawSubscript(&listNode.begin()->data,"tmp",RED);
     graph.draw(&codeBox,5);
     //
+
+    // step 4: head=vtx
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(&listNode.begin()->data,CIRCLE,ORANGE,ORANGE,WHITE);
+    graph.draw(&listArrow.begin()->data,ORANGE);
+    graph.draw(&listArrow,1,m-2,BLACK);
+    graph.draw(&tmpArrow,ORANGE);
+    graph.drawSubscript(&listNode.begin()->data,"head",RED);
+    graph.drawSubscript(&listNode.rbegin()->data,"tail",RED);
+    graph.draw(&codeBox,6);
+    //
 }
