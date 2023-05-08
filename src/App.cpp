@@ -446,7 +446,95 @@ void App::DLL_Update()
 
 void App::CLL_Update()
 {
-    
+    cllControl->update(1.0f/FPS);
+
+    Command cmd;
+    bool flag=cllControl->getCommand(cmd);
+
+    switch (cmd.option)
+    {
+        case -2: // pause
+            cll->pause();
+            break;
+        case -3: // play
+            cll->play();
+            break;
+        case -4: // prev
+            cll->prevStep();
+            break;
+        case -5: // next
+            cll->nextStep();
+            break;
+        case -6: // go to begin
+            cll->goToBegin();
+            break;
+        case -7: // go to end
+            cll->goToEnd();
+            break;
+    }
+
+    if(cll->isDoneAllSteps() && flag)
+        switch (cmd.option)
+        {                  
+            case 0: // Create
+                switch (cmd.suboption)
+                {
+                    case 0: // Empty
+                        cll->empty();
+                        break;
+                    case 1: // Manual
+                        cll->manual(cmd.list);
+                        cll->makeList();
+                        break;
+                    case 2: // Random
+                        cll->randomList();
+                        cll->makeList();
+                        break;
+                    case 3: // Random fixed size
+                        cll->randomList(cmd.input1);
+                        cll->makeList();
+                        break;
+                    case 4: // Load from file
+                        cll->loadFromFile();
+                        cll->makeList();
+                        break;
+                }
+                break;
+    //         case 1: // Insert
+    //             switch (cmd.suboption)
+    //             {
+    //                 case 0: // Front
+    //                     cll->insertFront(cmd.input1);
+    //                     break;
+    //                 case 1: // Back
+    //                     cll->insertBack(cmd.input1);
+    //                     break;
+    //                 case 2: // Middle
+    //                     cll->insertMiddle(cmd.input1,cmd.input2);
+    //                     break;
+    //             }
+    //             break;
+    //         case 2: // Search
+    //             cll->search(cmd.input1);
+    //             break;
+    //         case 3: // Update
+    //             cll->update(cmd.input1,cmd.input2);
+    //             break;
+    //         case 4: // Delete
+    //             switch (cmd.suboption)
+    //             {
+    //                 case 0: // First
+    //                     cll->deleteFirst();
+    //                     break;
+    //                 case 1: // Last
+    //                     cll->deleteLast();
+    //                     break;
+    //                 case 2: // Middle
+    //                     cll->deleteMiddle(cmd.input1);
+    //                     break;
+    //             }
+    //             break;
+        }
 }
 
 void App::Stack_Update()

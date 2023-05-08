@@ -62,7 +62,7 @@ void Node::drawCircleMove(sf::RenderWindow *window, sf::Vector2f src, sf::Vector
     drawCircle(window, circle, inColor, outColor, num, numColor);
 }
 
-void Node::drawCircleMove(sf::RenderWindow *window, sf::Vector2f src, float alpha, float beta, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
+void Node::drawCircleMoveAngle(sf::RenderWindow *window, sf::Vector2f src, float alpha, float beta, sf::CircleShape *circle, sf::Color inColor, sf::Color outColor, sf::Text *num, sf::Color numColor, float percent)
 {
     float angle=alpha+(beta-alpha)*percent;
     {
