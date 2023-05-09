@@ -433,13 +433,41 @@ void CLL::deleteMiddle(int pos)
     // step 3: pre->next=aft
     graph.addStep(0.5*FPS);
 
-    graph.draw(&listNode,CIRCLE,WHITE,BLACK,BLACK);
-    graph.drawFadeOut(&listNode,CIRCLE,pos-1,pos-1,ORANGE,ORANGE,WHITE);
-    graph.drawFadeOut(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
-    graph.drawShrink(deletedN,CIRCLE,RED,RED,WHITE);
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.draw(deletedN,CIRCLE,RED,RED,WHITE);
 
     graph.draw(&listArrow,0,pos-2,ORANGE);
     graph.drawGrow(&listArrow,pos-1,ORANGE);
+    graph.draw(deletedA,ORANGE);
+    graph.drawShrink(&tmpArrow,ORANGE);
+    graph.draw(&listArrow,pos,m-1,BLACK);
+
+    if(pos>1){
+        graph.drawSubscript(&listNode.begin()->data,"head",RED);
+        graph.drawSubscript(&listNode.begin()->getNext(pos-1)->data,std::to_string(pos-1)+"/pre",RED);
+    }
+    else 
+        graph.drawSubscript(&listNode.begin()->data,"0/head/pre",RED);
+    graph.drawSubscript(deletedN,"del",RED);
+    graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
+
+    graph.draw(&codeBox,5);
+    //
+
+    // step 4: delete del
+    graph.addStep(0.5*FPS);
+
+    graph.draw(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.draw(&listNode,CIRCLE,pos-1,pos-1,ORANGE,ORANGE,WHITE);
+    graph.draw(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
+    graph.draw(&listNode,CIRCLE,pos+1,n-1,WHITE,BLACK,BLACK);
+    graph.drawShrink(deletedN,CIRCLE,RED,RED,WHITE);
+
+    graph.draw(&listArrow,0,pos-2,ORANGE);
+    graph.draw(&listArrow,pos-1,ORANGE);
     graph.drawShrink(deletedA,ORANGE);
     graph.draw(&listArrow,pos,m-1,BLACK);
 
@@ -452,10 +480,10 @@ void CLL::deleteMiddle(int pos)
     graph.drawSubscript(deletedN,"del",RED);
     graph.drawSubscript(&listNode.begin()->getNext(pos)->data,std::to_string(pos)+"/aft",RED);
 
-    graph.draw(&codeBox,56);
+    graph.draw(&codeBox,6);
     //
 
-    // step 4: organize list
+    // step 5: organize list
     graph.addStep(0.5*FPS);
 
     graph.draw(&listNode,CIRCLE,0,WHITE,BLACK,BLACK);
@@ -471,7 +499,12 @@ void CLL::deleteMiddle(int pos)
         graph.drawMove(&node,CIRCLE,CENTER,0,i*curAngle-(i+1)*preAngle,WHITE,BLACK,BLACK);
     }
 
+    graph.drawFadeOut(&listNode,CIRCLE,0,pos-2,WHITE,ORANGE,ORANGE);
+    graph.drawFadeOut(&listNode,CIRCLE,pos-1,pos-1,ORANGE,ORANGE,WHITE);
+    graph.drawFadeOut(&listNode,CIRCLE,pos,pos,GREEN,GREEN,WHITE);
+
     graph.draw(&listArrow,BLACK);
+    graph.drawFadeOut(&listArrow,0,pos-1,ORANGE);
 
     if(pos>1){
         graph.drawSubscript(&listNode.begin()->data,"head",RED);
