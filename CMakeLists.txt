@@ -48,6 +48,4 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 
 add_subdirectory(src/Core)
 
-target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} 
-    Core
-)
+target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} Core)
