@@ -6,12 +6,7 @@ Core::SLL<T>::SLL() {
 
 template <class T>
 Core::SLL<T>::~SLL() {
-    Node* node = mHead;
-    while (node) {
-        Node* next = node->next;
-        delete node;
-        node = next;
-    }
+    clear();
 }
 
 template <class T>
@@ -157,4 +152,22 @@ bool Core::SLL<T>::contains(T value) {
         node = node->next;
     }
     return false;
+}
+
+template <class T>
+inline void Core::SLL<T>::init() {
+    // dev later
+}
+
+template <class T>
+void Core::SLL<T>::clear() {
+    Node* node = mHead;
+    while (node) {
+        Node* temp = node;
+        node = node->next;
+        delete temp;
+    }
+    mHead = nullptr;
+    mTail = nullptr;
+    this->mSize = 0;
 }

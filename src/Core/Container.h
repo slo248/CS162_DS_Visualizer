@@ -7,8 +7,8 @@ class Container {
     Container();
     virtual ~Container(){};
 
-    // virtual void init() = 0;
-    // virtual void clear() = 0;
+    virtual void init() = 0;
+    virtual void clear() = 0;
 
     int size() const;
     bool empty() const;

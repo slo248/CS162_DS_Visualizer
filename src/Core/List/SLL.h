@@ -24,6 +24,9 @@ class SLL : public List<T> {
 
     bool contains(T value);
 
+    void init();
+    void clear();
+
    private:
     struct Node {
         T value;
