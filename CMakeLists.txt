@@ -47,3 +47,5 @@ set(SFML_LIBRARIES sfml-graphics sfml-window sfml-system sfml-audio)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES})
+
+add_subdirectory(src/Core)
