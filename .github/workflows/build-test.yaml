@@ -1,12 +1,7 @@
 name: Build and Test
 
 on:
-  push:
-    paths-ignore:
-      - "README.md"
-      - "LICENSE"
-      - "assets/*"
-    branches: [dev]
+  workflow_dispatch:
   pull_request:
     paths-ignore:
       - "README.md"
@@ -15,7 +10,7 @@ on:
     branches: [main, dev]
 
 jobs:
-  Linux-Build:
+  Linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,7 +27,12 @@ jobs:
           cmake ..
           cmake --build . --config Release
 
-  Windows-Build:
+      - name: Test
+        run: |
+          cd build
+          ctest -C Release --verbose
+
+  Windows:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -43,7 +43,13 @@ jobs:
           mkdir build && cd build
           cmake ..
           cmake --build . --config Release
-  MacOS-Build:
+
+      - name: Test
+        run: |
+          cd build
+          ctest -C Release --verbose
+
+  MacOS:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -54,3 +60,8 @@ jobs:
           mkdir build && cd build
           cmake ..
           cmake --build . --config Release
+
+      - name: Test
+        run: |
+          cd build
+          ctest -C Release --verbose

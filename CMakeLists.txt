@@ -43,9 +43,32 @@ endif()
 set(SFML_LIBRARIES sfml-graphics sfml-window sfml-system sfml-audio)
 
 #######################################################
+# Add source files
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
 add_subdirectory(src/Core)
 
 target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} Core)
+
+#######################################################
+# Add tests
+include(CTest)
+enable_testing()
+
+file(GLOB_RECURSE TEST_SOURCES tests/*.cpp)
+
+foreach(TEST_SOURCE ${TEST_SOURCES})
+    # Get the name of the test from the source file path
+    get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
+
+    # Create an executable for the test
+    add_executable(${TEST_NAME} ${TEST_SOURCE})
+
+    # Link the test executable with any necessary libraries
+    # Replace "MyLibrary" with the name of your library
+    target_link_libraries(${TEST_NAME} Core)
+
+    # Add the test
+    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+endforeach()

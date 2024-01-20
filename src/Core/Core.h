@@ -1,6 +1,6 @@
 #ifndef CORE_H
 #define CORE_H
 
-#include "LinkedList.h"
+#include "SLL.h"
 
 #endif  // CORE_H
