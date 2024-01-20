@@ -4,7 +4,7 @@
 class Container {
    public:
     Container();
-    virtual ~Container();
+    virtual ~Container() = 0;
 
     virtual Container& init() = 0;
     virtual Container& clear() = 0;
