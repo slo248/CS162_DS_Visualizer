@@ -7,8 +7,6 @@ namespace Core {
 template <class T>
 class List : public Container {
    public:
-    ~List(){};
-
     virtual void pushFront(T value) = 0;
     virtual void pushBack(T value) = 0;
     virtual void insert(int index, T value) = 0;

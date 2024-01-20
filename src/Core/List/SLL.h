@@ -28,7 +28,7 @@ class SLL : public List<T> {
     struct Node {
         T value;
         Node* next;
-        Node* prev;
+        Node(T value = T(), Node* next = nullptr) : value(value), next(next) {}
     };
 
     Node* mHead;
