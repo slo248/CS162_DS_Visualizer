@@ -18,9 +18,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${AllOutDir})
 # Copy data folder to output directory
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
-# Add source files
-file(GLOB_RECURSE SOURCES "src/*.cpp")
-
 # Find SFML, if not found, download it
 find_package(SFML 2.6 COMPONENTS graphics window system audio)
 
@@ -45,6 +42,12 @@ endif()
 
 set(SFML_LIBRARIES sfml-graphics sfml-window sfml-system sfml-audio)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES})
-target_include_directories(${PROJECT_NAME} PUBLIC include ${SFML_INCLUDE_DIR})
+#######################################################
+
+add_executable(${PROJECT_NAME} src/main.cpp)
+
+add_subdirectory(src/Core)
+
+target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} 
+    Core
+)
