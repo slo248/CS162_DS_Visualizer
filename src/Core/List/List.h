@@ -1,26 +1,28 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "Core.h"
+#include "Container.h"
 
+namespace Core {
 template <class T>
-class Core::List : public Core::Container {
+class List : public Container {
    public:
-    virtual ~List() = 0;
+    ~List(){};
 
-    List& pushFront(T value) = 0;
-    List& pushBack(T value) = 0;
-    List& insert(int index, T value) = 0;
+    virtual void pushFront(T value) = 0;
+    virtual void pushBack(T value) = 0;
+    virtual void insert(int index, T value) = 0;
 
-    T popFront() = 0;
-    T popBack() = 0;
-    T erase(int index) = 0;
-    List& erase(T value) = 0;
+    virtual T popFront() = 0;
+    virtual T popBack() = 0;
+    virtual T eraseByIndex(int index) = 0;
+    virtual void eraseByValue(T value) = 0;
 
-    List& update(int index, T value) = 0;
-    List& update(T src, T dst) = 0;
+    virtual void updateByIndex(int index, T value) = 0;
+    virtual void updateByValue(T oldValue, T newValue) = 0;
 
-    T& search(int index) = 0;
+    virtual bool contains(T value) = 0;
 };
+}  // namespace Core
 
 #endif  // LIST_H

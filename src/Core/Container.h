@@ -1,15 +1,14 @@
 #ifndef CORE_CONTAINER_H
 #define CORE_CONTAINER_H
 
-#include "Core.h"
-
-class Core::Container {
+namespace Core {
+class Container {
    public:
     Container();
-    virtual ~Container() = 0;
+    virtual ~Container(){};
 
-    virtual Container& init() = 0;
-    virtual Container& clear() = 0;
+    // virtual void init() = 0;
+    // virtual void clear() = 0;
 
     int size() const;
     bool empty() const;
@@ -17,5 +16,6 @@ class Core::Container {
    protected:
     int mSize;
 };
+}  // namespace Core
 
 #endif  // CORE_CONTAINER_H
