@@ -1,10 +1,10 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "Container.h"
+#include "Core.h"
 
 template <class T>
-class List : public Container {
+class Core::List : public Core::Container {
    public:
     virtual ~List() = 0;
 

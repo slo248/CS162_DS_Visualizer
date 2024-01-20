@@ -1,7 +1,9 @@
 #ifndef CORE_CONTAINER_H
 #define CORE_CONTAINER_H
 
-class Container {
+#include "Core.h"
+
+class Core::Container {
    public:
     Container();
     virtual ~Container() = 0;
