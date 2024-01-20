@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include "Container.h"
+#include "SLL.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
@@ -17,6 +17,9 @@ int main() {
         window.draw(shape);
         window.display();
     }
+
+    Core::SLL<int> list;
+    list.pushFront(1);
 
     return 0;
 }

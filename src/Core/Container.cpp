@@ -1,10 +1,8 @@
 #include "Container.h"
 
-Container::Container() : mSize(0) {}
+using namespace Core;
 
-Container::~Container() {
-    // empty by default
-}
+Container::Container() : mSize(0) {}
 
 int Container::size() const { return mSize; }
 
