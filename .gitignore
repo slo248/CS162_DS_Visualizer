@@ -1,7 +1,3 @@
-*.vscode
-*.o
-*.exe
-inp.txt
-past.txt
-makefile
-*.svg
+.vscode
+build
+bin
