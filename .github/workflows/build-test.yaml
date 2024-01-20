@@ -2,12 +2,6 @@ name: Build and Test
 
 on:
   workflow_dispatch:
-  push:
-    paths-ignore:
-      - "README.md"
-      - "LICENSE"
-      - "assets/*"
-    branches: [dev]
   pull_request:
     paths-ignore:
       - "README.md"
@@ -36,7 +30,7 @@ jobs:
       - name: Test
         run: |
           cd build
-          ctest -C Release
+          ctest -C Release --verbose
 
   Windows:
     runs-on: windows-latest
@@ -53,7 +47,7 @@ jobs:
       - name: Test
         run: |
           cd build
-          ctest -C Release
+          ctest -C Release --verbose
 
   MacOS:
     runs-on: macos-latest
@@ -70,4 +64,4 @@ jobs:
       - name: Test
         run: |
           cd build
-          ctest -C Release
+          ctest -C Release --verbose
