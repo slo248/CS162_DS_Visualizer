@@ -1,0 +1,56 @@
+name: Build and Test
+
+on:
+  push:
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - "assets/*"
+    branches: [dev]
+  pull_request:
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - "assets/*"
+    branches: [main, dev]
+
+jobs:
+  Linux-Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libfreetype6-dev libx11-dev libxcursor-dev libxrandr-dev libudev-dev libgl1-mesa-dev libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libpthread-stubs0-dev
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build . --config Release
+
+  Windows-Build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build . --config Release
+  MacOS-Build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build . --config Release
