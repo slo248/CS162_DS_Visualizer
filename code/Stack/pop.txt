@@ -1,4 +1,0 @@
-if (head==nullptr) return NOT_FOUND;
-tmp = head;
-head = head->next;
-delete tmp;

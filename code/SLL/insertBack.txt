@@ -1,5 +1,0 @@
-Node *tail=head;
-while(tail->next!=nullptr)
-    tail=tail->next;
-Node *node=new Node(v);
-tail->next=node;

@@ -1,8 +1,0 @@
-Node *vtx=new Node(v);
-if(head == nullptr)
-    head=tail=vtx;
-else{
-    vtx->next=head;
-    tail->next=vtx;
-    tail=vtx;
-}

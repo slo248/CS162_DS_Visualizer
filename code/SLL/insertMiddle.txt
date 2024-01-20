@@ -1,7 +1,0 @@
-Node *pre = head;
-for (k = 0; k < i-1; k++)
-  pre = pre->next;
-Node *aft = pre->next;
-Node *vtx = new Node(v);
-vtx->next = aft;
-pre->next = vtx;

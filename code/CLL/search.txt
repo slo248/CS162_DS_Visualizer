@@ -1,8 +1,0 @@
-if (head==nullptr) return NOT_FOUND;
-int index = 0;
-Node *tmp = head;
-while (tmp->value != v)
-  index++, tmp = tmp->next;
-  if (tmp == nullptr)
-    return NOT_FOUND;
-return index;

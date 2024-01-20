@@ -1,7 +1,0 @@
-if(head==nullptr) return;
-if(head->next==tail)
-    delete head, head=tail=nullptr, return;
-Node* tmp=head;
-head=head->next;
-tail->next=head;
-delete tmp;

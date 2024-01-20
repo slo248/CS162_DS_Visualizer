@@ -1,4 +1,0 @@
-if (head == nullptr) return;
-Node* tmp = tail;
-tail = tail->prev;
-delete tmp;

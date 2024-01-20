@@ -1,8 +1,0 @@
-if(n==MAXN){
-    MAXN*=2;
-    int *newA = new int[MAXN];
-    for(int i=0;i<n;i++)
-        newA[i]=a[i];
-    delete[] a;
-    a=newA;
-}

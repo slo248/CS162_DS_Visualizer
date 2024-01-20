@@ -1,3 +1,0 @@
-Node* vtx = new Node(v);
-tail->next = vtx;
-tail = vtx;

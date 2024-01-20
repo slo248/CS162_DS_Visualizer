@@ -1,8 +1,0 @@
-if(!(0<pos && pos<size-1)) return;
-Node* pre=head;
-for(int i=0; i<pos-1; i++)
-    pre=pre->next;
-Node* aft=pre->next;
-Node* vtx=new Node(v);
-vtx->next=pre->next;
-pre->next=vtx;
