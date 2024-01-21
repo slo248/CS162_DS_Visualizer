@@ -49,12 +49,13 @@ TEST(SLL, Insert) {
     sll.insert(0, 4);
     sll.insert(2, 5);
     sll.insert(4, 6);
+    // 4 1 5 2 3 6
     ASSERT_EQ(sll.size(), 6);
     ASSERT_EQ(sll.popFront(), 4);
     ASSERT_EQ(sll.popFront(), 1);
     ASSERT_EQ(sll.popFront(), 5);
     ASSERT_EQ(sll.popFront(), 2);
-    ASSERT_EQ(sll.popFront(), 3);
     ASSERT_EQ(sll.popFront(), 6);
+    ASSERT_EQ(sll.popFront(), 3);
     ASSERT_EQ(sll.size(), 0);
 }
