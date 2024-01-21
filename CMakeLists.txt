@@ -54,7 +54,7 @@ target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} Core)
 #######################################################
 # Add google test
 
-find_package(GTest REQUIRED)
+find_package(GTest)
 
 if(NOT GTEST_FOUND)
     include(FetchContent)
