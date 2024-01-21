@@ -1,6 +1,8 @@
 #ifndef SLL_H
 #define SLL_H
 
+#include <memory>
+
 #include "List.h"
 
 namespace Core {
@@ -30,12 +32,15 @@ class SLL : public List<T> {
    private:
     struct Node {
         T value;
-        Node* next;
-        Node(T value = T(), Node* next = nullptr) : value(value), next(next) {}
+        std::unique_ptr<Node> next;
+        Node(T value, std::unique_ptr<Node> next = nullptr) {
+            this->value = value;
+            this->next = std::move(next);
+        }
     };
+    typedef std::unique_ptr<Node> NodePtr;
 
-    Node* mHead;
-    Node* mTail;
+    NodePtr mHead;
 };
 
 }  // namespace Core

@@ -75,6 +75,7 @@ if(NOT GTEST_FOUND)
 endif()
 
 # Add tests
+include(CTest)
 enable_testing()
 
 file(GLOB_RECURSE TEST_SOURCES tests/*.cpp)
