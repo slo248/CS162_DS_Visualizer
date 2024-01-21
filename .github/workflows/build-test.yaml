@@ -55,6 +55,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install Dependencies
+        run: |
+          brew install sfml
+
       - name: Build
         run: |
           mkdir build && cd build
