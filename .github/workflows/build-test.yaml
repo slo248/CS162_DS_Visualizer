@@ -10,54 +10,23 @@ on:
     branches: [main, dev]
 
 jobs:
-  Linux:
-    runs-on: ubuntu-latest
+  build-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install libfreetype6-dev libx11-dev libxcursor-dev libxrandr-dev libudev-dev libgl1-mesa-dev libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libpthread-stubs0-dev
-
-      - name: Build
-        run: |
-          mkdir build && cd build
-          cmake ..
-          cmake --build . --config Release
-
-      - name: Test
-        run: |
-          cd build
-          ctest -C Release --verbose
-
-  Windows:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Build
-        run: |
-          mkdir build && cd build
-          cmake ..
-          cmake --build . --config Release
-
-      - name: Test
-        run: |
-          cd build
-          ctest -C Release --verbose
-
-  MacOS:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: |
-          brew install sfml
+          if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+            sudo apt-get update
+            sudo apt-get install libfreetype6-dev libx11-dev libxcursor-dev libxrandr-dev libudev-dev libgl1-mesa-dev libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libpthread-stubs0-dev
+          elif [ "${{ matrix.os }}" == "macos-latest" ]; then
+            brew install sfml
+          fi
 
       - name: Build
         run: |
