@@ -14,6 +14,7 @@ endif()
 
 set(AllOutDir "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${AllOutDir})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${AllOutDir})
 
 # Copy data folder to output directory
 file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
@@ -93,5 +94,5 @@ foreach(TEST_SOURCE ${TEST_SOURCES})
 
     # Add the test
     # gtest_discover_tests(${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
 endforeach()
