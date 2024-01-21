@@ -75,7 +75,7 @@ if(NOT GTEST_FOUND)
 endif()
 
 # Add tests
-include(CTest)
+enable_testing()
 
 file(GLOB_RECURSE TEST_SOURCES tests/*.cpp)
 
@@ -91,6 +91,5 @@ foreach(TEST_SOURCE ${TEST_SOURCES})
     target_link_libraries(${TEST_NAME} Core gtest gtest_main)
 
     # Add the test
-    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-    gtest_discover_tests(${TEST_NAME})
+    gtest_discover_tests(${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endforeach()
