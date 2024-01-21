@@ -19,14 +19,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        run: |
-          if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
-            sudo apt-get update
-            sudo apt-get install libfreetype6-dev libx11-dev libxcursor-dev libxrandr-dev libudev-dev libgl1-mesa-dev libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libpthread-stubs0-dev
-          elif [ "${{ matrix.os }}" == "macos-latest" ]; then
-            brew install sfml
-          fi
+      # - name: Install Dependencies
+      #   run: |
+      #     if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+      #       sudo apt-get update
+      #       sudo apt-get install libfreetype6-dev libx11-dev libxcursor-dev libxrandr-dev libudev-dev libgl1-mesa-dev libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libpthread-stubs0-dev
+      #     elif [ "${{ matrix.os }}" == "macos-latest" ]; then
+      #       brew install sfml
+      #     fi
 
       - name: Build
         run: |
