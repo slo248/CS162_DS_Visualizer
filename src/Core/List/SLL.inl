@@ -11,7 +11,6 @@ Core::SLL<T>::~SLL() {
 template <class T>
 void Core::SLL<T>::pushFront(T value) {
     NodePtr node = std::make_unique<Node>(value, std::move(mHead));
-    if (!mHead) mHead = std::move(node);
     mHead = std::move(node);
     this->mSize++;
 }
