@@ -52,6 +52,28 @@ add_subdirectory(src/Core)
 target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} Core)
 
 #######################################################
+# Add google test
+
+find_package(GTest)
+
+if(NOT GTEST_FOUND)
+    include(FetchContent)
+
+    FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG        v1.14.0
+    )
+
+    FetchContent_GetProperties(googletest)
+    if(NOT googletest_POPULATED)
+        FetchContent_Populate(googletest)
+        add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
+    endif()
+
+    include(GoogleTest)
+endif()
+
 # Add tests
 include(CTest)
 enable_testing()
@@ -67,8 +89,9 @@ foreach(TEST_SOURCE ${TEST_SOURCES})
 
     # Link the test executable with any necessary libraries
     # Replace "MyLibrary" with the name of your library
-    target_link_libraries(${TEST_NAME} Core)
+    target_link_libraries(${TEST_NAME} Core gtest gtest_main)
 
     # Add the test
+    # gtest_discover_tests(${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endforeach()

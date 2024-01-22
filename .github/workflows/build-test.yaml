@@ -10,7 +10,7 @@ on:
     branches: [main, dev]
 
 jobs:
-  Linux:
+  Linux-Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,12 +27,7 @@ jobs:
           cmake ..
           cmake --build . --config Release
 
-      - name: Test
-        run: |
-          cd build
-          ctest -C Release --verbose
-
-  Windows:
+  Windows-Build:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -44,12 +39,7 @@ jobs:
           cmake ..
           cmake --build . --config Release
 
-      - name: Test
-        run: |
-          cd build
-          ctest -C Release --verbose
-
-  MacOS:
+  MacOS-Build:
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -65,7 +55,24 @@ jobs:
           cmake ..
           cmake --build . --config Release
 
-      - name: Test
+  Test:
+    needs: [Linux-Build, Windows-Build, MacOS-Build]
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          brew install sfml
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build . --config Release
+
+      - name: Run Tests
         run: |
           cd build
-          ctest -C Release --verbose
+          ctest -C Release -V
