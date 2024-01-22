@@ -57,15 +57,14 @@ jobs:
 
   Test:
     needs: [Linux-Build, Windows-Build, MacOS-Build]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install libfreetype6-dev libx11-dev libxcursor-dev libxrandr-dev libudev-dev libgl1-mesa-dev libflac-dev libogg-dev libvorbis-dev libvorbisenc2 libvorbisfile3 libopenal-dev libpthread-stubs0-dev
+          brew install sfml
 
       - name: Build
         run: |
@@ -73,7 +72,7 @@ jobs:
           cmake ..
           cmake --build . --config Release
 
-      - name: Test
+      - name: Run Tests
         run: |
           cd build
           ctest -C Release -V
