@@ -9,11 +9,11 @@ class DS {
     DS() : mSize(0){};
     virtual ~DS() { mSize = 0; };
     // virtual void clear() = 0;
-    int size() const { return mSize; };
+    size_t size() const { return mSize; };
     bool empty() const { return !mSize; };
 
    protected:
-    int mSize;
+    size_t mSize;
 };
 }  // namespace Core
 

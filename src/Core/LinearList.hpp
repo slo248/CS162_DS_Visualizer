@@ -11,14 +11,17 @@ class LinearList : public DS {
     LinearList();
     ~LinearList();
 
-    void pushFront(const T& data);
-    void pushBack(const T& data);
-    void insert(int pos, const T& data);
+    virtual void pushFront(const T& data);
+    virtual void pushBack(const T& data);
+    virtual void insert(size_t pos, const T& data);
 
-    T popFront();
-    T popBack();
-    T erase(int pos);
-    void erase(const T& target);
+    virtual T popFront();
+    virtual T popBack();
+    virtual T erase(size_t pos);
+    virtual void erase(const T& target);
+
+    virtual void update(size_t pos, const T& newData);
+    virtual void update(const T& oldData, const T& newData);
 
    private:
     struct Node;

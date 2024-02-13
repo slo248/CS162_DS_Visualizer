@@ -34,7 +34,7 @@ void LinearList<T>::pushBack(const T& data) {
 }
 
 template <class T>
-void LinearList<T>::insert(int pos, const T& data) {
+void LinearList<T>::insert(size_t pos, const T& data) {
     if (!(0 <= pos && pos < mSize))
         throw std::out_of_range("LinearList::insert() => out of range!");
     if (!pos)
@@ -44,7 +44,7 @@ void LinearList<T>::insert(int pos, const T& data) {
     else {
         NodePtr newNode = std::make_shared<Node>(data);
         NodePtr shiftNode = head;
-        for (int i = 0; i < pos; i++, shiftNode = shiftNode->next)
+        for (size_t i = 0; i < pos; i++, shiftNode = shiftNode->next)
             ;
         newNode->prev = shiftNode->prev;
         newNode->next = shiftNode;
@@ -87,7 +87,7 @@ T LinearList<T>::popBack() {
 }
 
 template <class T>
-T LinearList<T>::erase(int pos) {
+T LinearList<T>::erase(size_t pos) {
     if (!(0 <= pos && pos < mSize))
         throw std::out_of_range("LinearList::erase(pos) => out of range!");
     if (pos == 0)
@@ -96,7 +96,7 @@ T LinearList<T>::erase(int pos) {
         return popBack();
 
     NodePtr del = head;
-    for (int i = 0; i < pos; i++, del = del->next)
+    for (size_t i = 0; i < pos; i++, del = del->next)
         ;
 
     T res = del->data;
@@ -110,9 +110,29 @@ T LinearList<T>::erase(int pos) {
 template <class T>
 void LinearList<T>::erase(const T& target) {
     NodePtr cur = head;
-    for (int i = 0; i < mSize; i++, cur = cur->next)
+    for (size_t i = 0; i < mSize; i++, cur = cur->next)
         if (cur->data == target) {
             erase(i);
             break;
         }
+}
+
+template <class T>
+void LinearList<T>::update(size_t pos, const T& newData) {
+    if (!(0 <= pos && pos < mSize))
+        throw std::out_of_range(
+            "LinearList::update(pos,newData) => out of range!"
+        );
+
+    NodePtr upd = head;
+    for (size_t i = 0; i < pos; i++, upd = upd->next)
+        ;
+    upd->data = newData;
+}
+
+template <class T>
+void LinearList<T>::update(const T& oldData, const T& newData) {
+    NodePtr upd = head;
+    for (size_t i = 0; i < mSize; i++, upd = upd->next)
+        if (upd->data == oldData) upd->data = newData;
 }
