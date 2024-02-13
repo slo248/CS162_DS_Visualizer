@@ -3,8 +3,7 @@ LinearList<T>::LinearList() : head(nullptr), tail(nullptr) {}
 
 template <class T>
 LinearList<T>::~LinearList() {
-    head.reset();
-    tail.reset();
+    clear();
 }
 
 template <class T>
@@ -39,7 +38,7 @@ void LinearList<T>::insert(size_t pos, const T& data) {
         throw std::out_of_range("LinearList::insert() => out of range!");
     if (!pos)
         pushFront(data);
-    else if (pos == mSize - 1)
+    else if (pos == mSize)
         pushBack(data);
     else {
         NodePtr newNode = std::make_shared<Node>(data);
@@ -67,6 +66,7 @@ T LinearList<T>::popFront() {
         del->next = nullptr;
         del.reset();
     }
+    mSize--;
     return res;
 }
 
@@ -83,16 +83,17 @@ T LinearList<T>::popBack() {
         del->prev = nullptr;
         del.reset();
     }
+    mSize--;
     return res;
 }
 
 template <class T>
-T LinearList<T>::erase(size_t pos) {
+T LinearList<T>::eraseByIndex(size_t pos) {
     if (!(0 <= pos && pos < mSize))
         throw std::out_of_range("LinearList::erase(pos) => out of range!");
     if (pos == 0)
         return popFront();
-    else if (pos == mSize - 1)
+    else if (pos == mSize)
         return popBack();
 
     NodePtr del = head;
@@ -103,22 +104,29 @@ T LinearList<T>::erase(size_t pos) {
     del->prev->next = del->next;
     del->next->prev = del->prev;
     del.reset();
-
+    mSize--;
     return res;
 }
 
 template <class T>
-void LinearList<T>::erase(const T& target) {
+void LinearList<T>::eraseByValue(const T& target) {
     NodePtr cur = head;
     for (size_t i = 0; i < mSize; i++, cur = cur->next)
         if (cur->data == target) {
-            erase(i);
+            eraseByIndex(i);
             break;
         }
 }
 
 template <class T>
-void LinearList<T>::update(size_t pos, const T& newData) {
+void LinearList<T>::clear() {
+    head.reset();
+    tail.reset();
+    mSize = 0;
+}
+
+template <class T>
+void LinearList<T>::updateByIndex(size_t pos, const T& newData) {
     if (!(0 <= pos && pos < mSize))
         throw std::out_of_range(
             "LinearList::update(pos,newData) => out of range!"
@@ -131,8 +139,16 @@ void LinearList<T>::update(size_t pos, const T& newData) {
 }
 
 template <class T>
-void LinearList<T>::update(const T& oldData, const T& newData) {
+void LinearList<T>::updateByValue(const T& oldData, const T& newData) {
     NodePtr upd = head;
     for (size_t i = 0; i < mSize; i++, upd = upd->next)
         if (upd->data == oldData) upd->data = newData;
+}
+
+template <class T>
+size_t LinearList<T>::search(const T& target) {
+    NodePtr cur = head;
+    for (size_t i = 0; i < mSize; i++, cur = cur->next)
+        if (cur->data == target) return i;
+    return -1;
 }

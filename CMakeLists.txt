@@ -75,23 +75,23 @@ if(NOT GTEST_FOUND)
 endif()
 
 # Add tests
-# include(CTest)
-# enable_testing()
+include(CTest)
+enable_testing()
 
-# file(GLOB_RECURSE TEST_SOURCES tests/*.cpp)
+file(GLOB_RECURSE TEST_SOURCES tests/*.cpp)
 
-# foreach(TEST_SOURCE ${TEST_SOURCES})
-#     # Get the name of the test from the source file path
-#     get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
+foreach(TEST_SOURCE ${TEST_SOURCES})
+    # Get the name of the test from the source file path
+    get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
 
-#     # Create an executable for the test
-#     add_executable(${TEST_NAME} ${TEST_SOURCE})
+    # Create an executable for the test
+    add_executable(${TEST_NAME} ${TEST_SOURCE})
 
-#     # Link the test executable with any necessary libraries
-#     # Replace "MyLibrary" with the name of your library
-#     target_link_libraries(${TEST_NAME} Core gtest gtest_main)
+    # Link the test executable with any necessary libraries
+    # Replace "MyLibrary" with the name of your library
+    target_link_libraries(${TEST_NAME} Core gtest gtest_main)
 
-#     # Add the test
-#     # gtest_discover_tests(${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-#     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-# endforeach()
+    # Add the test
+    # gtest_discover_tests(${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+endforeach()

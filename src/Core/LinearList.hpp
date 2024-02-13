@@ -17,11 +17,14 @@ class LinearList : public DS {
 
     virtual T popFront();
     virtual T popBack();
-    virtual T erase(size_t pos);
-    virtual void erase(const T& target);
+    virtual T eraseByIndex(size_t pos);
+    virtual void eraseByValue(const T& target);
+    virtual void clear();
 
-    virtual void update(size_t pos, const T& newData);
-    virtual void update(const T& oldData, const T& newData);
+    virtual void updateByIndex(size_t pos, const T& newData);
+    virtual void updateByValue(const T& oldData, const T& newData);
+
+    virtual size_t search(const T& target);
 
    private:
     struct Node;
