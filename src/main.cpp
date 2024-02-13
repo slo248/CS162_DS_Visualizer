@@ -1,4 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "LinearList.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
@@ -15,5 +18,10 @@ int main() {
         window.draw(shape);
         window.display();
     }
+
+    Core::LinearList<int> list;
+
+    std::cout << list.size();
+
     return 0;
 }
