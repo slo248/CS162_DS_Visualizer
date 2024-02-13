@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
-#include "SLL.h"
+#include "LinearList.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
@@ -18,8 +19,9 @@ int main() {
         window.display();
     }
 
-    Core::SLL<int> list;
-    list.pushFront(1);
+    Core::LinearList<int> list;
+
+    std::cout << list.size();
 
     return 0;
 }
