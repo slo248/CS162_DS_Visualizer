@@ -7,6 +7,7 @@ on:
       - "README.md"
       - "LICENSE"
       - "assets/*"
+      - "docs/*"
     branches: [main, dev]
 
 jobs:
