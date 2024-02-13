@@ -9,10 +9,16 @@ template <class T>
 class LinearList : public DS {
    public:
     LinearList();
+    ~LinearList();
 
     void pushFront(const T& data);
     void pushBack(const T& data);
     void insert(int pos, const T& data);
+
+    T popFront();
+    T popBack();
+    T erase(int pos);
+    void erase(const T& target);
 
    private:
     struct Node;
